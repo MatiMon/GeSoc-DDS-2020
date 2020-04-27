@@ -16,4 +16,6 @@ public class DummyDesign {
         return 4;
     }
 
+    public int integrante5(){ return 5; }
+
 }
