@@ -13,6 +13,10 @@ public class DummyDesign {
     6 - Mon, Matias Emmanuel
      */
     public int integrante1(){ return 1;}
+    
+    public int integrante3(){
+        return 3;
+    }
 
     public int integrante4(){
         return 4;
