@@ -12,6 +12,8 @@ public class DummyDesign {
     5 - Gonzalez Sapia, Gaston Martin
     6 - Mon, Matias Emmanuel
      */
+    public int integrante1(){ return 1;}
+
     public int integrante4(){
         return 4;
     }
