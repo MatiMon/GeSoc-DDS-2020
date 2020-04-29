@@ -8,6 +8,10 @@ public class TestDummyDesign {
     public void testIntegrante1() { assertEquals(dummyDesign.integrante1(), 1);}
 
     @Test
+    public void testIntegrante2() { 
+    	assertEquals(dummyDesign.integrante2(),2);}
+    
+    @Test
     public void testIntegrante3() {
         assertEquals(dummyDesign.integrante3(), 3);
     }
