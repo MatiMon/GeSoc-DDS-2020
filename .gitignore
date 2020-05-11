@@ -2,6 +2,7 @@
 .idea
 *.iml
 .ipr
+*.ipr
 
 ## Directorio de uploads
 imagenes_subidas
