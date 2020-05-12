@@ -1,6 +1,13 @@
 import java.util.List;
 
 public class Usuario {
+    public Usuario(String id, String password, TipoUsuario tipoUsuario, List<ValidadorPasswords> validadorPasswordsList) {
+        this.id = id;
+        this.password = password;
+        this.tipoUsuario = tipoUsuario;
+        this.validadorPasswordsList = validadorPasswordsList;
+    }
+
     public String getId() {
         return id;
     }
