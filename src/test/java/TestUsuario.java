@@ -1,8 +1,8 @@
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
-public class TestItem {
-    Item item = new Item();
+public class TestUsuario {
+    Usuario usuario = new Usuario();
 
     @Test
     public void testBlablabla() {
