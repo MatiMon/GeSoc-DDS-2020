@@ -2,7 +2,27 @@ import java.util.List;
 import org.xipki.password.PasswordBasedEncryption;
 
 public class Usuario {
+    String id;
+    String password;
+    TipoUsuario tipoUsuario;
+    List<ValidadorPasswords> validadorPasswordsList;
     public Usuario(String id, String password, TipoUsuario tipoUsuario, List<ValidadorPasswords> validadorPasswordsList) {
+        //TODO: agregar excepciones, validacion de passwords y hash n salt
+        if(id == null){
+            //ex
+        }
+        if(tipoUsuario == null){
+            //ex
+        }
+        if(validadorPasswordsList == null || validadorPasswordsList.isEmpty()){
+            //ex
+        }
+        if(password == null){
+            //ex
+        }
+        if(true){
+            //ex
+        }
         this.id = id;
         this.password = password;
         this.tipoUsuario = tipoUsuario;
@@ -41,9 +61,6 @@ public class Usuario {
         this.validadorPasswordsList = validadorPasswordsList;
     }
 
-    String id;
-    String password;
-    TipoUsuario tipoUsuario;
-    List<ValidadorPasswords> validadorPasswordsList;
+
 }
 

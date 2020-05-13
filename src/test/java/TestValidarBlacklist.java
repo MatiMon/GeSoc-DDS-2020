@@ -1,11 +1,11 @@
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
-public class TestValidarMilMasUsadas {
-    ValidarMilMasUsadas validador = new ValidarMilMasUsadas();
+public class TestValidarBlacklist {
+    ValidarPorArchivo validador = new ValidarPorArchivo(new ArchivoCacheado("/password-blacklist.txt"));
     @Test
     public void cadenaPertenecienteListaOWASP() {
-        assertEquals(validador.validarPassword(("monkey")), false);
+        assertEquals(validador.validarPassword(("documento")), false);
     }
     @Test
     public void cadenaNoPertencienteListaOWASP() {
