@@ -1,4 +1,5 @@
 import java.util.List;
+import org.xipki.password.PasswordBasedEncryption;
 
 public class Usuario {
     public Usuario(String id, String password, TipoUsuario tipoUsuario, List<ValidadorPasswords> validadorPasswordsList) {
