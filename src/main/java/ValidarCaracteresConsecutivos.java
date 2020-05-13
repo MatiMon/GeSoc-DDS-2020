@@ -6,8 +6,9 @@ public class ValidarCaracteresConsecutivos implements ValidadorPasswords {
      */
     @Override
     public boolean validarPassword(String passwordPlana) {
-       return !allCharactersSame(passwordPlana);
+        return !allCharactersSame(passwordPlana);
     }
+
     private boolean allCharactersSame(String s) {
         int n = s.length();
         for (int i = 1; i < n; i++)

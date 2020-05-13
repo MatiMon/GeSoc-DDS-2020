@@ -1,4 +1,5 @@
 import java.util.List;
+
 import org.xipki.password.PasswordBasedEncryption;
 
 public class Usuario {
@@ -6,27 +7,37 @@ public class Usuario {
     String password;
     TipoUsuario tipoUsuario;
     List<ValidadorPasswords> validadorPasswordsList;
+
     public Usuario(String id, String password, TipoUsuario tipoUsuario, List<ValidadorPasswords> validadorPasswordsList) {
-        //TODO: agregar excepciones, validacion de passwords y hash n salt
-        if(id == null){
+        //TODO: agregar excepciones, hash n salt
+        if (id == null) {
             //ex
         }
-        if(tipoUsuario == null){
+        if (tipoUsuario == null) {
             //ex
         }
-        if(validadorPasswordsList == null || validadorPasswordsList.isEmpty()){
+        if (validadorPasswordsList == null || validadorPasswordsList.isEmpty()) {
             //ex
         }
-        if(password == null){
+        if (true/*!validarPassword(password)*/) {
             //ex
         }
-        if(true){
+        if (true) {
             //ex
         }
         this.id = id;
         this.password = password;
         this.tipoUsuario = tipoUsuario;
         this.validadorPasswordsList = validadorPasswordsList;
+    }
+
+    public boolean validarPassword(String unaPassword) {
+        for (ValidadorPasswords validadorPasswords : validadorPasswordsList) {
+            if (!validadorPasswords.validarPassword(unaPassword)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public String getId() {
@@ -60,7 +71,5 @@ public class Usuario {
     public void setValidadorPasswordsList(List<ValidadorPasswords> validadorPasswordsList) {
         this.validadorPasswordsList = validadorPasswordsList;
     }
-
-
 }
 
