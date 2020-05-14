@@ -21,14 +21,6 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.xipki/password -->
-        <dependency>
-            <groupId>org.xipki</groupId>
-            <artifactId>password</artifactId>
-            <version>5.3.6</version>
-        </dependency>
-
-
     </dependencies>
 
     <build>

@@ -1,6 +1,3 @@
-import java.io.*;
-import java.util.stream.Stream;
-
 public class ValidarPorArchivo implements ValidadorPasswords {
     ArchivoCacheado archivoCacheado;
 

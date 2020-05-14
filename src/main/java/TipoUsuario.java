@@ -1,4 +1,4 @@
 public enum TipoUsuario {
     Estandar,
-    Admin;
+    Admin
 }

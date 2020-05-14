@@ -1,43 +1,58 @@
-import java.util.List;
-
-import org.xipki.password.PasswordBasedEncryption;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
+import java.util.ArrayList;
 
 public class Usuario {
     String id;
-    String password;
+    PasswordHashedAndSalted passwordHashedAndSalted;
     TipoUsuario tipoUsuario;
-    List<ValidadorPasswords> validadorPasswordsList;
+    ArrayList<ValidadorPasswords> validadorPasswordsList;
 
-    public Usuario(String id, String password, TipoUsuario tipoUsuario, List<ValidadorPasswords> validadorPasswordsList) {
-        //TODO: agregar excepciones, hash n salt
+    public Usuario(String id, String password, TipoUsuario tipoUsuario, ArrayList<ValidadorPasswords> validadorPasswordsList) throws InvalidKeySpecException, NoSuchAlgorithmException {
         if (id == null) {
-            //ex
+            throw new NullIdException("id no puede ser null");
         }
         if (tipoUsuario == null) {
-            //ex
+            throw new NullUsuarioException("tipoUsuario no puede ser null");
         }
         if (validadorPasswordsList == null || validadorPasswordsList.isEmpty()) {
-            //ex
+            throw new NullOrEmptyListException("lista vacía o null");
         }
-        if (true/*!validarPassword(password)*/) {
-            //ex
+        if (password == null) {
+            throw new NullPasswordException("password no puede ser null");
         }
-        if (true) {
-            //ex
+        if (!validarPassword(password, validadorPasswordsList)) {
+            throw new InvalidPasswordException("password inválida");
         }
+
         this.id = id;
-        this.password = password;
         this.tipoUsuario = tipoUsuario;
         this.validadorPasswordsList = validadorPasswordsList;
+        this.passwordHashedAndSalted = new PasswordHashedAndSalted(password);
     }
 
-    public boolean validarPassword(String unaPassword) {
+    public boolean validarPassword(String unaPassword, ArrayList<ValidadorPasswords> validadorPasswordsList) {
         for (ValidadorPasswords validadorPasswords : validadorPasswordsList) {
             if (!validadorPasswords.validarPassword(unaPassword)) {
                 return false;
             }
         }
         return true;
+    }
+
+    public void actualizarContrasenia(String password) throws InvalidKeySpecException, NoSuchAlgorithmException {
+        if (!validarPassword(password, this.validadorPasswordsList)) {
+            throw new InvalidPasswordException("password inválida");
+        }
+        this.passwordHashedAndSalted = new PasswordHashedAndSalted(password);
+    }
+
+    public boolean autorizarPassword(String password) throws InvalidKeySpecException, NoSuchAlgorithmException {
+        return passwordHashedAndSalted.hashMatch(password);
+    }
+
+    public void agregarValidadorALista(ValidadorPasswords validadorPasswords) {
+        this.validadorPasswordsList.add(validadorPasswords);
     }
 
     public String getId() {
@@ -48,14 +63,6 @@ public class Usuario {
         this.id = id;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public TipoUsuario getTipoUsuario() {
         return tipoUsuario;
     }
@@ -64,12 +71,6 @@ public class Usuario {
         this.tipoUsuario = tipoUsuario;
     }
 
-    public List<ValidadorPasswords> getValidadorPasswordsList() {
-        return validadorPasswordsList;
-    }
 
-    public void setValidadorPasswordsList(List<ValidadorPasswords> validadorPasswordsList) {
-        this.validadorPasswordsList = validadorPasswordsList;
-    }
 }
 
