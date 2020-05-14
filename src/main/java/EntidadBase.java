@@ -1,6 +1,10 @@
 
+<<<<<<< HEAD
 public class EntidadBase implements Entidad {
 	public String nombreFicticio;
+=======
+public class EntidadBase extends Entidad {
+>>>>>>> 01b643bc4677ccc39c91ef16a9820d225a49ca80
 	public String descripcion;
 	public EntidadJuridica entidadJuridica;
 
