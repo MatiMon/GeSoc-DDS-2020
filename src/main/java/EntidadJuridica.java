@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 
-public class EntidadJuridica extends Entidad {
-	
+public class EntidadJuridica implements Entidad {
 	public String nombreFicticio;
 	DatosBasicos datosBasicos;
 	public TipoEntidadJuridica tipo;
@@ -15,29 +14,29 @@ public class EntidadJuridica extends Entidad {
 		this.tipo = tipo;
 	}
 
-	//Getters y Setters:	
+	//Getters	
 	public ArrayList<EntidadBase> getListaEntidadesBase() {
 		return listaEntidadesBase;
 	}
-
-	public void setListaEntidadesBase(ArrayList<EntidadBase> listaEntidadesBase) {
-		this.listaEntidadesBase = listaEntidadesBase;
-	}
-
 	public String getIGJid() {
 		return IGJid;
 	}
-
-	public void setIGJid(String iGJid) {
-		IGJid = iGJid;
-	}
-
 	public DatosBasicos getDatosBasicos() {
 		return datosBasicos;
 	}
-
 	public TipoEntidadJuridica getTipo() {
 		return tipo;
+	}
+	public String getNombreFicticio() {
+		return nombreFicticio;
+	}
+	
+	// Setters
+	public void setListaEntidadesBase(ArrayList<EntidadBase> listaEntidadesBase) {
+		this.listaEntidadesBase = listaEntidadesBase;
+	}
+	public void setIGJid(String iGJid) {
+		IGJid = iGJid;
 	}
 		
 	

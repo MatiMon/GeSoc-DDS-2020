@@ -1,4 +1,4 @@
-public class Empresa {
+public class Empresa implements TipoEntidadJuridica{
 	ClasificacionAfip clasificacion;
 
 	// Constructor

@@ -13,21 +13,13 @@ public class DatosBasicos {
 		this.codigoID = codigoID;
 	}
 	
-	//Getters y setters:
+	//Getters
 	public String getRazonSocial() {
 		return razonSocial;
 	}
 
-	public void setRazonSocial(String razonSocial) {
-		this.razonSocial = razonSocial;
-	}
-
 	public Direccion getDireccion() {
 		return direccion;
-	}
-
-	public void setDireccion(Direccion direccion) {
-		this.direccion = direccion;
 	}
 
 	public TipoDeCodigoID getTipoDeCodigoID() {
@@ -36,6 +28,14 @@ public class DatosBasicos {
 
 	public int getCodigoID() {
 		return codigoID;
+	}
+	
+	// Setters
+	public void setRazonSocial(String razonSocial) {
+		this.razonSocial = razonSocial;
+	}
+	public void setDireccion(Direccion direccion) {
+		this.direccion = direccion;
 	}
 	
 }
