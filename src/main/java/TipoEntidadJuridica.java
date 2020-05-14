@@ -1,4 +1,3 @@
-
-public enum TipoEntidadJuridica {
-	EMPRESA, OSC;
+interface TipoEntidadJuridica {
+	
 }

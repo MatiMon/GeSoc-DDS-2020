@@ -1,5 +1,6 @@
 
 public enum ClasificacionAfip {
-	Micro, Pequeña, Mediana1, Mediana2;
+	
+	MICRO, PEQUENIA, MEDIANA1, MEDIANA2;
 
 }
