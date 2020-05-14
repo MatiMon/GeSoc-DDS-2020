@@ -1,12 +1,49 @@
 import java.util.ArrayList;
 
 public class EntidadJuridica implements Entidad {
+	
+	public String nombreFicticio;
+	DatosBasicos datosBasicos;
 	public TipoEntidadJuridica tipo;
-	public ClasificacionAfip clasificacion;
 	public ArrayList<EntidadBase> listaEntidadesBase;
-	public String razonSocial;
-	public String nombreFicticio;	
-	public Integer CUIT;
 	public String IGJid;
-	public Direccion direccion;
+	
+	//Constructor:
+	public EntidadJuridica(String nombreFicticio, DatosBasicos datosBasicos, TipoEntidadJuridica tipo) {
+		this.nombreFicticio = nombreFicticio;
+		this.datosBasicos = datosBasicos;
+		this.tipo = tipo;
+	}
+
+
+	//Getters y Setters:	
+	public ArrayList<EntidadBase> getListaEntidadesBase() {
+		return listaEntidadesBase;
+	}
+
+	public void setListaEntidadesBase(ArrayList<EntidadBase> listaEntidadesBase) {
+		this.listaEntidadesBase = listaEntidadesBase;
+	}
+
+	public String getIGJid() {
+		return IGJid;
+	}
+
+	public void setIGJid(String iGJid) {
+		IGJid = iGJid;
+	}
+
+	public String getNombreFicticio() {
+		return nombreFicticio;
+	}
+
+	public DatosBasicos getDatosBasicos() {
+		return datosBasicos;
+	}
+
+	public TipoEntidadJuridica getTipo() {
+		return tipo;
+	}
+		
+	
 }

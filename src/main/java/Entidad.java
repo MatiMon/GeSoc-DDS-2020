@@ -1,5 +1,5 @@
 
 public interface Entidad {
-	//public void tipoEntidad;
+	public String getNombreFicticio();
 
 }
