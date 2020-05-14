@@ -1,5 +1,3 @@
-import java.awt.List;
-
 public class Organizacion {
 	String nombre;
 	
