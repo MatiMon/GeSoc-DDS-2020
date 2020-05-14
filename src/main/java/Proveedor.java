@@ -1,34 +1,14 @@
 public class Proveedor {
-	public String razonSocial;
-	public Direccion direccion;
-	public int codigoUnicoDeIdentificacion; // DNI, CUIT o CUIL
-	
+	DatosBasicos datosBasicos;
+
 	//Constructor:
-	public Proveedor (String razonSocial, Direccion direccion, int codigoUnicoDeIdentificacion) {
-		this.razonSocial = razonSocial;
-		this.direccion = direccion;
-		this.codigoUnicoDeIdentificacion = codigoUnicoDeIdentificacion;
+	public Proveedor(DatosBasicos datosBasicos) {
+		this.datosBasicos = datosBasicos;
+	}
+
+	//Getter
+	public DatosBasicos getDatosBasicos() {
+		return datosBasicos;
 	}
 	
-	//Getters/Setters
-	public String getRazonSocial() {
-		return razonSocial;
-	}
-
-	public void setRazonSocial(String razonSocial) {
-		this.razonSocial = razonSocial;
-	}
-
-	public Direccion getDireccion() {
-		return direccion;
-	}
-
-	public void setDireccion(Direccion direccion) {
-		this.direccion = direccion;
-	}
-
-	public int getCodigoUnicoDeIdentificacion() {
-		return codigoUnicoDeIdentificacion;
-	}
-
 }

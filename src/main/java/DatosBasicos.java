@@ -7,7 +7,6 @@ public class DatosBasicos {
 	
 	//Constructor:
 	public DatosBasicos(String razonSocial, Direccion direccion, TipoDeCodigoID tipoDeCodigoID, int codigoID) {
-		super();
 		this.razonSocial = razonSocial;
 		this.direccion = direccion;
 		this.tipoDeCodigoID = tipoDeCodigoID;

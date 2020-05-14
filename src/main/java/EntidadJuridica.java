@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class EntidadJuridica implements Entidad {
+public class EntidadJuridica extends Entidad {
 	
 	public String nombreFicticio;
 	DatosBasicos datosBasicos;
@@ -14,7 +14,6 @@ public class EntidadJuridica implements Entidad {
 		this.datosBasicos = datosBasicos;
 		this.tipo = tipo;
 	}
-
 
 	//Getters y Setters:	
 	public ArrayList<EntidadBase> getListaEntidadesBase() {
@@ -31,10 +30,6 @@ public class EntidadJuridica implements Entidad {
 
 	public void setIGJid(String iGJid) {
 		IGJid = iGJid;
-	}
-
-	public String getNombreFicticio() {
-		return nombreFicticio;
 	}
 
 	public DatosBasicos getDatosBasicos() {

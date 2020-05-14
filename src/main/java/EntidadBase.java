@@ -1,5 +1,5 @@
 
-public class EntidadBase implements Entidad {
+public class EntidadBase extends Entidad {
 	public String nombreFicticio;
 	public String descripcion;
 	public EntidadJuridica entidadJuridica;
@@ -16,10 +16,6 @@ public class EntidadBase implements Entidad {
 
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
-	}
-
-	public String getNombreFicticio() {
-		return nombreFicticio;
 	}
 
 	public EntidadJuridica getEntidadJuridica() {

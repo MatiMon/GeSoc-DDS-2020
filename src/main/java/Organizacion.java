@@ -1,7 +1,9 @@
+import java.awt.List;
+
 public class Organizacion {
 	String nombre;
 	
-	List<Entidad> entidades;
+	//List<Entidad> entidades;
 
 	public Organizacion (String nombre) {
 		this.nombre = nombre;
