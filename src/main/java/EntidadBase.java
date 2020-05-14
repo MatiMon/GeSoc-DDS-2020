@@ -1,6 +1,5 @@
 
 public class EntidadBase extends Entidad {
-	public String nombreFicticio;
 	public String descripcion;
 	public EntidadJuridica entidadJuridica;
 

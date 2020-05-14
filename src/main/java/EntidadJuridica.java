@@ -2,7 +2,6 @@ import java.util.ArrayList;
 
 public class EntidadJuridica extends Entidad {
 	
-	public String nombreFicticio;
 	DatosBasicos datosBasicos;
 	public TipoEntidadJuridica tipo;
 	public ArrayList<EntidadBase> listaEntidadesBase;
