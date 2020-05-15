@@ -17,4 +17,5 @@ public class OperacionDeEgreso {
 		    sum += items.get(i).valorItem();
 		return sum;
 	}
+
 }
