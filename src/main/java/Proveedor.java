@@ -10,5 +10,5 @@ public class Proveedor {
 	public DatosBasicos getDatosBasicos() {
 		return datosBasicos;
 	}
-	
+
 }
