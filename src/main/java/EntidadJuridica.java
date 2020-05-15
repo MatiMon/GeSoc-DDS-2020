@@ -4,8 +4,13 @@ public class EntidadJuridica implements Entidad {
 	public String nombreFicticio;
 	DatosBasicos datosBasicos;
 	public TipoEntidadJuridica tipo;
-	public ArrayList<EntidadBase> listaEntidadesBase;
+	public ArrayList<EntidadBase> entidadesBase;
 	public String IGJid;
+	
+	public void crearEntidadBase (String nombreFicticio, String descripcion, EntidadJuridica entidadJuridica) {
+		EntidadBase nuevaEntidadBase = new EntidadBase (nombreFicticio, descripcion, entidadJuridica);
+		this.entidadesBase.add(nuevaEntidadBase);
+	}
 	
 	//Constructor:
 	public EntidadJuridica(String nombreFicticio, DatosBasicos datosBasicos, TipoEntidadJuridica tipo) {
@@ -16,7 +21,7 @@ public class EntidadJuridica implements Entidad {
 
 	//Getters	
 	public ArrayList<EntidadBase> getListaEntidadesBase() {
-		return listaEntidadesBase;
+		return entidadesBase;
 	}
 	public String getIGJid() {
 		return IGJid;
@@ -33,7 +38,7 @@ public class EntidadJuridica implements Entidad {
 	
 	// Setters
 	public void setListaEntidadesBase(ArrayList<EntidadBase> listaEntidadesBase) {
-		this.listaEntidadesBase = listaEntidadesBase;
+		this.entidadesBase = listaEntidadesBase;
 	}
 	public void setIGJid(String iGJid) {
 		IGJid = iGJid;
