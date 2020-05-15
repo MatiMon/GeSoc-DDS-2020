@@ -1,5 +1,6 @@
+import Dominio.Usuario.ArchivoCacheado;
+import Dominio.Usuario.InvalidFileNameException;
 import org.junit.Test;
-
 public class TestArchivoCacheado {
 
     @Test(expected = InvalidFileNameException.class)

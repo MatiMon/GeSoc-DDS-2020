@@ -1,3 +1,5 @@
+import Dominio.Usuario.*;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.security.NoSuchAlgorithmException;
@@ -10,54 +12,57 @@ import static org.junit.Assert.*;
 
 public class TestUsuario {
 
-    ArchivoCacheado owaspFile = new ArchivoCacheado("/password-blacklist.txt");
-    ArchivoCacheado blacklistFile = new ArchivoCacheado("/10k-most-common.txt");
-    Usuario usuario = new Usuario(
-            "ID1",
-            "1234asdf",
-            TipoUsuario.Admin,
-            new ArrayList<>(
-                    Arrays.asList(
-                            new ValidarPorArchivo(owaspFile),
-                            new ValidarPorArchivo(blacklistFile),
-                            new ValidarCaracteresConsecutivos(),
-                            new ValidarLongitud()
-                    )
-            )
-    );
+    private static final ArchivoCacheado owaspFile = new ArchivoCacheado("/password-blacklist.txt");
+    private static final ArchivoCacheado blacklistFile = new ArchivoCacheado("/10k-most-common.txt");
+    protected Usuario usuario;
 
+    @Before
+    public void setup() throws InvalidKeySpecException, NoSuchAlgorithmException {
+        this.usuario = new Usuario("ID1",
+                            "1234asdf",
+                                TipoUsuario.Admin,
+                                new ArrayList<ValidadorPasswords>(
+                                    Arrays.asList(
+                                        new ValidarPorArchivo(owaspFile),
+                                        new ValidarPorArchivo(blacklistFile),
+                                        new ValidarCaracteresConsecutivos(),
+                                        new ValidarLongitud()
+                                    )
+                                )
+                            );
+    }
 
     public TestUsuario() throws InvalidKeySpecException, NoSuchAlgorithmException {
     }
 
     @Test
-    public void testPasswordCaracteresRepetidos() {
-        assertFalse(usuario.validarPassword("aaaaaa", usuario.validadorPasswordsList));
+    public void testPasswordCaracteresRepetidos(){
+        assertFalse(usuario.validarPassword("aaaaaa"));
     }
 
     @Test
     public void testPasswordValida() {
-        assertTrue(usuario.validarPassword("passwordValida123xyz", usuario.validadorPasswordsList));
+        assertTrue(usuario.validarPassword("passwordValida123xyz"));
     }
 
     @Test
     public void testPasswordDeOWASP10k() {
-        assertFalse(usuario.validarPassword("superman", usuario.validadorPasswordsList));
+        assertFalse(usuario.validarPassword("superman"));
     }
 
     @Test
     public void testPasswordEnBlacklist() {
-        assertFalse(usuario.validarPassword("usuario", usuario.validadorPasswordsList));
+        assertFalse(usuario.validarPassword("usuario"));
     }
 
     @Test
     public void testPasswordCorta() {
-        assertFalse(usuario.validarPassword("zbf", usuario.validadorPasswordsList));
+        assertFalse(usuario.validarPassword("zbf"));
     }
 
     @Test
     public void testPasswordLarga() {
-        assertFalse(usuario.validarPassword("zbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfz123", usuario.validadorPasswordsList));
+        assertFalse(usuario.validarPassword("zbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfz123"));
     }
 
     @Test(expected = NullIdException.class)
@@ -107,6 +112,6 @@ public class TestUsuario {
         Usuario usuario = new Usuario("Shaq", "1234asdad", TipoUsuario.Estandar, new ArrayList<>(Collections.singletonList(new ValidarPorArchivo(owaspFile))));
         ValidarCaracteresConsecutivos val = new ValidarCaracteresConsecutivos();
         usuario.agregarValidadorALista(val);
-        assertEquals(usuario.validadorPasswordsList.size(), 2);
+        assertEquals(usuario.getValidadorPasswordsList().size(), 2);
     }
 }
