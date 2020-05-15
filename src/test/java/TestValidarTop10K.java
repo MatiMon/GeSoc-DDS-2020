@@ -1,3 +1,5 @@
+import Dominio.Usuario.ArchivoCacheado;
+import Dominio.Usuario.ValidarPorArchivo;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

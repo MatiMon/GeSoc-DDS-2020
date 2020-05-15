@@ -1,3 +1,4 @@
+import Dominio.Usuario.ValidarLongitud;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
