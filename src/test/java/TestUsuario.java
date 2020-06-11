@@ -65,22 +65,22 @@ public class TestUsuario {
         assertFalse(usuario.validarPassword("zbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfz123"));
     }
 
-    @Test(expected = NullIdException.class)
+    @Test(expected = NullEntryException.class)
     public void idNullLanzaException() throws InvalidKeySpecException, NoSuchAlgorithmException {
         new Usuario(null, "1234asdad", TipoUsuario.Estandar, new ArrayList<>(Collections.singletonList(new ValidarPorArchivo(owaspFile))));
     }
 
-    @Test(expected = NullPasswordException.class)
+    @Test(expected = NullEntryException.class)
     public void passwordNullLanzaException() throws InvalidKeySpecException, NoSuchAlgorithmException {
         new Usuario("312", null, TipoUsuario.Estandar, new ArrayList<>(Collections.singletonList(new ValidarPorArchivo(owaspFile))));
     }
 
-    @Test(expected = NullUsuarioException.class)
+    @Test(expected = NullEntryException.class)
     public void usuarioNullLanzaException() throws InvalidKeySpecException, NoSuchAlgorithmException {
         new Usuario("ID31", "12345112asdasdq", null, new ArrayList<>(Collections.singletonList(new ValidarPorArchivo(owaspFile))));
     }
 
-    @Test(expected = NullOrEmptyListException.class)
+    @Test(expected = NullEntryException.class)
     public void listaVaciaLanzaException() throws InvalidKeySpecException, NoSuchAlgorithmException {
         new Usuario("ID31", "12345112asdasdq", TipoUsuario.Admin, new ArrayList<>());
     }

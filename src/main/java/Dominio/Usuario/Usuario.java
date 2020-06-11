@@ -12,17 +12,8 @@ public class Usuario {
 
     public Usuario(String id, String password, TipoUsuario tipoUsuario, ArrayList<ValidadorPasswords> validadorPasswordsList) throws InvalidKeySpecException, NoSuchAlgorithmException {
         this.validadorPasswordsList = validadorPasswordsList;
-        if (id == null) {
-            throw new NullIdException("id no puede ser null");
-        }
-        if (tipoUsuario == null) {
-            throw new NullUsuarioException("tipoUsuario no puede ser null");
-        }
-        if (validadorPasswordsList == null || validadorPasswordsList.isEmpty()) {
-            throw new NullOrEmptyListException("lista vacía o null");
-        }
-        if (password == null) {
-            throw new NullPasswordException("password no puede ser null");
+        if (id == null || tipoUsuario == null || validadorPasswordsList == null || validadorPasswordsList.isEmpty()|| password == null) {
+            throw new NullEntryException("No se puede instanciar el usuario con valores null");
         }
         if (!validarPassword(password)) {
             throw new InvalidPasswordException("password inválida");
