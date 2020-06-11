@@ -12,8 +12,8 @@ import static org.junit.Assert.*;
 
 public class TestUsuario {
 
-    private static final ArchivoCacheado owaspFile = new ArchivoCacheado("/password-blacklist.txt");
-    private static final ArchivoCacheado blacklistFile = new ArchivoCacheado("/10k-most-common.txt");
+    private static final ArchivoCacheado owaspFile = new ArchivoCacheado("/password-blacklist.txt", 5555);
+    private static final ArchivoCacheado blacklistFile = new ArchivoCacheado("/10k-most-common.txt",4563 );
     protected Usuario usuario;
 
     @Before

@@ -9,16 +9,22 @@ import java.util.stream.Collectors;
 public class ArchivoCacheado {
     String nombreArchivo;
     ArrayList<String> cache;
+    int tiempoDeRefresco;
 
-    public ArchivoCacheado(String nombreArchivo) {
+    public ArchivoCacheado(String nombreArchivo, int tiempoDeRefresco) {
         this.nombreArchivo = nombreArchivo;
-        InputStream inputStream = getClass().getResourceAsStream(nombreArchivo);
-        if (inputStream == null) throw new InvalidFileNameException("No existe el archivo");
-        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-        this.cache = new ArrayList<>(reader.lines().collect(Collectors.toList()));
+        this.tiempoDeRefresco = tiempoDeRefresco;
+        guardarArchivoEnCache(this.nombreArchivo);
     }
 
     public boolean passwordEnArchivo(String unaPassword) {
         return cache.contains(unaPassword);
+    }
+
+    public void guardarArchivoEnCache(String nombreArchivo) {
+        InputStream inputStream = getClass().getResourceAsStream(nombreArchivo);
+        if (inputStream == null) throw new InvalidFileNameException("No existe el archivo");
+        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+        this.cache = new ArrayList<>(reader.lines().collect(Collectors.toList()));
     }
 }

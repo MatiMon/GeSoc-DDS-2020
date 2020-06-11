@@ -5,7 +5,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class TestValidarBlacklist {
-    ValidarPorArchivo validador = new ValidarPorArchivo(new ArchivoCacheado("/password-blacklist.txt"));
+    ValidarPorArchivo validador = new ValidarPorArchivo(new ArchivoCacheado("/password-blacklist.txt", 70000));
 
     @Test
     public void cadenaPertenecienteListaOWASP() {

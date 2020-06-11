@@ -5,6 +5,6 @@ public class TestArchivoCacheado {
 
     @Test(expected = InvalidFileNameException.class)
     public void cadenaPertenecienteListaOWASP() {
-        new ArchivoCacheado("/este-nombre-es-invalido.txt");
+        new ArchivoCacheado("/este-nombre-es-invalido.txt",6000 );
     }
 }

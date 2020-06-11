@@ -5,7 +5,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class TestValidarTop10K {
-    ValidarPorArchivo validador = new ValidarPorArchivo(new ArchivoCacheado("/10k-most-common.txt"));
+    ValidarPorArchivo validador = new ValidarPorArchivo(new ArchivoCacheado("/10k-most-common.txt",7000 ));
 
     @Test
     public void cadenaPertenecienteListaOWASP() {
