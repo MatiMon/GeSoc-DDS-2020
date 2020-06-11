@@ -2,17 +2,16 @@ package Dominio.Usuario;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
-import java.util.ArrayList;
 
 public class Usuario {
     String id;
     PasswordHashedAndSalted passwordHashedAndSalted;
     TipoUsuario tipoUsuario;
-    ArrayList<ValidadorPasswords> validadorPasswordsList;
+    ValidadorPasswords validadorPasswords;
 
-    public Usuario(String id, String password, TipoUsuario tipoUsuario, ArrayList<ValidadorPasswords> validadorPasswordsList) throws InvalidKeySpecException, NoSuchAlgorithmException {
-        this.validadorPasswordsList = validadorPasswordsList;
-        if (id == null || tipoUsuario == null || validadorPasswordsList == null || validadorPasswordsList.isEmpty()|| password == null) {
+    public Usuario(String id, String password, TipoUsuario tipoUsuario, ValidadorPasswords validadorPasswords) throws InvalidKeySpecException, NoSuchAlgorithmException {
+        this.validadorPasswords = validadorPasswords;
+        if (id == null || tipoUsuario == null || password == null) {
             throw new NullEntryException("No se puede instanciar el usuario con valores null");
         }
         if (!validarPassword(password)) {
@@ -24,8 +23,7 @@ public class Usuario {
     }
 
     public boolean validarPassword(String password) {
-        return validadorPasswordsList.stream()
-                .allMatch(validadorPasswords->validadorPasswords.validarPassword(password));
+        return validadorPasswords.validarPassword(password);
     }
 
     public void actualizarContrasenia(String password) throws InvalidKeySpecException, NoSuchAlgorithmException {
@@ -39,9 +37,6 @@ public class Usuario {
         return passwordHashedAndSalted.hashMatch(password);
     }
 
-    public void agregarValidadorALista(ValidadorPasswords validadorPasswords) {
-        this.validadorPasswordsList.add(validadorPasswords);
-    }
 
     public String getId() {
         return id;
@@ -59,8 +54,9 @@ public class Usuario {
         this.tipoUsuario = tipoUsuario;
     }
 
-    public ArrayList<ValidadorPasswords> getValidadorPasswordsList() {
-        return this.validadorPasswordsList;
+    public ValidadorPasswords getValidadorPasswords() {
+        return validadorPasswords;
     }
+
 }
 

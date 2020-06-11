@@ -13,30 +13,31 @@ import static org.junit.Assert.*;
 public class TestUsuario {
 
     private static final ArchivoCacheado owaspFile = new ArchivoCacheado("/password-blacklist.txt", 5555);
-    private static final ArchivoCacheado blacklistFile = new ArchivoCacheado("/10k-most-common.txt",4563 );
+    private static final ArchivoCacheado blacklistFile = new ArchivoCacheado("/10k-most-common.txt", 4563);
     protected Usuario usuario;
-
-    @Before
-    public void setup() throws InvalidKeySpecException, NoSuchAlgorithmException {
-        this.usuario = new Usuario("ID1",
-                            "1234asdf",
-                                TipoUsuario.Admin,
-                                new ArrayList<ValidadorPasswords>(
-                                    Arrays.asList(
-                                        new ValidarPorArchivo(owaspFile),
-                                        new ValidarPorArchivo(blacklistFile),
-                                        new ValidarCaracteresConsecutivos(),
-                                        new ValidarLongitud()
-                                    )
-                                )
-                            );
-    }
 
     public TestUsuario() throws InvalidKeySpecException, NoSuchAlgorithmException {
     }
 
+    @Before
+    public void setup() throws InvalidKeySpecException, NoSuchAlgorithmException {
+        this.usuario = new Usuario("ID1",
+                "1234asdf",
+                TipoUsuario.Admin,
+                new ValidadorPasswords(new ArrayList<ValidarPasswords>(
+                        Arrays.asList(
+                                new ValidarPorArchivo(owaspFile),
+                                new ValidarPorArchivo(blacklistFile),
+                                new ValidarCaracteresConsecutivos(),
+                                new ValidarLongitud()
+                        )
+                )
+                )
+        );
+    }
+
     @Test
-    public void testPasswordCaracteresRepetidos(){
+    public void testPasswordCaracteresRepetidos() {
         assertFalse(usuario.validarPassword("aaaaaa"));
     }
 
@@ -67,22 +68,23 @@ public class TestUsuario {
 
     @Test(expected = NullEntryException.class)
     public void idNullLanzaException() throws InvalidKeySpecException, NoSuchAlgorithmException {
-        new Usuario(null, "1234asdad", TipoUsuario.Estandar, new ArrayList<>(Collections.singletonList(new ValidarPorArchivo(owaspFile))));
+        new Usuario(null, "1234asdad", TipoUsuario.Estandar, new ValidadorPasswords(new ArrayList<>(Collections.singletonList(new ValidarPorArchivo(owaspFile)))));
     }
 
     @Test(expected = NullEntryException.class)
     public void passwordNullLanzaException() throws InvalidKeySpecException, NoSuchAlgorithmException {
-        new Usuario("312", null, TipoUsuario.Estandar, new ArrayList<>(Collections.singletonList(new ValidarPorArchivo(owaspFile))));
+        new Usuario("312", null, TipoUsuario.Estandar, new ValidadorPasswords(new ArrayList<>(Collections.singletonList(new ValidarPorArchivo(owaspFile)))));
     }
 
     @Test(expected = NullEntryException.class)
     public void usuarioNullLanzaException() throws InvalidKeySpecException, NoSuchAlgorithmException {
-        new Usuario("ID31", "12345112asdasdq", null, new ArrayList<>(Collections.singletonList(new ValidarPorArchivo(owaspFile))));
+        new Usuario("ID31", "12345112asdasdq", null, new ValidadorPasswords(new ArrayList<>(Collections.singletonList(new ValidarPorArchivo(owaspFile)))));
     }
 
-    @Test(expected = NullEntryException.class)
-    public void listaVaciaLanzaException() throws InvalidKeySpecException, NoSuchAlgorithmException {
-        new Usuario("ID31", "12345112asdasdq", TipoUsuario.Admin, new ArrayList<>());
+    @Test
+    public void ValidadorVacioAceptaCualquierPassword() throws InvalidKeySpecException, NoSuchAlgorithmException {
+        new Usuario("ID31", "12345112asdasdq", TipoUsuario.Admin, new ValidadorPasswords(new ArrayList<>()));
+        assertTrue(usuario.validarPassword("123451qweqweqwe"));
     }
 
     @Test
@@ -109,9 +111,9 @@ public class TestUsuario {
 
     @Test
     public void agregaUnValidadorALista() throws InvalidKeySpecException, NoSuchAlgorithmException {
-        Usuario usuario = new Usuario("Shaq", "1234asdad", TipoUsuario.Estandar, new ArrayList<>(Collections.singletonList(new ValidarPorArchivo(owaspFile))));
+        Usuario usuario = new Usuario("Shaq", "1234asdad", TipoUsuario.Estandar, new ValidadorPasswords(new ArrayList<>(Collections.singletonList(new ValidarPorArchivo(owaspFile)))));
         ValidarCaracteresConsecutivos val = new ValidarCaracteresConsecutivos();
-        usuario.agregarValidadorALista(val);
-        assertEquals(usuario.getValidadorPasswordsList().size(), 2);
+        usuario.getValidadorPasswords().agregarValidadorALista(val);
+        assertEquals(usuario.getValidadorPasswords().getValidarPasswordsList().size(), 2);
     }
 }

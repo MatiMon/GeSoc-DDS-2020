@@ -1,6 +1,6 @@
 package Dominio.Usuario;
 
-public class ValidarCaracteresConsecutivos implements ValidadorPasswords {
+public class ValidarCaracteresConsecutivos implements ValidarPasswords {
     /*
     Me resulta raro tener que instanciar una clase que no tiene estado.
     Lo que necesito son los métodos.
