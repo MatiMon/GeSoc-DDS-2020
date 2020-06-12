@@ -1,7 +1,7 @@
 package Dominio.Usuario;
 
 public class ValidarPorArchivo implements ValidarPasswords {
-    ArchivoCacheado archivoCacheado;
+    private ArchivoCacheado archivoCacheado;
 
     public ValidarPorArchivo(ArchivoCacheado archivoCacheado) {
         this.archivoCacheado = archivoCacheado;

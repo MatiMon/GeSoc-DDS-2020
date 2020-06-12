@@ -1,11 +1,11 @@
 package Dominio.Usuario;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class ValidadorPasswords {
-    ArrayList<ValidarPasswords> validarPasswordsList;
+    private List<ValidarPasswords> validarPasswordsList;
 
-    public ValidadorPasswords(ArrayList<ValidarPasswords> validarPasswordsList) {
+    public ValidadorPasswords(List<ValidarPasswords> validarPasswordsList) {
         this.validarPasswordsList = validarPasswordsList;
     }
 
@@ -18,7 +18,7 @@ public class ValidadorPasswords {
         this.validarPasswordsList.add(validarPasswords);
     }
 
-    public ArrayList<ValidarPasswords> getValidarPasswordsList() {
+    public List<ValidarPasswords> getValidarPasswordsList() {
         return this.validarPasswordsList;
     }
 

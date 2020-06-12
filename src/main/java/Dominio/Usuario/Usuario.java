@@ -4,17 +4,17 @@ import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 
 public class Usuario {
-    String id;
-    PasswordHashedAndSalted passwordHashedAndSalted;
-    TipoUsuario tipoUsuario;
-    ValidadorPasswords validadorPasswords;
+    private String id;
+    private PasswordHashedAndSalted passwordHashedAndSalted;
+    private TipoUsuario tipoUsuario;
+    private ValidadorPasswords validadorPasswords;
 
     public Usuario(String id, String password, TipoUsuario tipoUsuario, ValidadorPasswords validadorPasswords) throws InvalidKeySpecException, NoSuchAlgorithmException {
         this.validadorPasswords = validadorPasswords;
         if (id == null || tipoUsuario == null || password == null) {
             throw new NullEntryException("No se puede instanciar el usuario con valores null");
         }
-        if (!validarPassword(password)) {
+        if (!validadorPasswords.validarPassword(password)) {
             throw new InvalidPasswordException("password inválida");
         }
         this.id = id;
@@ -22,12 +22,8 @@ public class Usuario {
         this.passwordHashedAndSalted = new PasswordHashedAndSalted(password);
     }
 
-    public boolean validarPassword(String password) {
-        return validadorPasswords.validarPassword(password);
-    }
-
     public void actualizarContrasenia(String password) throws InvalidKeySpecException, NoSuchAlgorithmException {
-        if (!validarPassword(password)) {
+        if (!this.validadorPasswords.validarPassword(password)) {
             throw new InvalidPasswordException("password inválida");
         }
         this.passwordHashedAndSalted = new PasswordHashedAndSalted(password);

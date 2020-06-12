@@ -9,10 +9,10 @@ import java.security.spec.KeySpec;
 import java.util.Arrays;
 
 public class PasswordHashedAndSalted {
-    byte[] salt = new byte[16];
-    byte[] hash;
-    int iterations = 128;
-    int longitudEnBits = 2048;
+    private byte[] salt = new byte[16];
+    private byte[] hash;
+    private int iterations = 128;
+    private int longitudEnBits = 2048;
 
     public PasswordHashedAndSalted(String password) throws InvalidKeySpecException, NoSuchAlgorithmException {
         generarSaltRandom();

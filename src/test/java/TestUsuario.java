@@ -38,32 +38,32 @@ public class TestUsuario {
 
     @Test
     public void testPasswordCaracteresRepetidos() {
-        assertFalse(usuario.validarPassword("aaaaaa"));
+        assertFalse(usuario.getValidadorPasswords().validarPassword("aaaaaa"));
     }
 
     @Test
     public void testPasswordValida() {
-        assertTrue(usuario.validarPassword("passwordValida123xyz"));
+        assertTrue(usuario.getValidadorPasswords().validarPassword("passwordValida123xyz"));
     }
 
     @Test
     public void testPasswordDeOWASP10k() {
-        assertFalse(usuario.validarPassword("superman"));
+        assertFalse(usuario.getValidadorPasswords().validarPassword("superman"));
     }
 
     @Test
     public void testPasswordEnBlacklist() {
-        assertFalse(usuario.validarPassword("usuario"));
+        assertFalse(usuario.getValidadorPasswords().validarPassword("usuario"));
     }
 
     @Test
     public void testPasswordCorta() {
-        assertFalse(usuario.validarPassword("zbf"));
+        assertFalse(usuario.getValidadorPasswords().validarPassword("zbf"));
     }
 
     @Test
     public void testPasswordLarga() {
-        assertFalse(usuario.validarPassword("zbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfz123"));
+        assertFalse(usuario.getValidadorPasswords().validarPassword("zbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfzbfz123"));
     }
 
     @Test(expected = NullEntryException.class)
@@ -84,7 +84,7 @@ public class TestUsuario {
     @Test
     public void ValidadorVacioAceptaCualquierPassword() throws InvalidKeySpecException, NoSuchAlgorithmException {
         new Usuario("ID31", "12345112asdasdq", TipoUsuario.Admin, new ValidadorPasswords(new ArrayList<>()));
-        assertTrue(usuario.validarPassword("123451qweqweqwe"));
+        assertTrue(usuario.getValidadorPasswords().validarPassword("123451qweqweqwe"));
     }
 
     @Test

@@ -7,9 +7,9 @@ import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 public class ArchivoCacheado {
-    String nombreArchivo;
-    ArrayList<String> cache;
-    int tiempoDeRefresco;
+    private String nombreArchivo;
+    private ArrayList<String> cache;
+    private int tiempoDeRefresco;
 
     public ArchivoCacheado(String nombreArchivo, int tiempoDeRefresco) {
         this.nombreArchivo = nombreArchivo;
