@@ -25,16 +25,15 @@ public class TestSetUpGeneral {
     Direccion direccion2 = new Direccion("Otra calle", "1234", "15522");
     TipoDeCodigoID tipoDeCodigoID = TipoDeCodigoID.CUIT;
     DatosBasicos datosBasicos = new DatosBasicos("Una razon social", direccion, tipoDeCodigoID, 1234);
-    DatosBasicos datosProveedor = new DatosBasicos("el proveedor", direccion2, TipoDeCodigoID.CUIT, 51112);
     Empresa empresa = new Empresa(ClasificacionAfip.MEDIANA1);
 
 
     @Before
     public void setUp(){
-        entidadJuridica = new EntidadJuridica("entidadJuridica", datosBasicos, empresa);
+        entidadJuridica = new EntidadJuridica("entidadJuridica", "el proveedor", direccion2, TipoDeCodigoID.CUIT, 51112, empresa);
         organizacion.agregarEntidadJuridica(entidadJuridica);
         entidadBase = new EntidadBase("Carlos", "Un buen tipo", entidadJuridica);
-        proveedor = new Proveedor(datosProveedor);
+        proveedor = new Proveedor("Una razon social", direccion, tipoDeCodigoID, 1234);
     }
 
     protected MediosDePago unaTarjeta(){
