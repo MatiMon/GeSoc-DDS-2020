@@ -15,7 +15,7 @@ public class TestMediosDePago {
                     TipoTarjeta.tarjetaCredito,
                 "1010202030304040",
                 "Juan Perez",
-                LocalDateTime.parse("2030-12-01")
+                LocalDateTime.parse("2030-12-01T23:59")
         );
     }
 
@@ -26,7 +26,7 @@ public class TestMediosDePago {
                 TipoTarjeta.tarjetaDebito,
                 "abcd666677778888",
                 "Raul Gimenez",
-                LocalDateTime.parse("2030-12-01")
+                LocalDateTime.parse("2030-12-01T23:59")
         );
     }
     @Test(expected = CantidadIncorrectaDeCaractereresExeption.class)
@@ -35,7 +35,7 @@ public class TestMediosDePago {
                 TipoTarjeta.tarjetaDebito,
                 "55556666777788889",
                 "Raul Gimenez",
-                LocalDateTime.parse("2030-12-01")
+                LocalDateTime.parse("2030-12-01T23:59")
         );
     }
 
@@ -47,7 +47,7 @@ public class TestMediosDePago {
                 TipoTarjeta.tarjetaDebito,
                 "555",
                 "Raul Gimenez",
-                LocalDateTime.parse("2030-12-01")
+                LocalDateTime.parse("2030-12-01T23:59")
 
         );
     }

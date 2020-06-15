@@ -11,6 +11,7 @@ import Dominio.Proveedor.TipoDeCodigoID;
 import org.junit.Before;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 public class TestSetUpGeneral {
     protected Proveedor proveedor;
@@ -40,10 +41,8 @@ public class TestSetUpGeneral {
         return new Tarjeta(
                 TipoTarjeta.tarjetaCredito,
                 "1010202030304040",
-                "123",
                 "Juan Perez",
-                new java.util.Date(2020,7,1),
-                new BigDecimal(20000));
+                LocalDateTime.parse("2020-7-1"));
     }
 
     protected MediosDePago enEectivo(){
