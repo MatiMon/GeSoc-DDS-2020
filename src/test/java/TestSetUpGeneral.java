@@ -15,8 +15,8 @@ import java.time.LocalDateTime;
 
 public class TestSetUpGeneral {
     protected Proveedor proveedor;
-    protected Producto producto1 = new Producto("Prod1", 100);
-    protected Producto producto2 = new Producto("Prod2", 200);
+    protected Producto producto1 = new Producto("Prod1", new BigDecimal(100));
+    protected Producto producto2 = new Producto("Prod2", new BigDecimal(200));
     protected Organizacion organizacion = new Organizacion("Org 1");
     protected EntidadJuridica entidadJuridica;
     protected EntidadBase entidadBase;

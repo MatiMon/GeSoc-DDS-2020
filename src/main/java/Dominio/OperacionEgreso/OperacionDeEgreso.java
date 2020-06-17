@@ -1,7 +1,9 @@
 package Dominio.OperacionEgreso;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import Dominio.Entidad.Entidad;
 import Dominio.MediosDePago.MediosDePago;
@@ -13,9 +15,10 @@ public class OperacionDeEgreso {
 	private Pair<TipoDocumentoComercial,Integer> documentoContable;
 	private Proveedor proveedor;
 	private Date f_Operacion;
-	private ArrayList<Item> items;
+	private List<Item> items;
 	private MediosDePago pago;
 	private Entidad entidad;
+	private BigDecimal total;
 
 	public OperacionDeEgreso(Pair<TipoDocumentoComercial,Integer> documentoContable,
 							 Proveedor proveedor,
@@ -29,11 +32,12 @@ public class OperacionDeEgreso {
 		this.f_Operacion = f_Operacion;
 		this.pago = pago;
 		this.entidad = entidad;
+		this.total = this.valorTotal();
 	}
-	public Double valorTotal() {
-		return items.stream()
-				.mapToDouble(item-> item.cantidad * item.producto.precioUnitario)
-				.sum();
+	public BigDecimal valorTotal() {
+		return BigDecimal.valueOf(items.stream()
+				.mapToDouble(item-> item.valorItem().doubleValue())
+				.sum());
 	}
 
 	public TipoDocumentoComercial getTipoDocumentoComercial(){
@@ -45,7 +49,7 @@ public class OperacionDeEgreso {
 	public Proveedor getProveedor(){return this.proveedor;}
 	public Date getFechaOperacion(){ return this.f_Operacion;}
 	public Entidad getEntidad(){ return this.entidad;}
-	public ArrayList<Item> getItems(){ return this.items;}
+	public List<Item> getItems(){ return this.items;}
 	public MediosDePago getPago(){ return this.pago;}
 
 	public Pair<TipoDocumentoComercial,Integer> getDocumentoComercial() {
