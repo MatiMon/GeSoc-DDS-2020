@@ -9,49 +9,26 @@ import java.util.List;
 
 public class Presupuesto {
 
+    OperacionDeEgreso operacionAsociada;
+    List<Item> items;
+    List<TipoDocumentoComercial> documentoComerciales;
+    BigDecimal total;
 
-    private OperacionDeEgreso operacionDeEgresoAsociada;
-    private List<Item> listaDeItems;
-    private List<TipoDocumentoComercial> tiposDeDocumentoPosibles;
-    private BigDecimal valorTotal;
-
-
-
-    public Presupuesto(OperacionDeEgreso opreacionDeEgresoAsociada, List<Item> listaDeItems, List<TipoDocumentoComercial> tiposDeDocumentoPosibles, BigDecimal valorTotal) {
-        this.operacionDeEgresoAsociada = opreacionDeEgresoAsociada;
-        this.listaDeItems = listaDeItems;
-        this.tiposDeDocumentoPosibles = tiposDeDocumentoPosibles;
-        this.valorTotal = valorTotal;
+    Presupuesto(OperacionDeEgreso unEgreso,
+                List<Item> unosItems,
+                List<TipoDocumentoComercial> unosDocs){
+        operacionAsociada = unEgreso;
+        items = unosItems;
+        documentoComerciales = unosDocs;
+        total = this.calcularValorTotal();
     }
 
-    public OperacionDeEgreso getOpreacionDeEgresoAsociada() {
-        return operacionDeEgresoAsociada;
+    BigDecimal calcularValorTotal(){
+        return BigDecimal.valueOf(SumarItems());
     }
 
-    public List<Item> getListaDeItems() {
-        return listaDeItems;
+    private double SumarItems(){
+        return items.stream().mapToDouble(item -> item.valorItem().doubleValue()).sum();
     }
-
-    public List<TipoDocumentoComercial> getTiposDeDocumentoPosibles() {
-        return tiposDeDocumentoPosibles;
-    }
-
-    public BigDecimal getValorTotal() {
-        return valorTotal;
-    }
-
-
-    public void setOpreacionDeEgresoAsociada(OperacionDeEgreso opreacionDeEgresoAsociada) {
-        this.operacionDeEgresoAsociada = opreacionDeEgresoAsociada;
-    }
-
-    public void setTiposDeDocumentoPosibles(List<TipoDocumentoComercial> tiposDeDocumentoPosibles) {
-        this.tiposDeDocumentoPosibles = tiposDeDocumentoPosibles;
-    }
-
-    public void setValorTotal(BigDecimal valorTotal) {
-        this.valorTotal = valorTotal;
-    }
-
 
 }

@@ -1,15 +1,17 @@
 package Dominio.OperacionEgreso;
 
+import java.math.BigDecimal;
+
 public class Producto {
 	String nombre;
-	double precioUnitario;
+	BigDecimal precioUnitario;
 
-	public Producto(String nombre, double precio){
+	public Producto(String nombre, BigDecimal precio){
 		this.nombre = nombre;
 		this.precioUnitario = precio;
 	}
 
-	public double getPrecioUnitario() {
+	public BigDecimal getPrecioUnitario() {
 		return precioUnitario;
 	}
 	
