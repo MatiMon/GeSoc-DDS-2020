@@ -18,7 +18,7 @@ public class OperacionDeEgreso {
 	private List<Item> items;
 	private MediosDePago pago;
 	private Entidad entidad;
-	private BigDecimal total;
+	private Double total;
 
 	public OperacionDeEgreso(Pair<TipoDocumentoComercial,Integer> documentoContable,
 							 Proveedor proveedor,
@@ -34,10 +34,10 @@ public class OperacionDeEgreso {
 		this.entidad = entidad;
 		this.total = this.valorTotal();
 	}
-	public BigDecimal valorTotal() {
-		return BigDecimal.valueOf(items.stream()
+	public Double valorTotal() {
+		return items.stream()
 				.mapToDouble(item-> item.valorItem().doubleValue())
-				.sum());
+				.sum();
 	}
 
 	public TipoDocumentoComercial getTipoDocumentoComercial(){

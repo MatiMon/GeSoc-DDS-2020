@@ -11,8 +11,8 @@ public class Item {
 		this.producto = producto;
 	}
 	
-	public BigDecimal valorItem() {
-		return producto.getPrecioUnitario().multiply(BigDecimal.valueOf(cantidad));
+	public Double valorItem() {
+		return producto.getPrecioUnitario() * cantidad);
 	}
 	public String descripcionItem() {
 		return String.valueOf(cantidad)+"x"+producto.getNombreProducto()+

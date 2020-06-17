@@ -4,14 +4,13 @@ import Dominio.OperacionEgreso.Item;
 import Dominio.OperacionEgreso.OperacionDeEgreso;
 import Dominio.OperacionEgreso.TipoDocumentoComercial;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 public class Presupuesto {
     OperacionDeEgreso operacionAsociada;
     List<Item> items;
     List<TipoDocumentoComercial> documentoComerciales;
-    BigDecimal total;
+    Double total;
 
     Presupuesto(OperacionDeEgreso unEgreso,
                 List<Item> unosItems,
@@ -22,11 +21,7 @@ public class Presupuesto {
         total = this.calcularValorTotal();
     }
 
-    BigDecimal calcularValorTotal(){
-        return BigDecimal.valueOf(SumarItems());
-    }
-
-    private double SumarItems(){
+    Double calcularValorTotal(){
         return items.stream().mapToDouble(item -> item.valorItem().doubleValue()).sum();
     }
 
