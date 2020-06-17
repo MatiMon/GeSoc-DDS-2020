@@ -1,9 +1,9 @@
 package Dominio.Entidad;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import Dominio.Direccion.Direccion;
-import Dominio.Proveedor.DatosBasicos;
 import Dominio.Proveedor.TipoDeCodigoID;
 
 public class EntidadJuridica implements Entidad {
@@ -13,7 +13,7 @@ public class EntidadJuridica implements Entidad {
 	TipoDeCodigoID tipoDeCodigoID;
 	int codigoID;
 	public TipoEntidadJuridica tipo;
-	public ArrayList<EntidadBase> listaEntidadesBase = new ArrayList<EntidadBase>();
+	public List<EntidadBase> listaEntidadesBase = new ArrayList<EntidadBase>();
 	public String IGJid;
 	
 	//Constructor:
@@ -27,7 +27,7 @@ public class EntidadJuridica implements Entidad {
 	}
 
 	//Getters	
-	public ArrayList<EntidadBase> getListaEntidadesBase() {
+	public List<EntidadBase> getListaEntidadesBase() {
 		return listaEntidadesBase;
 	}
 	public String getIGJid() {
