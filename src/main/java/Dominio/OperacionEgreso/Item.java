@@ -1,5 +1,7 @@
 package Dominio.OperacionEgreso;
 
+import java.math.BigDecimal;
+
 public class Item {
 	int cantidad;
 	Producto producto;
@@ -9,8 +11,8 @@ public class Item {
 		this.producto = producto;
 	}
 	
-	public Double valorItem() {
-		return cantidad * producto.getPrecioUnitario();
+	public BigDecimal valorItem() {
+		return producto.getPrecioUnitario().multiply(BigDecimal.valueOf(cantidad));
 	}
 	public String descripcionItem() {
 		return String.valueOf(cantidad)+"x"+producto.getNombreProducto()+
