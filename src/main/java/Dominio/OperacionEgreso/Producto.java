@@ -4,14 +4,14 @@ import java.math.BigDecimal;
 
 public class Producto {
 	String nombre;
-	BigDecimal precioUnitario;
+	Double precioUnitario;
 
-	public Producto(String nombre, BigDecimal precio){
+	public Producto(String nombre, Double precio){
 		this.nombre = nombre;
 		this.precioUnitario = precio;
 	}
 
-	public BigDecimal getPrecioUnitario() {
+	public Double getPrecioUnitario() {
 		return precioUnitario;
 	}
 	

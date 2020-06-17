@@ -10,10 +10,11 @@ public class Item {
 		this.cantidad = cantidad;
 		this.producto = producto;
 	}
-	
-	public BigDecimal valorItem() {
-		return producto.getPrecioUnitario().multiply(BigDecimal.valueOf(cantidad));
+
+	public Double valorItem() {
+		return cantidad * producto.getPrecioUnitario();
 	}
+
 	public String descripcionItem() {
 		return String.valueOf(cantidad)+"x"+producto.getNombreProducto()+
 				" $"+String.valueOf(producto.getPrecioUnitario())+"c/u";

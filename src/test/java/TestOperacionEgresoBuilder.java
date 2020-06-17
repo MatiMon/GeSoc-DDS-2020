@@ -68,8 +68,8 @@ public class TestOperacionEgresoBuilder extends TestSetUpGeneral {
         Assert.assertEquals(operacion.getProveedor(), proveedor);
         Assert.assertEquals(operacion.getTipoDocumentoComercial(), TipoDocumentoComercial.Factura);
         Assert.assertEquals(operacion.getNroDocumentoComercial(), new Integer(12345));
-        Assert.assertEquals(operacion.valorTotal(), producto1.getPrecioUnitario().multiply(BigDecimal.valueOf(2))
-                .add(producto2.getPrecioUnitario().multiply(BigDecimal.valueOf(5))));
+        Assert.assertEquals(operacion.valorTotal(), new Double(producto1.getPrecioUnitario()*2
+                + producto2.getPrecioUnitario() *5));
     }
 
     @Test
