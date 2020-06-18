@@ -8,7 +8,7 @@ public class Efectivo implements MediosDePago {
     }
 
 
-    String getCodigoPago(){
+    public String getCodigoPago(){
         return codigoPago;
     }
 

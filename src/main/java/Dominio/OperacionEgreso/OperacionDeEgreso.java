@@ -56,11 +56,11 @@ public class OperacionDeEgreso {
                 .sum();
     }
 
-    void agregarUsuarioRevisor(Usuario user) {
+    public void agregarUsuarioRevisor(Usuario user) {
         usuariosRevisores.add(user);
     }
 
-    void quitarUsuarioRevisor(Usuario user) {
+	public void quitarUsuarioRevisor(Usuario user) {
         usuariosRevisores.remove(user);
     }
 
