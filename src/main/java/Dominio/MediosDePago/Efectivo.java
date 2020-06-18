@@ -1,7 +1,7 @@
 package Dominio.MediosDePago;
 
 public class Efectivo implements MediosDePago {
-    String codigoPago;
+    private String codigoPago;
 
     public Efectivo(String codPago){
         codigoPago = codPago;

@@ -4,10 +4,10 @@ import java.time.LocalDateTime;
 
 public class Tarjeta implements MediosDePago {
 
-    TipoTarjeta tipo;
-    String numTarjeta;
-    String nombreCompleto;
-    LocalDateTime fechaVencimiento;
+    private TipoTarjeta tipo;
+    private String numTarjeta;
+    private String nombreCompleto;
+    private LocalDateTime fechaVencimiento;
 
 
     public Tarjeta(TipoTarjeta unTipo, String numTarj, String nombre, LocalDateTime vencimineto) {

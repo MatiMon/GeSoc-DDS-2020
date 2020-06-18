@@ -13,15 +13,14 @@ import java.util.List;
 import java.util.Objects;
 
 public class OperacionEgresoBuilder {
-    Pair<TipoDocumentoComercial, Integer> documentoContable;
-    String pathArchivo;
-    Proveedor proveedor;
-    List<Item> items = new ArrayList<>();
-    MediosDePago medioPago;
-    Entidad entidad;
-    Usuario usuarioAlta;
-    List<Presupuesto> presupuestos;
-    int cantidadPresupuestosRequeridos;
+    private Pair<TipoDocumentoComercial, Integer> documentoContable;
+    private String pathArchivo;
+    private Proveedor proveedor;
+    private List<Item> items = new ArrayList<>();
+    private MediosDePago medioPago;
+    private Entidad entidad;
+    private Usuario usuarioAlta;
+    private int cantidadPresupuestosRequeridos;
     // Moneda moneda
 
     public OperacionDeEgreso grabarOperacion() {
@@ -40,7 +39,6 @@ public class OperacionEgresoBuilder {
                 this.medioPago,
                 this.entidad,
                 this.usuarioAlta,
-                this.presupuestos,
                 this.cantidadPresupuestosRequeridos);
     }
 
@@ -92,17 +90,7 @@ public class OperacionEgresoBuilder {
         return this;
     }
 
-    public OperacionEgresoBuilder agregarPresupuesto(Presupuesto presupuesto) {
-        presupuestos.add(presupuesto);
-        return this;
-    }
-
-    public OperacionEgresoBuilder quitarPresupuesto(Presupuesto presupuesto) {
-        presupuestos.remove(presupuesto);
-        return this;
-    }
-
-    public OperacionEgresoBuilder SetCantidadDePresupuestosRequeridos(int cant) {
+    public OperacionEgresoBuilder setCantidadDePresupuestosRequeridos(int cant) {
         this.cantidadPresupuestosRequeridos = cant;
         return this;
     }

@@ -4,11 +4,14 @@ import Dominio.MediosDePago.Efectivo;
 import Dominio.MediosDePago.MediosDePago;
 import Dominio.MediosDePago.Tarjeta;
 import Dominio.MediosDePago.TipoTarjeta;
+import Dominio.OperacionEgreso.Item;
 import Dominio.OperacionEgreso.Producto;
+import Dominio.OperacionEgreso.TipoDocumentoComercial;
 import Dominio.Proveedor.DatosBasicos;
 import Dominio.Proveedor.Proveedor;
 import Dominio.Proveedor.TipoDeCodigoID;
 import Dominio.Usuario.*;
+import javafx.util.Pair;
 import org.junit.Before;
 
 import java.security.NoSuchAlgorithmException;
@@ -35,6 +38,7 @@ public class TestSetUpGeneral {
                     new ValidarLongitud()
             )
     );
+    protected Pair<TipoDocumentoComercial,Integer> documentoContable1= new Pair<>(TipoDocumentoComercial.Factura,1964);
 
 
     Direccion direccion = new Direccion("Una calle", "Un numero123", "1712");
