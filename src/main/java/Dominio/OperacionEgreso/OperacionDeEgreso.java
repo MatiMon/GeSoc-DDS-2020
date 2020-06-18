@@ -1,11 +1,14 @@
 package Dominio.OperacionEgreso;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import Dominio.Entidad.Entidad;
 import Dominio.MediosDePago.MediosDePago;
 import Dominio.Proveedor.Proveedor;
+import Dominio.Usuario.Usuario;
 //import org.apache.commons.lang3.tuple.Pair;
 import javafx.util.Pair;
 
@@ -50,5 +53,17 @@ public class OperacionDeEgreso {
 
 	public Pair<TipoDocumentoComercial,Integer> getDocumentoComercial() {
 		return this.documentoContable;
+	}
+	public List<Presupuesto> getPresupuestos() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public Double getValorTotal() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public void agregarUsuarioRevisor(Usuario usuario) {
+		// TODO Auto-generated method stub
+		
 	}
 }
