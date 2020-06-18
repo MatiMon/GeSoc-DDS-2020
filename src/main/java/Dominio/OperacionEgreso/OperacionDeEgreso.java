@@ -14,6 +14,7 @@ import java.util.List;
 //import org.apache.commons.lang3.tuple.Pair;
 
 public class OperacionDeEgreso {
+
     private Pair<TipoDocumentoComercial, Integer> documentoContable;
     private String pathArchivo;
     private Proveedor proveedor;
@@ -60,14 +61,13 @@ public class OperacionDeEgreso {
         usuariosRevisores.add(user);
     }
 
-	public void quitarUsuarioRevisor(Usuario user) {
+    public void quitarUsuarioRevisor(Usuario user) {
         usuariosRevisores.remove(user);
     }
 
-/*
-	void notificarRevisores(){
-		usuariosRevisores.forEach(usuario -> usuario.notificar());
-	}*/
+	void notificarRevisores(Boolean resultado){
+		usuariosRevisores.forEach(usuario -> usuario.notificar(this, resultado));
+	}
 
     public void agregarPresupuesto(Presupuesto presupuesto) {
         this.presupuestos.add(presupuesto);
@@ -124,10 +124,6 @@ public class OperacionDeEgreso {
 
     public List<Usuario> getUsuariosRevisores() {
         return usuariosRevisores;
-    }
-
-    public void setUsuariosRevisores(List<Usuario> usuariosRevisores) {
-        this.usuariosRevisores = usuariosRevisores;
     }
 
 }
