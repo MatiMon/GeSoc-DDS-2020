@@ -20,8 +20,8 @@ public class TestSetUpGeneral {
     protected EntidadBase entidadBase;
 
 
-    Direccion direccion = new Direccion("Una calle", "Un numero123", "1712");
-    Direccion direccion2 = new Direccion("Otra calle", "1234", "15522");
+    Direccion direccion = new Direccion("Una calle", "Un numero123", "3", "Oficina 2");
+    Direccion direccion2 = new Direccion("Otra calle","1234", "8", "D");
     TipoDeCodigoID tipoDeCodigoID = TipoDeCodigoID.CUIT;
     Empresa empresa = new Empresa(ClasificacionAfip.MEDIANA1);
 

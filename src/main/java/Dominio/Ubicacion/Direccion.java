@@ -3,8 +3,8 @@ package Dominio.Ubicacion;
 public class Direccion {
 	public String calle;
 	public String nroCalle;
-	public String codigoPostal;
 	public String piso;
+	public String unidad;
 	public String nombreCiudad;
 	public String nombreProvincia;
 
@@ -12,10 +12,11 @@ public class Direccion {
 	public RepositorioDeUbicaciones repositorio; //modelar
 	
 	//Constructor
-	public Direccion(String calle, String nroCalle, String codigoPostal) {
+	public Direccion(String calle, String nroCalle, String piso, String unidad) {
 		this.calle = calle;
 		this.nroCalle = nroCalle;
-		this.codigoPostal = codigoPostal;
+		this.piso = piso;
+		this.unidad = unidad;
 	}
 
 	//Getters
@@ -25,10 +26,6 @@ public class Direccion {
 
 	public String getNroCalle() {
 		return nroCalle;
-	}
-
-	public String getCodigoPostal() {
-		return codigoPostal;
 	}
 	
 	public String piso() {

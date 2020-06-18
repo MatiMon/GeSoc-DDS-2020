@@ -8,7 +8,7 @@ import Dominio.Proveedor.TipoDeCodigoID;
 import static org.junit.Assert.assertEquals;
 
 public class TestEntidad {
-	Direccion direccion = new Direccion("Una calle", "Un numero123", "1712");
+	Direccion direccion = new Direccion("Una calle", "Un numero123", "PB", "Mesa de Entrada");
 	TipoDeCodigoID tipoDeCodigoID = TipoDeCodigoID.CUIT;
 	
 	Empresa empresa = new Empresa(ClasificacionAfip.MEDIANA1);
