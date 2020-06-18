@@ -23,6 +23,7 @@ public class Usuario {
         this.id = id;
         this.tipoUsuario = tipoUsuario;
         this.passwordHashedAndSalted = new PasswordHashedAndSalted(password);
+        this.bandeja = new BandejaDeMensajes();
     }
 
     public void actualizarContrasenia(String password) throws InvalidKeySpecException, NoSuchAlgorithmException {
