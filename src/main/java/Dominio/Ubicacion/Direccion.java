@@ -7,8 +7,9 @@ public class Direccion {
 	public String piso;
 	public String nombreCiudad;
 	public String nombreProvincia;
+
 	public String nombrePais;
-	public RepositorioDeUbicaciones repositorio; //modelar 
+	public RepositorioDeUbicaciones repositorio; //modelar
 	
 	//Constructor
 	public Direccion(String calle, String nroCalle, String codigoPostal) {
@@ -45,5 +46,14 @@ public class Direccion {
 	public String nombrePais() {
 		return nombrePais;
 	}
+
+	//Setters
+	public void setPiso(String piso) { this.piso = piso; }
+
+	public void setNombreCiudad(String nombreCiudad) { this.nombreCiudad = nombreCiudad; }
+
+	public void setNombreProvincia(String nombreProvincia) { this.nombreProvincia = nombreProvincia;	}
+
+	public void setNombrePais(String nombrePais) { this.nombrePais = nombrePais; }
 	
 }

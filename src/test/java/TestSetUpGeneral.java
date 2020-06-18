@@ -5,12 +5,10 @@ import Dominio.MediosDePago.MediosDePago;
 import Dominio.MediosDePago.Tarjeta;
 import Dominio.MediosDePago.TipoTarjeta;
 import Dominio.OperacionEgreso.Producto;
-import Dominio.Proveedor.DatosBasicos;
 import Dominio.Proveedor.Proveedor;
 import Dominio.Proveedor.TipoDeCodigoID;
 import org.junit.Before;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 public class TestSetUpGeneral {
@@ -25,7 +23,6 @@ public class TestSetUpGeneral {
     Direccion direccion = new Direccion("Una calle", "Un numero123", "1712");
     Direccion direccion2 = new Direccion("Otra calle", "1234", "15522");
     TipoDeCodigoID tipoDeCodigoID = TipoDeCodigoID.CUIT;
-    DatosBasicos datosBasicos = new DatosBasicos("Una razon social", direccion, tipoDeCodigoID, 1234);
     Empresa empresa = new Empresa(ClasificacionAfip.MEDIANA1);
 
 
