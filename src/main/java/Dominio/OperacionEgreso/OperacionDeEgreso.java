@@ -33,7 +33,7 @@ public class OperacionDeEgreso {
 							 String path,
 							 Proveedor proveedor,
 							 Date f_Operacion,
-							 ArrayList<Item> items,
+							 List<Item> items,
 							 MediosDePago pago,
 							 Entidad entidad,
 							 Usuario unUser,
