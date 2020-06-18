@@ -1,3 +1,4 @@
+package Dominio.Entidad;
 
 public enum ClasificacionAfip {
 	

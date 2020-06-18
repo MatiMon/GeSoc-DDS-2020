@@ -1,12 +1,15 @@
+package Dominio.Proveedor;
 
-public class DatosBasicos {
+import Dominio.Ubicacion.Direccion;
+
+public class Proveedor {
 	String razonSocial;
 	Direccion direccion;
 	TipoDeCodigoID tipoDeCodigoID;
 	int codigoID;
 	
 	//Constructor:
-	public DatosBasicos(String razonSocial, Direccion direccion, TipoDeCodigoID tipoDeCodigoID, int codigoID) {
+	public Proveedor(String razonSocial, Direccion direccion, TipoDeCodigoID tipoDeCodigoID, int codigoID) {
 		this.razonSocial = razonSocial;
 		this.direccion = direccion;
 		this.tipoDeCodigoID = tipoDeCodigoID;
@@ -37,5 +40,7 @@ public class DatosBasicos {
 	public void setDireccion(Direccion direccion) {
 		this.direccion = direccion;
 	}
-	
+
+
+
 }

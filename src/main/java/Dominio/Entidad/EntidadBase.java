@@ -1,3 +1,5 @@
+package Dominio.Entidad;
+
 public class EntidadBase implements Entidad {
 	public String nombreFicticio;
 	public String descripcion;
@@ -9,6 +11,7 @@ public class EntidadBase implements Entidad {
 		this.nombreFicticio = nombreFicticio;
 		this.descripcion = descripcion;
 		this.entidadJuridica = entidadJuridica;
+		entidadJuridica.agregarEntidadBase(this);
 	}
 
 	// Getters

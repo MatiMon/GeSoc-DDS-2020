@@ -1,4 +1,6 @@
-public class Empresa implements TipoEntidadJuridica{
+package Dominio.Entidad;
+
+public class Empresa implements TipoEntidadJuridica {
 	ClasificacionAfip clasificacion;
 
 	// Constructor
