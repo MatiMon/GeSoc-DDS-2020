@@ -3,8 +3,8 @@ package Dominio.Entidad;
 import java.util.ArrayList;
 import java.util.List;
 
-import Dominio.Direccion.Direccion;
 import Dominio.Proveedor.TipoDeCodigoID;
+import Dominio.Ubicacion.Direccion;
 
 public class EntidadJuridica implements Entidad {
 	public String nombreFicticio;

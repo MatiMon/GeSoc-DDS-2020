@@ -1,4 +1,4 @@
-import Dominio.Direccion.Direccion;
+import Dominio.Ubicacion.Direccion;
 import Dominio.Entidad.*;
 import Dominio.MediosDePago.Efectivo;
 import Dominio.MediosDePago.MediosDePago;

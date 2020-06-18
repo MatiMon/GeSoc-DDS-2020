@@ -1,6 +1,6 @@
 package Dominio.Proveedor;
 
-import Dominio.Direccion.Direccion;
+import Dominio.Ubicacion.Direccion;
 
 public class DatosBasicos {
 	String razonSocial;

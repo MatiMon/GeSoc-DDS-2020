@@ -1,4 +1,4 @@
-import Dominio.Direccion.Direccion;
+import Dominio.Ubicacion.Direccion;
 import Dominio.Entidad.ClasificacionAfip;
 import Dominio.Entidad.Empresa;
 import Dominio.Entidad.EntidadBase;
