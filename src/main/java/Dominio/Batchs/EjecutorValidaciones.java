@@ -1,6 +1,6 @@
 package Dominio.Batchs;
 
-import Dominio.Presupuesto.BatchValidacionOperaciones;
+import Dominio.Presupuesto.ProcesoValidacionOperaciones;
 import Dominio.Presupuesto.ValidacionCantidadPresupuestos;
 import Dominio.Presupuesto.ValidacionCoincidenciaPresupuesto;
 import Dominio.Presupuesto.ValidacionMenorPrecio;
@@ -8,14 +8,14 @@ import Dominio.Presupuesto.ValidacionMenorPrecio;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class EjecutorBatchs extends TimerTask {
+public class EjecutorValidaciones extends TimerTask {
 
     private static int periodicidadEjecucion = 24; //en horas
 
     @Override
     public void run() {
         System.out.println("Timer task started");
-        BatchValidacionOperaciones validador = BatchValidacionOperaciones.getInstance();
+        ProcesoValidacionOperaciones validador = ProcesoValidacionOperaciones.getInstance();
 
         validador.agregarValidacion( new ValidacionCantidadPresupuestos());
         validador.agregarValidacion( new ValidacionMenorPrecio());
@@ -27,7 +27,7 @@ public class EjecutorBatchs extends TimerTask {
 
     public static void main(String args[]){
 
-        TimerTask ejecutorBatchs = new EjecutorBatchs();
+        TimerTask ejecutorBatchs = new EjecutorValidaciones();
         //running timer task as daemon thread
         Timer timer = new Timer(true);
         timer.scheduleAtFixedRate(ejecutorBatchs, 0, calcularPeriodicidad());

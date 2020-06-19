@@ -4,20 +4,19 @@ import Dominio.OperacionEgreso.OperacionDeEgreso;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Timer;
 
 
-public class BatchValidacionOperaciones  {
+public class ProcesoValidacionOperaciones {
 
-    private static BatchValidacionOperaciones instance;
+    private static ProcesoValidacionOperaciones instance;
     private static List<OperacionDeEgreso> operaciones = new ArrayList<OperacionDeEgreso>();
     private ValidadorDePresupuestos validador = new ValidadorDePresupuestos();
 
     //Singleton
-    private BatchValidacionOperaciones(){}
-    public static BatchValidacionOperaciones getInstance(){
+    private ProcesoValidacionOperaciones(){}
+    public static ProcesoValidacionOperaciones getInstance(){
         if(instance == null){
-            instance = new BatchValidacionOperaciones();
+            instance = new ProcesoValidacionOperaciones();
         }
         return instance;
     }

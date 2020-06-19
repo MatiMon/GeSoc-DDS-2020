@@ -2,8 +2,7 @@ package Dominio.OperacionEgreso;
 
 import Dominio.Entidad.Entidad;
 import Dominio.MediosDePago.MediosDePago;
-import Dominio.Presupuesto.BatchValidacionOperaciones;
-import Dominio.Presupuesto.Presupuesto;
+import Dominio.Presupuesto.ProcesoValidacionOperaciones;
 import Dominio.Proveedor.Proveedor;
 import Dominio.Usuario.Usuario;
 import javafx.util.Pair;
@@ -41,7 +40,7 @@ public class OperacionEgresoBuilder {
                 this.entidad,
                 this.usuarioAlta,
                 this.cantidadPresupuestosRequeridos);
-        BatchValidacionOperaciones.agregarOperacion(operacion);
+        ProcesoValidacionOperaciones.agregarOperacion(operacion);
         return operacion;
     }
 
