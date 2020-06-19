@@ -15,7 +15,7 @@ public interface ServicioMercadoLibre {//interfaz que hara uso de retrofit para 
     
 //Obtenemos el listado de paises
   	@GET("countries")
-  	Call<List<PaisService>> paises();
+  	Call<List<UbicacionesMercadoLibre.PaisService>> paises();
   	
 //Obtenemos el listado de provincias de un pais
   	@GET("countries/{id}")

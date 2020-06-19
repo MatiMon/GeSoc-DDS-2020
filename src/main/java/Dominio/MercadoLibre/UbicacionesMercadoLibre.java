@@ -12,8 +12,24 @@ public class UbicacionesMercadoLibre {
 	private static UbicacionesMercadoLibre instancia =null; 
 // Usamos Singleton para tener solo una instancia de RepositorioDeUbicaciones
 	
+	class PaisService{
+		public String id; // Ejemplo de ID: AR
+		public String name;
+		public String currency_id;
+	}
+	
+	class ProvinciaService {
+		public String id; // Ejemplo de ID: AR-BS_AS
+		public String name;
+    }
+	
 	class ListadoProvinciaService {
 		public List<ProvinciaService> states;
+    }
+	
+	class CiudadService {
+		public String name;
+		public String id;
     }
 	
 	class ListadoCiudadService {
