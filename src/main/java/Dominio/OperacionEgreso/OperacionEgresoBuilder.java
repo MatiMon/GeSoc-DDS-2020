@@ -2,8 +2,11 @@ package Dominio.OperacionEgreso;
 
 import Dominio.Entidad.Entidad;
 import Dominio.MediosDePago.MediosDePago;
+
+import Dominio.Presupuesto.ProcesoValidacionOperaciones;
 import Dominio.Moneda.Moneda;
 import Dominio.Presupuesto.Presupuesto;
+
 import Dominio.Proveedor.Proveedor;
 import Dominio.Usuario.Usuario;
 import javafx.util.Pair;
@@ -32,7 +35,7 @@ public class OperacionEgresoBuilder {
         if (items.isEmpty()) {
             throw new sinItemsException();
         }
-        return new OperacionDeEgreso(this.documentoContable,
+        OperacionDeEgreso operacion = new OperacionDeEgreso(this.documentoContable,
                 this.pathArchivo,
                 this.proveedor,
                 new Date(),
@@ -42,6 +45,8 @@ public class OperacionEgresoBuilder {
                 this.usuarioAlta,
                 this.cantidadPresupuestosRequeridos,
                 this.moneda);
+        ProcesoValidacionOperaciones.agregarOperacion(operacion);
+        return operacion;
     }
 
     public OperacionEgresoBuilder setDocumentoContable(TipoDocumentoComercial tipoDoc, Integer nroDocumento) {
