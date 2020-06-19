@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RepositorioDeMonedas {
-    List<Moneda> monedas;
+    public List<Moneda> monedas;
     ServicioDeMonedas servicioProveedor;
 
     public void cambiarServicioProveedor (ServicioDeMonedas nuevoServicio) {
