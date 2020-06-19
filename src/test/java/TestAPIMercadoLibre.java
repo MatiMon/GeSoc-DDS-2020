@@ -12,6 +12,7 @@ import Dominio.MediosDePago.TipoTarjeta;
 import Dominio.MercadoLibre.MonedasMercadoLibre;
 import Dominio.MercadoLibre.UbicacionesMercadoLibre;
 import Dominio.Moneda.Moneda;
+import Dominio.Moneda.RepositorioDeMonedas;
 import Dominio.Ubicacion.Ciudad;
 import Dominio.Ubicacion.Pais;
 import Dominio.Ubicacion.Provincia;
@@ -19,31 +20,26 @@ import Dominio.Ubicacion.RepositorioDeUbicaciones;
 
 public class TestAPIMercadoLibre {
 	
-	 /*@Before
-	    public void init() {
+	/*@Test()
+    public void pesoArgentino() {
 		MonedasMercadoLibre monedasML = MonedasMercadoLibre.instancia();
-		List<Moneda> listadoMonedas = monedasML.getMonedas();
-		
-		RepositorioDeUbicaciones repoUbicaciones = new RepositorioDeUbicaciones();
-		UbicacionesMercadoLibre ubicacionesML = UbicacionesMercadoLibre.instancia();
-		List<Pais> listadoPaises = ubicacionesML.getPaises();
-		List<Provincia> listadoProvinciasArgentinas = ubicacionesML.getProvincias("AR");
-		List<Ciudad> listadoCiudadesUshuaia = ubicacionesML.getCiudades("TUxBUFRJRVoxM2M5YQ");
-		}*/
-	 
-	 @Test()
+		RepositorioDeMonedas repoMonedas= new RepositorioDeMonedas(monedasML);
+		repoMonedas.
+    }*/
+	
+	@Test()
 	    public void tierraDelFuegoEsProvinciaDeArgentina() {
 		 UbicacionesMercadoLibre ubicacionesML = UbicacionesMercadoLibre.instancia();
 		 RepositorioDeUbicaciones repoUbicaciones = new RepositorioDeUbicaciones(ubicacionesML);
-	     assertEquals(repoUbicaciones.provinciasDeUnPais("AR").contains("Tierra del Fuego"), true);
+	     repoUbicaciones.provinciasDeUnPais("AR").contains("Tierra del Fuego");
 	    }
 	 
-	 @Test()
+	@Test()
 	    public void ushuaiaEsCiudadDeTierraDelFuego() {
+		// id Tierra del Fuego: TUxBUFRJRVoxM2M5YQ
+		// id Ushuaia: TUxBQ1VTSDQ0ZjFk
 		 UbicacionesMercadoLibre ubicacionesML = UbicacionesMercadoLibre.instancia();
 		 RepositorioDeUbicaciones repoUbicaciones = new RepositorioDeUbicaciones(ubicacionesML);
-	     assertEquals(repoUbicaciones.ciudadesDeUnaProvincia("Tierra del Fuego").contains("TUxBUFRJRVoxM2M5YQ"), true);
+	     repoUbicaciones.ciudadesDeUnaProvincia("TUxBUFRJRVoxM2M5YQ").contains("TUxBQ1VTSDQ0ZjFk");
 	    }
-	
-
 }

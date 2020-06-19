@@ -20,6 +20,7 @@ public class UbicacionesMercadoLibre implements ServicioUbicaciones {
 	private static UbicacionesMercadoLibre instancia =null; 
 // Usamos Singleton para tener solo una instancia de RepositorioDeUbicaciones
 	
+// CLASES MOLDE:
 	class PaisService{
 		public String id; // Ejemplo de ID: AR
 		public String name;
@@ -52,8 +53,8 @@ public class UbicacionesMercadoLibre implements ServicioUbicaciones {
             List<Pais> paises = new ArrayList<>();
             paisesService.forEach(paisService -> paises.add(new Pais(paisService.name, paisService.id)));
             return paises;
-        } catch (IOException getCurrencies) {
-            getCurrencies.printStackTrace();
+        } catch (IOException getPaises) {
+            getPaises.printStackTrace();
             return null;
         }
     }
@@ -66,8 +67,8 @@ public class UbicacionesMercadoLibre implements ServicioUbicaciones {
             provinciasService.states.forEach(provinciaService -> 
             provincias.add(new Provincia(provinciaService.name, provinciaService.id, unPais)));
             return provincias;
-        } catch (IOException getCurrencies) {
-            getCurrencies.printStackTrace();
+        } catch (IOException getProvincias) {
+            getProvincias.printStackTrace();
             return null;
         }
     }
@@ -80,8 +81,8 @@ public class UbicacionesMercadoLibre implements ServicioUbicaciones {
             ciudadesService.cities.forEach(ciudadService -> 
             ciudades.add(new Ciudad(ciudadService.name, ciudadService.id, unaProvincia)));
             return ciudades;
-        } catch (IOException getCurrencies) {
-            getCurrencies.printStackTrace();
+        } catch (IOException getCiudades) {
+            getCiudades.printStackTrace();
             return null;
         }
     }
