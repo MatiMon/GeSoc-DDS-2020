@@ -126,4 +126,8 @@ public class OperacionDeEgreso {
         return usuariosRevisores;
     }
 
+    public void informarValidacion(boolean validacion){
+        getUsuariosRevisores().stream().forEach(usuario -> usuario.notificar(this, validacion));
+    }
+
 }
