@@ -8,6 +8,6 @@ public class RepositorioDeUbicaciones {
 	public List<Provincia> provincias = new ArrayList<Provincia>();
 	public List<Ciudad> ciudades = new ArrayList<Ciudad>();
 	
-	public ServicioDeUbicaciones servicio;
+	public ServicioUbicaciones servicio;
 
 }
