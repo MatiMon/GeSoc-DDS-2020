@@ -16,6 +16,10 @@ public class UbicacionesMercadoLibre {
 		public List<ProvinciaService> states;
     }
 	
+	class ListadoCiudadService {
+		public List<CiudadService> cities;
+    }
+	
 	
 	private UbicacionesMercadoLibre() {
 		this.retrofit = new Retrofit.Builder().baseUrl("https://api.mercadolibre.com/classified_locations/")
@@ -31,7 +35,7 @@ public class UbicacionesMercadoLibre {
 	}
 	
 	public List<PaisService> listadoDePaises() throws IOException {
-		ServicioUbicacionesMercadoLibre mercadoLibreService = this.retrofit.create(ServicioUbicacionesMercadoLibre.class);
+		ServicioMercadoLibre mercadoLibreService = this.retrofit.create(ServicioMercadoLibre.class);
 		//instanciamos un objeto que implementa la interfaz ServicioPaisesMercadoLibre
 		Call<List<PaisService>> requestPaises = mercadoLibreService.paises();
 		Response<List<PaisService>> responsePaises = requestPaises.execute(); //aca se hace el send
@@ -40,11 +44,19 @@ public class UbicacionesMercadoLibre {
 	}
 	
 	public UbicacionesMercadoLibre.ListadoProvinciaService listadoDeProvincias(String idPaisService) throws IOException{
-		ServicioUbicacionesMercadoLibre mercadoLibreService = this.retrofit.create(ServicioUbicacionesMercadoLibre.class);
+		ServicioMercadoLibre mercadoLibreService = this.retrofit.create(ServicioMercadoLibre.class);
 		Call<UbicacionesMercadoLibre.ListadoProvinciaService> requestProvincias = mercadoLibreService.provincias(idPaisService, "states");
 		Response<UbicacionesMercadoLibre.ListadoProvinciaService> responseProvincias = requestProvincias.execute();
 		UbicacionesMercadoLibre.ListadoProvinciaService listadoDeProvincias = responseProvincias.body();
 		return listadoDeProvincias;
+	}
+	
+	public UbicacionesMercadoLibre.ListadoCiudadService listadoDeCiudades(String idCiudadService) throws IOException{
+		ServicioMercadoLibre mercadoLibreService = this.retrofit.create(ServicioMercadoLibre.class);
+		Call<UbicacionesMercadoLibre.ListadoCiudadService> requestCiudades = mercadoLibreService.ciudades(idCiudadService, "cities");
+		Response<UbicacionesMercadoLibre.ListadoCiudadService> responseCiudades = requestCiudades.execute();
+		UbicacionesMercadoLibre.ListadoCiudadService listadoDeCiudades = responseCiudades.body();
+		return listadoDeCiudades;
 	}
 
 }
