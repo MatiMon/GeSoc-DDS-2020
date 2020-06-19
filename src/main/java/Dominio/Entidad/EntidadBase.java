@@ -5,6 +5,7 @@ public class EntidadBase implements Entidad {
 	public String descripcion;
 	public EntidadJuridica entidadJuridica;
 
+	
 	// Constructor
 	public EntidadBase(String nombreFicticio, String descripcion, EntidadJuridica entidadJuridica) {
 		this.nombreFicticio = nombreFicticio;

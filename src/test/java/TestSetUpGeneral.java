@@ -1,15 +1,13 @@
-import Dominio.Direccion.Direccion;
 import Dominio.Entidad.*;
 import Dominio.MediosDePago.Efectivo;
 import Dominio.MediosDePago.MediosDePago;
 import Dominio.MediosDePago.Tarjeta;
 import Dominio.MediosDePago.TipoTarjeta;
-import Dominio.OperacionEgreso.Item;
 import Dominio.OperacionEgreso.Producto;
 import Dominio.OperacionEgreso.TipoDocumentoComercial;
-import Dominio.Proveedor.DatosBasicos;
 import Dominio.Proveedor.Proveedor;
 import Dominio.Proveedor.TipoDeCodigoID;
+import Dominio.Ubicacion.Direccion;
 import Dominio.Usuario.*;
 import javafx.util.Pair;
 import org.junit.Before;
@@ -17,7 +15,6 @@ import org.junit.Before;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.Arrays;
 
 public class TestSetUpGeneral {
@@ -38,13 +35,13 @@ public class TestSetUpGeneral {
                     new ValidarLongitud()
             )
     );
-    protected Pair<TipoDocumentoComercial,Integer> documentoContable1= new Pair<>(TipoDocumentoComercial.Factura,1964);
+    protected Pair<TipoDocumentoComercial, Integer> documentoContable1 = new Pair<>(TipoDocumentoComercial.Factura,
+            1964);
 
 
-    Direccion direccion = new Direccion("Una calle", "Un numero123", "1712");
-    Direccion direccion2 = new Direccion("Otra calle", "1234", "15522");
+    Direccion direccion = new Direccion("Una calle", "Un numero123", "3", "Oficina 2");
+    Direccion direccion2 = new Direccion("Otra calle", "1234", "8", "D");
     TipoDeCodigoID tipoDeCodigoID = TipoDeCodigoID.CUIT;
-    DatosBasicos datosBasicos = new DatosBasicos("Una razon social", direccion, tipoDeCodigoID, 1234);
     Empresa empresa = new Empresa(ClasificacionAfip.MEDIANA1);
 
 
@@ -55,7 +52,7 @@ public class TestSetUpGeneral {
         organizacion.agregarEntidadJuridica(entidadJuridica);
         entidadBase = new EntidadBase("Carlos", "Un buen tipo", entidadJuridica);
         proveedor = new Proveedor("Una razon social", direccion, tipoDeCodigoID, 1234);
-        usuario1 = new Usuario("id1","pass1234241sfsf",TipoUsuario.Admin,validadorPasswords1);
+        usuario1 = new Usuario("id1", "pass1234241sfsf", TipoUsuario.Admin, validadorPasswords1);
     }
 
     protected MediosDePago unaTarjeta() {
