@@ -24,7 +24,7 @@ public class TestAPIMercadoLibre {
 	public void pesoArgentinoEnColeccion() {
 		MonedasMercadoLibre monedasML = MonedasMercadoLibre.instancia();
 		RepositorioDeMonedas repoMonedas = new RepositorioDeMonedas(monedasML);
-		repoMonedas.monedas.contains("Peso Argentino");
+		repoMonedas.monedas.contains("Peso argentino");
 	}
 
 	@Test()
