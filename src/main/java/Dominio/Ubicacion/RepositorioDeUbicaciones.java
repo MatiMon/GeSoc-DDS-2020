@@ -9,5 +9,17 @@ public class RepositorioDeUbicaciones {
 	public List<Ciudad> ciudades = new ArrayList<Ciudad>();
 	
 	public ServicioUbicaciones servicio;
+	
+	public RepositorioDeUbicaciones(ServicioUbicaciones servicio) {
+		this.servicio = servicio;
+	}
+
+	public List<Provincia> provinciasDeUnPais(String unPais){
+		return this.servicio.getProvincias(unPais);
+	}
+	
+	public List<Ciudad> ciudadesDeUnaProvincia(String unaProvincia){
+		return this.servicio.getCiudades(unaProvincia);
+	}
 
 }
