@@ -1,15 +1,16 @@
 package Dominio.OperacionEgreso;
 
-public class Producto {
-	String nombre;
-	double precioUnitario;
 
-	public Producto(String nombre, double precio){
+public class Producto {
+	private String nombre;
+	private Double precioUnitario;
+
+	public Producto(String nombre, Double precio){
 		this.nombre = nombre;
 		this.precioUnitario = precio;
 	}
 
-	public double getPrecioUnitario() {
+	public Double getPrecioUnitario() {
 		return precioUnitario;
 	}
 	

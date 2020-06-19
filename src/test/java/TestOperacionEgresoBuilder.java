@@ -7,7 +7,7 @@ public class TestOperacionEgresoBuilder extends TestSetUpGeneral {
     private OperacionEgresoBuilder operador;
 
     @Before
-    public void setup(){
+    public void setup() {
         this.operador = new OperacionEgresoBuilder();
     }
 
@@ -17,6 +17,7 @@ public class TestOperacionEgresoBuilder extends TestSetUpGeneral {
                 .setEntidad(entidadBase)
                 .setMetodoPago(this.enEectivo())
                 .setProveedor(proveedor)
+                .setUsuarioAlta(usuario1)
                 .grabarOperacion();
     }
 
@@ -58,6 +59,7 @@ public class TestOperacionEgresoBuilder extends TestSetUpGeneral {
                 .setEntidad(entidadBase)
                 .setMetodoPago(this.enEectivo())
                 .setProveedor(proveedor)
+                .setUsuarioAlta(usuario1)
                 .grabarOperacion();
 
         Assert.assertEquals(operacion.getItems().size(), 2);
@@ -66,8 +68,8 @@ public class TestOperacionEgresoBuilder extends TestSetUpGeneral {
         Assert.assertEquals(operacion.getProveedor(), proveedor);
         Assert.assertEquals(operacion.getTipoDocumentoComercial(), TipoDocumentoComercial.Factura);
         Assert.assertEquals(operacion.getNroDocumentoComercial(), new Integer(12345));
-        Assert.assertEquals(operacion.valorTotal(), new Double(producto1.getPrecioUnitario()*2
-                                                                    + producto2.getPrecioUnitario() *5));
+        Assert.assertEquals(operacion.valorTotal(), new Double(producto1.getPrecioUnitario() * 2
+                + producto2.getPrecioUnitario() * 5));
     }
 
     @Test
@@ -76,6 +78,7 @@ public class TestOperacionEgresoBuilder extends TestSetUpGeneral {
                 .agregarItem(producto2, 5)
                 .setEntidad(entidadBase)
                 .setProveedor(proveedor)
+                .setUsuarioAlta(usuario1)
                 .setMetodoPago(this.enEectivo())
                 .grabarOperacion();
 

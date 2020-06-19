@@ -1,8 +1,9 @@
 package Dominio.OperacionEgreso;
 
+
 public class Item {
-	int cantidad;
-	Producto producto;
+	private int cantidad;
+	private Producto producto;
 
 	public Item (Producto producto, int cantidad){
 		this.cantidad = cantidad;
@@ -10,10 +11,20 @@ public class Item {
 	}
 	
 	public Double valorItem() {
-		return cantidad * producto.getPrecioUnitario();
+		return producto.getPrecioUnitario() * cantidad;
 	}
+
+
 	public String descripcionItem() {
 		return String.valueOf(cantidad)+"x"+producto.getNombreProducto()+
 				" $"+String.valueOf(producto.getPrecioUnitario())+"c/u";
+	}
+
+	public Producto getProducto(){
+		return this.producto;
+	}
+
+	public int getCantidad(){
+		return this.cantidad;
 	}
 }

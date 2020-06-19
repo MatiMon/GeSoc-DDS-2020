@@ -3,11 +3,14 @@ package Dominio.Usuario;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 
+import Dominio.OperacionEgreso.OperacionDeEgreso;
+
 public class Usuario {
     private String id;
     private PasswordHashedAndSalted passwordHashedAndSalted;
     private TipoUsuario tipoUsuario;
     private ValidadorPasswords validadorPasswords;
+    private BandejaDeMensajes bandeja;
 
     public Usuario(String id, String password, TipoUsuario tipoUsuario, ValidadorPasswords validadorPasswords) throws InvalidKeySpecException, NoSuchAlgorithmException {
         this.validadorPasswords = validadorPasswords;
@@ -20,6 +23,7 @@ public class Usuario {
         this.id = id;
         this.tipoUsuario = tipoUsuario;
         this.passwordHashedAndSalted = new PasswordHashedAndSalted(password);
+        this.bandeja = new BandejaDeMensajes();
     }
 
     public void actualizarContrasenia(String password) throws InvalidKeySpecException, NoSuchAlgorithmException {
@@ -49,10 +53,27 @@ public class Usuario {
     public void setTipoUsuario(TipoUsuario tipoUsuario) {
         this.tipoUsuario = tipoUsuario;
     }
+    
+    public BandejaDeMensajes getBandeja() {
+    	return bandeja;
+    }
 
+    public void setBandeja(BandejaDeMensajes bandeja) {
+        this.bandeja = bandeja;
+    }
+    
     public ValidadorPasswords getValidadorPasswords() {
         return validadorPasswords;
     }
 
+    public void altaRevisionOperacion(OperacionDeEgreso operacion) {
+    	operacion.agregarUsuarioRevisor(this);
+    }
+    
+    public void notificar(OperacionDeEgreso operacion, boolean resultadoValidacion) {
+    	Mensaje mensaje = new Mensaje();
+    	mensaje.crearMensajeValidacion(operacion, resultadoValidacion);
+    	bandeja.agregarMensaje(mensaje);
+    }
 }
 

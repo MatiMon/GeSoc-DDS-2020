@@ -39,8 +39,6 @@ public class TestMediosDePago {
         );
     }
 
-
-
     @Test(expected = CantidadIncorrectaDeCaractereresExeption.class)
     public void noPuedoCrearUnaTarjetaConMenosDe16DigitosDeNumeroDeTarjeta(){
         Tarjeta unaTarjetaConLetras = new Tarjeta(
