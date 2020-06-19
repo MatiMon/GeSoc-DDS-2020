@@ -3,18 +3,20 @@ package Dominio.Ubicacion;
 public class Direccion {
 	public String calle;
 	public String nroCalle;
-	public String codigoPostal;
 	public String piso;
+	public String unidad;
 	public String nombreCiudad;
 	public String nombreProvincia;
+
 	public String nombrePais;
-	public RepositorioDeUbicaciones repositorio; //modelar 
+	public RepositorioDeUbicaciones repositorio; //modelar
 	
 	//Constructor
-	public Direccion(String calle, String nroCalle, String codigoPostal) {
+	public Direccion(String calle, String nroCalle, String piso, String unidad) {
 		this.calle = calle;
 		this.nroCalle = nroCalle;
-		this.codigoPostal = codigoPostal;
+		this.piso = piso;
+		this.unidad = unidad;
 	}
 
 	//Getters
@@ -24,10 +26,6 @@ public class Direccion {
 
 	public String getNroCalle() {
 		return nroCalle;
-	}
-
-	public String getCodigoPostal() {
-		return codigoPostal;
 	}
 	
 	public String piso() {
@@ -45,5 +43,14 @@ public class Direccion {
 	public String nombrePais() {
 		return nombrePais;
 	}
+
+	//Setters
+	public void setPiso(String piso) { this.piso = piso; }
+
+	public void setNombreCiudad(String nombreCiudad) { this.nombreCiudad = nombreCiudad; }
+
+	public void setNombreProvincia(String nombreProvincia) { this.nombreProvincia = nombreProvincia;	}
+
+	public void setNombrePais(String nombrePais) { this.nombrePais = nombrePais; }
 	
 }

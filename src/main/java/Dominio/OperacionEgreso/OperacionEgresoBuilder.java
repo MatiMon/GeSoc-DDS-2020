@@ -2,6 +2,7 @@ package Dominio.OperacionEgreso;
 
 import Dominio.Entidad.Entidad;
 import Dominio.MediosDePago.MediosDePago;
+import Dominio.Moneda.Moneda;
 import Dominio.Presupuesto.Presupuesto;
 import Dominio.Proveedor.Proveedor;
 import Dominio.Usuario.Usuario;
@@ -21,7 +22,7 @@ public class OperacionEgresoBuilder {
     private Entidad entidad;
     private Usuario usuarioAlta;
     private int cantidadPresupuestosRequeridos;
-    // Moneda moneda
+    private Moneda moneda;
 
     public OperacionDeEgreso grabarOperacion() {
         Objects.requireNonNull(this.proveedor, "El proveedor es obligatorio");
@@ -39,7 +40,8 @@ public class OperacionEgresoBuilder {
                 this.medioPago,
                 this.entidad,
                 this.usuarioAlta,
-                this.cantidadPresupuestosRequeridos);
+                this.cantidadPresupuestosRequeridos,
+                this.moneda);
     }
 
     public OperacionEgresoBuilder setDocumentoContable(TipoDocumentoComercial tipoDoc, Integer nroDocumento) {
@@ -92,6 +94,11 @@ public class OperacionEgresoBuilder {
 
     public OperacionEgresoBuilder setCantidadDePresupuestosRequeridos(int cant) {
         this.cantidadPresupuestosRequeridos = cant;
+        return this;
+    }
+
+    public OperacionEgresoBuilder setMoneda(Moneda moneda){
+        this.moneda = moneda;
         return this;
     }
 }

@@ -2,6 +2,7 @@ package Dominio.OperacionEgreso;
 
 import Dominio.Entidad.Entidad;
 import Dominio.MediosDePago.MediosDePago;
+import Dominio.Moneda.Moneda;
 import Dominio.Presupuesto.Presupuesto;
 import Dominio.Proveedor.Proveedor;
 import Dominio.Usuario.Usuario;
@@ -27,7 +28,7 @@ public class OperacionDeEgreso {
     private List<Presupuesto> presupuestos = new ArrayList<>();
     private int cantidadPresupuestosRequeridos;
     private List<Usuario> usuariosRevisores = new ArrayList<>();
-    // private Moneda moneda
+    private Moneda moneda;
 
 
     public OperacionDeEgreso(Pair<TipoDocumentoComercial, Integer> documentoContable,
@@ -38,7 +39,8 @@ public class OperacionDeEgreso {
                              MediosDePago pago,
                              Entidad entidad,
                              Usuario unUser,
-                             int cantPresupuestos) {
+                             int cantPresupuestos,
+                             Moneda moneda) {
         this.documentoContable = documentoContable;
         this.pathArchivo = path;
         this.proveedor = proveedor;
@@ -49,6 +51,7 @@ public class OperacionDeEgreso {
         this.valorTotal = this.valorTotal();
         this.usuarioAlta = unUser;
         this.cantidadPresupuestosRequeridos = cantPresupuestos;
+        this.moneda = moneda;
     }
 
     public Double valorTotal() {
@@ -65,9 +68,9 @@ public class OperacionDeEgreso {
         usuariosRevisores.remove(user);
     }
 
-	void notificarRevisores(Boolean resultado){
-		usuariosRevisores.forEach(usuario -> usuario.notificar(this, resultado));
-	}
+    void notificarRevisores(Boolean resultado) {
+        usuariosRevisores.forEach(usuario -> usuario.notificar(this, resultado));
+    }
 
     public void agregarPresupuesto(Presupuesto presupuesto) {
         this.presupuestos.add(presupuesto);
