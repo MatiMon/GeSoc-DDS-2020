@@ -68,10 +68,6 @@ public class OperacionDeEgreso {
         usuariosRevisores.remove(user);
     }
 
-    void notificarRevisores(Boolean resultado) {
-        usuariosRevisores.forEach(usuario -> usuario.notificar(this, resultado));
-    }
-
     public void agregarPresupuesto(Presupuesto presupuesto) {
         this.presupuestos.add(presupuesto);
     }
