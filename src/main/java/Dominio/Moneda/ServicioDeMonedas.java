@@ -1,5 +1,7 @@
 package Dominio.Moneda;
 
-public interface ServicioDeMonedas {
+import java.util.List;
 
+public interface ServicioDeMonedas {
+    List<Moneda> getMonedas();
 }
