@@ -5,7 +5,7 @@ public class Moneda {
     String simbolo;
     String descripcion;
 
-    // Constructor:
+    // Constructores:
 
     public Moneda(String identificador, String simbolo, String descripcion) {
         this.identificador = identificador;
