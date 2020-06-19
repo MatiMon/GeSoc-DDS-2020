@@ -1,22 +1,24 @@
 package Dominio.Ubicacion;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Provincia {
-	public List<Ciudad> ciudades = new ArrayList<Ciudad>();
 	public String nombre;
 	public String id; // Ejemplo de ID: AR-BS_AS
+	public String pais;
 	
-	//Getters
-	public List<Ciudad> getCiudades() {
-		return ciudades;
+	public Provincia(String nombre, String id, String pais) {
+		this.nombre = nombre;
+		this.id = id;
+		this.pais = pais;
 	}
+	//Getters
 	public String getNombre() {
 		return nombre;
 	}
 	public String getId() {
 		return id;
+	}
+	public String getPais() {
+		return pais;
 	}
 
 }

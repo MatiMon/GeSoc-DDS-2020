@@ -3,18 +3,29 @@ package Dominio.MercadoLibre;
 import java.io.IOException;
 import java.util.List;
 
+import Dominio.MercadoLibre.MonedasMercadoLibre.Currencie;
 import Dominio.MercadoLibre.UbicacionesMercadoLibre.PaisService;
 
 public class EjemploDeUso {
 
-    /*public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException {
+    	MonedasMercadoLibre monedasML = MonedasMercadoLibre.instancia();
+        System.out.println("Estas son las monedas:");
+        List<Currencie> listadoMonedas = monedasML.currencies();
+        for(Currencie unaMoneda:listadoMonedas){
+            System.out.println(unaMoneda.description);
+        }
+    }
+    /*
+    public static void main(String[] args) throws IOException {
     	UbicacionesMercadoLibre ubicacionesML = UbicacionesMercadoLibre.instancia();
         System.out.println("Estos son los paises:");
         List<UbicacionesMercadoLibre.PaisService> listadoPaises = ubicacionesML.listadoDePaises();
         for(PaisService unPais:listadoPaises){
             System.out.println(unPais.name);
         }
-    }
+    } 
+    
 	public static void main(String[] args) throws IOException {
     	UbicacionesMercadoLibre ubicacionesML = UbicacionesMercadoLibre.instancia();
         System.out.println("Estas son las provincias:");
@@ -22,7 +33,7 @@ public class EjemploDeUso {
         for(UbicacionesMercadoLibre.ProvinciaService unaProvincia:listadoProvincias.states) {
         	System.out.println(unaProvincia.name);
         }
-    }*/
+    }
 	public static void main(String[] args) throws IOException {
     	UbicacionesMercadoLibre ubicacionesML = UbicacionesMercadoLibre.instancia();
         System.out.println("Estas son las ciudades:");
@@ -30,5 +41,5 @@ public class EjemploDeUso {
         for(UbicacionesMercadoLibre.CiudadService unaCiudad:listadoCiudades.cities) {
         	System.out.println(unaCiudad.name);
         }
-    }
+    }*/
 }

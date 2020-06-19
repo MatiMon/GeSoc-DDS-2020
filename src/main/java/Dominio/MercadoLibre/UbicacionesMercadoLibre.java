@@ -5,9 +5,17 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
-public class UbicacionesMercadoLibre {
+import Dominio.MercadoLibre.MonedasMercadoLibre.Currencie;
+import Dominio.Moneda.Moneda;
+import Dominio.Ubicacion.Ciudad;
+import Dominio.Ubicacion.Pais;
+import Dominio.Ubicacion.Provincia;
+import Dominio.Ubicacion.ServicioUbicaciones;
+
+public class UbicacionesMercadoLibre implements ServicioUbicaciones {
 	private Retrofit retrofit;
 	private static UbicacionesMercadoLibre instancia =null; 
 // Usamos Singleton para tener solo una instancia de RepositorioDeUbicaciones
@@ -34,6 +42,48 @@ public class UbicacionesMercadoLibre {
 	
 	class ListadoCiudadService {
 		public List<CiudadService> cities;
+    }
+
+
+	@Override
+    public List<Pais> getPaises() {
+        try {
+            List<PaisService> paisesService = this.listadoDePaises();         
+            List<Pais> paises = new ArrayList<>();
+            paisesService.forEach(paisService -> paises.add(new Pais(paisService.name, paisService.id)));
+            return paises;
+        } catch (IOException getCurrencies) {
+            getCurrencies.printStackTrace();
+            return null;
+        }
+    }
+	
+	@Override
+    public List<Provincia> getProvincias(String unPais) {
+        try {
+        	UbicacionesMercadoLibre.ListadoProvinciaService provinciasService = this.listadoDeProvincias(unPais);         
+            List<Provincia> provincias = new ArrayList<>();
+            provinciasService.states.forEach(provinciaService -> 
+            provincias.add(new Provincia(provinciaService.name, provinciaService.id, unPais)));
+            return provincias;
+        } catch (IOException getCurrencies) {
+            getCurrencies.printStackTrace();
+            return null;
+        }
+    }
+	
+	@Override
+    public List<Ciudad> getCiudades(String unaProvincia) {
+        try {
+        	UbicacionesMercadoLibre.ListadoCiudadService ciudadesService = this.listadoDeCiudades(unaProvincia);         
+            List<Ciudad> ciudades = new ArrayList<>();
+            ciudadesService.cities.forEach(ciudadService -> 
+            ciudades.add(new Ciudad(ciudadService.name, ciudadService.id, unaProvincia)));
+            return ciudades;
+        } catch (IOException getCurrencies) {
+            getCurrencies.printStackTrace();
+            return null;
+        }
     }
 	
 	
