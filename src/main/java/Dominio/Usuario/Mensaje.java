@@ -9,10 +9,8 @@ import java.util.List;
 
 public class Mensaje {
     private LocalDateTime fechaYHora;
-    private boolean resultadoValidacion;
-    private List<Item> items;
-    private Double precioTotal;
-    private List<Presupuesto> presupuestos;
+    private String descripcion;
+    private boolean leido;
 
     public LocalDateTime getFechaYHora() {
         return fechaYHora;
@@ -22,47 +20,34 @@ public class Mensaje {
         this.fechaYHora = LocalDateTime.now();
     }
 
-    public boolean getResultadoValodacion() {
-        return resultadoValidacion;
+    public boolean getLeido() {
+        return leido;
     }
 
-    public void setResultadoValidacion(boolean resultadoValidacion) {
-        this.resultadoValidacion = resultadoValidacion;
+    public void setLeido(boolean leido) {
+        this.leido = leido;
     }
 
-    public List<Item> getItems() {
-        return items;
+    public String getDescripcion(){
+    	return descripcion;
     }
-
-    public void setItems(List<Item> items) {
-        this.items = items;
+    
+    public void setDescripcion(String descripcion) {
+    	this.descripcion = descripcion;
     }
-
-    public Double getPrecioTotal() {
-        return precioTotal;
-    }
-
-    public void setPrecioTotal(Double precioTotal) {
-        this.precioTotal = precioTotal;
-    }
-
-    public List<Presupuesto> getPresupuestos() {
-        return presupuestos;
-    }
-
-    public void setPresupuestos(List<Presupuesto> presupuestos) {
-        this.presupuestos = presupuestos;
-    }
-
 
     public Mensaje crearMensajeValidacion(OperacionDeEgreso operacion, boolean validacion) {
         this.fechaYHora = LocalDateTime.now();
-        this.resultadoValidacion = validacion;
-        this.items = operacion.getItems();
-        this.precioTotal = operacion.getValorTotal();
-        this.presupuestos = operacion.getPresupuestos();
+        this.leido = false;
+        if(validacion) {
+        	this.descripcion = "La operación" + operacion.toString() + "fue validada.";
+        }
+        else {
+        	this.descripcion = "La operación" + operacion.toString() + "no fue validada.";
+        }
 
         return this;
     }
+
 
 }
