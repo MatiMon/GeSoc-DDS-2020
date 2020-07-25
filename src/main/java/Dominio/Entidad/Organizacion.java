@@ -1,4 +1,5 @@
 package Dominio.Entidad;
+import Dominio.Entidad.Categoria.CategoriaEntidad;
 import Dominio.Usuario.Usuario;
 
 import java.util.ArrayList;
@@ -6,7 +7,7 @@ import java.util.List;
 
 
 public class Organizacion {
-	String nombre;
+	private String nombre;
 
 	List<EntidadJuridica> entidades = new ArrayList<EntidadJuridica>();
 	List<Usuario> usuarios = new ArrayList<Usuario>();
@@ -26,6 +27,5 @@ public class Organizacion {
 	public void agregarUsuario(Usuario usuario){
 		usuarios.add(usuario);
 	}
-
 
 }

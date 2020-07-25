@@ -10,11 +10,11 @@ import java.util.TimerTask;
 
 public class EjecutorValidaciones extends TimerTask {
 
-    private static int periodicidadEjecucion = 24; //en horas
+    private static int periodicidadEjecucion = 5 ; //en segundos
 
     @Override
     public void run() {
-        System.out.println("Timer task started");
+        System.out.println("Run started");
         ProcesoValidacionOperaciones validador = ProcesoValidacionOperaciones.getInstance();
 
         validador.agregarValidacion( new ValidacionCantidadPresupuestos());
@@ -22,7 +22,7 @@ public class EjecutorValidaciones extends TimerTask {
         validador.agregarValidacion( new ValidacionCoincidenciaPresupuesto());
 
         validador.validarYNotificarOperaciones();
-        System.out.println("Timer task finished");
+        System.out.println("Run finished");
     }
 
     public static void main(String args[]){
@@ -31,7 +31,7 @@ public class EjecutorValidaciones extends TimerTask {
         //running timer task as daemon thread
         Timer timer = new Timer(true);
         timer.scheduleAtFixedRate(ejecutorBatchs, 0, calcularPeriodicidad());
-        System.out.println("TimerTask started");
+        System.out.println("Main started");
 
         //cancel after sometime
         try {
@@ -40,7 +40,7 @@ public class EjecutorValidaciones extends TimerTask {
             e.printStackTrace();
         }
         timer.cancel();
-        System.out.println("TimerTask cancelled");
+        System.out.println("Main cancelled");
         try {
             Thread.sleep(30000);
         } catch (InterruptedException e) {
@@ -49,7 +49,8 @@ public class EjecutorValidaciones extends TimerTask {
     }
 
     private static int calcularPeriodicidad(){
-        return periodicidadEjecucion * 60 * 60 * 10000;
+        return periodicidadEjecucion * 10000;
     }
+
 
 }

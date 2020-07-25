@@ -3,6 +3,7 @@ package Dominio.OperacionEgreso;
 import Dominio.Entidad.Entidad;
 import Dominio.MediosDePago.MediosDePago;
 
+import Dominio.OperacionEgreso.Etiquetado.EtiquetaEgreso;
 import Dominio.Presupuesto.ProcesoValidacionOperaciones;
 import Dominio.Moneda.Moneda;
 import Dominio.Presupuesto.Presupuesto;
@@ -11,6 +12,7 @@ import Dominio.Proveedor.Proveedor;
 import Dominio.Usuario.Usuario;
 import javafx.util.Pair;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -35,6 +37,8 @@ public class OperacionEgresoBuilder {
         if (items.isEmpty()) {
             throw new sinItemsException();
         }
+        this.entidad.validarGeneracionOperacion();
+
         OperacionDeEgreso operacion = new OperacionDeEgreso(this.documentoContable,
                 this.pathArchivo,
                 this.proveedor,
@@ -106,4 +110,5 @@ public class OperacionEgresoBuilder {
         this.moneda = moneda;
         return this;
     }
+
 }

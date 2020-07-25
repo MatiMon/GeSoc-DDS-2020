@@ -5,10 +5,9 @@ public class Direccion {
 	public String nroCalle;
 	public String piso;
 	public String unidad;
-	public String nombreCiudad;
-	public String nombreProvincia;
-
-	public String nombrePais;
+	public Ciudad ciudad;
+	public Provincia provincia;
+	public Pais pais;
 	public RepositorioDeUbicaciones repositorio; //modelar
 	
 	//Constructor
@@ -33,24 +32,24 @@ public class Direccion {
 	}
 
 	public String nombreCiudad() {
-		return nombreCiudad;
+		return ciudad.getNombre();
 	}
 
 	public String nombreProvincia() {
-		return nombreProvincia;
+		return provincia.getNombre();
 	}
 	
 	public String nombrePais() {
-		return nombrePais;
+		return pais.getNombre();
 	}
 
 	//Setters
 	public void setPiso(String piso) { this.piso = piso; }
 
-	public void setNombreCiudad(String nombreCiudad) { this.nombreCiudad = nombreCiudad; }
+	public void setCiudad (Ciudad ciudad) { this.ciudad = ciudad; }
 
-	public void setNombreProvincia(String nombreProvincia) { this.nombreProvincia = nombreProvincia;	}
+	public void setProvincia(Provincia provincia) { this.provincia = provincia;	}
 
-	public void setNombrePais(String nombrePais) { this.nombrePais = nombrePais; }
+	public void setPais(Pais pais) { this.pais = pais; }
 	
 }

@@ -3,9 +3,9 @@ package Dominio.Ubicacion;
 public class Ciudad {
 	public String nombre;
 	public String id; // Ejemplo de ID: TUxVQ0FHVWNmYTJk
-	public String provincia;
+	public Provincia provincia;
 	
-	public Ciudad(String nombre, String id, String provincia) {
+	public Ciudad(String nombre, String id, Provincia provincia) {
 		this.nombre = nombre;
 		this.id = id;
 		this.provincia=provincia;
@@ -17,7 +17,7 @@ public class Ciudad {
 	public String getId() {
 		return id;
 	}
-	public String getProvincia() {
+	public Provincia getProvincia() {
 		return provincia;
 	}
 	

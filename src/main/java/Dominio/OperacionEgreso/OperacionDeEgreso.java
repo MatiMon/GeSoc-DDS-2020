@@ -3,6 +3,7 @@ package Dominio.OperacionEgreso;
 import Dominio.Entidad.Entidad;
 import Dominio.MediosDePago.MediosDePago;
 import Dominio.Moneda.Moneda;
+import Dominio.OperacionEgreso.Etiquetado.EtiquetaEgreso;
 import Dominio.Presupuesto.Presupuesto;
 import Dominio.Proveedor.Proveedor;
 import Dominio.Usuario.Usuario;
@@ -29,6 +30,8 @@ public class OperacionDeEgreso {
     private int cantidadPresupuestosRequeridos;
     private List<Usuario> usuariosRevisores = new ArrayList<>();
     private Moneda moneda;
+    private Boolean informada;
+    private List<EtiquetaEgreso> etiquetas = new ArrayList<>();
 
 
     public OperacionDeEgreso(Pair<TipoDocumentoComercial, Integer> documentoContable,
@@ -52,6 +55,7 @@ public class OperacionDeEgreso {
         this.usuarioAlta = unUser;
         this.cantidadPresupuestosRequeridos = cantPresupuestos;
         this.moneda = moneda;
+        this.informada = Boolean.FALSE;
     }
 
     public Double valorTotal() {
@@ -127,6 +131,23 @@ public class OperacionDeEgreso {
 
     public void informarValidacion(boolean validacion){
         getUsuariosRevisores().stream().forEach(usuario -> usuario.notificar(this, validacion));
+        this.informada = Boolean.TRUE;
     }
 
+    public boolean pendienteInformar() {
+        return !this.informada;
+    }
+
+    public Moneda getMoneda(){
+        return this.moneda;
+    }
+
+    public void agregarEtiqueta(EtiquetaEgreso etiqueta){
+        this.etiquetas.add(etiqueta);
+        etiqueta.agregarOperacion(this);
+    }
+    public void quitarEtiqueta(EtiquetaEgreso etiqueta){
+        this.etiquetas.remove(etiqueta);
+        etiqueta.quitarOperacion(this);
+    }
 }

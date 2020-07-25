@@ -1,3 +1,4 @@
+import Dominio.Entidad.Categoria.CategoriaEntidad;
 import Dominio.Ubicacion.Direccion;
 import Dominio.Entidad.ClasificacionAfip;
 import Dominio.Entidad.Empresa;
@@ -12,6 +13,7 @@ public class TestEntidad {
 	TipoDeCodigoID tipoDeCodigoID = TipoDeCodigoID.CUIT;
 	
 	Empresa empresa = new Empresa(ClasificacionAfip.MEDIANA1);
-	EntidadJuridica entidadJuridica = new EntidadJuridica("entidadJuridica", "el proveedor", direccion, TipoDeCodigoID.CUIT, 51112, empresa);
+	EntidadJuridica entidadJuridica = new EntidadJuridica("entidadJuridica", "el proveedor",
+			direccion, TipoDeCodigoID.CUIT, 51112, empresa, new CategoriaEntidad("ONG"));
 	EntidadBase entidadBase = new EntidadBase("Carlos", "Un buen tipo", entidadJuridica);
 }

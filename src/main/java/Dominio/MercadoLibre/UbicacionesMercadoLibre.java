@@ -25,6 +25,9 @@ public class UbicacionesMercadoLibre implements ServicioUbicaciones {
 		public String id; // Ejemplo de ID: AR
 		public String name;
 		public String currency_id;
+		public boolean esElPaisBuscado(String idPais){
+			return idPais == this.id;
+		}
 	}
 	
 	class ProvinciaService {
@@ -46,6 +49,32 @@ public class UbicacionesMercadoLibre implements ServicioUbicaciones {
     }
 
 
+    @Override
+	public Pais getPais(String idPais){
+		try {
+			List<PaisService> paisesService = this.listadoDePaises();
+			int index = -1;
+			int bound = paisesService.size();
+			for (int i = 0; i < bound; i++) {
+				if (paisesService.get(i).id.equals(idPais)) {
+					index = i;
+					break;
+				}
+			}
+			if ( index != -1){
+				return new Pais(paisesService.get(index).name, paisesService.get(index).id);
+			}else{
+				return null;
+			}
+
+		} catch (IOException getPais) {
+			getPais.printStackTrace();
+			return null;
+		}
+	}
+
+
+
 	@Override
     public List<Pais> getPaises() {
         try {
@@ -60,7 +89,7 @@ public class UbicacionesMercadoLibre implements ServicioUbicaciones {
     }
 	
 	@Override
-    public List<Provincia> getProvincias(String unPais) {
+    public List<Provincia> getProvincias(Pais unPais) {
         try {
         	UbicacionesMercadoLibre.ListadoProvinciaService provinciasService = this.listadoDeProvincias(unPais);         
             List<Provincia> provincias = new ArrayList<>();
@@ -74,7 +103,7 @@ public class UbicacionesMercadoLibre implements ServicioUbicaciones {
     }
 	
 	@Override
-    public List<Ciudad> getCiudades(String unaProvincia) {
+    public List<Ciudad> getCiudades(Provincia unaProvincia) {
         try {
         	UbicacionesMercadoLibre.ListadoCiudadService ciudadesService = this.listadoDeCiudades(unaProvincia);         
             List<Ciudad> ciudades = new ArrayList<>();
@@ -110,17 +139,17 @@ public class UbicacionesMercadoLibre implements ServicioUbicaciones {
 		return listadoDePaises;
 	}
 	
-	public UbicacionesMercadoLibre.ListadoProvinciaService listadoDeProvincias(String idPaisService) throws IOException{
+	public UbicacionesMercadoLibre.ListadoProvinciaService listadoDeProvincias(Pais pais) throws IOException{
 		ServicioMercadoLibre mercadoLibreService = this.retrofit.create(ServicioMercadoLibre.class);
-		Call<UbicacionesMercadoLibre.ListadoProvinciaService> requestProvincias = mercadoLibreService.provincias(idPaisService, "states");
+		Call<UbicacionesMercadoLibre.ListadoProvinciaService> requestProvincias = mercadoLibreService.provincias(pais.getId(), "states");
 		Response<UbicacionesMercadoLibre.ListadoProvinciaService> responseProvincias = requestProvincias.execute();
 		UbicacionesMercadoLibre.ListadoProvinciaService listadoDeProvincias = responseProvincias.body();
 		return listadoDeProvincias;
 	}
 	
-	public UbicacionesMercadoLibre.ListadoCiudadService listadoDeCiudades(String idCiudadService) throws IOException{
+	public UbicacionesMercadoLibre.ListadoCiudadService listadoDeCiudades(Provincia provincia) throws IOException{
 		ServicioMercadoLibre mercadoLibreService = this.retrofit.create(ServicioMercadoLibre.class);
-		Call<UbicacionesMercadoLibre.ListadoCiudadService> requestCiudades = mercadoLibreService.ciudades(idCiudadService, "cities");
+		Call<UbicacionesMercadoLibre.ListadoCiudadService> requestCiudades = mercadoLibreService.ciudades(provincia.getId(), "cities");
 		Response<UbicacionesMercadoLibre.ListadoCiudadService> responseCiudades = requestCiudades.execute();
 		UbicacionesMercadoLibre.ListadoCiudadService listadoDeCiudades = responseCiudades.body();
 		return listadoDeCiudades;
