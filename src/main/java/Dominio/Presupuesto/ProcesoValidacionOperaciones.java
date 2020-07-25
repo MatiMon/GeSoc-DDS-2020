@@ -31,7 +31,8 @@ public class ProcesoValidacionOperaciones {
 
     public void validarYNotificarOperaciones(){
         //recorrer la lista de operaciones, validandola y mandando un mensaje a su lista de interesados
-        operaciones.stream().forEach(operacion -> operacion.informarValidacion(this.validador.validar(operacion)));
+        operaciones.stream().filter(operacion -> operacion.pendienteInformar())
+                .forEach(operacion -> operacion.informarValidacion(this.validador.validar(operacion)));
     }
 
 

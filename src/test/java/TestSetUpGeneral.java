@@ -1,4 +1,5 @@
 import Dominio.Entidad.*;
+import Dominio.Entidad.Categoria.CategoriaEntidad;
 import Dominio.MediosDePago.Efectivo;
 import Dominio.MediosDePago.MediosDePago;
 import Dominio.MediosDePago.Tarjeta;
@@ -21,8 +22,8 @@ public class TestSetUpGeneral {
     private static final ArchivoCacheado owaspFile = new ArchivoCacheado("/password-blacklist.txt", 5555);
     private static final ArchivoCacheado blacklistFile = new ArchivoCacheado("/10k-most-common.txt", 4563);
     protected Proveedor proveedor;
-    protected Producto producto1 = new Producto("Prod1", new Double(100));
-    protected Producto producto2 = new Producto("Prod2", new Double(200));
+    protected Producto producto1 = new Producto("1000","Prod1", new Double(100));
+    protected Producto producto2 = new Producto("1001","Prod2", new Double(200));
     protected Organizacion organizacion = new Organizacion("Org 1");
     protected EntidadJuridica entidadJuridica;
     protected EntidadBase entidadBase;
@@ -43,12 +44,13 @@ public class TestSetUpGeneral {
     Direccion direccion2 = new Direccion("Otra calle", "1234", "8", "D");
     TipoDeCodigoID tipoDeCodigoID = TipoDeCodigoID.CUIT;
     Empresa empresa = new Empresa(ClasificacionAfip.MEDIANA1);
+    CategoriaEntidad catONG = new CategoriaEntidad("ONG");
 
 
     @Before
     public void setUp() throws InvalidKeySpecException, NoSuchAlgorithmException {
         entidadJuridica = new EntidadJuridica("entidadJuridica", "el proveedor", direccion2, TipoDeCodigoID.CUIT,
-                51112, empresa);
+                51112, empresa, catONG);
         organizacion.agregarEntidadJuridica(entidadJuridica);
         entidadBase = new EntidadBase("Carlos", "Un buen tipo", entidadJuridica);
         proveedor = new Proveedor("Una razon social", direccion, tipoDeCodigoID, 1234);

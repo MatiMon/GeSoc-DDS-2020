@@ -2,10 +2,12 @@ package Dominio.OperacionEgreso;
 
 
 public class Producto {
+	private String id;
 	private String nombre;
 	private Double precioUnitario;
 
-	public Producto(String nombre, Double precio){
+	public Producto(String id, String nombre, Double precio){
+		this.id = id;
 		this.nombre = nombre;
 		this.precioUnitario = precio;
 	}

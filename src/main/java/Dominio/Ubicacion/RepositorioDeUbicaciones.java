@@ -14,12 +14,21 @@ public class RepositorioDeUbicaciones {
 		this.servicio = servicio;
 	}
 
+	/*
 	public List<Provincia> provinciasDeUnPais(String unPais){
 		return this.servicio.getProvincias(unPais);
 	}
 	
 	public List<Ciudad> ciudadesDeUnaProvincia(String unaProvincia){
 		return this.servicio.getCiudades(unaProvincia);
+	}
+	*/
+	public List<Provincia> provinciasDeUnPais(Pais unPais){
+		return this.servicio.getProvincias(unPais);
+	}
+
+	public Pais getPais(String idPais){
+		return this.servicio.getPais(idPais);
 	}
 
 }

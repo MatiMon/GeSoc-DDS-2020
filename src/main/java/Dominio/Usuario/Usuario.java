@@ -69,11 +69,10 @@ public class Usuario {
     public void altaRevisionOperacion(OperacionDeEgreso operacion) {
     	operacion.agregarUsuarioRevisor(this);
     }
-    
-    public void notificar(OperacionDeEgreso operacion, boolean resultadoValidacion) {
-    	Mensaje mensaje = new Mensaje();
-    	mensaje.crearMensajeValidacion(operacion, resultadoValidacion);
-    	bandeja.agregarMensaje(mensaje);
-    }
+
+	public void notificar(OperacionDeEgreso operacionDeEgreso, boolean validacion) {
+		bandeja.agregarMensajeValidacion(operacionDeEgreso, validacion);
+	}
+
 }
 
