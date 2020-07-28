@@ -2,4 +2,4 @@
 
 Link al diagrama de clases:
     
-https://app.lucidchart.com/invitations/accept/2d2b7fb4-cdc7-4516-992b-62d831be3615
+https://app.lucidchart.com/documents/edit/1d482532-c44c-40a3-87de-eaebab8260fb/0_0?shared=true
