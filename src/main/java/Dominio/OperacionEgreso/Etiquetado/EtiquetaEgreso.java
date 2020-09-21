@@ -61,4 +61,8 @@ public class EtiquetaEgreso {
             gasto.remove( operacion.getMoneda());
         }
     }
+
+    public boolean tieneOperacion(OperacionDeEgreso operacionDeEgreso){
+        return getOperaciones().contains(operacionDeEgreso);
+    }
 }

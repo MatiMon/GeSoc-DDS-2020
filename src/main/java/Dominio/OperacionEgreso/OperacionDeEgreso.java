@@ -4,6 +4,7 @@ import Dominio.Entidad.Entidad;
 import Dominio.MediosDePago.MediosDePago;
 import Dominio.Moneda.Moneda;
 import Dominio.OperacionEgreso.Etiquetado.EtiquetaEgreso;
+import Dominio.OperacionEgreso.Etiquetado.RepositorioDeEtiquetas;
 import Dominio.Presupuesto.Presupuesto;
 import Dominio.Proveedor.Proveedor;
 import Dominio.Usuario.Usuario;
@@ -31,8 +32,7 @@ public class OperacionDeEgreso {
     private List<Usuario> usuariosRevisores = new ArrayList<>();
     private Moneda moneda;
     private Boolean informada;
-    private List<EtiquetaEgreso> etiquetas = new ArrayList<>();
-
+    private RepositorioDeEtiquetas repositorioDeEtiquetas;
 
     public OperacionDeEgreso(Pair<TipoDocumentoComercial, Integer> documentoContable,
                              String path,
@@ -143,11 +143,9 @@ public class OperacionDeEgreso {
     }
 
     public void agregarEtiqueta(EtiquetaEgreso etiqueta){
-        this.etiquetas.add(etiqueta);
-        etiqueta.agregarOperacion(this);
+        this.repositorioDeEtiquetas.agregarEtiqueta(this, etiqueta);
     }
     public void quitarEtiqueta(EtiquetaEgreso etiqueta){
-        this.etiquetas.remove(etiqueta);
-        etiqueta.quitarOperacion(this);
+        this.repositorioDeEtiquetas.quitarEtiqueta(this, etiqueta);
     }
 }
