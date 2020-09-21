@@ -4,6 +4,7 @@ import Dominio.Entidad.Entidad;
 import Dominio.MediosDePago.MediosDePago;
 
 import Dominio.OperacionEgreso.Etiquetado.EtiquetaEgreso;
+import Dominio.OperacionEgreso.Etiquetado.RepositorioDeEtiquetas;
 import Dominio.Presupuesto.ProcesoValidacionOperaciones;
 import Dominio.Moneda.Moneda;
 import Dominio.Presupuesto.Presupuesto;
@@ -48,7 +49,8 @@ public class OperacionEgresoBuilder {
                 this.entidad,
                 this.usuarioAlta,
                 this.cantidadPresupuestosRequeridos,
-                this.moneda);
+                this.moneda,
+                RepositorioDeEtiquetas.getInstance());
         ProcesoValidacionOperaciones.agregarOperacion(operacion);
         return operacion;
     }

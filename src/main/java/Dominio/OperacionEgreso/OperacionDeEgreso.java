@@ -43,7 +43,8 @@ public class OperacionDeEgreso {
                              Entidad entidad,
                              Usuario unUser,
                              int cantPresupuestos,
-                             Moneda moneda) {
+                             Moneda moneda,
+                             RepositorioDeEtiquetas repositorioDeEtiquetas) {
         this.documentoContable = documentoContable;
         this.pathArchivo = path;
         this.proveedor = proveedor;
@@ -56,6 +57,7 @@ public class OperacionDeEgreso {
         this.cantidadPresupuestosRequeridos = cantPresupuestos;
         this.moneda = moneda;
         this.informada = Boolean.FALSE;
+        this.repositorioDeEtiquetas = repositorioDeEtiquetas;
     }
 
     public Double valorTotal() {

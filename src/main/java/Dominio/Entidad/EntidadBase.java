@@ -1,14 +1,16 @@
 package Dominio.Entidad;
 
 import Dominio.Entidad.Categoria.CategoriaEntidad;
+import Dominio.OperacionEgreso.Etiquetado.EtiquetaEgreso;
 
 public class EntidadBase implements Entidad {
 	public String nombreFicticio;
 	public String descripcion;
 	public EntidadJuridica entidadJuridica;
 	public CategoriaEntidad categoria;
+	private Reporte reporte;
 
-	
+
 	// Constructor
 	public EntidadBase(String nombreFicticio, String descripcion, EntidadJuridica entidadJuridica) {
 		this.nombreFicticio = nombreFicticio;
@@ -49,6 +51,11 @@ public class EntidadBase implements Entidad {
 	@Override
 	public void validarGeneracionOperacion() {
 		entidadJuridica.validarGeneracionOperacion();
+	}
+
+	@Override
+	public void generarReporte(EtiquetaEgreso etiquetaEgreso) {
+		reporte.imprimirReporteUltimoMes(etiquetaEgreso, this);
 	}
 
 
