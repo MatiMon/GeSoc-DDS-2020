@@ -5,6 +5,7 @@ import java.util.List;
 
 import Dominio.Entidad.Categoria.CategoriaEntidad;
 import Dominio.Entidad.Categoria.TiposComportamiento;
+import Dominio.OperacionEgreso.Etiquetado.EtiquetaEgreso;
 import Dominio.Proveedor.TipoDeCodigoID;
 import Dominio.Ubicacion.Direccion;
 
@@ -20,6 +21,7 @@ public class EntidadJuridica implements Entidad {
 	private CategoriaEntidad categoria;
 	private Double valorTotalMontos;
 	private Double montoMaximodeEgresos;
+	private Reporte reporte;
 	
 	//Constructor:
 	public EntidadJuridica(String nombreFicticio, String razonSocial, Direccion direccion,
@@ -90,6 +92,11 @@ public class EntidadJuridica implements Entidad {
 	@Override
 	public void validarGeneracionOperacion() {
 		this.categoria.ejecutarSiEstaActivo(this, TiposComportamiento.BLOQUEO_NUEVO_EGRESO);
+	}
+
+	@Override
+	public void generarReporte(EtiquetaEgreso etiquetaEgreso) {
+		reporte.imprimirReporteUltimoMes(etiquetaEgreso, this);
 	}
 
 

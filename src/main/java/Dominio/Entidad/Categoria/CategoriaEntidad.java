@@ -3,7 +3,6 @@ package Dominio.Entidad.Categoria;
 import Dominio.Entidad.Entidad;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class CategoriaEntidad {
@@ -16,14 +15,13 @@ public class CategoriaEntidad {
         agregarComportamientosDefault();
     }
 
-    private void agregarComportamientosDefault(){
+    private void agregarComportamientosDefault() {
         comportamientos.add(new BloqueoNuevoEgreso());
         comportamientos.add(new BloquearNuevasBases());
     }
 
-    public void ejecutarSiEstaActivo(Entidad entidad, TiposComportamiento tipo){
-        comportamientos.stream().filter(comportamiento -> comportamiento.esDelTipo(tipo))
-                .forEach(comportamiento -> comportamiento.ejecutarSiEstaActivo(entidad));
+    public void ejecutarSiEstaActivo(Entidad entidad, TiposComportamiento tipo) {
+        comportamientos.stream().forEach(comportamiento -> comportamiento.ejecutarSiEstaActivo(entidad));
     }
 
 }

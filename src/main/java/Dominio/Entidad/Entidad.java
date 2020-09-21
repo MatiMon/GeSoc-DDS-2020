@@ -1,5 +1,7 @@
 package Dominio.Entidad;
 
+import Dominio.OperacionEgreso.Etiquetado.EtiquetaEgreso;
+
 public interface Entidad {
 	
 	public String getNombreFicticio();
@@ -9,4 +11,6 @@ public interface Entidad {
 	public boolean superaMontoMaximo();
 
 	void validarGeneracionOperacion();
+
+	void generarReporte(EtiquetaEgreso etiquetaEgreso);
 }
