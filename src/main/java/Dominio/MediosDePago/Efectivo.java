@@ -1,6 +1,11 @@
 package Dominio.MediosDePago;
 
-public class Efectivo implements MediosDePago {
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@Entity
+@DiscriminatorValue("E")
+public class Efectivo extends MediosDePago {
     private String codigoPago;
 
     public Efectivo(String codPago){
@@ -13,3 +18,4 @@ public class Efectivo implements MediosDePago {
     }
 
 }
+

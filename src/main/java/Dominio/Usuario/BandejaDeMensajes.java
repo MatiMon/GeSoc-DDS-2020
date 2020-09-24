@@ -4,9 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Dominio.OperacionEgreso.OperacionDeEgreso;
+import Persistencia.Persistente;
 
-public class BandejaDeMensajes {
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
 
+@Entity
+public class BandejaDeMensajes extends Persistente {
+
+    @ElementCollection
     private List<Mensaje> mensajes = new ArrayList<>();
 
     public List<Mensaje> getMensajes() {

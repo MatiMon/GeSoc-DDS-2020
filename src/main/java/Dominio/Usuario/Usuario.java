@@ -4,12 +4,20 @@ import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 
 import Dominio.OperacionEgreso.OperacionDeEgreso;
+import Persistencia.Persistente;
 
-public class Usuario {
-    private String id;
+import javax.persistence.*;
+
+@Entity
+public class Usuario extends Persistente {
+    private String idUsuario;
+    @OneToOne
     private PasswordHashedAndSalted passwordHashedAndSalted;
+    @Enumerated (EnumType.STRING)
+    @Column (name = "tipo_usuario")
     private TipoUsuario tipoUsuario;
     private ValidadorPasswords validadorPasswords;
+    @OneToOne
     private BandejaDeMensajes bandeja;
 
     public Usuario(String id, String password, TipoUsuario tipoUsuario, ValidadorPasswords validadorPasswords) throws InvalidKeySpecException, NoSuchAlgorithmException {
@@ -20,7 +28,7 @@ public class Usuario {
         if (!validadorPasswords.validarPassword(password)) {
             throw new InvalidPasswordException("password inválida");
         }
-        this.id = id;
+        this.idUsuario = id;
         this.tipoUsuario = tipoUsuario;
         this.passwordHashedAndSalted = new PasswordHashedAndSalted(password);
         this.bandeja = new BandejaDeMensajes();
@@ -38,12 +46,9 @@ public class Usuario {
     }
 
 
-    public String getId() {
-        return id;
-    }
 
     public void setId(String id) {
-        this.id = id;
+        this.idUsuario = id;
     }
 
     public TipoUsuario getTipoUsuario() {

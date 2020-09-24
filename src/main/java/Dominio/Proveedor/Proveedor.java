@@ -1,46 +1,50 @@
 package Dominio.Proveedor;
 
 import Dominio.Ubicacion.Direccion;
+import Persistencia.Persistente;
 
-public class Proveedor {
-	String razonSocial;
-	Direccion direccion;
-	TipoDeCodigoID tipoDeCodigoID;
-	int codigoID;
-	
-	//Constructor:
-	public Proveedor(String razonSocial, Direccion direccion, TipoDeCodigoID tipoDeCodigoID, int codigoID) {
-		this.razonSocial = razonSocial;
-		this.direccion = direccion;
-		this.tipoDeCodigoID = tipoDeCodigoID;
-		this.codigoID = codigoID;
-	}
-	
-	//Getters
-	public String getRazonSocial() {
-		return razonSocial;
-	}
+import javax.persistence.Entity;
 
-	public Direccion getDireccion() {
-		return direccion;
-	}
+@Entity
+public class Proveedor extends Persistente {
+    String razonSocial;
+    Direccion direccion;
+    TipoDeCodigoID tipoDeCodigoID;
+    int codigoID;
 
-	public TipoDeCodigoID getTipoDeCodigoID() {
-		return tipoDeCodigoID;
-	}
+    //Constructor:
+    public Proveedor(String razonSocial, Direccion direccion, TipoDeCodigoID tipoDeCodigoID, int codigoID) {
+        this.razonSocial = razonSocial;
+        this.direccion = direccion;
+        this.tipoDeCodigoID = tipoDeCodigoID;
+        this.codigoID = codigoID;
+    }
 
-	public int getCodigoID() {
-		return codigoID;
-	}
-	
-	// Setters
-	public void setRazonSocial(String razonSocial) {
-		this.razonSocial = razonSocial;
-	}
-	public void setDireccion(Direccion direccion) {
-		this.direccion = direccion;
-	}
+    //Getters
+    public String getRazonSocial() {
+        return razonSocial;
+    }
 
+    public Direccion getDireccion() {
+        return direccion;
+    }
+
+    public TipoDeCodigoID getTipoDeCodigoID() {
+        return tipoDeCodigoID;
+    }
+
+    public int getCodigoID() {
+        return codigoID;
+    }
+
+    // Setters
+    public void setRazonSocial(String razonSocial) {
+        this.razonSocial = razonSocial;
+    }
+
+    public void setDireccion(Direccion direccion) {
+        this.direccion = direccion;
+    }
 
 
 }

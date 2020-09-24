@@ -1,8 +1,14 @@
 package Dominio.OperacionEgreso;
 
+import Persistencia.Persistente;
 
-public class Item {
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+
+@Entity
+public class Item extends Persistente {
 	private int cantidad;
+	@ManyToOne
 	private Producto producto;
 
 	public Item (Producto producto, int cantidad){

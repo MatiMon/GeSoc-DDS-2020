@@ -1,8 +1,12 @@
 package Dominio.MediosDePago;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
 import java.time.LocalDateTime;
 
-public class Tarjeta implements MediosDePago {
+@DiscriminatorValue("T")
+@Entity
+public class Tarjeta extends MediosDePago {
 
     private TipoTarjeta tipo;
     private String numTarjeta;

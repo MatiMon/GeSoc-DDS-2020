@@ -1,7 +1,11 @@
 package Dominio.OperacionEgreso;
 
+import Persistencia.Persistente;
 
-public class Producto {
+import javax.persistence.Entity;
+
+@Entity
+public class Producto extends Persistente {
 	private String id;
 	private String nombre;
 	private Double precioUnitario;

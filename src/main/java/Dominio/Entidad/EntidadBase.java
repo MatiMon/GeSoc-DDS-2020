@@ -3,7 +3,7 @@ package Dominio.Entidad;
 import Dominio.Entidad.Categoria.CategoriaEntidad;
 import Dominio.OperacionEgreso.Etiquetado.EtiquetaEgreso;
 
-public class EntidadBase implements Entidad {
+public class EntidadBase extends Entidad {
 	public String nombreFicticio;
 	public String descripcion;
 	public EntidadJuridica entidadJuridica;

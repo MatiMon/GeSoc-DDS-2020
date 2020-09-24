@@ -9,7 +9,7 @@ import Dominio.OperacionEgreso.Etiquetado.EtiquetaEgreso;
 import Dominio.Proveedor.TipoDeCodigoID;
 import Dominio.Ubicacion.Direccion;
 
-public class EntidadJuridica implements Entidad {
+public class EntidadJuridica extends Entidad {
 	public String nombreFicticio;
 	String razonSocial;
 	Direccion direccion;

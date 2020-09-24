@@ -1,16 +1,23 @@
 package Dominio.Entidad;
 
 import Dominio.OperacionEgreso.Etiquetado.EtiquetaEgreso;
+import Persistencia.Persistente;
 
-public interface Entidad {
-	
-	public String getNombreFicticio();
+import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 
-	public EntidadJuridica entidadJuridica();
+@Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+public abstract class Entidad extends Persistente {
 
-	public boolean superaMontoMaximo();
+    public abstract String getNombreFicticio();
 
-	void validarGeneracionOperacion();
+    public abstract EntidadJuridica entidadJuridica();
 
-	void generarReporte(EtiquetaEgreso etiquetaEgreso);
+    public abstract boolean superaMontoMaximo();
+
+    public abstract void validarGeneracionOperacion();
+
+    public abstract void generarReporte(EtiquetaEgreso etiquetaEgreso);
 }

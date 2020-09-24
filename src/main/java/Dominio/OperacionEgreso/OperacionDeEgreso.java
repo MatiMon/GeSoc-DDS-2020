@@ -8,23 +8,34 @@ import Dominio.OperacionEgreso.Etiquetado.RepositorioDeEtiquetas;
 import Dominio.Presupuesto.Presupuesto;
 import Dominio.Proveedor.Proveedor;
 import Dominio.Usuario.Usuario;
+import Persistencia.Persistente;
 import javafx.util.Pair;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 //import org.apache.commons.lang3.tuple.Pair;
 
-public class OperacionDeEgreso {
+@Entity
+public class OperacionDeEgreso extends Persistente {
 
+
+    @Transient
     private Pair<TipoDocumentoComercial, Integer> documentoContable;
     private String pathArchivo;
+    @ManyToOne
     private Proveedor proveedor;
     private Date f_Operacion;
+    @OneToMany
+    @JoinColumn(name = "operacion_id")
     private List<Item> items;
+    @ManyToOne
     private MediosDePago pago;
+    @ManyToOne
     private Entidad entidad;
+    @ManyToOne
     private Usuario usuarioAlta;
     private Double valorTotal;
     private List<Presupuesto> presupuestos = new ArrayList<>();
@@ -131,7 +142,7 @@ public class OperacionDeEgreso {
         return usuariosRevisores;
     }
 
-    public void informarValidacion(boolean validacion){
+    public void informarValidacion(boolean validacion) {
         getUsuariosRevisores().stream().forEach(usuario -> usuario.notificar(this, validacion));
         this.informada = Boolean.TRUE;
     }
@@ -140,14 +151,15 @@ public class OperacionDeEgreso {
         return !this.informada;
     }
 
-    public Moneda getMoneda(){
+    public Moneda getMoneda() {
         return this.moneda;
     }
 
-    public void agregarEtiqueta(EtiquetaEgreso etiqueta){
+    public void agregarEtiqueta(EtiquetaEgreso etiqueta) {
         this.repositorioDeEtiquetas.agregarEtiqueta(this, etiqueta);
     }
-    public void quitarEtiqueta(EtiquetaEgreso etiqueta){
+
+    public void quitarEtiqueta(EtiquetaEgreso etiqueta) {
         this.repositorioDeEtiquetas.quitarEtiqueta(this, etiqueta);
     }
 }

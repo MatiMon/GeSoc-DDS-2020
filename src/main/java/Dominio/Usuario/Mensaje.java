@@ -4,9 +4,12 @@ import Dominio.OperacionEgreso.Item;
 import Dominio.OperacionEgreso.OperacionDeEgreso;
 import Dominio.Presupuesto.Presupuesto;
 
+import javax.persistence.Embeddable;
+import javax.persistence.Entity;
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Embeddable
 public class Mensaje {
     private LocalDateTime fechaYHora;
     private String descripcion;
