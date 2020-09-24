@@ -16,6 +16,7 @@
         <class>Dominio.Entidad.TipoEntidadJuridica</class>
         <class>Dominio.Entidad.EntidadBase</class>
         <class>Dominio.Entidad.EntidadJuridica</class>
+        <class>Dominio.Entidad.Organizacion</class>
         <class>Dominio.Proveedor.Proveedor</class>
         <class>Dominio.MediosDePago.Tarjeta</class>
         <class>Dominio.MediosDePago.Efectivo</class>
