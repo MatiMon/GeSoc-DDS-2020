@@ -141,7 +141,7 @@ public class UbicacionesMercadoLibre implements ServicioUbicaciones {
 	
 	public UbicacionesMercadoLibre.ListadoProvinciaService listadoDeProvincias(Pais pais) throws IOException{
 		ServicioMercadoLibre mercadoLibreService = this.retrofit.create(ServicioMercadoLibre.class);
-		Call<UbicacionesMercadoLibre.ListadoProvinciaService> requestProvincias = mercadoLibreService.provincias(pais.getId(), "states");
+		Call<UbicacionesMercadoLibre.ListadoProvinciaService> requestProvincias = mercadoLibreService.provincias(pais.getIdPais(), "states");
 		Response<UbicacionesMercadoLibre.ListadoProvinciaService> responseProvincias = requestProvincias.execute();
 		UbicacionesMercadoLibre.ListadoProvinciaService listadoDeProvincias = responseProvincias.body();
 		return listadoDeProvincias;
@@ -149,7 +149,7 @@ public class UbicacionesMercadoLibre implements ServicioUbicaciones {
 	
 	public UbicacionesMercadoLibre.ListadoCiudadService listadoDeCiudades(Provincia provincia) throws IOException{
 		ServicioMercadoLibre mercadoLibreService = this.retrofit.create(ServicioMercadoLibre.class);
-		Call<UbicacionesMercadoLibre.ListadoCiudadService> requestCiudades = mercadoLibreService.ciudades(provincia.getId(), "cities");
+		Call<UbicacionesMercadoLibre.ListadoCiudadService> requestCiudades = mercadoLibreService.ciudades(provincia.getIdProvincia(), "cities");
 		Response<UbicacionesMercadoLibre.ListadoCiudadService> responseCiudades = requestCiudades.execute();
 		UbicacionesMercadoLibre.ListadoCiudadService listadoDeCiudades = responseCiudades.body();
 		return listadoDeCiudades;

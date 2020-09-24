@@ -21,9 +21,9 @@ import java.util.List;
 @Entity
 public class OperacionDeEgreso extends Persistente {
 
-
     @Transient
     private Pair<TipoDocumentoComercial, Integer> documentoContable;
+    @Column(name = "path_archivo")
     private String pathArchivo;
     @ManyToOne
     private Proveedor proveedor;

@@ -9,18 +9,34 @@ import Dominio.OperacionEgreso.Etiquetado.EtiquetaEgreso;
 import Dominio.Proveedor.TipoDeCodigoID;
 import Dominio.Ubicacion.Direccion;
 
+import javax.persistence.*;
+
+@Entity
 public class EntidadJuridica extends Entidad {
+	@Column(name = "nombre_ficticio")
 	public String nombreFicticio;
+	@Column(name = "razon_social")
 	String razonSocial;
+	@OneToOne
 	Direccion direccion;
+	@Column(name = "tipo_codigo_id")
+	@Enumerated(EnumType.ORDINAL)
 	TipoDeCodigoID tipoDeCodigoID;
+	@Column(name = "codigo_id")
 	int codigoID;
+
+	@Transient
 	public TipoEntidadJuridica tipo;
+
+	@Transient
 	public List<EntidadBase> listaEntidadesBase = new ArrayList<EntidadBase>();
+	@Column(name = "IGJ_id")
 	public String IGJid;
+	@Transient
 	private CategoriaEntidad categoria;
 	private Double valorTotalMontos;
 	private Double montoMaximodeEgresos;
+	@Transient
 	private Reporte reporte;
 	
 	//Constructor:

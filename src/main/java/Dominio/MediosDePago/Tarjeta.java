@@ -1,8 +1,6 @@
 package Dominio.MediosDePago;
 
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-import javax.persistence.Transient;
+import javax.persistence.*;
 
 import java.time.LocalDateTime;
 
@@ -10,12 +8,18 @@ import java.time.LocalDateTime;
 @DiscriminatorValue("T")
 public class Tarjeta extends MediosDePago {
 
-	@Transient
-	private TipoTarjeta tipo;
-    private String numTarjeta;
-    private String nombreCompleto;
-    private LocalDateTime fechaVencimiento;
+    @Column(name = "tipo_tarjeta")
+    @Enumerated(EnumType.ORDINAL)
+    private TipoTarjeta tipo;
 
+    @Column(name = "numero_tarjeta")
+    private String numTarjeta;
+
+    @Column(name = "nombre_completo")
+    private String nombreCompleto;
+
+    @Column(name = "fecha_vencimiento")
+    private LocalDateTime fechaVencimiento;
 
     public Tarjeta(TipoTarjeta unTipo, String numTarj, String nombre, LocalDateTime vencimineto) {
         tipo = unTipo;

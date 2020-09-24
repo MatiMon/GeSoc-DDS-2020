@@ -1,21 +1,27 @@
 package Dominio.Ubicacion;
 
+import Persistencia.Persistente;
 
-public class Pais {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+
+@Entity
+public class Pais extends Persistente {
 	public String nombre;
-	public String id; // Ejemplo de ID: AR
+	@Column(name = "id_pais")
+	public String idPais; // Ejemplo de ID: AR
 	
 	
 	public Pais(String nombre, String id) {
 		this.nombre = nombre;
-		this.id = id;
+		this.idPais = id;
 	}
 	//Getters
 	public String getNombre() {
 		return nombre;
 	}
-	public String getId() {
-		return id;
+	public String getIdPais() {
+		return idPais;
 	}
 	
 	

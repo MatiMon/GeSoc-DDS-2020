@@ -1,21 +1,29 @@
 package Dominio.Ubicacion;
 
-public class Ciudad {
+import Persistencia.Persistente;
+
+import javax.persistence.*;
+
+@Entity
+public class Ciudad extends Persistente {
 	public String nombre;
-	public String id; // Ejemplo de ID: TUxVQ0FHVWNmYTJk
+	@Column(name = "id_ciudad")
+	public String idCiudad; // Ejemplo de ID: TUxVQ0FHVWNmYTJk
+
+	@OneToOne
 	public Provincia provincia;
 	
 	public Ciudad(String nombre, String id, Provincia provincia) {
 		this.nombre = nombre;
-		this.id = id;
+		this.idCiudad = id;
 		this.provincia=provincia;
 	}
 	//Getters
 	public String getNombre() {
 		return nombre;
 	}
-	public String getId() {
-		return id;
+	public String getIdCiudad() {
+		return idCiudad;
 	}
 	public Provincia getProvincia() {
 		return provincia;

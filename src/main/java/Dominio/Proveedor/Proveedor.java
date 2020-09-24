@@ -3,15 +3,21 @@ package Dominio.Proveedor;
 import Dominio.Ubicacion.Direccion;
 import Persistencia.Persistente;
 
-import javax.persistence.Entity;
-import javax.persistence.Transient;
+import javax.persistence.*;
 
 @Entity
 public class Proveedor extends Persistente {
+    @Column(name = "razon_social")
     String razonSocial;
-    @Transient
+
+    @OneToOne
     Direccion direccion;
+
+    @Column(name = "tipo_codigo_id")
+    @Enumerated(EnumType.ORDINAL)
     TipoDeCodigoID tipoDeCodigoID;
+
+    @Column(name = "codigo_id")
     int codigoID;
 
     //Constructor:
