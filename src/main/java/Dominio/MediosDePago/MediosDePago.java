@@ -8,7 +8,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
 @Entity
-@DiscriminatorColumn(name = "tipo", length = 1)
+@DiscriminatorColumn(name = "tipo_pago", length = 1)
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public abstract class MediosDePago extends Persistente {
 

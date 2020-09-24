@@ -6,12 +6,12 @@ import javax.persistence.Entity;
 
 @Entity
 public class Producto extends Persistente {
-	private String id;
+	private String idProducto;
 	private String nombre;
 	private Double precioUnitario;
 
 	public Producto(String id, String nombre, Double precio){
-		this.id = id;
+		this.idProducto = id;
 		this.nombre = nombre;
 		this.precioUnitario = precio;
 	}
@@ -22,5 +22,9 @@ public class Producto extends Persistente {
 	
 	public String getNombreProducto() {
 		return nombre;
+	}
+	
+	public Producto() {
+		
 	}
 }

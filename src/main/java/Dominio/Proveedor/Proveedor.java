@@ -4,10 +4,12 @@ import Dominio.Ubicacion.Direccion;
 import Persistencia.Persistente;
 
 import javax.persistence.Entity;
+import javax.persistence.Transient;
 
 @Entity
 public class Proveedor extends Persistente {
     String razonSocial;
+    @Transient
     Direccion direccion;
     TipoDeCodigoID tipoDeCodigoID;
     int codigoID;
@@ -44,6 +46,10 @@ public class Proveedor extends Persistente {
 
     public void setDireccion(Direccion direccion) {
         this.direccion = direccion;
+    }
+    
+    public Proveedor() {
+    	
     }
 
 

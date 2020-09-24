@@ -16,6 +16,7 @@ public class Usuario extends Persistente {
     @Enumerated (EnumType.STRING)
     @Column (name = "tipo_usuario")
     private TipoUsuario tipoUsuario;
+    @Transient
     private ValidadorPasswords validadorPasswords;
     @OneToOne
     private BandejaDeMensajes bandeja;
@@ -77,6 +78,10 @@ public class Usuario extends Persistente {
 
 	public void notificar(OperacionDeEgreso operacionDeEgreso, boolean validacion) {
 		bandeja.agregarMensajeValidacion(operacionDeEgreso, validacion);
+	}
+	
+	public Usuario() {
+		
 	}
 
 }

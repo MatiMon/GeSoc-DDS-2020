@@ -40,4 +40,8 @@ public class PasswordHashedAndSalted extends Persistente {
     public boolean hashMatch(String password) throws NoSuchAlgorithmException, InvalidKeySpecException {
         return Arrays.equals(this.hash, generarHashPBKDF2(password));
     }
+    
+    public PasswordHashedAndSalted() {
+    	
+    }
 }

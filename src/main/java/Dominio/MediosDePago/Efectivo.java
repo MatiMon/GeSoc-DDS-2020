@@ -12,9 +12,12 @@ public class Efectivo extends MediosDePago {
         codigoPago = codPago;
     }
 
-
     public String getCodigoPago(){
         return codigoPago;
+    }
+    
+	public Efectivo() {
+    	
     }
 
 }

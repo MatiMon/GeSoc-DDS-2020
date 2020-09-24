@@ -33,4 +33,8 @@ public class Item extends Persistente {
 	public int getCantidad(){
 		return this.cantidad;
 	}
+	
+	public Item() {
+		
+	}
 }

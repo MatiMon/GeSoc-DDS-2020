@@ -38,11 +38,15 @@ public class OperacionDeEgreso extends Persistente {
     @ManyToOne
     private Usuario usuarioAlta;
     private Double valorTotal;
+    @Transient
     private List<Presupuesto> presupuestos = new ArrayList<>();
     private int cantidadPresupuestosRequeridos;
+    @Transient
     private List<Usuario> usuariosRevisores = new ArrayList<>();
+    @Transient
     private Moneda moneda;
     private Boolean informada;
+    @Transient
     private RepositorioDeEtiquetas repositorioDeEtiquetas;
 
     public OperacionDeEgreso(Pair<TipoDocumentoComercial, Integer> documentoContable,
@@ -161,5 +165,9 @@ public class OperacionDeEgreso extends Persistente {
 
     public void quitarEtiqueta(EtiquetaEgreso etiqueta) {
         this.repositorioDeEtiquetas.quitarEtiqueta(this, etiqueta);
+    }
+    
+    public OperacionDeEgreso() {
+    	
     }
 }

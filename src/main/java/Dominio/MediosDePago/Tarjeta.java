@@ -2,13 +2,16 @@ package Dominio.MediosDePago;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.Transient;
+
 import java.time.LocalDateTime;
 
-@DiscriminatorValue("T")
 @Entity
+@DiscriminatorValue("T")
 public class Tarjeta extends MediosDePago {
 
-    private TipoTarjeta tipo;
+	@Transient
+	private TipoTarjeta tipo;
     private String numTarjeta;
     private String nombreCompleto;
     private LocalDateTime fechaVencimiento;
@@ -48,6 +51,10 @@ public class Tarjeta extends MediosDePago {
 
     public String getNombreCompleto() {
         return nombreCompleto;
+    }
+    
+    public Tarjeta() {
+    	
     }
 
 }
