@@ -12,6 +12,7 @@ import Dominio.Ubicacion.Direccion;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "entidad_juridica")
 public class EntidadJuridica extends Entidad {
 	@Column(name = "nombre_ficticio")
 	public String nombreFicticio;
@@ -25,14 +26,15 @@ public class EntidadJuridica extends Entidad {
 	@Column(name = "codigo_id")
 	int codigoID;
 
-	@Transient
+	@OneToOne
 	public TipoEntidadJuridica tipo;
 
-	@Transient
+	@OneToMany
+	@JoinColumn(name = "id_entidad_juridica")
 	public List<EntidadBase> listaEntidadesBase = new ArrayList<EntidadBase>();
 	@Column(name = "IGJ_id")
 	public String IGJid;
-	@Transient
+	@ManyToOne
 	private CategoriaEntidad categoria;
 	private Double valorTotalMontos;
 	private Double montoMaximodeEgresos;

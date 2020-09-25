@@ -33,6 +33,8 @@
         <class>Dominio.Usuario.Mensaje</class>
         <class>Dominio.OperacionEgreso.Etiquetado.EtiquetaEgreso</class>
         <class>Dominio.OperacionEgreso.Etiquetado.TipoEtiqueta</class>
+        <class>Dominio.Entidad.Categoria.CategoriaEntidad</class>
+        <class>Dominio.Entidad.Categoria.ComportamientoCategoria</class>
 
 
         <properties>

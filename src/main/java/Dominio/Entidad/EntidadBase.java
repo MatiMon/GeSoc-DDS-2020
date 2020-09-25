@@ -3,12 +3,10 @@ package Dominio.Entidad;
 import Dominio.Entidad.Categoria.CategoriaEntidad;
 import Dominio.OperacionEgreso.Etiquetado.EtiquetaEgreso;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.Transient;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "entidad_base")
 public class EntidadBase extends Entidad {
 	@Column(name = "nombre_ficticio")
 	public String nombreFicticio;
