@@ -18,7 +18,7 @@ public class Presupuesto extends Persistente {
     @Column(name = "id_presupuesto")
     private List<Item> items;
 
-    @Transient
+    @ElementCollection
     private List<TipoDocumentoComercial> documentoComerciales;
 
     @Column(name = "valor_total")

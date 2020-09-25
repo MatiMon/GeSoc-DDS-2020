@@ -13,7 +13,8 @@ public class TestOperacionEgresoBuilder extends TestSetUpGeneral {
 
     @Test(expected = sinItemsException.class)
     public void intentaGenerarOperacionSinItems() {
-        operador.setDocumentoContable(TipoDocumentoComercial.Factura, 12345)
+        operador.setTipoDocumentoComercial(TipoDocumentoComercial.Factura)
+                .setNumeroDocumentoComercial(12345)
                 .setEntidad(entidadBase)
                 .setMetodoPago(this.enEectivo())
                 .setProveedor(proveedor)
@@ -23,7 +24,8 @@ public class TestOperacionEgresoBuilder extends TestSetUpGeneral {
 
     @Test(expected = NullPointerException.class)
     public void intentaGenerarOperacionSinProveedor() {
-        operador.setDocumentoContable(TipoDocumentoComercial.Factura, 12345)
+        operador.setTipoDocumentoComercial(TipoDocumentoComercial.Factura)
+                .setNumeroDocumentoComercial(12345)
                 .agregarItem(producto1, 2)
                 .agregarItem(producto2, 5)
                 .setEntidad(entidadBase)
@@ -33,7 +35,8 @@ public class TestOperacionEgresoBuilder extends TestSetUpGeneral {
 
     @Test(expected = NullPointerException.class)
     public void intentaGenerarOperacionSinMedioPago() {
-        operador.setDocumentoContable(TipoDocumentoComercial.Factura, 12345)
+        operador.setTipoDocumentoComercial(TipoDocumentoComercial.Factura)
+                .setNumeroDocumentoComercial(12345)
                 .agregarItem(producto1, 2)
                 .agregarItem(producto2, 5)
                 .setEntidad(entidadBase)
@@ -43,7 +46,8 @@ public class TestOperacionEgresoBuilder extends TestSetUpGeneral {
 
     @Test(expected = NullPointerException.class)
     public void intentaGenerarOperacionSinEntidad() {
-        operador.setDocumentoContable(TipoDocumentoComercial.Factura, 12345)
+        operador.setTipoDocumentoComercial(TipoDocumentoComercial.Factura)
+                .setNumeroDocumentoComercial(12345)
                 .agregarItem(producto1, 2)
                 .agregarItem(producto2, 5)
                 .setMetodoPago(this.enEectivo())
@@ -53,7 +57,8 @@ public class TestOperacionEgresoBuilder extends TestSetUpGeneral {
 
     @Test
     public void GeneraOperacionConExito() {
-        OperacionDeEgreso operacion = operador.setDocumentoContable(TipoDocumentoComercial.Factura, 12345)
+        OperacionDeEgreso operacion = operador.setTipoDocumentoComercial(TipoDocumentoComercial.Factura)
+                .setNumeroDocumentoComercial(12345)
                 .agregarItem(producto1, 2)
                 .agregarItem(producto2, 5)
                 .setEntidad(entidadBase)
@@ -67,7 +72,7 @@ public class TestOperacionEgresoBuilder extends TestSetUpGeneral {
         //Assert.assertSame(operacion.getPago(), this.enEectivo());
         Assert.assertEquals(operacion.getProveedor(), proveedor);
         Assert.assertEquals(operacion.getTipoDocumentoComercial(), TipoDocumentoComercial.Factura);
-        Assert.assertEquals(operacion.getNroDocumentoComercial(), new Integer(12345));
+        Assert.assertEquals(operacion.getNumeroDocumentoComercial(), new Integer(12345));
         Assert.assertEquals(operacion.valorTotal(), new Double(producto1.getPrecioUnitario() * 2
                 + producto2.getPrecioUnitario() * 5));
     }
@@ -86,7 +91,8 @@ public class TestOperacionEgresoBuilder extends TestSetUpGeneral {
         Assert.assertEquals(operacion.getEntidad(), entidadBase);
         //Assert.assertEquals(operacion.getPago(), this.enEectivo());
         Assert.assertEquals(operacion.getProveedor(), proveedor);
-        Assert.assertNull(operacion.getDocumentoComercial());
+        Assert.assertNull(operacion.getTipoDocumentoComercial());
+        Assert.assertNull(operacion.getNumeroDocumentoComercial());
     }
 
     @Test

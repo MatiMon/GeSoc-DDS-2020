@@ -1,6 +1,12 @@
 package Dominio.Usuario;
 
-public class ValidarPorArchivo implements ValidarPasswords {
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
+
+@DiscriminatorValue("ValidarPorArchivo")
+public class ValidarPorArchivo extends ValidarPasswords {
+    @ManyToOne
     private ArchivoCacheado archivoCacheado;
 
     public ValidarPorArchivo(ArchivoCacheado archivoCacheado) {

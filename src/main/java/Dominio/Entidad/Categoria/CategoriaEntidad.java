@@ -2,6 +2,7 @@ package Dominio.Entidad.Categoria;
 
 import Dominio.Entidad.Entidad;
 
+import javax.persistence.Entity;
 import java.util.ArrayList;
 import java.util.List;
 

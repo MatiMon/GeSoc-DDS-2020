@@ -3,14 +3,15 @@ package Dominio.Usuario;
 import Dominio.OperacionEgreso.Item;
 import Dominio.OperacionEgreso.OperacionDeEgreso;
 import Dominio.Presupuesto.Presupuesto;
+import Persistencia.Persistente;
 
 import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Embeddable
-public class Mensaje {
+@Entity
+public class Mensaje extends Persistente {
     private LocalDateTime fechaYHora;
     private String descripcion;
     private boolean leido;

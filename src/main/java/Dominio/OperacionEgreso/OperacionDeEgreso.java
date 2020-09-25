@@ -10,6 +10,7 @@ import Dominio.Proveedor.Proveedor;
 import Dominio.Usuario.Usuario;
 import Persistencia.Persistente;
 import javafx.util.Pair;
+import jdk.nashorn.internal.ir.annotations.Reference;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -21,12 +22,15 @@ import java.util.List;
 @Entity
 public class OperacionDeEgreso extends Persistente {
 
-    @Transient
-    private Pair<TipoDocumentoComercial, Integer> documentoContable;
+    private TipoDocumentoComercial tipoDocumentoComercial;
+    private int numeroDocumentoComercial;
+
+
     @Column(name = "path_archivo")
     private String pathArchivo;
     @ManyToOne
     private Proveedor proveedor;
+    @Column(name = "fecha_operacion")
     private Date f_Operacion;
     @OneToMany
     @JoinColumn(name = "operacion_id")
@@ -38,18 +42,23 @@ public class OperacionDeEgreso extends Persistente {
     @ManyToOne
     private Usuario usuarioAlta;
     private Double valorTotal;
-    @Transient
+    @OneToMany
+    @JoinColumn(name= "id_operacion")
     private List<Presupuesto> presupuestos = new ArrayList<>();
+    @Column(name ="cantidad_presupuestos_requeridos")
     private int cantidadPresupuestosRequeridos;
-    @Transient
+
+    @ManyToMany
     private List<Usuario> usuariosRevisores = new ArrayList<>();
-    @Transient
+
+    @ManyToOne
     private Moneda moneda;
     private Boolean informada;
     @Transient
     private RepositorioDeEtiquetas repositorioDeEtiquetas;
 
-    public OperacionDeEgreso(Pair<TipoDocumentoComercial, Integer> documentoContable,
+    public OperacionDeEgreso(TipoDocumentoComercial tipoDocumentoComercial,
+                             int numeroDocumentoComercial,
                              String path,
                              Proveedor proveedor,
                              Date f_Operacion,
@@ -60,7 +69,8 @@ public class OperacionDeEgreso extends Persistente {
                              int cantPresupuestos,
                              Moneda moneda,
                              RepositorioDeEtiquetas repositorioDeEtiquetas) {
-        this.documentoContable = documentoContable;
+        this.tipoDocumentoComercial = tipoDocumentoComercial;
+        this.numeroDocumentoComercial = numeroDocumentoComercial;
         this.pathArchivo = path;
         this.proveedor = proveedor;
         this.items = items;
@@ -99,11 +109,11 @@ public class OperacionDeEgreso extends Persistente {
 
 
     public TipoDocumentoComercial getTipoDocumentoComercial() {
-        return documentoContable.getKey();
+        return tipoDocumentoComercial;
     }
 
-    public Integer getNroDocumentoComercial() {
-        return documentoContable.getValue();
+    public Integer getNumeroDocumentoComercial() {
+        return numeroDocumentoComercial;
     }
 
     public Proveedor getProveedor() {
@@ -124,10 +134,6 @@ public class OperacionDeEgreso extends Persistente {
 
     public MediosDePago getPago() {
         return this.pago;
-    }
-
-    public Pair<TipoDocumentoComercial, Integer> getDocumentoComercial() {
-        return this.documentoContable;
     }
 
     public Double getValorTotal() {

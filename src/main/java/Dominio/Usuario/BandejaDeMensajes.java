@@ -8,11 +8,14 @@ import Persistencia.Persistente;
 
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 @Entity
 public class BandejaDeMensajes extends Persistente {
 
-    @ElementCollection
+    @OneToMany
+    @JoinColumn(name = "bandeja_id")
     private List<Mensaje> mensajes = new ArrayList<>();
 
     public List<Mensaje> getMensajes() {

@@ -30,6 +30,9 @@
         <class>Dominio.Ubicacion.Provincia</class>
         <class>Dominio.Moneda.Moneda</class>
         <class>Dominio.Presupuesto.Presupuesto</class>
+        <class>Dominio.Usuario.Mensaje</class>
+        <class>Dominio.OperacionEgreso.Etiquetado.EtiquetaEgreso</class>
+        <class>Dominio.OperacionEgreso.Etiquetado.TipoEtiqueta</class>
 
 
         <properties>

@@ -16,6 +16,7 @@ public class Usuario extends Persistente {
     @Enumerated (EnumType.STRING)
     @Column (name = "tipo_usuario")
     private TipoUsuario tipoUsuario;
+
     @Transient
     private ValidadorPasswords validadorPasswords;
     @OneToOne
