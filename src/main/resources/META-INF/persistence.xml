@@ -29,6 +29,7 @@
         <class>Dominio.Ubicacion.Pais</class>
         <class>Dominio.Ubicacion.Provincia</class>
         <class>Dominio.Moneda.Moneda</class>
+        <class>Dominio.Presupuesto.Presupuesto</class>
 
 
         <properties>
