@@ -3,14 +3,25 @@ package Dominio.Presupuesto;
 import Dominio.OperacionEgreso.Item;
 import Dominio.OperacionEgreso.OperacionDeEgreso;
 import Dominio.OperacionEgreso.TipoDocumentoComercial;
+import Persistencia.Persistente;
 
+import javax.persistence.*;
 import java.util.List;
 
-public class Presupuesto {
+@Entity
+public class Presupuesto extends Persistente {
 
+    @ManyToOne
     private OperacionDeEgreso operacionAsociada;
+
+    @OneToMany
+    @Column(name = "id_presupuesto")
     private List<Item> items;
+
+    @ElementCollection
     private List<TipoDocumentoComercial> documentoComerciales;
+
+    @Column(name = "valor_total")
     private Double valorTotal;
 
     public Presupuesto(OperacionDeEgreso unEgreso,

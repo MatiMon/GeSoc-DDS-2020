@@ -1,21 +1,32 @@
 package Dominio.Ubicacion;
 
+import Persistencia.Persistente;
 
-public class Pais {
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+public class Pais extends Persistente {
 	public String nombre;
-	public String id; // Ejemplo de ID: AR
+	@Column(name = "id_pais")
+	public String idPais; // Ejemplo de ID: AR
+
+	@OneToMany
+	@JoinColumn(name = "id_pais")
+	public List<Provincia> provincias = new ArrayList<Provincia>();
 	
 	
 	public Pais(String nombre, String id) {
 		this.nombre = nombre;
-		this.id = id;
+		this.idPais = id;
 	}
 	//Getters
 	public String getNombre() {
 		return nombre;
 	}
-	public String getId() {
-		return id;
+	public String getIdPais() {
+		return idPais;
 	}
 	
 	

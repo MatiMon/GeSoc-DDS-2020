@@ -1,6 +1,10 @@
 package Dominio.Entidad;
 
-public class Empresa implements TipoEntidadJuridica {
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorValue;
+
+@DiscriminatorValue("E")
+public class Empresa extends TipoEntidadJuridica {
 	ClasificacionAfip clasificacion;
 
 	// Constructor

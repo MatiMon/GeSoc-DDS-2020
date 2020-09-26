@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+    http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+             version="2.0">
+
+    <persistence-unit name="db" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+
+        <class>Dominio.Usuario.Usuario</class>
+        <class>Dominio.Usuario.PasswordHashedAndSalted</class>
+        <class>Dominio.Usuario.BandejaDeMensajes</class>
+        <class>Dominio.Entidad.Entidad</class>
+        <class>Dominio.Entidad.TipoEntidadJuridica</class>
+        <class>Dominio.Entidad.EntidadBase</class>
+        <class>Dominio.Entidad.EntidadJuridica</class>
+        <class>Dominio.Entidad.Organizacion</class>
+        <class>Dominio.Proveedor.Proveedor</class>
+        <class>Dominio.MediosDePago.Tarjeta</class>
+        <class>Dominio.MediosDePago.Efectivo</class>
+        <class>Dominio.MediosDePago.MediosDePago</class>
+        <class>Dominio.OperacionEgreso.OperacionDeEgreso</class>
+        <class>Dominio.OperacionEgreso.Item</class>
+        <class>Dominio.OperacionEgreso.Producto</class>
+        <class>Dominio.Ubicacion.Direccion</class>
+        <class>Dominio.Ubicacion.Ciudad</class>
+        <class>Dominio.Ubicacion.Pais</class>
+        <class>Dominio.Ubicacion.Provincia</class>
+        <class>Dominio.Moneda.Moneda</class>
+        <class>Dominio.Presupuesto.Presupuesto</class>
+        <class>Dominio.Usuario.Mensaje</class>
+        <class>Dominio.OperacionEgreso.Etiquetado.EtiquetaEgreso</class>
+        <class>Dominio.OperacionEgreso.Etiquetado.TipoEtiqueta</class>
+        <class>Dominio.Entidad.Categoria.CategoriaEntidad</class>
+        <class>Dominio.Entidad.Categoria.ComportamientoCategoria</class>
+
+
+        <properties>
+            <property name="hibernate.archive.autodetection" value="class"/>
+
+            <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
+            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/2020-vi-no-group-22" />
+            <property name="hibernate.connection.username" value="root" />
+            <property name="hibernate.connection.password" value="root" /> 
+
+            <!-- <property name="hibernate.connection.driver_class" value="org.hsqldb.jdbcDriver"/>
+            <property name="hibernate.connection.url" value="jdbc:hsqldb:mem:app-db"/>
+            <property name="hibernate.connection.username" value="sa"/>
+            <property name="hibernate.connection.password" value=""/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect"/> -->
+
+
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="use_sql_comments" value="true"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+        </properties>
+
+    </persistence-unit>
+
+</persistence>

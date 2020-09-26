@@ -20,7 +20,8 @@ import java.util.List;
 import java.util.Objects;
 
 public class OperacionEgresoBuilder {
-    private Pair<TipoDocumentoComercial, Integer> documentoContable;
+    private TipoDocumentoComercial tipoDocumentoComercial;
+    private int numeroDocumentoComercial;
     private String pathArchivo;
     private Proveedor proveedor;
     private List<Item> items = new ArrayList<>();
@@ -40,7 +41,8 @@ public class OperacionEgresoBuilder {
         }
         this.entidad.validarGeneracionOperacion();
 
-        OperacionDeEgreso operacion = new OperacionDeEgreso(this.documentoContable,
+        OperacionDeEgreso operacion = new OperacionDeEgreso(this.tipoDocumentoComercial,
+                this.numeroDocumentoComercial,
                 this.pathArchivo,
                 this.proveedor,
                 new Date(),
@@ -55,8 +57,13 @@ public class OperacionEgresoBuilder {
         return operacion;
     }
 
-    public OperacionEgresoBuilder setDocumentoContable(TipoDocumentoComercial tipoDoc, Integer nroDocumento) {
-        this.documentoContable = new Pair<TipoDocumentoComercial, Integer>(tipoDoc, nroDocumento);
+    public OperacionEgresoBuilder setTipoDocumentoComercial(TipoDocumentoComercial tipoDoc) {
+        this.tipoDocumentoComercial = tipoDoc;
+        return this;
+    }
+
+    public OperacionEgresoBuilder setNumeroDocumentoComercial(int nroDocumento) {
+        this.numeroDocumentoComercial = nroDocumento;
         return this;
     }
 
