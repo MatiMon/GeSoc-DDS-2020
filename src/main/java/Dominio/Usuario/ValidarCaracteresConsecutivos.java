@@ -1,6 +1,10 @@
 package Dominio.Usuario;
 
-public class ValidarCaracteresConsecutivos implements ValidarPasswords {
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@DiscriminatorValue("ValidarCaracteresConsecutivos")
+public class ValidarCaracteresConsecutivos extends ValidarPasswords {
     /*
     Me resulta raro tener que instanciar una clase que no tiene estado.
     Lo que necesito son los métodos.

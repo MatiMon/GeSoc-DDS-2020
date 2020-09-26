@@ -2,7 +2,10 @@ package Dominio.OperacionEgreso.Etiquetado;
 
 import Dominio.Proveedor.Proveedor;
 
-public class EtiquetadoProveedor implements TipoEtiqueta {
+import javax.persistence.DiscriminatorValue;
+
+@DiscriminatorValue("Proveedor")
+public class EtiquetadoProveedor extends TipoEtiqueta {
 
     private Proveedor proveedor;
 

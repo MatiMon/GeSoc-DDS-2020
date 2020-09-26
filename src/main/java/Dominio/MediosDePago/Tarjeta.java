@@ -1,14 +1,25 @@
 package Dominio.MediosDePago;
 
+import javax.persistence.*;
+
 import java.time.LocalDateTime;
 
-public class Tarjeta implements MediosDePago {
+@Entity
+@DiscriminatorValue("T")
+public class Tarjeta extends MediosDePago {
 
+    @Column(name = "tipo_tarjeta")
+    @Enumerated(EnumType.ORDINAL)
     private TipoTarjeta tipo;
-    private String numTarjeta;
-    private String nombreCompleto;
-    private LocalDateTime fechaVencimiento;
 
+    @Column(name = "numero_tarjeta")
+    private String numTarjeta;
+
+    @Column(name = "nombre_completo")
+    private String nombreCompleto;
+
+    @Column(name = "fecha_vencimiento")
+    private LocalDateTime fechaVencimiento;
 
     public Tarjeta(TipoTarjeta unTipo, String numTarj, String nombre, LocalDateTime vencimineto) {
         tipo = unTipo;
@@ -44,6 +55,10 @@ public class Tarjeta implements MediosDePago {
 
     public String getNombreCompleto() {
         return nombreCompleto;
+    }
+    
+    public Tarjeta() {
+    	
     }
 
 }

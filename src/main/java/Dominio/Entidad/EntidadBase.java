@@ -1,14 +1,26 @@
 package Dominio.Entidad;
 
 import Dominio.Entidad.Categoria.CategoriaEntidad;
+import Dominio.OperacionEgreso.Etiquetado.EtiquetaEgreso;
 
-public class EntidadBase implements Entidad {
+import javax.persistence.*;
+
+@Entity
+@Table(name = "entidad_base")
+public class EntidadBase extends Entidad {
+	@Column(name = "nombre_ficticio")
 	public String nombreFicticio;
 	public String descripcion;
-	public EntidadJuridica entidadJuridica;
-	public CategoriaEntidad categoria;
 
-	
+	@ManyToOne
+	public EntidadJuridica entidadJuridica;
+
+	@Transient
+	public CategoriaEntidad categoria;
+	@Transient
+	private Reporte reporte;
+
+
 	// Constructor
 	public EntidadBase(String nombreFicticio, String descripcion, EntidadJuridica entidadJuridica) {
 		this.nombreFicticio = nombreFicticio;
@@ -49,6 +61,11 @@ public class EntidadBase implements Entidad {
 	@Override
 	public void validarGeneracionOperacion() {
 		entidadJuridica.validarGeneracionOperacion();
+	}
+
+	@Override
+	public void generarReporte(EtiquetaEgreso etiquetaEgreso) {
+		reporte.imprimirReporteUltimoMes(etiquetaEgreso, this);
 	}
 
 

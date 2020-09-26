@@ -1,13 +1,27 @@
 package Dominio.Ubicacion;
 
-public class Direccion {
+import Persistencia.Persistente;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.OneToOne;
+import javax.persistence.Transient;
+
+@Entity
+public class Direccion extends Persistente {
 	public String calle;
+	@Column(name = "nro_calle")
 	public String nroCalle;
 	public String piso;
 	public String unidad;
+	@OneToOne
 	public Ciudad ciudad;
+	@OneToOne
 	public Provincia provincia;
+	@OneToOne
 	public Pais pais;
+
+	@Transient
 	public RepositorioDeUbicaciones repositorio; //modelar
 	
 	//Constructor

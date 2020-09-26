@@ -2,15 +2,23 @@ package Dominio.OperacionEgreso.Etiquetado;
 
 import Dominio.Moneda.Moneda;
 import Dominio.OperacionEgreso.OperacionDeEgreso;
+import Persistencia.Persistente;
+
+import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Transient;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+@Entity
+public class EtiquetaEgreso extends Persistente {
 
-public class EtiquetaEgreso {
-
+    @OneToOne
     private TipoEtiqueta tipo;
 
+    @ManyToMany
     private List<OperacionDeEgreso> operaciones = new ArrayList<>();
 
     private HashMap <Moneda, Double> gasto = new HashMap<Moneda, Double>();
@@ -36,7 +44,7 @@ public class EtiquetaEgreso {
     }
 
     public void enlistarOperaciones(){
-        operaciones.forEach(operacion-> System.out.println(operacion.getNroDocumentoComercial()
+        operaciones.forEach(operacion-> System.out.println(operacion.getNumeroDocumentoComercial()
                                                             + " " + operacion.getValorTotal()));
     }
 
@@ -60,5 +68,9 @@ public class EtiquetaEgreso {
         }else{
             gasto.remove( operacion.getMoneda());
         }
+    }
+
+    public boolean tieneOperacion(OperacionDeEgreso operacionDeEgreso){
+        return getOperaciones().contains(operacionDeEgreso);
     }
 }

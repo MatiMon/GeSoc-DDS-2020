@@ -4,6 +4,7 @@ import Dominio.Entidad.Entidad;
 import Dominio.MediosDePago.MediosDePago;
 
 import Dominio.OperacionEgreso.Etiquetado.EtiquetaEgreso;
+import Dominio.OperacionEgreso.Etiquetado.RepositorioDeEtiquetas;
 import Dominio.Presupuesto.ProcesoValidacionOperaciones;
 import Dominio.Moneda.Moneda;
 import Dominio.Presupuesto.Presupuesto;
@@ -19,7 +20,8 @@ import java.util.List;
 import java.util.Objects;
 
 public class OperacionEgresoBuilder {
-    private Pair<TipoDocumentoComercial, Integer> documentoContable;
+    private TipoDocumentoComercial tipoDocumentoComercial;
+    private int numeroDocumentoComercial;
     private String pathArchivo;
     private Proveedor proveedor;
     private List<Item> items = new ArrayList<>();
@@ -39,7 +41,8 @@ public class OperacionEgresoBuilder {
         }
         this.entidad.validarGeneracionOperacion();
 
-        OperacionDeEgreso operacion = new OperacionDeEgreso(this.documentoContable,
+        OperacionDeEgreso operacion = new OperacionDeEgreso(this.tipoDocumentoComercial,
+                this.numeroDocumentoComercial,
                 this.pathArchivo,
                 this.proveedor,
                 new Date(),
@@ -48,13 +51,19 @@ public class OperacionEgresoBuilder {
                 this.entidad,
                 this.usuarioAlta,
                 this.cantidadPresupuestosRequeridos,
-                this.moneda);
+                this.moneda,
+                RepositorioDeEtiquetas.getInstance());
         ProcesoValidacionOperaciones.agregarOperacion(operacion);
         return operacion;
     }
 
-    public OperacionEgresoBuilder setDocumentoContable(TipoDocumentoComercial tipoDoc, Integer nroDocumento) {
-        this.documentoContable = new Pair<TipoDocumentoComercial, Integer>(tipoDoc, nroDocumento);
+    public OperacionEgresoBuilder setTipoDocumentoComercial(TipoDocumentoComercial tipoDoc) {
+        this.tipoDocumentoComercial = tipoDoc;
+        return this;
+    }
+
+    public OperacionEgresoBuilder setNumeroDocumentoComercial(int nroDocumento) {
+        this.numeroDocumentoComercial = nroDocumento;
         return this;
     }
 

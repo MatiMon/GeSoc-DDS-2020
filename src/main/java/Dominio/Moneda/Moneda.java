@@ -1,6 +1,11 @@
 package Dominio.Moneda;
 
-public class Moneda {
+import Persistencia.Persistente;
+
+import javax.persistence.Entity;
+
+@Entity
+public class Moneda extends Persistente {
     String identificador;
     String simbolo;
     String descripcion;

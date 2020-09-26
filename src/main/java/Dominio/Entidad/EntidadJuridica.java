@@ -5,21 +5,41 @@ import java.util.List;
 
 import Dominio.Entidad.Categoria.CategoriaEntidad;
 import Dominio.Entidad.Categoria.TiposComportamiento;
+import Dominio.OperacionEgreso.Etiquetado.EtiquetaEgreso;
 import Dominio.Proveedor.TipoDeCodigoID;
 import Dominio.Ubicacion.Direccion;
 
-public class EntidadJuridica implements Entidad {
+import javax.persistence.*;
+
+@Entity
+@Table(name = "entidad_juridica")
+public class EntidadJuridica extends Entidad {
+	@Column(name = "nombre_ficticio")
 	public String nombreFicticio;
+	@Column(name = "razon_social")
 	String razonSocial;
+	@OneToOne
 	Direccion direccion;
+	@Column(name = "tipo_codigo_id")
+	@Enumerated(EnumType.ORDINAL)
 	TipoDeCodigoID tipoDeCodigoID;
+	@Column(name = "codigo_id")
 	int codigoID;
+
+	@OneToOne
 	public TipoEntidadJuridica tipo;
+
+	@OneToMany
+	@JoinColumn(name = "id_entidad_juridica")
 	public List<EntidadBase> listaEntidadesBase = new ArrayList<EntidadBase>();
+	@Column(name = "IGJ_id")
 	public String IGJid;
+	@ManyToOne
 	private CategoriaEntidad categoria;
 	private Double valorTotalMontos;
 	private Double montoMaximodeEgresos;
+	@Transient
+	private Reporte reporte;
 	
 	//Constructor:
 	public EntidadJuridica(String nombreFicticio, String razonSocial, Direccion direccion,
@@ -90,6 +110,11 @@ public class EntidadJuridica implements Entidad {
 	@Override
 	public void validarGeneracionOperacion() {
 		this.categoria.ejecutarSiEstaActivo(this, TiposComportamiento.BLOQUEO_NUEVO_EGRESO);
+	}
+
+	@Override
+	public void generarReporte(EtiquetaEgreso etiquetaEgreso) {
+		reporte.imprimirReporteUltimoMes(etiquetaEgreso, this);
 	}
 
 

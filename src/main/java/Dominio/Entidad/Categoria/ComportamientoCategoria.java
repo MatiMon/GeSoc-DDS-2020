@@ -1,11 +1,20 @@
 package Dominio.Entidad.Categoria;
 
 import Dominio.Entidad.Entidad;
+import Persistencia.Persistente;
 
-public abstract class ComportamientoCategoria {
+import javax.persistence.Entity;
+import javax.persistence.Enumerated;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+public abstract class ComportamientoCategoria extends Persistente {
 
     private Boolean encendido = Boolean.FALSE;
 
+    @Enumerated
     private TiposComportamiento tipo;
 
     public abstract void ejecutar(Entidad entidad);
