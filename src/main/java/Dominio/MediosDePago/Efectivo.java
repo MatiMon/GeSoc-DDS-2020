@@ -5,7 +5,7 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
-@DiscriminatorValue("E")
+@DiscriminatorValue("E") // conviene ponerle una letra(menos datos guardados) o un nombre descriptivo?
 public class Efectivo extends MediosDePago {
 
     @Column(name = "codigo_pago")

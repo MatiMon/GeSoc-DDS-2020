@@ -17,13 +17,14 @@ import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.time.LocalDateTime;
 import java.util.Arrays;
+import java.util.Date;
 
 public class TestSetUpGeneral {
     private static final ArchivoCacheado owaspFile = new ArchivoCacheado("/password-blacklist.txt", 5555);
     private static final ArchivoCacheado blacklistFile = new ArchivoCacheado("/10k-most-common.txt", 4563);
     protected Proveedor proveedor;
-    protected Producto producto1 = new Producto("1000","Prod1", new Double(100));
-    protected Producto producto2 = new Producto("1001","Prod2", new Double(200));
+    protected Producto producto1 = new Producto("1000", "Prod1", new Double(100));
+    protected Producto producto2 = new Producto("1001", "Prod2", new Double(200));
     protected Organizacion organizacion = new Organizacion("Org 1");
     protected EntidadJuridica entidadJuridica;
     protected EntidadBase entidadBase;
@@ -62,7 +63,8 @@ public class TestSetUpGeneral {
                 TipoTarjeta.tarjetaCredito,
                 "1010202030304040",
                 "Juan Perez",
-                LocalDateTime.parse("2020-7-1"));
+                new Date()
+        );
     }
 
     protected MediosDePago enEectivo() {

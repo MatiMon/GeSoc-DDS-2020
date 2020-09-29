@@ -1,20 +1,21 @@
 package Dominio.Entidad;
 
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.DiscriminatorValue;
+import javax.persistence.*;
 
+@Entity
 @DiscriminatorValue("E")
 public class Empresa extends TipoEntidadJuridica {
-	ClasificacionAfip clasificacion;
+    @Enumerated(EnumType.STRING)
+    ClasificacionAfip clasificacion;
 
-	// Constructor
-	public Empresa(ClasificacionAfip clasificacion) {
-		this.clasificacion = clasificacion;
-	}
+    // Constructor
+    public Empresa(ClasificacionAfip clasificacion) {
+        this.clasificacion = clasificacion;
+    }
 
-	// Getter
-	public ClasificacionAfip getClasificacion() {
-		return clasificacion;
-	}	
+    // Getter
+    public ClasificacionAfip getClasificacion() {
+        return clasificacion;
+    }
 
 }

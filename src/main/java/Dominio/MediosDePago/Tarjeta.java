@@ -3,6 +3,7 @@ package Dominio.MediosDePago;
 import javax.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 @DiscriminatorValue("T")
@@ -19,9 +20,9 @@ public class Tarjeta extends MediosDePago {
     private String nombreCompleto;
 
     @Column(name = "fecha_vencimiento")
-    private LocalDateTime fechaVencimiento;
+    private Date fechaVencimiento;
 
-    public Tarjeta(TipoTarjeta unTipo, String numTarj, String nombre, LocalDateTime vencimineto) {
+    public Tarjeta(TipoTarjeta unTipo, String numTarj, String nombre, Date vencimineto) {
         tipo = unTipo;
         numTarjeta = this.verificarNumerosIngrasados(numTarj, 16, "Numero Dominio.Direccion.Direccion.MediosDePago.Tarjeta");
         nombreCompleto = nombre;
@@ -56,9 +57,9 @@ public class Tarjeta extends MediosDePago {
     public String getNombreCompleto() {
         return nombreCompleto;
     }
-    
+
     public Tarjeta() {
-    	
+
     }
 
 }
