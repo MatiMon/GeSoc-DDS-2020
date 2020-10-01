@@ -1,5 +1,6 @@
 package Dominio.OperacionEgreso;
 
+import Dominio.Presupuesto.Presupuesto;
 import Persistencia.Persistente;
 
 import javax.persistence.Entity;
@@ -16,9 +17,13 @@ public class Item extends Persistente {
     @JoinColumn(name = "producto_id", referencedColumnName = "id")
     private Producto producto;
 
-    @ManyToOne
+    @ManyToOne // agregada para el OneToMany
     @JoinColumn(name = "operacion_de_egreso_id", referencedColumnName = "id")
     OperacionDeEgreso operacionDeEgreso;
+
+    @ManyToOne
+    @JoinColumn(name = "presupuesto_id", referencedColumnName = "id")
+    Presupuesto presupuesto;
 
     public Item(Producto producto, int cantidad) {
         this.cantidad = cantidad;

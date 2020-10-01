@@ -9,12 +9,13 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(name = "presupuesto")
 public class Presupuesto extends Persistente {
 
     @ManyToOne
     private OperacionDeEgreso operacionAsociada;
 
-    @OneToMany
+    @OneToMany(mappedBy = "presupuesto")
     @Column(name = "id_presupuesto")
     private List<Item> items;
 
@@ -25,8 +26,8 @@ public class Presupuesto extends Persistente {
     private Double valorTotal;
 
     public Presupuesto(OperacionDeEgreso unEgreso,
-                List<Item> unosItems,
-                List<TipoDocumentoComercial> unosDocs) {
+                       List<Item> unosItems,
+                       List<TipoDocumentoComercial> unosDocs) {
         operacionAsociada = unEgreso;
         items = unosItems;
         documentoComerciales = unosDocs;

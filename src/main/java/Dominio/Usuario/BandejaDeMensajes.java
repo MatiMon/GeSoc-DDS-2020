@@ -6,16 +6,14 @@ import java.util.List;
 import Dominio.OperacionEgreso.OperacionDeEgreso;
 import Persistencia.Persistente;
 
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 @Entity
-public class BandejaDeMensajes extends Persistente {
+// Lo ideal seria meter esto en usuario y tener en mensaje una FK a usuario
+@Table(name = "bandeja_de_mensajes")
+public class BandejaDeMensajes extends Persistente{
 
-    @OneToMany
-    @JoinColumn(name = "bandeja_id")
+    @OneToMany(mappedBy = "bandejaDeMensajes")
     private List<Mensaje> mensajes = new ArrayList<>();
 
     public List<Mensaje> getMensajes() {

@@ -8,17 +8,22 @@ import Persistencia.Persistente;
 
 import javax.persistence.*;
 
-@Entity
+@Entity // TODO: investigar one to many unidireccional o con element collection, para no tener doble referencia.
+@Table(name = "usuario")
 public class Usuario extends Persistente {
-    private String idUsuario;
-    @OneToOne
+    @Column(name = "nombre_usuario")
+    private String nombreUsuario;
+
+    @Embedded
     private PasswordHashedAndSalted passwordHashedAndSalted;
-    @Enumerated (EnumType.STRING)
-    @Column (name = "tipo_usuario")
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "tipo_usuario")
     private TipoUsuario tipoUsuario;
 
     @Transient
     private ValidadorPasswords validadorPasswords;
+
     @OneToOne
     private BandejaDeMensajes bandeja;
 
@@ -30,7 +35,7 @@ public class Usuario extends Persistente {
         if (!validadorPasswords.validarPassword(password)) {
             throw new InvalidPasswordException("password inválida");
         }
-        this.idUsuario = id;
+        this.nombreUsuario = id;
         this.tipoUsuario = tipoUsuario;
         this.passwordHashedAndSalted = new PasswordHashedAndSalted(password);
         this.bandeja = new BandejaDeMensajes();
@@ -48,9 +53,8 @@ public class Usuario extends Persistente {
     }
 
 
-
     public void setId(String id) {
-        this.idUsuario = id;
+        this.nombreUsuario = id;
     }
 
     public TipoUsuario getTipoUsuario() {
@@ -60,30 +64,30 @@ public class Usuario extends Persistente {
     public void setTipoUsuario(TipoUsuario tipoUsuario) {
         this.tipoUsuario = tipoUsuario;
     }
-    
+
     public BandejaDeMensajes getBandeja() {
-    	return bandeja;
+        return bandeja;
     }
 
     public void setBandeja(BandejaDeMensajes bandeja) {
         this.bandeja = bandeja;
     }
-    
+
     public ValidadorPasswords getValidadorPasswords() {
         return validadorPasswords;
     }
 
     public void altaRevisionOperacion(OperacionDeEgreso operacion) {
-    	operacion.agregarUsuarioRevisor(this);
+        operacion.agregarUsuarioRevisor(this);
     }
 
-	public void notificar(OperacionDeEgreso operacionDeEgreso, boolean validacion) {
-		bandeja.agregarMensajeValidacion(operacionDeEgreso, validacion);
-	}
-	
-	public Usuario() {
-		
-	}
+    public void notificar(OperacionDeEgreso operacionDeEgreso, boolean validacion) {
+        bandeja.agregarMensajeValidacion(operacionDeEgreso, validacion);
+    }
+
+    public Usuario() {
+
+    }
 
 }
 

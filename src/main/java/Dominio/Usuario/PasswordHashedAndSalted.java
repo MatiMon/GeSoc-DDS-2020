@@ -4,16 +4,19 @@ import Persistencia.Persistente;
 
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
-import javax.persistence.Entity;
-import javax.persistence.Transient;
+import javax.persistence.*;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.KeySpec;
 import java.util.Arrays;
 
-@Entity
-public class PasswordHashedAndSalted extends Persistente {
+@Embeddable
+@AttributeOverrides({
+        @AttributeOverride(name = "salt", column = @Column(name = "salt")),
+        @AttributeOverride(name = "hash", column = @Column(name = "hash"))
+})
+public class PasswordHashedAndSalted{
     private byte[] salt = new byte[16];
     private byte[] hash;
     @Transient
@@ -40,8 +43,8 @@ public class PasswordHashedAndSalted extends Persistente {
     public boolean hashMatch(String password) throws NoSuchAlgorithmException, InvalidKeySpecException {
         return Arrays.equals(this.hash, generarHashPBKDF2(password));
     }
-    
+
     public PasswordHashedAndSalted() {
-    	
+
     }
 }

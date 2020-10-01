@@ -14,4 +14,9 @@ public class ValidarLongitud extends ValidarPasswords {
     public boolean validarPassword(String password) {
         return longitudMinima <= password.length() && password.length() <= longitudMaxima;
     }
+
+    @Override
+    public String getIdentificador() {
+        return "LONGITUD";
+    }
 }

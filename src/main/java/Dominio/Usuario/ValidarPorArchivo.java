@@ -1,12 +1,13 @@
 package Dominio.Usuario;
 
 import javax.persistence.DiscriminatorValue;
+import javax.persistence.Embedded;
 import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
 
 @DiscriminatorValue("ValidarPorArchivo")
 public class ValidarPorArchivo extends ValidarPasswords {
-    @ManyToOne
+    @Embedded
     private ArchivoCacheado archivoCacheado;
 
     public ValidarPorArchivo(ArchivoCacheado archivoCacheado) {
@@ -16,5 +17,10 @@ public class ValidarPorArchivo extends ValidarPasswords {
     @Override
     public boolean validarPassword(String password) {
         return !this.archivoCacheado.passwordEnArchivo(password);
+    }
+
+    @Override
+    public String getIdentificador() {
+        return "ARCHIVO";
     }
 }

@@ -10,4 +10,5 @@ import javax.persistence.*;
 @DiscriminatorColumn(name = "tipo")
 public abstract class ValidarPasswords extends Persistente {
     abstract boolean validarPassword(String password);
+    abstract public String getIdentificador();
 }

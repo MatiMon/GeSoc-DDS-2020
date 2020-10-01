@@ -12,13 +12,7 @@ import javax.persistence.Converter;
 public class ConvertidorValidadorPasswords implements AttributeConverter<ValidarPasswords, String> {
     @Override
     public String convertToDatabaseColumn(ValidarPasswords validarPasswords) {
-        if (validarPasswords instanceof ValidarPorArchivo) {
-            return "ARCHIVO";
-        }
-        if (validarPasswords instanceof ValidarCaracteresConsecutivos) {
-            return "CARACTERES";
-        }
-        return "LONGITUD";
+        return validarPasswords.getIdentificador();
     }
 
     @Override
