@@ -13,10 +13,10 @@ import java.util.List;
 public class Presupuesto extends Persistente {
 
     @ManyToOne
+    @JoinColumn(name = "operacion_de_egreso_id", referencedColumnName = "id")
     private OperacionDeEgreso operacionAsociada;
 
     @OneToMany(mappedBy = "presupuesto")
-    @Column(name = "id_presupuesto")
     private List<Item> items;
 
     @ElementCollection

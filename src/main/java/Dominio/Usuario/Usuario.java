@@ -2,6 +2,8 @@ package Dominio.Usuario;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
+import java.util.ArrayList;
+import java.util.List;
 
 import Dominio.OperacionEgreso.OperacionDeEgreso;
 import Persistencia.Persistente;
@@ -26,6 +28,14 @@ public class Usuario extends Persistente {
 
     @OneToOne
     private BandejaDeMensajes bandeja;
+
+    @ManyToMany(cascade = {CascadeType.ALL})
+    @JoinTable(
+            name = "operacion_de_egreso_usuario",
+            joinColumns = {@JoinColumn(name = "usuario_id")},
+            inverseJoinColumns = {@JoinColumn(name = "operacion_id")}
+    )
+    List<OperacionDeEgreso> operacionesDeEgreso = new ArrayList<>();
 
     public Usuario(String id, String password, TipoUsuario tipoUsuario, ValidadorPasswords validadorPasswords) throws InvalidKeySpecException, NoSuchAlgorithmException {
         this.validadorPasswords = validadorPasswords;
@@ -83,6 +93,10 @@ public class Usuario extends Persistente {
 
     public void notificar(OperacionDeEgreso operacionDeEgreso, boolean validacion) {
         bandeja.agregarMensajeValidacion(operacionDeEgreso, validacion);
+    }
+
+    public void agregarOperacion(OperacionDeEgreso operacionDeEgreso) {
+        operacionesDeEgreso.add(operacionDeEgreso);
     }
 
     public Usuario() {

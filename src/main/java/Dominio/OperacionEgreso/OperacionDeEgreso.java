@@ -57,14 +57,13 @@ public class OperacionDeEgreso extends Persistente {
     @Column(name = "valor_total")
     private Double valorTotal;
 
-    @OneToMany
-    @JoinColumn(name = "id_operacion")
+    @OneToMany (mappedBy = "operacionAsociada")
     private List<Presupuesto> presupuestos = new ArrayList<>();
 
     @Column(name = "cantidad_presupuestos_requeridos")
     private int cantidadPresupuestosRequeridos;
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "operacionesDeEgreso")
     private List<Usuario> usuariosRevisores = new ArrayList<>();
 
     @ManyToOne
@@ -111,6 +110,7 @@ public class OperacionDeEgreso extends Persistente {
 
     public void agregarUsuarioRevisor(Usuario user) {
         usuariosRevisores.add(user);
+        user.agregarOperacion(this);
     }
 
     public void quitarUsuarioRevisor(Usuario user) {

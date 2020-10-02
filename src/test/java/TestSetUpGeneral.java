@@ -8,7 +8,10 @@ import Dominio.OperacionEgreso.Producto;
 import Dominio.OperacionEgreso.TipoDocumentoComercial;
 import Dominio.Proveedor.Proveedor;
 import Dominio.Proveedor.TipoDeCodigoID;
+import Dominio.Ubicacion.Ciudad;
 import Dominio.Ubicacion.Direccion;
+import Dominio.Ubicacion.Pais;
+import Dominio.Ubicacion.Provincia;
 import Dominio.Usuario.*;
 import javafx.util.Pair;
 import org.junit.Before;
@@ -41,8 +44,12 @@ public class TestSetUpGeneral {
             1964);
 
 
-    Direccion direccion = new Direccion("Una calle", "Un numero123", "3", "Oficina 2");
-    Direccion direccion2 = new Direccion("Otra calle", "1234", "8", "D");
+    Pais pais = new Pais("Suiza", "1as");
+    Provincia provincia = new Provincia("Berna", "1we", pais);
+    Ciudad ciudad = new Ciudad("Berna", "BRN123", provincia);
+
+    Direccion direccion = new Direccion("Una calle", "Un numero123", "3", "Oficina 2", ciudad);
+    Direccion direccion2 = new Direccion("Otra calle", "1234", "8", "D", ciudad);
     TipoDeCodigoID tipoDeCodigoID = TipoDeCodigoID.CUIT;
     Empresa empresa = new Empresa(ClasificacionAfip.MEDIANA1);
     CategoriaEntidad catONG = new CategoriaEntidad("ONG");

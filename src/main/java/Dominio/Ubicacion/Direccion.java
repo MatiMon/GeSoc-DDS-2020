@@ -1,69 +1,76 @@
 package Dominio.Ubicacion;
 
+import Dominio.OperacionEgreso.Producto;
 import Persistencia.Persistente;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToOne;
-import javax.persistence.Transient;
+import javax.persistence.*;
 
 @Entity
+@Table (name = "direccion")
 public class Direccion extends Persistente {
-	public String calle;
-	@Column(name = "nro_calle")
-	public String nroCalle;
-	public String piso;
-	public String unidad;
-	@OneToOne
-	public Ciudad ciudad;
-	@OneToOne
-	public Provincia provincia;
-	@OneToOne
-	public Pais pais;
+    private String calle;
+    @Column(name = "nro_calle")
+    private String nroCalle;
+    private String piso;
+    private String unidad;
+    private String ciudad;
+    private String provincia;
+    private String pais;
 
-	@Transient
-	public RepositorioDeUbicaciones repositorio; //modelar
-	
-	//Constructor
-	public Direccion(String calle, String nroCalle, String piso, String unidad) {
-		this.calle = calle;
-		this.nroCalle = nroCalle;
-		this.piso = piso;
-		this.unidad = unidad;
-	}
+    @Transient
+    private RepositorioDeUbicaciones repositorio; //modelar
 
-	//Getters
-	public String getCalle() {
-		return calle;
-	}
+    //Constructor
+    public Direccion(String calle, String nroCalle, String piso, String unidad, Ciudad ciudad) {
+        this.calle = calle;
+        this.nroCalle = nroCalle;
+        this.piso = piso;
+        this.unidad = unidad;
+        this.pais = ciudad.getProvincia().getPais().getNombre();
+        this.provincia = ciudad.getProvincia().getNombre();
+        this.ciudad = ciudad.getNombre();
+    }
 
-	public String getNroCalle() {
-		return nroCalle;
-	}
-	
-	public String piso() {
-		return piso;
-	}
+    //Getters
+    public String getCalle() {
+        return calle;
+    }
 
-	public String nombreCiudad() {
-		return ciudad.getNombre();
-	}
+    public String getNroCalle() {
+        return nroCalle;
+    }
 
-	public String nombreProvincia() {
-		return provincia.getNombre();
-	}
-	
-	public String nombrePais() {
-		return pais.getNombre();
-	}
+    public String piso() {
+        return piso;
+    }
 
-	//Setters
-	public void setPiso(String piso) { this.piso = piso; }
+    public String nombreCiudad() {
+        return ciudad;
+    }
 
-	public void setCiudad (Ciudad ciudad) { this.ciudad = ciudad; }
+    public String nombreProvincia() {
+        return provincia;
+    }
 
-	public void setProvincia(Provincia provincia) { this.provincia = provincia;	}
+    public String nombrePais() {
+        return pais;
+    }
 
-	public void setPais(Pais pais) { this.pais = pais; }
-	
+    //Setters
+    public void setPiso(String piso) {
+        this.piso = piso;
+    }
+
+    public void setCiudad(String ciudad) {
+        this.ciudad = ciudad;
+    }
+
+    public void setProvincia(String provincia) {
+        this.provincia = provincia;
+    }
+
+    public void setPais(String pais) {
+        this.pais = pais;
+    }
+
 }
