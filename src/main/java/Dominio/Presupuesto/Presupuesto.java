@@ -20,6 +20,9 @@ public class Presupuesto extends Persistente {
     private List<Item> items;
 
     @ElementCollection
+    @CollectionTable(name = "presupuesto_tipo_documento", joinColumns = {@JoinColumn(name = "presupuesto_id")})
+    @Column(name = "documento_comercial")
+    @Enumerated(EnumType.STRING)
     private List<TipoDocumentoComercial> documentoComerciales;
 
     @Column(name = "valor_total")

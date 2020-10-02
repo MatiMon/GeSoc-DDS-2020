@@ -8,6 +8,7 @@ import Dominio.Entidad.Categoria.TiposComportamiento;
 import Dominio.OperacionEgreso.Etiquetado.EtiquetaEgreso;
 import Dominio.Proveedor.TipoDeCodigoID;
 import Dominio.Ubicacion.Direccion;
+import Persistencia.ConverterTipoEntidadJuridica;
 
 import javax.persistence.*;
 
@@ -15,32 +16,33 @@ import javax.persistence.*;
 @Table(name = "entidad_juridica")
 public class EntidadJuridica extends Entidad {
     @Column(name = "nombre_ficticio")
-    public String nombreFicticio;
+    private String nombreFicticio;
 
     @Column(name = "razon_social")
-    String razonSocial;
+    private String razonSocial;
 
     @OneToOne
-    Direccion direccion;
+    private Direccion direccion;
 
     @Column(name = "tipo_codigo_id")
     @Enumerated(EnumType.ORDINAL)
-    TipoDeCodigoID tipoDeCodigoID;
+    private TipoDeCodigoID tipoDeCodigoID;
 
     @Column(name = "codigo_id")
-    int codigoID;
+    private int codigoID;
 
-    @ManyToOne
-    @JoinColumn(name = "tipo_entidad_juridica_id", referencedColumnName = "id")
-    public TipoEntidadJuridica tipo;
+    @Column(name = "tipo_entidad_juridica")
+    @Convert(converter = ConverterTipoEntidadJuridica.class)
+    private TipoEntidadJuridica tipo;
 
     @OneToMany(mappedBy = "entidadJuridica") //nombre de la variable en EntidadBase que usamos para mapear la relacion
-    public List<EntidadBase> listaEntidadesBase = new ArrayList<EntidadBase>();
+    private List<EntidadBase> listaEntidadesBase = new ArrayList<EntidadBase>();
 
     @Column(name = "IGJ_id")
-    public String IGJid;
+    private String IGJid;
 
     @ManyToOne
+    @JoinColumn(name = "categoria_id", referencedColumnName = "id")
     private CategoriaEntidad categoria;
 
     @Column(name = "valor_total_montos")
@@ -48,6 +50,11 @@ public class EntidadJuridica extends Entidad {
 
     @Column(name = "monto_maximo_de_egresos")
     private Double montoMaximodeEgresos;
+
+    @ManyToOne
+    @JoinColumn(name = "organizacion_id", referencedColumnName = "id")
+    private Organizacion organizacion;
+
     @Transient
     private Reporte reporte;
 

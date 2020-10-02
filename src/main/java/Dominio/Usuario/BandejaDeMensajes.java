@@ -8,12 +8,10 @@ import Persistencia.Persistente;
 
 import javax.persistence.*;
 
-@Entity
-// Lo ideal seria meter esto en usuario y tener en mensaje una FK a usuario
-@Table(name = "bandeja_de_mensajes")
-public class BandejaDeMensajes extends Persistente{
+@Embeddable
+public class BandejaDeMensajes {
 
-    @OneToMany(mappedBy = "bandejaDeMensajes")
+    @OneToMany(mappedBy = "usuario")
     private List<Mensaje> mensajes = new ArrayList<>();
 
     public List<Mensaje> getMensajes() {

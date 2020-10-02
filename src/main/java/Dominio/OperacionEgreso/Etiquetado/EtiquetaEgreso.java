@@ -15,9 +15,15 @@ import java.util.List;
 public class EtiquetaEgreso extends Persistente {
 
     @OneToOne
+    @JoinColumn(name = "tipo_etiqueta_id", referencedColumnName = "id")
     private TipoEtiqueta tipo;
 
-    @ManyToMany
+    @ManyToMany(cascade = {CascadeType.ALL})
+    @JoinTable(
+            name = "operacion_de_egreso_etiqueta",
+            joinColumns = {@JoinColumn(name = "etiqueta_id")},
+            inverseJoinColumns = {@JoinColumn(name = "operacion_id")}
+    )
     private List<OperacionDeEgreso> operaciones = new ArrayList<>();
 
     @org.hibernate.annotations.Type(

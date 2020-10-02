@@ -16,9 +16,8 @@ public class CategoriaEntidad extends Persistente {
 
     private String nombre;
 
-    @OneToMany
-    @JoinColumn(name = "id_categoria_entidad")
-    private List<ComportamientoCategoria> comportamientos = new ArrayList<ComportamientoCategoria>();
+    @OneToMany (mappedBy = "categoriaEntidad")
+    private List<ComportamientoCategoria> comportamientos = new ArrayList<>();
 
     public CategoriaEntidad(String nombre) {
         this.nombre = nombre;

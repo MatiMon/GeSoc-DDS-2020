@@ -71,7 +71,7 @@ public class OperacionDeEgreso extends Persistente {
 
     private Boolean informada;
 
-    @Transient
+    @Embedded
     private RepositorioDeEtiquetas repositorioDeEtiquetas;
 
     public OperacionDeEgreso(TipoDocumentoComercial tipoDocumentoComercial,

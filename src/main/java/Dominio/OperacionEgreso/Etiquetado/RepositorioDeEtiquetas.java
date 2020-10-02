@@ -1,32 +1,39 @@
 package Dominio.OperacionEgreso.Etiquetado;
 
 import Dominio.OperacionEgreso.OperacionDeEgreso;
+import Persistencia.Persistente;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Embeddable
 public class RepositorioDeEtiquetas {
 
-    // agregar constructor para singleton
+    @ManyToMany(mappedBy = "operaciones")
+    private List<EtiquetaEgreso> listaDeEtiquetas = new ArrayList<>();
+
+    @Transient
     private static RepositorioDeEtiquetas sSoleInstance;
 
-    private RepositorioDeEtiquetas(){}  //private constructor.
+    private RepositorioDeEtiquetas() {
+    }  //private constructor.
 
-    public static RepositorioDeEtiquetas getInstance(){
-        if (sSoleInstance == null){ //if there is no instance available... create new one
+    public static RepositorioDeEtiquetas getInstance() {
+        if (sSoleInstance == null) { //if there is no instance available... create new one
             sSoleInstance = new RepositorioDeEtiquetas();
         }
 
         return sSoleInstance;
     }
-    List<EtiquetaEgreso> listaDeEtiquetas = new ArrayList<>();
 
-    public void agregarEtiqueta(OperacionDeEgreso operacionDeEgreso, EtiquetaEgreso etiquetaEgreso){
+    public void agregarEtiqueta(OperacionDeEgreso operacionDeEgreso, EtiquetaEgreso etiquetaEgreso) {
         listaDeEtiquetas.add(etiquetaEgreso);
         etiquetaEgreso.agregarOperacion(operacionDeEgreso);
     }
-    public void quitarEtiqueta(OperacionDeEgreso operacionDeEgreso, EtiquetaEgreso etiquetaEgreso){
+
+    public void quitarEtiqueta(OperacionDeEgreso operacionDeEgreso, EtiquetaEgreso etiquetaEgreso) {
         listaDeEtiquetas.remove(etiquetaEgreso);
         etiquetaEgreso.quitarOperacion(operacionDeEgreso);
     }

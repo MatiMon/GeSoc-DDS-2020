@@ -5,6 +5,7 @@ import java.security.spec.InvalidKeySpecException;
 import java.util.ArrayList;
 import java.util.List;
 
+import Dominio.Entidad.Organizacion;
 import Dominio.OperacionEgreso.OperacionDeEgreso;
 import Persistencia.Persistente;
 
@@ -26,7 +27,7 @@ public class Usuario extends Persistente {
     @Transient
     private ValidadorPasswords validadorPasswords;
 
-    @OneToOne
+    @Embedded
     private BandejaDeMensajes bandeja;
 
     @ManyToMany(cascade = {CascadeType.ALL})
@@ -35,7 +36,11 @@ public class Usuario extends Persistente {
             joinColumns = {@JoinColumn(name = "usuario_id")},
             inverseJoinColumns = {@JoinColumn(name = "operacion_id")}
     )
-    List<OperacionDeEgreso> operacionesDeEgreso = new ArrayList<>();
+    private List<OperacionDeEgreso> operacionesDeEgreso = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "organizacion_id", referencedColumnName = "id")
+    private Organizacion organizacion;
 
     public Usuario(String id, String password, TipoUsuario tipoUsuario, ValidadorPasswords validadorPasswords) throws InvalidKeySpecException, NoSuchAlgorithmException {
         this.validadorPasswords = validadorPasswords;

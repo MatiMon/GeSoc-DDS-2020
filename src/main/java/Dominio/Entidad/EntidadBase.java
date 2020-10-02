@@ -16,8 +16,10 @@ public class EntidadBase extends Entidad {
     @JoinColumn(name = "entidad_juridica_id", referencedColumnName = "id")
     private EntidadJuridica entidadJuridica;
 
-    @Transient
+    @ManyToOne
+    @JoinColumn(name = "categoria_id", referencedColumnName = "id")
     private CategoriaEntidad categoria;
+
     @Transient
     private Reporte reporte;
 

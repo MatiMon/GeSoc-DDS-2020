@@ -22,7 +22,7 @@ public class Mensaje extends Persistente {
 
     @ManyToOne
     @JoinColumn(name = "usuario_id", referencedColumnName = "id")
-    BandejaDeMensajes bandejaDeMensajes;
+    private Usuario usuario;
 
     public LocalDateTime getFechaYHora() {
         return fechaYHora;
