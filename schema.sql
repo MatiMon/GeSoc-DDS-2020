@@ -6,10 +6,9 @@
     )
 
     create table ciudad (
-        id bigint not null auto_increment,
-        id_ciudad varchar(255),
+        id varchar(255) not null,
         nombre varchar(255),
-        provincia_id bigint,
+        provincia_id varchar(255),
         primary key (id)
     )
 
@@ -137,8 +136,7 @@
     )
 
     create table pais (
-        id bigint not null auto_increment,
-        id_pais varchar(255),
+        id varchar(255) not null,
         nombre varchar(255),
         primary key (id)
     )
@@ -172,10 +170,9 @@
     )
 
     create table provincia (
-        id bigint not null auto_increment,
-        id_provincia varchar(255),
+        id varchar(255) not null,
         nombre varchar(255),
-        pais_id bigint,
+        pais_id varchar(255),
         primary key (id)
     )
 

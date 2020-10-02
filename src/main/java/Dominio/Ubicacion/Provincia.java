@@ -9,11 +9,12 @@ import java.util.List;
 
 @Entity
 @Table(name = "provincia")
-public class Provincia extends Persistente {
+public class Provincia {
 
     private String nombre;
 
-    @Column(name = "id_provincia")
+    @Id
+    @Column(name = "id")
     private String idProvincia; // Ejemplo de ID: AR-BS_AS
 
     @ManyToOne

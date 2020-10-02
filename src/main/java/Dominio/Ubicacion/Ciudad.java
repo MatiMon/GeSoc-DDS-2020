@@ -6,11 +6,12 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "ciudad")
-public class Ciudad extends Persistente {
+public class Ciudad {
 
     private String nombre;
 
-    @Column(name = "id_ciudad")
+    @Id
+    @Column(name = "id")
     private String idCiudad; // Ejemplo de ID: TUxVQ0FHVWNmYTJk
 
     @ManyToOne

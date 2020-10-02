@@ -8,15 +8,16 @@ import java.util.List;
 
 @Entity
 @Table(name = "pais")
-public class Pais extends Persistente {
+public class Pais {
 
 	private String nombre;
 
-	@Column(name = "id_pais")
+	@Id
+	@Column(name = "id")
 	private String idPais; // Ejemplo de ID: AR
 
 	@OneToMany (mappedBy = "pais")
-	private List<Provincia> provincias = new ArrayList<Provincia>();
+	private List<Provincia> provincias = new ArrayList<>();
 	
 	
 	public Pais(String nombre, String id) {
