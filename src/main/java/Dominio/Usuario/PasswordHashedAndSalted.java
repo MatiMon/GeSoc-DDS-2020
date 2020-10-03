@@ -1,7 +1,5 @@
 package Dominio.Usuario;
 
-import Persistencia.Persistente;
-
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 import javax.persistence.*;
@@ -12,10 +10,6 @@ import java.security.spec.KeySpec;
 import java.util.Arrays;
 
 @Embeddable
-@AttributeOverrides({
-        @AttributeOverride(name = "salt", column = @Column(name = "salt")),
-        @AttributeOverride(name = "hash", column = @Column(name = "hash"))
-})
 public class PasswordHashedAndSalted{
     private byte[] salt = new byte[16];
     private byte[] hash;

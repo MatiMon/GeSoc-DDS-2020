@@ -1,7 +1,5 @@
 package Dominio.Entidad;
 
-import javax.persistence.*;
-
 public class Empresa implements TipoEntidadJuridica {
 
     private ClasificacionAfip clasificacion;
