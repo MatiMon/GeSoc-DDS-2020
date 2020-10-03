@@ -3,12 +3,12 @@ package Dominio.OperacionEgreso.Etiquetado;
 import Dominio.Moneda.Moneda;
 import Dominio.OperacionEgreso.OperacionDeEgreso;
 import Persistencia.Persistente;
-import org.hibernate.annotations.Parameter;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Entity
 @Table(name = "etiqueta_egreso")
@@ -26,11 +26,13 @@ public class EtiquetaEgreso extends Persistente {
     )
     private List<OperacionDeEgreso> operaciones = new ArrayList<>();
 
-    @org.hibernate.annotations.Type(
-            type = "org.hibernate.type.SerializableToBlobType",
-            parameters = {@Parameter(name = "classname", value = "java.util.HashMap")}
-    )
-    private HashMap<Moneda, Double> gasto = new HashMap<Moneda, Double>();
+    // Hecho segun: https://stackoverflow.com/questions/33267131/how-to-annotate-mapentity-integer-with-jpa/33269388
+    // Podemos tambien pasarlo a SET encapsulando Moneda y Double en un objeto.
+    @ElementCollection
+    @CollectionTable(name="etique_egreso_gastos", joinColumns=@JoinColumn(name="etiqueta_egreso_id"))
+    @Column(name="valor")
+    @MapKeyJoinColumn(name="moneda_id")
+    private Map<Moneda, Double> gasto = new HashMap<Moneda, Double>();
 
     public EtiquetaEgreso(TipoEtiqueta tipo) {
         this.tipo = tipo;
@@ -45,7 +47,7 @@ public class EtiquetaEgreso extends Persistente {
     }
 
 
-    public HashMap<Moneda, Double> getValorTotal() {
+    public Map<Moneda, Double> getValorTotal() {
         return gasto;
     }
 

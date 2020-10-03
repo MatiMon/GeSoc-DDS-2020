@@ -58,9 +58,15 @@
         primary key (id)
     )
 
+    create table etique_egreso_gastos (
+        etiqueta_egreso_id bigint not null,
+        valor double precision,
+        moneda_id bigint not null,
+        primary key (etiqueta_egreso_id, moneda_id)
+    )
+
     create table etiqueta_egreso (
         id bigint not null auto_increment,
-        gasto longblob,
         tipo_etiqueta_id bigint,
         primary key (id)
     )
@@ -188,7 +194,7 @@
         id bigint not null auto_increment,
         nombre_usuario varchar(255),
         hash tinyblob,
-        saltasdasdasd tinyblob,
+        salt tinyblob,
         tipo_usuario varchar(255),
         organizacion_id bigint,
         primary key (id)
@@ -234,6 +240,16 @@
         add constraint FK_38u3nqvgg34lyfnk37qdjgf8r 
         foreign key (organizacion_id) 
         references organizacion (id)
+
+    alter table etique_egreso_gastos 
+        add constraint FK_glqljou4hbnnegitou6wg28w9 
+        foreign key (moneda_id) 
+        references moneda (id)
+
+    alter table etique_egreso_gastos 
+        add constraint FK_c5p6iejaq9aiqfhhv79jcyygw 
+        foreign key (etiqueta_egreso_id) 
+        references etiqueta_egreso (id)
 
     alter table etiqueta_egreso 
         add constraint FK_qw03cueeoqdfibl0scyhnxcfu 
