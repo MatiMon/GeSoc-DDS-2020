@@ -2,7 +2,8 @@ package Dominio.Entidad.Categoria;
 
 import Dominio.Entidad.Entidad;
 
-import javax.persistence.*;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
 
 @Entity
 @DiscriminatorValue("EGRESO")

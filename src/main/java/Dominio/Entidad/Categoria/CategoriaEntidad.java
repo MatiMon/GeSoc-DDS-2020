@@ -4,7 +4,6 @@ import Dominio.Entidad.Entidad;
 import Persistencia.Persistente;
 
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.ArrayList;

@@ -1,15 +1,14 @@
 package Dominio.Usuario;
 
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
-import java.util.ArrayList;
-import java.util.List;
-
 import Dominio.Entidad.Organizacion;
 import Dominio.OperacionEgreso.OperacionDeEgreso;
 import Persistencia.Persistente;
 
 import javax.persistence.*;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity // TODO: investigar one to many unidireccional o con element collection, para no tener doble referencia.
 @Table(name = "usuario")

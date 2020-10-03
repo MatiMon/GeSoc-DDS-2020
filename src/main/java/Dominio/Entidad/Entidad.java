@@ -1,7 +1,6 @@
 package Dominio.Entidad;
 
 import Dominio.OperacionEgreso.Etiquetado.EtiquetaEgreso;
-import Persistencia.Persistente;
 
 import javax.persistence.*;
 

@@ -1,22 +1,8 @@
-import static org.junit.Assert.assertEquals;
-
-import java.time.LocalDateTime;
-import java.util.List;
-
-import org.junit.Before;
-import org.junit.Test;
-
-import Dominio.MediosDePago.HayCaracteresNoNumericosEnLosNumerosDeLaTarjetaExeption;
-import Dominio.MediosDePago.Tarjeta;
-import Dominio.MediosDePago.TipoTarjeta;
 import Dominio.MercadoLibre.MonedasMercadoLibre;
 import Dominio.MercadoLibre.UbicacionesMercadoLibre;
-import Dominio.Moneda.Moneda;
 import Dominio.Moneda.RepositorioDeMonedas;
-import Dominio.Ubicacion.Ciudad;
-import Dominio.Ubicacion.Pais;
-import Dominio.Ubicacion.Provincia;
 import Dominio.Ubicacion.RepositorioDeUbicaciones;
+import org.junit.Test;
 
 public class TestAPIMercadoLibre {
 

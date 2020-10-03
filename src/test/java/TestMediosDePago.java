@@ -1,9 +1,10 @@
-import Dominio.MediosDePago.*;
-import org.junit.Assert;
+import Dominio.MediosDePago.CantidadIncorrectaDeCaractereresExeption;
+import Dominio.MediosDePago.HayCaracteresNoNumericosEnLosNumerosDeLaTarjetaExeption;
+import Dominio.MediosDePago.Tarjeta;
+import Dominio.MediosDePago.TipoTarjeta;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.time.LocalDateTime;
 import java.util.Date;
 
 public class TestMediosDePago {

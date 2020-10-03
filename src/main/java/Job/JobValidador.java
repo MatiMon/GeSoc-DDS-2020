@@ -7,8 +7,6 @@ import Dominio.Presupuesto.ValidacionMenorPrecio;
 import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;
 
-import java.util.List;
-
 public class JobValidador implements Job {
 
     private int frecuencia;

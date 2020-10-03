@@ -1,9 +1,11 @@
 package Dominio.Ubicacion;
 
-import Dominio.OperacionEgreso.Producto;
 import Persistencia.Persistente;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table (name = "direccion")

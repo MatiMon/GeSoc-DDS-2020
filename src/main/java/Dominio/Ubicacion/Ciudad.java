@@ -1,7 +1,5 @@
 package Dominio.Ubicacion;
 
-import Persistencia.Persistente;
-
 import javax.persistence.*;
 
 @Entity

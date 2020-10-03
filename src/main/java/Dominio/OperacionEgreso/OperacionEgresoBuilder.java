@@ -2,18 +2,12 @@ package Dominio.OperacionEgreso;
 
 import Dominio.Entidad.Entidad;
 import Dominio.MediosDePago.MediosDePago;
-
-import Dominio.OperacionEgreso.Etiquetado.EtiquetaEgreso;
+import Dominio.Moneda.Moneda;
 import Dominio.OperacionEgreso.Etiquetado.RepositorioDeEtiquetas;
 import Dominio.Presupuesto.ProcesoValidacionOperaciones;
-import Dominio.Moneda.Moneda;
-import Dominio.Presupuesto.Presupuesto;
-
 import Dominio.Proveedor.Proveedor;
 import Dominio.Usuario.Usuario;
-import javafx.util.Pair;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;

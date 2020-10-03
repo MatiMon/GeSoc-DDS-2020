@@ -1,8 +1,5 @@
 package Dominio.Entidad;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import Dominio.Entidad.Categoria.CategoriaEntidad;
 import Dominio.Entidad.Categoria.TiposComportamiento;
 import Dominio.OperacionEgreso.Etiquetado.EtiquetaEgreso;
@@ -11,6 +8,8 @@ import Dominio.Ubicacion.Direccion;
 import Persistencia.ConverterTipoEntidadJuridica;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "entidad_juridica")

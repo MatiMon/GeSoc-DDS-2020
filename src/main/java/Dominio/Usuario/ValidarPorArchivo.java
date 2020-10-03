@@ -2,8 +2,6 @@ package Dominio.Usuario;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Embedded;
-import javax.persistence.ManyToOne;
-import javax.persistence.Transient;
 
 @DiscriminatorValue("ValidarPorArchivo")
 public class ValidarPorArchivo extends ValidarPasswords {

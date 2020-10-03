@@ -1,12 +1,11 @@
 package Dominio.Usuario;
 
+import Dominio.OperacionEgreso.OperacionDeEgreso;
+
+import javax.persistence.Embeddable;
+import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
-
-import Dominio.OperacionEgreso.OperacionDeEgreso;
-import Persistencia.Persistente;
-
-import javax.persistence.*;
 
 @Embeddable
 public class BandejaDeMensajes {

@@ -2,7 +2,8 @@ package Dominio.Usuario;
 
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
-import javax.persistence.*;
+import javax.persistence.Embeddable;
+import javax.persistence.Transient;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;

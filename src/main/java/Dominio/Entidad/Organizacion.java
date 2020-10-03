@@ -1,10 +1,9 @@
 package Dominio.Entidad;
-import Dominio.Entidad.Categoria.CategoriaEntidad;
+
 import Dominio.Usuario.Usuario;
 import Persistencia.Persistente;
 
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.ArrayList;

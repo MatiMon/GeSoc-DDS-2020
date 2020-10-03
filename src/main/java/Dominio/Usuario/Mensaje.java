@@ -1,13 +1,10 @@
 package Dominio.Usuario;
 
-import Dominio.OperacionEgreso.Item;
 import Dominio.OperacionEgreso.OperacionDeEgreso;
-import Dominio.Presupuesto.Presupuesto;
 import Persistencia.Persistente;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity
 @Table(name = "mensaje")

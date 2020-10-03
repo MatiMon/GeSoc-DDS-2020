@@ -1,7 +1,6 @@
 package Dominio.Usuario;
 
 import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
 
 @DiscriminatorValue("ValidarCaracteresConsecutivos")
 public class ValidarCaracteresConsecutivos extends ValidarPasswords {

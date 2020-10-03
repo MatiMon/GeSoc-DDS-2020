@@ -4,7 +4,8 @@ import org.junit.Test;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class TestPasswordHashedAndSalted {
     PasswordHashedAndSalted passwordHashedAndSalted = new PasswordHashedAndSalted("soyUnaPassword");

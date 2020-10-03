@@ -1,6 +1,6 @@
 package Dominio.Presupuesto;
-import Dominio.OperacionEgreso.OperacionDeEgreso;
 
+import Dominio.OperacionEgreso.OperacionDeEgreso;
 
 import java.util.ArrayList;
 import java.util.List;

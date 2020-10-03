@@ -1,8 +1,9 @@
 package Dominio.Usuario;
 
-import Persistencia.Persistente;
-
-import javax.persistence.*;
+import javax.persistence.AttributeOverride;
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.Transient;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;

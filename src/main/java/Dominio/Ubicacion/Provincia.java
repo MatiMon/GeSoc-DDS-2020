@@ -1,8 +1,5 @@
 package Dominio.Ubicacion;
 
-import Persistencia.Persistente;
-import org.hibernate.annotations.ManyToAny;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;

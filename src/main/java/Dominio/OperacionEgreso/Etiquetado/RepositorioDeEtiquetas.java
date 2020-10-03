@@ -1,9 +1,10 @@
 package Dominio.OperacionEgreso.Etiquetado;
 
 import Dominio.OperacionEgreso.OperacionDeEgreso;
-import Persistencia.Persistente;
 
-import javax.persistence.*;
+import javax.persistence.Embeddable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Transient;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;

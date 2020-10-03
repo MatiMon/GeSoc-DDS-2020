@@ -1,5 +1,5 @@
-import Dominio.Entidad.*;
 import Dominio.Entidad.Categoria.CategoriaEntidad;
+import Dominio.Entidad.*;
 import Dominio.MediosDePago.Efectivo;
 import Dominio.MediosDePago.MediosDePago;
 import Dominio.MediosDePago.Tarjeta;
@@ -18,7 +18,6 @@ import org.junit.Before;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
-import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Date;
 
