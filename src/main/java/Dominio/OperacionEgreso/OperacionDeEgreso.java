@@ -9,8 +9,6 @@ import Dominio.Presupuesto.Presupuesto;
 import Dominio.Proveedor.Proveedor;
 import Dominio.Usuario.Usuario;
 import Persistencia.Persistente;
-import javafx.util.Pair;
-import jdk.nashorn.internal.ir.annotations.Reference;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -20,41 +18,60 @@ import java.util.List;
 //import org.apache.commons.lang3.tuple.Pair;
 
 @Entity
+@Table(name = "operacion_de_egreso")
 public class OperacionDeEgreso extends Persistente {
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "tipo_documento_comercial")
     private TipoDocumentoComercial tipoDocumentoComercial;
-    private int numeroDocumentoComercial;
 
+    @Column(name = "numero_documento_comercial")
+    private int numeroDocumentoComercial;
 
     @Column(name = "path_archivo")
     private String pathArchivo;
+
     @ManyToOne
+    @JoinColumn(name = "proveedor_id")
     private Proveedor proveedor;
+
     @Column(name = "fecha_operacion")
-    private Date f_Operacion;
-    @OneToMany
-    @JoinColumn(name = "operacion_id")
+    private Date fechaOperacion;
+
+    @OneToMany(mappedBy = "operacionDeEgreso")
+    //nombre de la variable en la clase Item que usamos para mapear la relacion.
+    //tuvimos que agregar una propiedad OperacionDeEgreso en Item para mapear.
     private List<Item> items;
+
     @ManyToOne
-    private MediosDePago pago;
+    @JoinColumn(name = "medios_de_pago_id")
+    private MediosDePago medioDePago;
+
     @ManyToOne
+    @JoinColumn(name = "entidad_id")
     private Entidad entidad;
+
     @ManyToOne
     private Usuario usuarioAlta;
+
+    @Column(name = "valor_total")
     private Double valorTotal;
-    @OneToMany
-    @JoinColumn(name= "id_operacion")
+
+    @OneToMany (mappedBy = "operacionAsociada")
     private List<Presupuesto> presupuestos = new ArrayList<>();
-    @Column(name ="cantidad_presupuestos_requeridos")
+
+    @Column(name = "cantidad_presupuestos_requeridos")
     private int cantidadPresupuestosRequeridos;
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "operacionesDeEgreso")
     private List<Usuario> usuariosRevisores = new ArrayList<>();
 
     @ManyToOne
     private Moneda moneda;
+
     private Boolean informada;
-    @Transient
+
+    @Embedded
     private RepositorioDeEtiquetas repositorioDeEtiquetas;
 
     public OperacionDeEgreso(TipoDocumentoComercial tipoDocumentoComercial,
@@ -63,7 +80,7 @@ public class OperacionDeEgreso extends Persistente {
                              Proveedor proveedor,
                              Date f_Operacion,
                              List<Item> items,
-                             MediosDePago pago,
+                             MediosDePago medioDePago,
                              Entidad entidad,
                              Usuario unUser,
                              int cantPresupuestos,
@@ -74,8 +91,8 @@ public class OperacionDeEgreso extends Persistente {
         this.pathArchivo = path;
         this.proveedor = proveedor;
         this.items = items;
-        this.f_Operacion = f_Operacion;
-        this.pago = pago;
+        this.fechaOperacion = f_Operacion;
+        this.medioDePago = medioDePago;
         this.entidad = entidad;
         this.valorTotal = this.valorTotal();
         this.usuarioAlta = unUser;
@@ -93,6 +110,7 @@ public class OperacionDeEgreso extends Persistente {
 
     public void agregarUsuarioRevisor(Usuario user) {
         usuariosRevisores.add(user);
+        user.agregarOperacion(this);
     }
 
     public void quitarUsuarioRevisor(Usuario user) {
@@ -121,7 +139,7 @@ public class OperacionDeEgreso extends Persistente {
     }
 
     public Date getFechaOperacion() {
-        return this.f_Operacion;
+        return this.fechaOperacion;
     }
 
     public Entidad getEntidad() {
@@ -132,8 +150,8 @@ public class OperacionDeEgreso extends Persistente {
         return this.items;
     }
 
-    public MediosDePago getPago() {
-        return this.pago;
+    public MediosDePago getMedioDePago() {
+        return this.medioDePago;
     }
 
     public Double getValorTotal() {
@@ -172,8 +190,8 @@ public class OperacionDeEgreso extends Persistente {
     public void quitarEtiqueta(EtiquetaEgreso etiqueta) {
         this.repositorioDeEtiquetas.quitarEtiqueta(this, etiqueta);
     }
-    
+
     public OperacionDeEgreso() {
-    	
+
     }
 }

@@ -1,9 +1,8 @@
 package Dominio.Usuario;
 
-import Persistencia.Persistente;
-
+import javax.persistence.AttributeOverride;
 import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.Embeddable;
 import javax.persistence.Transient;
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -11,8 +10,9 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
-@Entity
-public class ArchivoCacheado extends Persistente {
+@Embeddable
+@AttributeOverride(name = "nombreArchivo", column = @Column(name = "nombre_archivo"))
+public class ArchivoCacheado {
     @Column(name = "nombre_archivo")
     private String nombreArchivo;
     @Transient

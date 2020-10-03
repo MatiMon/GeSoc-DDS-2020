@@ -1,19 +1,17 @@
 package Dominio.MercadoLibre;
 
-import retrofit2.Call;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-import Dominio.MercadoLibre.MonedasMercadoLibre.Currencie;
-import Dominio.Moneda.Moneda;
 import Dominio.Ubicacion.Ciudad;
 import Dominio.Ubicacion.Pais;
 import Dominio.Ubicacion.Provincia;
 import Dominio.Ubicacion.ServicioUbicaciones;
+import retrofit2.Call;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UbicacionesMercadoLibre implements ServicioUbicaciones {
 	private Retrofit retrofit;

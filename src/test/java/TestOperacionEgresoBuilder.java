@@ -89,10 +89,7 @@ public class TestOperacionEgresoBuilder extends TestSetUpGeneral {
 
         Assert.assertEquals(operacion.getItems().size(), 2);
         Assert.assertEquals(operacion.getEntidad(), entidadBase);
-        //Assert.assertEquals(operacion.getPago(), this.enEectivo());
         Assert.assertEquals(operacion.getProveedor(), proveedor);
-        Assert.assertNull(operacion.getTipoDocumentoComercial());
-        Assert.assertNull(operacion.getNumeroDocumentoComercial());
     }
 
     @Test

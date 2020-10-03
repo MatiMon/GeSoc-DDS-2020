@@ -1,10 +1,9 @@
 package Dominio.MercadoLibre;
 
+import Dominio.MercadoLibre.MonedasMercadoLibre.Currencie;
+
 import java.io.IOException;
 import java.util.List;
-
-import Dominio.MercadoLibre.MonedasMercadoLibre.Currencie;
-import Dominio.MercadoLibre.UbicacionesMercadoLibre.PaisService;
 
 public class EjemploDeUso {
 

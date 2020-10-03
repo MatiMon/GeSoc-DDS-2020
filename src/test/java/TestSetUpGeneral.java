@@ -1,5 +1,5 @@
-import Dominio.Entidad.*;
 import Dominio.Entidad.Categoria.CategoriaEntidad;
+import Dominio.Entidad.*;
 import Dominio.MediosDePago.Efectivo;
 import Dominio.MediosDePago.MediosDePago;
 import Dominio.MediosDePago.Tarjeta;
@@ -8,22 +8,25 @@ import Dominio.OperacionEgreso.Producto;
 import Dominio.OperacionEgreso.TipoDocumentoComercial;
 import Dominio.Proveedor.Proveedor;
 import Dominio.Proveedor.TipoDeCodigoID;
+import Dominio.Ubicacion.Ciudad;
 import Dominio.Ubicacion.Direccion;
+import Dominio.Ubicacion.Pais;
+import Dominio.Ubicacion.Provincia;
 import Dominio.Usuario.*;
 import javafx.util.Pair;
 import org.junit.Before;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
-import java.time.LocalDateTime;
 import java.util.Arrays;
+import java.util.Date;
 
 public class TestSetUpGeneral {
     private static final ArchivoCacheado owaspFile = new ArchivoCacheado("/password-blacklist.txt", 5555);
     private static final ArchivoCacheado blacklistFile = new ArchivoCacheado("/10k-most-common.txt", 4563);
     protected Proveedor proveedor;
-    protected Producto producto1 = new Producto("1000","Prod1", new Double(100));
-    protected Producto producto2 = new Producto("1001","Prod2", new Double(200));
+    protected Producto producto1 = new Producto("1000", "Prod1", new Double(100));
+    protected Producto producto2 = new Producto("1001", "Prod2", new Double(200));
     protected Organizacion organizacion = new Organizacion("Org 1");
     protected EntidadJuridica entidadJuridica;
     protected EntidadBase entidadBase;
@@ -40,8 +43,12 @@ public class TestSetUpGeneral {
             1964);
 
 
-    Direccion direccion = new Direccion("Una calle", "Un numero123", "3", "Oficina 2");
-    Direccion direccion2 = new Direccion("Otra calle", "1234", "8", "D");
+    Pais pais = new Pais("Suiza", "1as");
+    Provincia provincia = new Provincia("Berna", "1we", pais);
+    Ciudad ciudad = new Ciudad("Berna", "BRN123", provincia);
+
+    Direccion direccion = new Direccion("Una calle", "Un numero123", "3", "Oficina 2", ciudad);
+    Direccion direccion2 = new Direccion("Otra calle", "1234", "8", "D", ciudad);
     TipoDeCodigoID tipoDeCodigoID = TipoDeCodigoID.CUIT;
     Empresa empresa = new Empresa(ClasificacionAfip.MEDIANA1);
     CategoriaEntidad catONG = new CategoriaEntidad("ONG");
@@ -62,7 +69,8 @@ public class TestSetUpGeneral {
                 TipoTarjeta.tarjetaCredito,
                 "1010202030304040",
                 "Juan Perez",
-                LocalDateTime.parse("2020-7-1"));
+                new Date()
+        );
     }
 
     protected MediosDePago enEectivo() {

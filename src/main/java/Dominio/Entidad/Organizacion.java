@@ -1,25 +1,25 @@
 package Dominio.Entidad;
-import Dominio.Entidad.Categoria.CategoriaEntidad;
+
 import Dominio.Usuario.Usuario;
 import Persistencia.Persistente;
 
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table(name = "organizacion")
 public class Organizacion extends Persistente {
+
 	private String nombre;
 
-	@OneToMany
-	@JoinColumn(name = "id_organizacion")
-	List<EntidadJuridica> entidades = new ArrayList<EntidadJuridica>();
+	@OneToMany (mappedBy = "organizacion")
+	private List<EntidadJuridica> entidades = new ArrayList<>();
 
-	@OneToMany
-	@JoinColumn(name = "id_organizacion")
-	List<Usuario> usuarios = new ArrayList<Usuario>();
+	@OneToMany (mappedBy = "organizacion")
+	private List<Usuario> usuarios = new ArrayList<>();
 
 	public Organizacion (String nombre) {
 		this.nombre = nombre;

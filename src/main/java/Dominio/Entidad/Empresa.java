@@ -1,20 +1,32 @@
 package Dominio.Entidad;
 
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.DiscriminatorValue;
+public class Empresa implements TipoEntidadJuridica {
 
-@DiscriminatorValue("E")
-public class Empresa extends TipoEntidadJuridica {
-	ClasificacionAfip clasificacion;
+    private ClasificacionAfip clasificacion;
 
-	// Constructor
-	public Empresa(ClasificacionAfip clasificacion) {
-		this.clasificacion = clasificacion;
-	}
+    @Override
+    public String getIdentificador() {
+        switch (clasificacion) {
+            case MICRO:
+                return "MICRO";
+            case MEDIANA1:
+                return "MEDIANA1";
+            case MEDIANA2:
+                return "MEDIANA2";
+            case PEQUENIA:
+                return "PEQUENIA";
+        }
+        return "";
+    }
 
-	// Getter
-	public ClasificacionAfip getClasificacion() {
-		return clasificacion;
-	}	
+    // Constructor
+    public Empresa(ClasificacionAfip clasificacion) {
+        this.clasificacion = clasificacion;
+    }
+
+    // Getter
+    public ClasificacionAfip getClasificacion() {
+        return clasificacion;
+    }
 
 }

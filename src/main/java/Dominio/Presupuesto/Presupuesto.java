@@ -9,24 +9,28 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(name = "presupuesto")
 public class Presupuesto extends Persistente {
 
     @ManyToOne
+    @JoinColumn(name = "operacion_de_egreso_id", referencedColumnName = "id")
     private OperacionDeEgreso operacionAsociada;
 
-    @OneToMany
-    @Column(name = "id_presupuesto")
+    @OneToMany(mappedBy = "presupuesto")
     private List<Item> items;
 
     @ElementCollection
+    @CollectionTable(name = "presupuesto_tipo_documento", joinColumns = {@JoinColumn(name = "presupuesto_id")})
+    @Column(name = "documento_comercial")
+    @Enumerated(EnumType.STRING)
     private List<TipoDocumentoComercial> documentoComerciales;
 
     @Column(name = "valor_total")
     private Double valorTotal;
 
     public Presupuesto(OperacionDeEgreso unEgreso,
-                List<Item> unosItems,
-                List<TipoDocumentoComercial> unosDocs) {
+                       List<Item> unosItems,
+                       List<TipoDocumentoComercial> unosDocs) {
         operacionAsociada = unEgreso;
         items = unosItems;
         documentoComerciales = unosDocs;

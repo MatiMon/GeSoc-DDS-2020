@@ -6,19 +6,20 @@ import Persistencia.Persistente;
 import javax.persistence.*;
 
 @Entity
+@Table (name = "proveedor")
 public class Proveedor extends Persistente {
     @Column(name = "razon_social")
-    String razonSocial;
+    private String razonSocial;
 
     @OneToOne
-    Direccion direccion;
+    private Direccion direccion;
 
     @Column(name = "tipo_codigo_id")
     @Enumerated(EnumType.ORDINAL)
-    TipoDeCodigoID tipoDeCodigoID;
+    private TipoDeCodigoID tipoDeCodigoID;
 
     @Column(name = "codigo_id")
-    int codigoID;
+    private int codigoID;
 
     //Constructor:
     public Proveedor(String razonSocial, Direccion direccion, TipoDeCodigoID tipoDeCodigoID, int codigoID) {

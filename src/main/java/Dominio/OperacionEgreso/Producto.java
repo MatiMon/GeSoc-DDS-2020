@@ -1,15 +1,18 @@
 package Dominio.OperacionEgreso;
 
-import Persistencia.Persistente;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-public class Producto extends Persistente {
+@Table (name = "producto")
+public class Producto {
 
-	@Column(name = "id_producto")
+	@Id
+	@Column(name = "id")
 	private String idProducto;
+
 	private String nombre;
 
 	@Column(name = "precio_unitario")

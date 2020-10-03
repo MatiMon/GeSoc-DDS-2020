@@ -2,12 +2,19 @@ package Dominio.Entidad.Categoria;
 
 import Dominio.Entidad.Entidad;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@Entity
+@DiscriminatorValue("BASE")
 public class BloquearNuevasBases extends ComportamientoCategoria {
 
-    private TiposComportamiento tipo = TiposComportamiento.BLOQUEO_NUEVAS_BASES;
+    public BloquearNuevasBases() {
+        tipo = TiposComportamiento.BLOQUEO_NUEVAS_BASES;
+    }
 
     @Override
-    public boolean esDelTipo(TiposComportamiento tipo){
+    public boolean esDelTipo(TiposComportamiento tipo) {
         return this.tipo.equals(tipo);
     }
 

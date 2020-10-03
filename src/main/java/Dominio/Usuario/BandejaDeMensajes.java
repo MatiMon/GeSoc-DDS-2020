@@ -1,21 +1,16 @@
 package Dominio.Usuario;
 
+import Dominio.OperacionEgreso.OperacionDeEgreso;
+
+import javax.persistence.Embeddable;
+import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
 
-import Dominio.OperacionEgreso.OperacionDeEgreso;
-import Persistencia.Persistente;
+@Embeddable
+public class BandejaDeMensajes {
 
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-
-@Entity
-public class BandejaDeMensajes extends Persistente {
-
-    @OneToMany
-    @JoinColumn(name = "bandeja_id")
+    @OneToMany(mappedBy = "usuario")
     private List<Mensaje> mensajes = new ArrayList<>();
 
     public List<Mensaje> getMensajes() {

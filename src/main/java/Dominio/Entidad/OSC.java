@@ -1,8 +1,9 @@
 package Dominio.Entidad;
 
-import javax.persistence.DiscriminatorValue;
+public class OSC implements TipoEntidadJuridica {
 
-@DiscriminatorValue("O")
-public class OSC extends TipoEntidadJuridica {
-
+    @Override
+    public String getIdentificador(){
+        return "OSC";
+    }
 }
