@@ -4,7 +4,7 @@
     
 https://app.lucidchart.com/documents/edit/1d482532-c44c-40a3-87de-eaebab8260fb/0_0?shared=true
 
-### Link al diagrame entidad relación:
+### Link al diagrama entidad relación:
 
 https://lucid.app/invitations/accept/ba1427d0-a21d-4c12-aba7-d4b5c682f9d8
 
