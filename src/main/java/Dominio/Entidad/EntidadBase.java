@@ -73,5 +73,9 @@ public class EntidadBase extends Entidad {
         reporte.imprimirReporteUltimoMes(etiquetaEgreso, this);
     }
 
+    public void setEntidadJuridica(EntidadJuridica entidadJuridica){
+        this.entidadJuridica = entidadJuridica;
+    }
+
 
 }

@@ -1,3 +1,5 @@
+package dominio;
+
 import Dominio.Usuario.PasswordHashedAndSalted;
 import org.junit.Test;
 

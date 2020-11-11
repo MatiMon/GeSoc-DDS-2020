@@ -1,8 +1,11 @@
 package Dominio.Usuario;
 
+import org.hibernate.annotations.Type;
+
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 import javax.persistence.Embeddable;
+import javax.persistence.Lob;
 import javax.persistence.Transient;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
@@ -12,7 +15,9 @@ import java.util.Arrays;
 
 @Embeddable
 public class PasswordHashedAndSalted{
+    @Lob
     private byte[] salt = new byte[16];
+    @Lob
     private byte[] hash;
     @Transient
     private int iterations = 128;

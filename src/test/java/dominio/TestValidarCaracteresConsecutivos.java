@@ -1,3 +1,5 @@
+package dominio;
+
 import Dominio.Usuario.ValidarCaracteresConsecutivos;
 import org.junit.Test;
 

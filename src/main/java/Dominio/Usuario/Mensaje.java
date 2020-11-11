@@ -57,5 +57,9 @@ public class Mensaje extends Persistente {
         return this;
     }
 
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
 
 }

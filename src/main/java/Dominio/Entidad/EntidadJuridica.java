@@ -45,7 +45,7 @@ public class EntidadJuridica extends Entidad {
     private CategoriaEntidad categoria;
 
     @Column(name = "valor_total_montos")
-    private Double valorTotalMontos;
+    private Double valorTotalMontos = 0.00;
 
     @Column(name = "monto_maximo_de_egresos")
     private Double montoMaximodeEgresos;
@@ -144,5 +144,8 @@ public class EntidadJuridica extends Entidad {
         reporte.imprimirReporteUltimoMes(etiquetaEgreso, this);
     }
 
+    public void setOrganizacion(Organizacion organizacion) {
+        this.organizacion = organizacion;
+    }
 
 }

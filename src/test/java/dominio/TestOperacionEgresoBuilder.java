@@ -1,3 +1,5 @@
+package dominio;
+
 import Dominio.OperacionEgreso.*;
 import org.junit.Assert;
 import org.junit.Before;

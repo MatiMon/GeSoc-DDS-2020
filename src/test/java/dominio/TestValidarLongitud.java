@@ -1,3 +1,5 @@
+package dominio;
+
 import Dominio.Usuario.ValidarLongitud;
 import org.junit.Test;
 

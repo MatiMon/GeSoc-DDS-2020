@@ -1,3 +1,5 @@
+package dominio;
+
 import Dominio.MercadoLibre.MonedasMercadoLibre;
 import Dominio.MercadoLibre.UbicacionesMercadoLibre;
 import Dominio.Moneda.RepositorioDeMonedas;

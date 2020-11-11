@@ -1,3 +1,5 @@
+package dominio;
+
 import Dominio.Usuario.ArchivoCacheado;
 import Dominio.Usuario.InvalidFileNameException;
 import org.junit.Test;

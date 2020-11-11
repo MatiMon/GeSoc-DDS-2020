@@ -1,3 +1,5 @@
+package dominio;
+
 import Dominio.MediosDePago.CantidadIncorrectaDeCaractereresExeption;
 import Dominio.MediosDePago.HayCaracteresNoNumericosEnLosNumerosDeLaTarjetaExeption;
 import Dominio.MediosDePago.Tarjeta;

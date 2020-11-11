@@ -107,5 +107,8 @@ public class Usuario extends Persistente {
 
     }
 
+    public void setOrganizacion(Organizacion organizacion) {
+        this.organizacion = organizacion;
+    }
 }
 

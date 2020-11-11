@@ -1,3 +1,5 @@
+package dominio;
+
 import Dominio.OperacionEgreso.Item;
 import Dominio.OperacionEgreso.OperacionDeEgreso;
 import Dominio.OperacionEgreso.OperacionEgresoBuilder;

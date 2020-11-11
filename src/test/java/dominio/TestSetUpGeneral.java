@@ -1,3 +1,5 @@
+package dominio;
+
 import Dominio.Entidad.Categoria.CategoriaEntidad;
 import Dominio.Entidad.*;
 import Dominio.MediosDePago.Efectivo;
@@ -47,11 +49,11 @@ public class TestSetUpGeneral {
     Provincia provincia = new Provincia("Berna", "1we", pais);
     Ciudad ciudad = new Ciudad("Berna", "BRN123", provincia);
 
-    Direccion direccion = new Direccion("Una calle", "Un numero123", "3", "Oficina 2", ciudad);
-    Direccion direccion2 = new Direccion("Otra calle", "1234", "8", "D", ciudad);
-    TipoDeCodigoID tipoDeCodigoID = TipoDeCodigoID.CUIT;
-    Empresa empresa = new Empresa(ClasificacionAfip.MEDIANA1);
-    CategoriaEntidad catONG = new CategoriaEntidad("ONG");
+    protected Direccion direccion = new Direccion("Una calle", "Un numero123", "3", "Oficina 2", ciudad);
+    protected Direccion direccion2 = new Direccion("Otra calle", "1234", "8", "D", ciudad);
+    protected TipoDeCodigoID tipoDeCodigoID = TipoDeCodigoID.CUIT;
+    protected Empresa empresa = new Empresa(ClasificacionAfip.MEDIANA1);
+    protected CategoriaEntidad catONG = new CategoriaEntidad("ONG");
 
 
     @Before

@@ -1,3 +1,5 @@
+package dominio;
+
 import Dominio.Entidad.Categoria.CategoriaEntidad;
 import Dominio.Entidad.ClasificacionAfip;
 import Dominio.Entidad.Empresa;
