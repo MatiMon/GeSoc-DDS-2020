@@ -1,4 +1,24 @@
-﻿<!DOCTYPE html>
+﻿<style>
+    boton_logout{
+        position:absolute;
+        left:0px;
+        top:0px;
+        width:66px;
+        height:26px;
+        background:inherit;
+        background-color:rgba(163, 0, 20, 0.498039215686275);
+        box-sizing:border-box;
+        border-width:1px;
+        border-style:solid;
+        border-color:rgba(121, 121, 121, 1);
+        border-radius:5px;
+        box-shadow:none;
+        font-size:15px;
+        color:#FFFFFF;
+    }
+</style>
+
+<!DOCTYPE html>
 <html>
   <head>
     <title>Pagina principal</title>
@@ -52,28 +72,36 @@
       </div>
 
       <!-- Boton Gestionar Entidades (Rectangle) -->
-      <div id="u13" class="ax_default button" data-label="Boton Gestionar Entidades">
+    <form action="/entidades" method="get">
+      <button id="u13" class="ax_default button" data-label="Boton Gestionar Entidades">
         <div id="u13_div" class=""></div>
         <div id="u13_text" class="text ">
           <p><span>Gestionar Entidades</span></p>
         </div>
-      </div>
+      </button>
+    </form>
 
       <!-- Boton Gestionar Egresos (Rectangle) -->
-      <div id="u14" class="ax_default button" data-label="Boton Gestionar Egresos">
+    <form action="/egresos" method="get">
+      <button id="u14" class="ax_default button" data-label="Boton Gestionar Egresos">
         <div id="u14_div" class=""></div>
         <div id="u14_text" class="text ">
           <p><span>Gestionar Egresos</span></p>
         </div>
-      </div>
+      </button>
+    </form>
 
       <!-- Boton log out (Rectangle) -->
-      <div id="u15" class="ax_default button" data-label="Boton log out">
+    <form action="/" method="get">
+      <button id="u15" class="ax_default button" data-label="Boton log out">
+      <boton_logout>
         <div id="u15_div" class=""></div>
         <div id="u15_text" class="text ">
           <p><span>Log out</span></p>
         </div>
-      </div>
+      </boton_logout>
+      </button>
+    </form>
 
       <!-- Panel derecho arriba (Rectangle) -->
       <div id="u16" class="ax_default box_2" data-label="Panel derecho arriba">
@@ -99,12 +127,14 @@
       </div>
 
       <!-- Boton Ver operaciones (Rectangle) -->
-      <div id="u19" class="ax_default button" data-label="Boton Ver operaciones">
+    <form action="/egresos" method="get">
+      <button id="u19" class="ax_default button" data-label="Boton Ver operaciones">
         <div id="u19_div" class=""></div>
         <div id="u19_text" class="text ">
           <p><span>Ver operaciones</span></p>
         </div>
-      </div>
+      </button>
+    </form>
 
       <!-- Boton Nueva operacion (Rectangle) -->
       <div id="u20" class="ax_default button" data-label="Boton Nueva operacion">
@@ -123,12 +153,14 @@
       </div>
 
       <!-- Boton Inicio (Rectangle) -->
-      <div id="u22" class="ax_default button" data-label="Boton Inicio">
+    <form action="/principal" method="get">
+      <button id="u22" class="ax_default button" data-label="Boton Inicio">
         <div id="u22_div" class=""></div>
         <div id="u22_text" class="text ">
           <p><span>Inicio</span></p>
         </div>
-      </div>
+      </button>
+    </form>
     </div>
   </body>
 </html>
