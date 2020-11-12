@@ -1,7 +1,7 @@
 package server;
 
-import Dominio.controllers.LoginController;
-import Dominio.controllers.UsuarioController;
+import dominio.controllers.LoginController;
+import dominio.controllers.UsuarioController;
 import spark.Spark;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 import spark.utils.BooleanHelper;

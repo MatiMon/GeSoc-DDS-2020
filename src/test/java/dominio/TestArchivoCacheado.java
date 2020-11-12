@@ -1,7 +1,7 @@
 package dominio;
 
-import Dominio.Usuario.ArchivoCacheado;
-import Dominio.Usuario.InvalidFileNameException;
+import dominio.modelo.usuario.ArchivoCacheado;
+import dominio.modelo.usuario.InvalidFileNameException;
 import org.junit.Test;
 public class TestArchivoCacheado {
 

@@ -1,9 +1,9 @@
 package dominio;
 
-import Dominio.MediosDePago.CantidadIncorrectaDeCaractereresExeption;
-import Dominio.MediosDePago.HayCaracteresNoNumericosEnLosNumerosDeLaTarjetaExeption;
-import Dominio.MediosDePago.Tarjeta;
-import Dominio.MediosDePago.TipoTarjeta;
+import dominio.modelo.mediosDePago.CantidadIncorrectaDeCaractereresExeption;
+import dominio.modelo.mediosDePago.HayCaracteresNoNumericosEnLosNumerosDeLaTarjetaExeption;
+import dominio.modelo.mediosDePago.Tarjeta;
+import dominio.modelo.mediosDePago.TipoTarjeta;
 import org.junit.Before;
 import org.junit.Test;
 

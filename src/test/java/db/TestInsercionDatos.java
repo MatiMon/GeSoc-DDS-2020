@@ -1,23 +1,16 @@
 package db;
 
-import Dominio.MediosDePago.Efectivo;
-import Dominio.MediosDePago.MediosDePago;
-import Dominio.OperacionEgreso.OperacionDeEgreso;
-import Dominio.OperacionEgreso.OperacionEgresoBuilder;
-import Dominio.OperacionEgreso.TipoDocumentoComercial;
-import Dominio.Usuario.Mensaje;
-import Dominio.Usuario.TipoUsuario;
-import Dominio.Usuario.Usuario;
-import Dominio.Usuario.ValidadorPasswords;
-import Persistencia.EntityManagerHelper;
+import dominio.modelo.mediosDePago.Efectivo;
+import dominio.modelo.mediosDePago.MediosDePago;
+import dominio.modelo.operacionEgreso.OperacionDeEgreso;
+import dominio.modelo.operacionEgreso.OperacionEgresoBuilder;
+import dominio.modelo.operacionEgreso.TipoDocumentoComercial;
+import dominio.modelo.usuario.Mensaje;
+import dominio.modelo.usuario.TipoUsuario;
+import dominio.modelo.usuario.Usuario;
 import dominio.TestSetUpGeneral;
-import org.junit.Before;
 import org.junit.Test;
-import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
-import org.uqbarproject.jpa.java8.extras.test.AbstractPersistenceTest;
 
-import javax.persistence.EntityManager;
-import javax.print.attribute.standard.Media;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 

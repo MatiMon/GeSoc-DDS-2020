@@ -1,9 +1,9 @@
 package dominio;
 
-import Dominio.MercadoLibre.MonedasMercadoLibre;
-import Dominio.MercadoLibre.UbicacionesMercadoLibre;
-import Dominio.Moneda.RepositorioDeMonedas;
-import Dominio.Ubicacion.RepositorioDeUbicaciones;
+import dominio.modelo.mercadoLibre.MonedasMercadoLibre;
+import dominio.modelo.mercadoLibre.UbicacionesMercadoLibre;
+import dominio.modelo.moneda.RepositorioDeMonedas;
+import dominio.modelo.ubicacion.RepositorioDeUbicaciones;
 import org.junit.Test;
 
 public class TestAPIMercadoLibre {

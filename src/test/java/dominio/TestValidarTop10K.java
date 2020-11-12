@@ -1,7 +1,7 @@
 package dominio;
 
-import Dominio.Usuario.ArchivoCacheado;
-import Dominio.Usuario.ValidarPorArchivo;
+import dominio.modelo.usuario.ArchivoCacheado;
+import dominio.modelo.usuario.ValidarPorArchivo;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

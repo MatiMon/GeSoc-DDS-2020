@@ -1,6 +1,6 @@
 package dominio;
 
-import Dominio.Usuario.*;
+import dominio.modelo.usuario.*;
 import org.junit.Before;
 import org.junit.Test;
 

@@ -1,15 +1,15 @@
 package dominio;
 
-import Dominio.Entidad.Categoria.CategoriaEntidad;
-import Dominio.Entidad.ClasificacionAfip;
-import Dominio.Entidad.Empresa;
-import Dominio.Entidad.EntidadBase;
-import Dominio.Entidad.EntidadJuridica;
-import Dominio.Proveedor.TipoDeCodigoID;
-import Dominio.Ubicacion.Ciudad;
-import Dominio.Ubicacion.Direccion;
-import Dominio.Ubicacion.Pais;
-import Dominio.Ubicacion.Provincia;
+import dominio.modelo.entidad.categoria.CategoriaEntidad;
+import dominio.modelo.entidad.ClasificacionAfip;
+import dominio.modelo.entidad.Empresa;
+import dominio.modelo.entidad.EntidadBase;
+import dominio.modelo.entidad.EntidadJuridica;
+import dominio.modelo.proveedor.TipoDeCodigoID;
+import dominio.modelo.ubicacion.Ciudad;
+import dominio.modelo.ubicacion.Direccion;
+import dominio.modelo.ubicacion.Pais;
+import dominio.modelo.ubicacion.Provincia;
 
 public class TestEntidad {
     Pais pais = new Pais("Suiza", "1as");

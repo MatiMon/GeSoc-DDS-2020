@@ -1,6 +1,6 @@
 package dominio;
 
-import Dominio.Usuario.PasswordHashedAndSalted;
+import dominio.modelo.usuario.PasswordHashedAndSalted;
 import org.junit.Test;
 
 import java.security.NoSuchAlgorithmException;

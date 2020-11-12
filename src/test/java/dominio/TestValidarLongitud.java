@@ -1,6 +1,6 @@
 package dominio;
 
-import Dominio.Usuario.ValidarLongitud;
+import dominio.modelo.usuario.ValidarLongitud;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

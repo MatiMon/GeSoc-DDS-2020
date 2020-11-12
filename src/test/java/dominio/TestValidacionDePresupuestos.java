@@ -1,10 +1,10 @@
 package dominio;
 
-import Dominio.OperacionEgreso.Item;
-import Dominio.OperacionEgreso.OperacionDeEgreso;
-import Dominio.OperacionEgreso.OperacionEgresoBuilder;
-import Dominio.OperacionEgreso.TipoDocumentoComercial;
-import Dominio.Presupuesto.*;
+import dominio.modelo.operacionEgreso.Item;
+import dominio.modelo.operacionEgreso.OperacionDeEgreso;
+import dominio.modelo.operacionEgreso.OperacionEgresoBuilder;
+import dominio.modelo.operacionEgreso.TipoDocumentoComercial;
+import dominio.modelo.presupuesto.*;
 import org.junit.Before;
 import org.junit.Test;
 

@@ -1,6 +1,6 @@
 package dominio;
 
-import Dominio.Usuario.ValidarCaracteresConsecutivos;
+import dominio.modelo.usuario.ValidarCaracteresConsecutivos;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

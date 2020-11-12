@@ -9,32 +9,32 @@
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
 
-        <class>Dominio.Usuario.Usuario</class>
-        <class>Dominio.Usuario.PasswordHashedAndSalted</class>
-        <class>Dominio.Usuario.BandejaDeMensajes</class>
-        <class>Dominio.Entidad.Entidad</class>
-        <class>Dominio.Entidad.TipoEntidadJuridica</class>
-        <class>Dominio.Entidad.EntidadBase</class>
-        <class>Dominio.Entidad.EntidadJuridica</class>
-        <class>Dominio.Entidad.Organizacion</class>
-        <class>Dominio.Proveedor.Proveedor</class>
-        <class>Dominio.MediosDePago.Tarjeta</class>
-        <class>Dominio.MediosDePago.Efectivo</class>
-        <class>Dominio.MediosDePago.MediosDePago</class>
-        <class>Dominio.OperacionEgreso.OperacionDeEgreso</class>
-        <class>Dominio.OperacionEgreso.Item</class>
-        <class>Dominio.OperacionEgreso.Producto</class>
-        <class>Dominio.Ubicacion.Direccion</class>
-        <class>Dominio.Ubicacion.Ciudad</class>
-        <class>Dominio.Ubicacion.Pais</class>
-        <class>Dominio.Ubicacion.Provincia</class>
-        <class>Dominio.Moneda.Moneda</class>
-        <class>Dominio.Presupuesto.Presupuesto</class>
-        <class>Dominio.Usuario.Mensaje</class>
-        <class>Dominio.OperacionEgreso.Etiquetado.EtiquetaEgreso</class>
-        <class>Dominio.OperacionEgreso.Etiquetado.TipoEtiqueta</class>
-        <class>Dominio.Entidad.Categoria.CategoriaEntidad</class>
-        <class>Dominio.Entidad.Categoria.ComportamientoCategoria</class>
+        <class>dominio.modelo.usuario.Usuario</class>
+        <class>dominio.modelo.usuario.PasswordHashedAndSalted</class>
+        <class>dominio.modelo.usuario.BandejaDeMensajes</class>
+        <class>dominio.modelo.entidad.Entidad</class>
+        <class>dominio.modelo.entidad.TipoEntidadJuridica</class>
+        <class>dominio.modelo.entidad.EntidadBase</class>
+        <class>dominio.modelo.entidad.EntidadJuridica</class>
+        <class>dominio.modelo.entidad.Organizacion</class>
+        <class>dominio.modelo.proveedor.Proveedor</class>
+        <class>dominio.modelo.mediosDePago.Tarjeta</class>
+        <class>dominio.modelo.mediosDePago.Efectivo</class>
+        <class>dominio.modelo.mediosDePago.MediosDePago</class>
+        <class>dominio.modelo.operacionEgreso.OperacionDeEgreso</class>
+        <class>dominio.modelo.operacionEgreso.Item</class>
+        <class>dominio.modelo.operacionEgreso.Producto</class>
+        <class>dominio.modelo.ubicacion.Direccion</class>
+        <class>dominio.modelo.ubicacion.Ciudad</class>
+        <class>dominio.modelo.ubicacion.Pais</class>
+        <class>dominio.modelo.ubicacion.Provincia</class>
+        <class>dominio.modelo.moneda.Moneda</class>
+        <class>dominio.modelo.presupuesto.Presupuesto</class>
+        <class>dominio.modelo.usuario.Mensaje</class>
+        <class>dominio.modelo.operacionEgreso.Etiquetado.EtiquetaEgreso</class>
+        <class>dominio.modelo.operacionEgreso.Etiquetado.TipoEtiqueta</class>
+        <class>dominio.modelo.entidad.categoria.CategoriaEntidad</class>
+        <class>dominio.modelo.entidad.categoria.ComportamientoCategoria</class>
 
 
         <properties>

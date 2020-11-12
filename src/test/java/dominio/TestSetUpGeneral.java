@@ -1,20 +1,20 @@
 package dominio;
 
-import Dominio.Entidad.Categoria.CategoriaEntidad;
-import Dominio.Entidad.*;
-import Dominio.MediosDePago.Efectivo;
-import Dominio.MediosDePago.MediosDePago;
-import Dominio.MediosDePago.Tarjeta;
-import Dominio.MediosDePago.TipoTarjeta;
-import Dominio.OperacionEgreso.Producto;
-import Dominio.OperacionEgreso.TipoDocumentoComercial;
-import Dominio.Proveedor.Proveedor;
-import Dominio.Proveedor.TipoDeCodigoID;
-import Dominio.Ubicacion.Ciudad;
-import Dominio.Ubicacion.Direccion;
-import Dominio.Ubicacion.Pais;
-import Dominio.Ubicacion.Provincia;
-import Dominio.Usuario.*;
+import dominio.modelo.entidad.categoria.CategoriaEntidad;
+import dominio.modelo.entidad.*;
+import dominio.modelo.mediosDePago.Efectivo;
+import dominio.modelo.mediosDePago.MediosDePago;
+import dominio.modelo.mediosDePago.Tarjeta;
+import dominio.modelo.mediosDePago.TipoTarjeta;
+import dominio.modelo.operacionEgreso.Producto;
+import dominio.modelo.operacionEgreso.TipoDocumentoComercial;
+import dominio.modelo.proveedor.Proveedor;
+import dominio.modelo.proveedor.TipoDeCodigoID;
+import dominio.modelo.ubicacion.Ciudad;
+import dominio.modelo.ubicacion.Direccion;
+import dominio.modelo.ubicacion.Pais;
+import dominio.modelo.ubicacion.Provincia;
+import dominio.modelo.usuario.*;
 import javafx.util.Pair;
 import org.junit.Before;
 
