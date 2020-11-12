@@ -1,5 +1,6 @@
 package server;
 
+import Dominio.controllers.LoginController;
 import Dominio.controllers.UsuarioController;
 import spark.Spark;
 import spark.template.handlebars.HandlebarsTemplateEngine;
@@ -25,11 +26,13 @@ public class Router {
 
     private static void configure(){
         UsuarioController usuarioController = new UsuarioController();
+        LoginController loginController = new LoginController();
 
         Spark.get("/", usuarioController::inicioSesion, Router.engine);
         Spark.get("/principal", usuarioController::paginaPrincipal, Router.engine);
         Spark.get("/egresos", usuarioController::gestionEgresos, Router.engine);
         Spark.get("/entidades", usuarioController::gestionEntidades, Router.engine);
+        Spark.post("/login", loginController::login);
 
     }
 }
