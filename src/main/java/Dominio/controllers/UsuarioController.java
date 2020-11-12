@@ -18,7 +18,15 @@ public class UsuarioController {
         return new ModelAndView(null, "inicio.hbs");
     }
 
-    public ModelAndView organizacion(Request request, Response response){
+    public ModelAndView paginaPrincipal(Request request, Response response){
         return new ModelAndView(null, "pagina_principal.hbs");
+    }
+
+    public ModelAndView gestionEgresos(Request request, Response response){
+        return new ModelAndView(null, "gestion_egresos.hbs");
+    }
+
+    public ModelAndView gestionEntidades(Request request, Response response){
+        return new ModelAndView(null, "gestion_entidades.hbs");
     }
 }

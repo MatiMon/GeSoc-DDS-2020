@@ -26,8 +26,10 @@ public class Router {
     private static void configure(){
         UsuarioController usuarioController = new UsuarioController();
 
-        Spark.get("/inicio", usuarioController::inicioSesion, Router.engine);
-        Spark.get("/organizacion", usuarioController::organizacion, Router.engine);
+        Spark.get("/", usuarioController::inicioSesion, Router.engine);
+        Spark.get("/principal", usuarioController::paginaPrincipal, Router.engine);
+        Spark.get("/egresos", usuarioController::gestionEgresos, Router.engine);
+        Spark.get("/entidades", usuarioController::gestionEntidades, Router.engine);
 
     }
 }
