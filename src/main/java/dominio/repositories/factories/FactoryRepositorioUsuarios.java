@@ -8,6 +8,9 @@ import dominio.repositories.daos.DAOMemoria;
 import dominio.repositories.testMemoData.Data;
 import config.Config;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
+
 public class FactoryRepositorioUsuarios {
     private static RepositorioDeUsuarios repo;
 
@@ -15,7 +18,7 @@ public class FactoryRepositorioUsuarios {
         repo = null;
     }
 
-    public static RepositorioDeUsuarios get(){
+    public static RepositorioDeUsuarios get() throws InvalidKeySpecException, NoSuchAlgorithmException {
         if(repo == null){
             if(Config.useDataBase){
                 DAO<Usuario> dao = new DAOHibernate<>(Usuario.class);

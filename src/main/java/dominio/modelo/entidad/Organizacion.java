@@ -24,7 +24,11 @@ public class Organizacion extends Persistente {
 	public Organizacion (String nombre) {
 		this.nombre = nombre;
 	}
-	
+
+	public Organizacion() {
+
+	}
+
 	public String getNombre() {
 		return nombre;
 	}

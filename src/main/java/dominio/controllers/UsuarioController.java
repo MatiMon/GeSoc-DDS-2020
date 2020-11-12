@@ -7,15 +7,16 @@ import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
+import java.util.HashMap;
+import java.util.Map;
+
 public class UsuarioController {
     private Repositorio<Usuario> repoUsuarios;
 
-    public UsuarioController(){
+    public UsuarioController() throws InvalidKeySpecException, NoSuchAlgorithmException {
         this.repoUsuarios = FactoryRepositorio.get(Usuario.class);
-    }
-
-    public ModelAndView inicioSesion(Request request, Response response){
-        return new ModelAndView(null, "inicio.hbs");
     }
 
     public ModelAndView paginaPrincipal(Request request, Response response){

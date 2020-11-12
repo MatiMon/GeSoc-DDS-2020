@@ -5,6 +5,8 @@ import dominio.repositories.Repositorio;
 import dominio.repositories.daos.*;
 import dominio.repositories.testMemoData.Data;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.util.HashMap;
 
 public class FactoryRepositorio {

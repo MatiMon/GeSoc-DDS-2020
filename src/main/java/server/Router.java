@@ -7,6 +7,9 @@ import spark.template.handlebars.HandlebarsTemplateEngine;
 import spark.utils.BooleanHelper;
 import spark.utils.HandlebarsTemplateEngineBuilder;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
+
 public class Router {
     private static HandlebarsTemplateEngine engine;
 
@@ -18,17 +21,17 @@ public class Router {
                 .build();
     }
 
-    public static void init() {
+    public static void init() throws InvalidKeySpecException, NoSuchAlgorithmException {
         Router.initEngine();
         Spark.staticFileLocation("/public");
         Router.configure();
     }
 
-    private static void configure(){
+    private static void configure() throws InvalidKeySpecException, NoSuchAlgorithmException {
         UsuarioController usuarioController = new UsuarioController();
         LoginController loginController = new LoginController();
 
-        Spark.get("/", usuarioController::inicioSesion, Router.engine);
+        Spark.get("/", loginController::inicioSesion, Router.engine);
         Spark.get("/principal", usuarioController::paginaPrincipal, Router.engine);
         Spark.get("/egresos", usuarioController::gestionEgresos, Router.engine);
         Spark.get("/entidades", usuarioController::gestionEntidades, Router.engine);
