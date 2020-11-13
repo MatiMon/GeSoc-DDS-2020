@@ -18,14 +18,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class OperacionController extends Controller{
-    private Repositorio<OperacionDeEgreso> repoOperaciones;
-
-    public OperacionController() {
-        this.repoOperaciones = FactoryRepositorio.get(OperacionDeEgreso.class);
-    }
 
     public ModelAndView mostrarOperaciones(Request request, Response response){
-        List<OperacionDeEgreso> operaciones = this.repoOperaciones.buscarTodos();
+        List<OperacionDeEgreso> operaciones = this.getOperaciones(this.getOrganizacion(request));
         Map<String, Object> parametros = this.getSessionParams(request);
         parametros.put("operaciones", operaciones);
         return new ModelAndView(parametros, "gestion_egresos.hbs");

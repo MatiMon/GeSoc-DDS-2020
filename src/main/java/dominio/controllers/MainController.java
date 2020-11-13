@@ -17,12 +17,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class MainController extends Controller{
-    private Repositorio<OperacionDeEgreso> repoEgresos;
 
-    public MainController() {
-        super();
-        this.repoEgresos = FactoryRepositorio.get(OperacionDeEgreso.class);
-    }
     //TODO: un main controller que mande los datos para headers y los demas controller extienden de ese
     // organizar mejor los controllers, repartir la logica que esta toda en UsuarioController en varios.
     // Vista de creacion de operacion
@@ -34,10 +29,7 @@ public class MainController extends Controller{
         Map<String, Object> parametros = this.getSessionParams(request);
         Organizacion organizacion = this.getOrganizacion(request);
         Usuario usuario = this.getUsuario(request);
-        List<OperacionDeEgreso> operaciones = this.repoEgresos.buscarTodos()
-                .stream()
-                .filter(operacionDeEgreso -> operacionDeEgreso.getEntidad().perteneceAOrganizacion(organizacion))
-                .collect(Collectors.toList());
+        List<OperacionDeEgreso> operaciones = this.getOperaciones(organizacion);
         parametros.put("mensajes", usuario.getBandeja().getMensajes());
         //traer las operaciones de la organizacion
         parametros.put("operaciones", operaciones);

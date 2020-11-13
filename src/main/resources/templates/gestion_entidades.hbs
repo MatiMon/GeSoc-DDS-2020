@@ -8,144 +8,148 @@
     });
 </script>
 <html>
-  <head>
+<head>
     <title>Gestion entidades</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <link href="/css/axure_rp_page.css" type="text/css" rel="stylesheet"/>
     <link href="/css/styles.css" type="text/css" rel="stylesheet"/>
     <link href="/css/stylesGestionEntidades.css" type="text/css" rel="stylesheet"/>
-      </head>
-  <body>
-    <div id="base" class="">
+</head>
+<body>
+<div id="base" class="">
 
-      <!-- Header (Rectangle) -->
-      <div id="u35" class="ax_default box_2" data-label="Header">
+    <!-- Header (Rectangle) -->
+    <div id="u35" class="ax_default box_2" data-label="Header">
         <div id="u35_div" class=""></div>
         <div id="u35_text" class="text " style="display:none; visibility: hidden">
-          <p></p>
+            <p></p>
         </div>
-      </div>
+    </div>
 
-      <!-- Nombre organizacion (Rectangle) -->
-      <div id="u36" class="ax_default heading_1" data-label="Nombre organizacion">
+    <!-- Nombre organizacion (Rectangle) -->
+    <div id="u36" class="ax_default heading_1" data-label="Nombre organizacion">
         <div id="u36_div" class=""></div>
         <div id="u36_text" class="text ">
-          <p><span>Organizacion default</span></p>
+            <p><span>{{organizacion}}</span></p>
         </div>
-      </div>
+    </div>
 
-      <!-- Nombre usuario (Rectangle) -->
-      <div id="u37" class="ax_default heading_2" data-label="Nombre usuario">
+    <!-- Nombre usuario (Rectangle) -->
+    <div id="u37" class="ax_default heading_2" data-label="Nombre usuario">
         <div id="u37_div" class=""></div>
         <div id="u37_text" class="text ">
-          <p><span>Usuario default</span></p>
+            <p><span>{{nombreUsuario}}</span></p>
         </div>
-      </div>
+    </div>
 
-      <!-- Logo (Image) -->
-      <div id="u38" class="ax_default image" data-label="Logo">
+    <!-- Logo (Image) -->
+    <div id="u38" class="ax_default image" data-label="Logo">
         <img id="u38_img" class="img " src="/img/logo_u11.png"/>
         <div id="u38_text" class="text " style="display:none; visibility: hidden">
-          <p></p>
+            <p></p>
         </div>
-      </div>
+    </div>
 
-      <!-- Boton log out (Rectangle) -->
+    <!-- Boton log out (Rectangle) -->
     <form action="/" method="get" id="formLogout">
-      <div id="u39" class="ax_default button" data-label="Boton log out" style="cursor: pointer;">
-        <div id="u39_div" class=""></div>
-        <div id="u39_text" class="text ">
-          <p><span>Log out</span></p>
+        <div id="u39" class="ax_default button" data-label="Boton log out" style="cursor: pointer;">
+            <div id="u39_div" class=""></div>
+            <div id="u39_text" class="text ">
+                <p><span>Log out</span></p>
+            </div>
         </div>
-      </div>
     </form>
 
-      <!-- Panel derecho arriba (Rectangle) -->
-      <div id="u40" class="ax_default box_2" data-label="Panel derecho arriba">
+    <!-- Panel derecho arriba (Rectangle) -->
+    <div id="u40" class="ax_default box_2" data-label="Panel derecho arriba">
         <div id="u40_div" class=""></div>
-        <div id="u40_text" class="text " >
-          <p></p>
+        <div id="u40_text" class="text ">
+            <p></p>
         </div>
-      </div>
+    </div>
 
-      <!-- Lista mensajes (List Box) -->
-      <div id="u41" class="ax_default list_box" data-label="Lista mensajes">
+    <!-- Lista mensajes (List Box) -->
+    <div id="u41" class="ax_default list_box" data-label="Lista mensajes">
         <div id="u41_div" class="">
-            <table>
+            <table cellspacing="0" cellpadding="1" border="1" width="700">
                 <thead>
-                <th><span>Nombre de la Entidad</span></th>
-                <th><span>Tipo de Entidad</span></th>
+                <th>Nombre de la Entidad</th>
+                <th>Tipo de Entidad</th>
                 </thead>
                 <tbody>
                 {{#each entidadesBase}}
-                    <tr><span>{{nombreFicticio}}</span></tr>
-                    <tr><span>Entidad Base</span></tr>
+                    <tr>
+                        <td>{{nombreFicticio}}</td>
+                        <td>Entidad Base</td>
+                    </tr>
                 {{/each}}
                 {{#each entidadesJuridicas}}
-                    <tr><span>{{nombreFicticio}}</span></tr>
-                    <tr><span>Entidad Juridica</span></tr>
-                    {{/each}}
+                    <tr>
+                        <td>{{nombreFicticio}}</td>
+                        <td>Entidad Juridica</td>
+                {{/each}}
+                </tr>
                 </tbody>
             </table>
 
         </div>
         <select id="u41_input" size="2" class="u41_input">
         </select>
-      </div>
+    </div>
 
-      <!-- Boton Nueva entidad (Rectangle) -->
-      <div id="u42" class="ax_default button" data-label="Boton Nueva entidad">
+    <!-- Boton Nueva entidad (Rectangle) -->
+    <div id="u42" class="ax_default button" data-label="Boton Nueva entidad">
         <div id="u42_div" class=""></div>
         <div id="u42_text" class="text ">
-          <p><span>Nueva entidad</span></p>
+            <p><span>Nueva entidad</span></p>
         </div>
-      </div>
+    </div>
 
-      <!-- Panel izquierdo (Rectangle) -->
-      <div id="u43" class="ax_default box_2" data-label="Panel izquierdo">
+    <!-- Panel izquierdo (Rectangle) -->
+    <div id="u43" class="ax_default box_2" data-label="Panel izquierdo">
         <div id="u43_div" class=""></div>
         <div id="u43_text" class="text " style="display:none; visibility: hidden">
-          <p></p>
+            <p></p>
         </div>
-      </div>
+    </div>
 
-      <!-- Boton Gestionar Entidades (Rectangle) -->
+    <!-- Boton Gestionar Entidades (Rectangle) -->
     <form action="/entidades" method="get">
-      <button id="u44" class="ax_default button" data-label="Boton Gestionar Entidades">
-        <div id="u44_div" class=""></div>
-        <div id="u44_text" class="text ">
-          <p><span>Gestionar Entidades</span></p>
-        </div>
-      </button>
+        <button id="u44" class="ax_default button" data-label="Boton Gestionar Entidades">
+            <div id="u44_div" class=""></div>
+            <div id="u44_text" class="text ">
+                <p><span>Gestionar Entidades</span></p>
+            </div>
+        </button>
     </form>
 
-      <!-- Boton Gestionar Egresos (Rectangle) -->
+    <!-- Boton Gestionar Egresos (Rectangle) -->
     <form action="/egresos" method="get">
-      <button id="u45" class="ax_default button" data-label="Boton Gestionar Egresos">
-        <div id="u45_div" class=""></div>
-        <div id="u45_text" class="text ">
-          <p><span>Gestionar Egresos</span></p>
-        </div>
-      </button>
+        <button id="u45" class="ax_default button" data-label="Boton Gestionar Egresos">
+            <div id="u45_div" class=""></div>
+            <div id="u45_text" class="text ">
+                <p><span>Gestionar Egresos</span></p>
+            </div>
+        </button>
     </form>
 
-      <!-- Boton Inicio (Rectangle) -->
-        <form action="/principal" method="get">
-            <button href="/principal" id="u46" class="ax_default button" data-label="Boton Inicio">
-                <div id="u46_div" class=""></div>
-                <div id="u46_text" class="text ">
-                    <p><span>Inicio</span></p>
-                </div>
-            </button>
-        </form>
+    <!-- Boton Inicio (Rectangle) -->
+    <form action="/principal" method="get">
+        <button href="/principal" id="u46" class="ax_default button" data-label="Boton Inicio">
+            <div id="u46_div" class=""></div>
+            <div id="u46_text" class="text ">
+                <p><span>Inicio</span></p>
+            </div>
+        </button>
+    </form>
 
-      <!-- Droplist filtro categoria (Droplist) -->
-      <div id="u47" class="ax_default droplist" data-label="Droplist filtro categoria">
+    <!-- Droplist filtro categoria (Droplist) -->
+    <div id="u47" class="ax_default droplist" data-label="Droplist filtro categoria">
         <div id="u47_div" class=""></div>
         <select id="u47_input" class="u47_input">
         </select>
-      </div>
     </div>
-  </body>
+</div>
+</body>
 </html>

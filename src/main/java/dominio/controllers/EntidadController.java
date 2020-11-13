@@ -13,12 +13,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class EntidadController {
+public class EntidadController extends Controller {
     private Repositorio<EntidadBase> repoEntidadesBase;
     private Repositorio<EntidadJuridica> repoEntidadesJuridicas;
 
 
     public EntidadController() {
+        super();
         this.repoEntidadesBase = FactoryRepositorio.get(EntidadBase.class);
         this.repoEntidadesJuridicas = FactoryRepositorio.get(EntidadJuridica.class);
     }
@@ -29,7 +30,7 @@ public class EntidadController {
         entidadesBase = this.repoEntidadesBase.buscarTodos();
         entidadesJuridicas = this.repoEntidadesJuridicas.buscarTodos();
 
-        Map<String,Object> parametros = new HashMap<>();
+        Map<String,Object> parametros = this.getSessionParams(request);
         parametros.put("entidadesBase",entidadesBase);
         parametros.put("entidadesJuridicas",entidadesJuridicas);
 
