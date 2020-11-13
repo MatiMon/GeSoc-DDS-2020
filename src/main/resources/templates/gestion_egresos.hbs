@@ -61,20 +61,44 @@
       </div>
     </form>
 
-      <!-- Panel derecho arriba (Rectangle) -->
-      <div id="u28" class="ax_default box_2" data-label="Panel derecho arriba">
+      <!-- Panel derecho (Rectangle) -->
+      <div id="u28" class="ax_default box_2" data-label="Panel derecho">
         <div id="u28_div" class=""></div>
         <div id="u28_text" class="text " style="display:none; visibility: hidden">
           <p></p>
         </div>
       </div>
 
-      <!-- Lista mensajes (List Box) -->
-      <div id="u29" class="ax_default list_box" data-label="Lista mensajes">
-        <div id="u29_div" class=""></div>
+      <!-- Lista egresos (List Box) -->
+      <div id="u29" class="ax_default list_box" data-label="Lista egresos">
+        <div id="u29_div" class="">
+            <table width="700">
+                <table cellspacing="0" cellpadding="1" border="1" width="700" >
+                    <tr style="color:white;background-color:black">
+                        <th> Fecha</th>
+                        <th> Nº documento</th>
+                        <th> Tipo documento</th>
+                        <th> Proveedor</th>
+                        <th> Entidad</th>
+                        <th> Valor total</th>
+                    </tr>
+                </table>
+                {{#each operaciones}}
+                    <tr>
+                        <td> fecha </td>
+                        <td>{{numeroDocumentoComercial}}</td>
+                        <td>{{tipoDocumentoComercial}}</td>
+                        <td>{{proveedor.codigoID}}</td>
+                        <td>nombre entidad</td>
+                        <td>{{valorTotal}}</td>
+                    </tr>
+                {{/each}}
+            </table>
+        </div>
         <select id="u29_input" size="2" class="u29_input">
         </select>
       </div>
+
 
       <!-- Boton Nueva operacion (Rectangle) -->
       <div id="u30" class="ax_default button" data-label="Boton Nueva operacion">
