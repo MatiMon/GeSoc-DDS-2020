@@ -2,7 +2,7 @@
 
 ### Link al diagrama de clases:
     
-https://app.lucidchart.com/documents/edit/1d482532-c44c-40a3-87de-eaebab8260fb/0_0?shared=true
+https://app.lucidchart.com/lucidchart/a3beaf32-795c-4378-9de1-49b2e16ea657/edit?page=0_0#?folder_id=home&browser=icon
 
 ### Link al diagrama entidad relación:
 
