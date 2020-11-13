@@ -158,6 +158,34 @@
         </div>
     </button>
 </form>
+
+<!-- Ultimas operaciones (Rectangle) -->
+<div id="u21" class="ax_default box_2" data-label="Ultimas operaciones">
+    <div id="u21_div" class="">
+        <table>
+            <thead>
+            <th>Fecha</th>
+            <th>Nº documento</th>
+            <th>Tipo documento</th>
+            <th>Proveedor</th>
+            <th>Entidad</th>
+            <th>Valor total</th>
+            </thead>
+            <tbody>
+            {{#each operaciones}}
+                <tr>
+                    <td>{{fechaOperacion}}</td>
+                    <td>{{numeroDocumentoComercial}}</td>
+                    <td>{{tipoDocumentoComercial}}</td>
+                    <td>{{proveedor.razonSocial}}</td>
+                    <td>{{entidad.nombreFicticio}}</td>
+                    <td>{{valorTotal}}</td>
+                </tr>
+            {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>
 </div>
 </body>
 </html>
