@@ -16,12 +16,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class UsuarioController {
-    private Repositorio<Usuario> repoUsuarios;
+public class MainController extends Controller{
     private Repositorio<OperacionDeEgreso> repoEgresos;
 
-    public UsuarioController() throws InvalidKeySpecException, NoSuchAlgorithmException {
-        this.repoUsuarios = FactoryRepositorio.get(Usuario.class);
+    public MainController() {
+        super();
         this.repoEgresos = FactoryRepositorio.get(OperacionDeEgreso.class);
     }
     //TODO: un main controller que mande los datos para headers y los demas controller extienden de ese
@@ -32,39 +31,22 @@ public class UsuarioController {
     // Vista de linkear a categoria
 
     public ModelAndView paginaPrincipal(Request request, Response response) {
-        this.repoUsuarios = FactoryRepositorio.get(Usuario.class);
-        long userId = request.session().attribute("id");
-        Map<String, Object> parametros = new HashMap<>();
-        Usuario usuario = this.repoUsuarios.buscar(userId);
-        Organizacion organizacion = usuario.getOrganizacion();
+        Map<String, Object> parametros = this.getSessionParams(request);
+        Organizacion organizacion = this.getOrganizacion(request);
+        Usuario usuario = this.getUsuario(request);
         List<OperacionDeEgreso> operaciones = this.repoEgresos.buscarTodos()
                 .stream()
                 .filter(operacionDeEgreso -> operacionDeEgreso.getEntidad().perteneceAOrganizacion(organizacion))
                 .collect(Collectors.toList());
         parametros.put("mensajes", usuario.getBandeja().getMensajes());
-        parametros.put("nombreUsuario", usuario.getNombreUsuario());
-        parametros.put("organizacion", organizacion.getNombre());
         //traer las operaciones de la organizacion
         parametros.put("operaciones", operaciones);
         return new ModelAndView(parametros, "pagina_principal.hbs");
-    }
-
-    public ModelAndView gestionEgresos(Request request, Response response) {
-        return new ModelAndView(null, "gestion_egresos.hbs");
     }
 
     public ModelAndView gestionEntidades(Request request, Response response) {
         return new ModelAndView(null, "gestion_entidades.hbs");
     }
 
-    public ModelAndView nuevaOperacion(Request request, Response response) {
-        this.repoUsuarios = FactoryRepositorio.get(Usuario.class);
-        long userId = request.session().attribute("id");
-        Map<String, Object> parametros = new HashMap<>();
-        Usuario usuario = this.repoUsuarios.buscar(userId);
-        Organizacion organizacion = usuario.getOrganizacion();
-        parametros.put("nombreUsuario", usuario.getNombreUsuario());
-        parametros.put("organizacion", organizacion.getNombre());
-        return new ModelAndView(parametros, "nueva-operacion.hbs");
-    }
+
 }

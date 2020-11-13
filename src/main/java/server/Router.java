@@ -1,7 +1,8 @@
 package server;
 
 import dominio.controllers.LoginController;
-import dominio.controllers.UsuarioController;
+import dominio.controllers.OperacionController;
+import dominio.controllers.MainController;
 import spark.Spark;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 import spark.utils.BooleanHelper;
@@ -28,14 +29,15 @@ public class Router {
     }
 
     private static void configure() throws InvalidKeySpecException, NoSuchAlgorithmException {
-        UsuarioController usuarioController = new UsuarioController();
+        MainController mainController = new MainController();
         LoginController loginController = new LoginController();
+        OperacionController operacionController = new OperacionController();
 
         Spark.get("/", loginController::inicioSesion, Router.engine);
-        Spark.get("/principal", usuarioController::paginaPrincipal, Router.engine);
-        Spark.get("/egresos", usuarioController::gestionEgresos, Router.engine);
-        Spark.get("/entidades", usuarioController::gestionEntidades, Router.engine);
-        Spark.get("/nueva-operacion", usuarioController::nuevaOperacion, Router.engine);
+        Spark.get("/principal", mainController::paginaPrincipal, Router.engine);
+        Spark.get("/egresos", operacionController::mostrarOperaciones, Router.engine);
+        Spark.get("/entidades", mainController::gestionEntidades, Router.engine);
+        Spark.get("/nueva-operacion", operacionController::nuevaOperacion, Router.engine);
         Spark.post("/login", loginController::login);
 
     }
