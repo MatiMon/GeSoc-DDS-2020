@@ -24,6 +24,12 @@ public class UsuarioController {
         this.repoUsuarios = FactoryRepositorio.get(Usuario.class);
         this.repoEgresos = FactoryRepositorio.get(OperacionDeEgreso.class);
     }
+    //TODO: un main controller que mande los datos para headers y los demas controller extienden de ese
+    // organizar mejor los controllers, repartir la logica que esta toda en UsuarioController en varios.
+    // Vista de creacion de operacion
+    // Vista de operaciones general
+    // Vista de entidades
+    // Vista de linkear a categoria
 
     public ModelAndView paginaPrincipal(Request request, Response response) {
         this.repoUsuarios = FactoryRepositorio.get(Usuario.class);
@@ -49,5 +55,16 @@ public class UsuarioController {
 
     public ModelAndView gestionEntidades(Request request, Response response) {
         return new ModelAndView(null, "gestion_entidades.hbs");
+    }
+
+    public ModelAndView nuevaOperacion(Request request, Response response) {
+        this.repoUsuarios = FactoryRepositorio.get(Usuario.class);
+        long userId = request.session().attribute("id");
+        Map<String, Object> parametros = new HashMap<>();
+        Usuario usuario = this.repoUsuarios.buscar(userId);
+        Organizacion organizacion = usuario.getOrganizacion();
+        parametros.put("nombreUsuario", usuario.getNombreUsuario());
+        parametros.put("organizacion", organizacion.getNombre());
+        return new ModelAndView(parametros, "nueva-operacion.hbs");
     }
 }

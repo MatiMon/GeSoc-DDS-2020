@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <script>
     window.addEventListener("DOMContentLoaded", function () {
         let form = document.getElementById("formLogout");
@@ -105,48 +105,15 @@
         </div>
     </div>
 
-    <!-- Lista mensajes (List Box) -->
-    <div id="u18" class="ax_default list_box" data-label="Lista mensajes">
-        <div id="u18_div" class="">
-            <table>
-                <thead>
-                <th>Fecha</th>
-                <th>Descripcion</th>
-                <th>Leido</th>
-                </thead>
-                <tbody>
-                {{#each mensajes}}
-                    <tr>
-                        <td>{{fechaYHora}}</td>
-                        <td>{{descripcion}}</td>
-                        <td>{{leido}}</td>
-                    </tr>
-                {{/each}}
-                </tbody>
-            </table>
+    <!-- Boton Nueva operacion (Rectangle) -->
+    <div id="u20" class="ax_default button" data-label="Boton Nueva operacion">
+        <div id="u20_div" class=""></div>
+        <div id="u20_text" class="text ">
+            <p><span>Nueva operación</span></p>
         </div>
     </div>
 
-    <!-- Boton Ver operaciones (Rectangle) -->
-    <form action="/egresos" method="get">
-        <button id="u19" class="ax_default button" data-label="Boton Ver operaciones">
-            <div id="u19_div" class=""></div>
-            <div id="u19_text" class="text ">
-                <p><span>Ver operaciones</span></p>
-            </div>
-        </button>
-    </form>
-
-    <!-- Boton Nueva operacion (Rectangle) -->
-    <form action="/nueva-operacion" method="get">
-        <button id="u20" class="ax_default button" data-label="Boton Nueva operacion">
-            <div id="u20_div" class=""></div>
-            <div id="u20_text" class="text ">
-                <p><span>Nueva operación</span></p>
-            </div>
-        </button>
-    </form>
-
+    <!-- Ultimas operaciones (Rectangle) -->
 </div>
 
 <!-- Boton Inicio (Rectangle) -->
