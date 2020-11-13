@@ -24,4 +24,6 @@ public abstract class Entidad {
     public abstract void validarGeneracionOperacion();
 
     public abstract void generarReporte(EtiquetaEgreso etiquetaEgreso);
+
+    public abstract boolean perteneceAOrganizacion(Organizacion organizacion);
 }

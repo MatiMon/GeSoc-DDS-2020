@@ -37,6 +37,10 @@ public class Repositorio<T> {
         return this.dao.buscar(id);
     }
 
+    public T buscar(long id){
+        return this.dao.buscar(id);
+    }
+
     public CriteriaBuilder criteriaBuilder(){
         return EntityManagerHelper.getEntityManager().getCriteriaBuilder();
     }

@@ -33,6 +33,10 @@ public class Direccion extends Persistente {
         this.ciudad = ciudad.getNombre();
     }
 
+    public Direccion() {
+
+    }
+
     //Getters
     public String getCalle() {
         return calle;

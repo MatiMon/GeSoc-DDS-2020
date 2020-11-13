@@ -37,6 +37,8 @@ public class Router {
         Spark.get("/principal", usuarioController::paginaPrincipal, Router.engine);
         Spark.get("/egresos", usuarioController::gestionEgresos, Router.engine);
         Spark.get("/entidades", entidadController::mostrarTodas, Router.engine);
+        //Spark.get("/entidades", usuarioController::gestionEntidades, Router.engine);
+        Spark.get("/nueva-operacion", usuarioController::nuevaOperacion, Router.engine);
         Spark.post("/login", loginController::login);
 
 

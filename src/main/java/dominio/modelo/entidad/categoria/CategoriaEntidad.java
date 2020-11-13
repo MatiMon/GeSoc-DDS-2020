@@ -23,6 +23,10 @@ public class CategoriaEntidad extends Persistente {
         agregarComportamientosDefault();
     }
 
+    public CategoriaEntidad() {
+        
+    }
+
     private void agregarComportamientosDefault() {
         comportamientos.add(new BloqueoNuevoEgreso());
         comportamientos.add(new BloquearNuevasBases());

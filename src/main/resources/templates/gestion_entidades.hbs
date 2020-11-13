@@ -1,4 +1,12 @@
 ﻿<!DOCTYPE html>
+<script>
+    window.addEventListener("DOMContentLoaded", function () {
+        let form = document.getElementById("formLogout");
+        document.getElementById("u39").addEventListener("click", function () {
+            form.submit();
+        });
+    });
+</script>
 <html>
   <head>
     <title>Gestion entidades</title>
@@ -44,8 +52,8 @@
       </div>
 
       <!-- Boton log out (Rectangle) -->
-    <form action="/" method="get">
-      <div id="u39" class="ax_default button" data-label="Boton log out">
+    <form action="/" method="get" id="formLogout">
+      <div id="u39" class="ax_default button" data-label="Boton log out" style="cursor: pointer;">
         <div id="u39_div" class=""></div>
         <div id="u39_text" class="text ">
           <p><span>Log out</span></p>
@@ -56,7 +64,7 @@
       <!-- Panel derecho arriba (Rectangle) -->
       <div id="u40" class="ax_default box_2" data-label="Panel derecho arriba">
         <div id="u40_div" class=""></div>
-        <div id="u40_text" class="text " style="display:none; visibility: hidden">
+        <div id="u40_text" class="text " >
           <p></p>
         </div>
       </div>
@@ -64,13 +72,22 @@
       <!-- Lista mensajes (List Box) -->
       <div id="u41" class="ax_default list_box" data-label="Lista mensajes">
         <div id="u41_div" class="">
-            <ul>
+            <table>
+                <thead>
+                <th><span>Nombre de la Entidad</span></th>
+                <th><span>Tipo de Entidad</span></th>
+                </thead>
                 <tbody>
                 {{#each entidadesBase}}
-                    <li><p>{{nombreFicticio}}</p></li>
+                    <tr><span>{{nombreFicticio}}</span></tr>
+                    <tr><span>Entidad Base</span></tr>
                 {{/each}}
+                {{#each entidadesJuridicas}}
+                    <tr><span>{{nombreFicticio}}</span></tr>
+                    <tr><span>Entidad Juridica</span></tr>
+                    {{/each}}
                 </tbody>
-            </ul>
+            </table>
 
         </div>
         <select id="u41_input" size="2" class="u41_input">

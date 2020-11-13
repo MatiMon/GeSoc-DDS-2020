@@ -107,8 +107,20 @@ public class Usuario extends Persistente {
 
     }
 
+    public Organizacion getOrganizacion() {
+        return this.organizacion;
+    }
+
     public void setOrganizacion(Organizacion organizacion) {
         this.organizacion = organizacion;
+    }
+
+    public String getNombreUsuario() {
+        return this.nombreUsuario;
+    }
+
+    public List<OperacionDeEgreso> getOperacionesDeEgreso() {
+        return this.operacionesDeEgreso;
     }
 }
 

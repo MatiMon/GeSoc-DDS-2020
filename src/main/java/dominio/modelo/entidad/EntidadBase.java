@@ -32,6 +32,10 @@ public class EntidadBase extends Entidad {
         entidadJuridica.agregarEntidadBase(this);
     }
 
+    public EntidadBase() {
+
+    }
+
     // Getters
     public String getDescripcion() {
         return descripcion;
@@ -71,6 +75,11 @@ public class EntidadBase extends Entidad {
     @Override
     public void generarReporte(EtiquetaEgreso etiquetaEgreso) {
         reporte.imprimirReporteUltimoMes(etiquetaEgreso, this);
+    }
+
+    @Override
+    public boolean perteneceAOrganizacion(Organizacion organizacion) {
+        return this.entidadJuridica.perteneceAOrganizacion(organizacion);
     }
 
     public void setEntidadJuridica(EntidadJuridica entidadJuridica){
