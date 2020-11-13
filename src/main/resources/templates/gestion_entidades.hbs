@@ -1,4 +1,12 @@
 ﻿<!DOCTYPE html>
+<script>
+    window.addEventListener("DOMContentLoaded", function () {
+        let form = document.getElementById("formLogout");
+        document.getElementById("u39").addEventListener("click", function () {
+            form.submit();
+        });
+    });
+</script>
 <html>
   <head>
     <title>Gestion entidades</title>
@@ -44,8 +52,8 @@
       </div>
 
       <!-- Boton log out (Rectangle) -->
-    <form action="/" method="get">
-      <div id="u39" class="ax_default button" data-label="Boton log out">
+    <form action="/" method="get" id="formLogout">
+      <div id="u39" class="ax_default button" data-label="Boton log out" style="cursor: pointer;">
         <div id="u39_div" class=""></div>
         <div id="u39_text" class="text ">
           <p><span>Log out</span></p>

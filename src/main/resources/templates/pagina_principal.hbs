@@ -1,166 +1,152 @@
-﻿<style>
-    boton_logout{
-        position:absolute;
-        left:0px;
-        top:0px;
-        width:66px;
-        height:26px;
-        background:inherit;
-        background-color:rgba(163, 0, 20, 0.498039215686275);
-        box-sizing:border-box;
-        border-width:1px;
-        border-style:solid;
-        border-color:rgba(121, 121, 121, 1);
-        border-radius:5px;
-        box-shadow:none;
-        font-size:15px;
-        color:#FFFFFF;
-    }
-</style>
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
+<script>
+    window.addEventListener("DOMContentLoaded", function () {
+        let form = document.getElementById("formLogout");
+        document.getElementById("u15").addEventListener("click", function () {
+            form.submit();
+        });
+    });
+</script>
 <html>
-  <head>
+<head>
     <title>Pagina principal</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <link href="/css/axure_rp_page.css" type="text/css" rel="stylesheet"/>
     <link href="/css/styles.css" type="text/css" rel="stylesheet"/>
     <link href="/css/stylesPaginaPrincipal.css" type="text/css" rel="stylesheet"/>
-  </head>
-  <body>
-    <div id="base" class="">
+</head>
+<body>
+<div id="base" class="">
 
-      <!-- Header (Rectangle) -->
-      <div id="u8" class="ax_default box_2" data-label="Header">
+    <!-- Header (Rectangle) -->
+    <div id="u8" class="ax_default box_2" data-label="Header">
         <div id="u8_div" class=""></div>
         <div id="u8_text" class="text " style="display:none; visibility: hidden">
-          <p></p>
+            <p></p>
         </div>
-      </div>
+    </div>
 
-      <!-- Nombre organizacion (Rectangle) -->
-      <div id="u9" class="ax_default heading_1" data-label="Nombre organizacion">
+    <!-- Nombre organizacion (Rectangle) -->
+    <div id="u9" class="ax_default heading_1" data-label="Nombre organizacion">
         <div id="u9_div" class=""></div>
         <div id="u9_text" class="text ">
-          <p><span>Organizacion default</span></p>
+            <p><span>Organizacion default</span></p>
         </div>
-      </div>
+    </div>
 
-      <!-- Nombre usuario (Rectangle) -->
-      <div id="u10" class="ax_default heading_2" data-label="Nombre usuario">
+    <!-- Nombre usuario (Rectangle) -->
+    <div id="u10" class="ax_default heading_2" data-label="Nombre usuario">
         <div id="u10_div" class=""></div>
         <div id="u10_text" class="text ">
-          <p><span>Usuario default</span></p>
+            <p><span>Usuario default</span></p>
         </div>
-      </div>
+    </div>
 
-      <!-- Logo (Image) -->
-      <div id="u11" class="ax_default image" data-label="Logo">
+    <!-- Logo (Image) -->
+    <div id="u11" class="ax_default image" data-label="Logo">
         <img id="u11_img" class="img " src="/img/logo_u11.png"/>
         <div id="u11_text" class="text " style="display:none; visibility: hidden">
-          <p></p>
+            <p></p>
         </div>
-      </div>
+    </div>
 
-      <!-- Panel izquierdo (Rectangle) -->
-      <div id="u12" class="ax_default box_2" data-label="Panel izquierdo">
+    <!-- Panel izquierdo (Rectangle) -->
+    <div id="u12" class="ax_default box_2" data-label="Panel izquierdo">
         <div id="u12_div" class=""></div>
         <div id="u12_text" class="text " style="display:none; visibility: hidden">
-          <p></p>
+            <p></p>
         </div>
-      </div>
+    </div>
 
-      <!-- Boton Gestionar Entidades (Rectangle) -->
+    <!-- Boton Gestionar Entidades (Rectangle) -->
     <form action="/entidades" method="get">
-      <button id="u13" class="ax_default button" data-label="Boton Gestionar Entidades">
-        <div id="u13_div" class=""></div>
-        <div id="u13_text" class="text ">
-          <p><span>Gestionar Entidades</span></p>
-        </div>
-      </button>
+        <button id="u13" class="ax_default button" data-label="Boton Gestionar Entidades">
+            <div id="u13_div" class=""></div>
+            <div id="u13_text" class="text ">
+                <p><span>Gestionar Entidades</span></p>
+            </div>
+        </button>
     </form>
 
-      <!-- Boton Gestionar Egresos (Rectangle) -->
+    <!-- Boton Gestionar Egresos (Rectangle) -->
     <form action="/egresos" method="get">
-      <button id="u14" class="ax_default button" data-label="Boton Gestionar Egresos">
-        <div id="u14_div" class=""></div>
-        <div id="u14_text" class="text ">
-          <p><span>Gestionar Egresos</span></p>
-        </div>
-      </button>
+        <button id="u14" class="ax_default button" data-label="Boton Gestionar Egresos">
+            <div id="u14_div" class=""></div>
+            <div id="u14_text" class="text ">
+                <p><span>Gestionar Egresos</span></p>
+            </div>
+        </button>
     </form>
 
-      <!-- Boton log out (Rectangle) -->
-    <form action="/" method="get">
-      <button id="u15" class="ax_default button" data-label="Boton log out">
-      <boton_logout>
-        <div id="u15_div" class=""></div>
-        <div id="u15_text" class="text ">
-          <p><span>Log out</span></p>
+    <!-- Boton log out (Rectangle) -->
+    <form id="formLogout" action="/" method="get">
+        <div id="u15" class="ax_default button" data-label="Boton log out" style="cursor: pointer;">
+            <div id="u15_div" class=""></div>
+            <div id="u15_text" class="text ">
+                <p><span>Log out</span></p>
+            </div>
         </div>
-      </boton_logout>
-      </button>
     </form>
 
-      <!-- Panel derecho arriba (Rectangle) -->
-      <div id="u16" class="ax_default box_2" data-label="Panel derecho arriba">
+    <!-- Panel derecho arriba (Rectangle) -->
+    <div id="u16" class="ax_default box_2" data-label="Panel derecho arriba">
         <div id="u16_div" class=""></div>
         <div id="u16_text" class="text " style="display:none; visibility: hidden">
-          <p></p>
+            <p></p>
         </div>
-      </div>
+    </div>
 
-      <!-- Panel derecho abajo (Rectangle) -->
-      <div id="u17" class="ax_default box_2" data-label="Panel derecho abajo">
+    <!-- Panel derecho abajo (Rectangle) -->
+    <div id="u17" class="ax_default box_2" data-label="Panel derecho abajo">
         <div id="u17_div" class=""></div>
         <div id="u17_text" class="text " style="display:none; visibility: hidden">
-          <p></p>
+            <p></p>
         </div>
-      </div>
+    </div>
 
-      <!-- Lista mensajes (List Box) -->
-      <div id="u18" class="ax_default list_box" data-label="Lista mensajes">
+    <!-- Lista mensajes (List Box) -->
+    <div id="u18" class="ax_default list_box" data-label="Lista mensajes">
         <div id="u18_div" class=""></div>
         <select id="u18_input" size="2" class="u18_input">
         </select>
-      </div>
+    </div>
 
-      <!-- Boton Ver operaciones (Rectangle) -->
+    <!-- Boton Ver operaciones (Rectangle) -->
     <form action="/egresos" method="get">
-      <button id="u19" class="ax_default button" data-label="Boton Ver operaciones">
-        <div id="u19_div" class=""></div>
-        <div id="u19_text" class="text ">
-          <p><span>Ver operaciones</span></p>
-        </div>
-      </button>
+        <button id="u19" class="ax_default button" data-label="Boton Ver operaciones">
+            <div id="u19_div" class=""></div>
+            <div id="u19_text" class="text ">
+                <p><span>Ver operaciones</span></p>
+            </div>
+        </button>
     </form>
 
-      <!-- Boton Nueva operacion (Rectangle) -->
-      <div id="u20" class="ax_default button" data-label="Boton Nueva operacion">
+    <!-- Boton Nueva operacion (Rectangle) -->
+    <div id="u20" class="ax_default button" data-label="Boton Nueva operacion">
         <div id="u20_div" class=""></div>
         <div id="u20_text" class="text ">
-          <p><span>Nueva operación</span></p>
+            <p><span>Nueva operación</span></p>
         </div>
-      </div>
+    </div>
 
-      <!-- Ultimas operaciones (Rectangle) -->
-      <div id="u21" class="ax_default box_2" data-label="Ultimas operaciones">
+    <!-- Ultimas operaciones (Rectangle) -->
+    <div id="u21" class="ax_default box_2" data-label="Ultimas operaciones">
         <div id="u21_div" class=""></div>
         <div id="u21_text" class="text " style="display:none; visibility: hidden">
-          <p></p>
+            <p></p>
         </div>
-      </div>
-
-      <!-- Boton Inicio (Rectangle) -->
-    <form action="/principal" method="get">
-      <button id="u22" class="ax_default button" data-label="Boton Inicio">
-        <div id="u22_div" class=""></div>
-        <div id="u22_text" class="text ">
-          <p><span>Inicio</span></p>
-        </div>
-      </button>
-    </form>
     </div>
-  </body>
+
+    <!-- Boton Inicio (Rectangle) -->
+    <form action="/principal" method="get">
+        <button id="u22" class="ax_default button" data-label="Boton Inicio">
+            <div id="u22_div" class=""></div>
+            <div id="u22_text" class="text ">
+                <p><span>Inicio</span></p>
+            </div>
+        </button>
+    </form>
+</div>
+</body>
 </html>

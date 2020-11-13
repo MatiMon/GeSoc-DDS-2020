@@ -1,4 +1,12 @@
 ﻿<!DOCTYPE html>
+<script>
+    window.addEventListener("DOMContentLoaded", function () {
+        let form = document.getElementById("formLogout");
+        document.getElementById("u27").addEventListener("click", function () {
+            form.submit();
+        });
+    });
+</script>
 <html>
   <head>
     <title>Gestion egresos</title>
@@ -44,13 +52,13 @@
       </div>
 
       <!-- Boton log out (Rectangle) -->
-    <form action="/" method="get">
-      <button id="u27" class="ax_default button" data-label="Boton log out">
+    <form action="/" method="get" id="formLogout">
+      <div id="u27" class="ax_default button" data-label="Boton log out" style="cursor: pointer;">
         <div id="u27_div" class=""></div>
         <div id="u27_text" class="text ">
           <p><span>Log out</span></p>
         </div>
-      </button>
+      </div>
     </form>
 
       <!-- Panel derecho arriba (Rectangle) -->
