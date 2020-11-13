@@ -19,3 +19,7 @@ Crear schema con:
 Dropear schema con:
 
     DROP DATABASE `2020-vi-no-group-22`;
+    
+### Diagrama de arquitectura:
+
+![Alt text](https://github.com/dds-utn/2020-vi-no-group-22/blob/master/assets/Diagrama_arquitectura.jpg)
