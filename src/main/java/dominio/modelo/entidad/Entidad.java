@@ -1,6 +1,5 @@
 package dominio.modelo.entidad;
 
-import com.sun.tools.corba.se.idl.constExpr.Or;
 import dominio.modelo.operacionEgreso.Etiquetado.EtiquetaEgreso;
 
 import javax.persistence.*;

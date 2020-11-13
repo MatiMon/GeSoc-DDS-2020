@@ -193,8 +193,8 @@
     create table usuario (
         id bigint not null auto_increment,
         nombre_usuario varchar(255),
-        hash tinyblob,
-        salt tinyblob,
+        hash longblob,
+        salt longblob,
         tipo_usuario varchar(255),
         organizacion_id bigint,
         primary key (id)

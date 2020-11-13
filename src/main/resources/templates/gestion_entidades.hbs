@@ -64,14 +64,32 @@
       <!-- Panel derecho arriba (Rectangle) -->
       <div id="u40" class="ax_default box_2" data-label="Panel derecho arriba">
         <div id="u40_div" class=""></div>
-        <div id="u40_text" class="text " style="display:none; visibility: hidden">
+        <div id="u40_text" class="text " >
           <p></p>
         </div>
       </div>
 
       <!-- Lista mensajes (List Box) -->
       <div id="u41" class="ax_default list_box" data-label="Lista mensajes">
-        <div id="u41_div" class=""></div>
+        <div id="u41_div" class="">
+            <table>
+                <thead>
+                <th><span>Nombre de la Entidad</span></th>
+                <th><span>Tipo de Entidad</span></th>
+                </thead>
+                <tbody>
+                {{#each entidadesBase}}
+                    <tr><span>{{nombreFicticio}}</span></tr>
+                    <tr><span>Entidad Base</span></tr>
+                {{/each}}
+                {{#each entidadesJuridicas}}
+                    <tr><span>{{nombreFicticio}}</span></tr>
+                    <tr><span>Entidad Juridica</span></tr>
+                    {{/each}}
+                </tbody>
+            </table>
+
+        </div>
         <select id="u41_input" size="2" class="u41_input">
         </select>
       </div>
@@ -114,7 +132,7 @@
 
       <!-- Boton Inicio (Rectangle) -->
         <form action="/principal" method="get">
-            <button id="u46" class="ax_default button" data-label="Boton Inicio">
+            <button href="/principal" id="u46" class="ax_default button" data-label="Boton Inicio">
                 <div id="u46_div" class=""></div>
                 <div id="u46_text" class="text ">
                     <p><span>Inicio</span></p>
