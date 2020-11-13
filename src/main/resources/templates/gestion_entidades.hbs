@@ -63,7 +63,16 @@
 
       <!-- Lista mensajes (List Box) -->
       <div id="u41" class="ax_default list_box" data-label="Lista mensajes">
-        <div id="u41_div" class=""></div>
+        <div id="u41_div" class="">
+            <ul>
+                <tbody>
+                {{#each entidadesBase}}
+                    <li><p>{{nombreFicticio}}</p></li>
+                {{/each}}
+                </tbody>
+            </ul>
+
+        </div>
         <select id="u41_input" size="2" class="u41_input">
         </select>
       </div>
@@ -106,7 +115,7 @@
 
       <!-- Boton Inicio (Rectangle) -->
         <form action="/principal" method="get">
-            <button id="u46" class="ax_default button" data-label="Boton Inicio">
+            <button href="/principal" id="u46" class="ax_default button" data-label="Boton Inicio">
                 <div id="u46_div" class=""></div>
                 <div id="u46_text" class="text ">
                     <p><span>Inicio</span></p>
