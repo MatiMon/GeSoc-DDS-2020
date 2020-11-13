@@ -7,6 +7,17 @@
         });
     });
 </script>
+<style>
+    nueva-entidad {
+        border-width: 0px;
+        position: absolute;
+        left: 273px;
+        top: 99px;
+        width: 732px;
+        height: 574px;
+        display: flex;
+    }
+</style>
 <html>
 <head>
     <title>Pagina principal</title>
@@ -15,6 +26,7 @@
     <link href="/css/axure_rp_page.css" type="text/css" rel="stylesheet"/>
     <link href="/css/styles.css" type="text/css" rel="stylesheet"/>
     <link href="/css/stylesPaginaPrincipal.css" type="text/css" rel="stylesheet"/>
+    <link href="/css/stylesGestionEntidades.css" type="text/css" rel="stylesheet"/>
 </head>
 <body>
 <div id="base" class="">
@@ -89,18 +101,45 @@
         </div>
     </form>
 
-    <!-- Panel derecho arriba (Rectangle) -->
-    <div id="u16" class="ax_default box_2" data-label="Panel derecho arriba">
-        <div id="u16_div" class=""></div>
-        <div id="u16_text" class="text " style="display:none; visibility: hidden">
-            <p></p>
+    <div id="u40" class="ax_default box_2" data-label="Panel derecho arriba">
+        <div id="u40_div" class="">
+            <form id="formNueva" action="/egresos" method="post">
+                <table>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <label>Nº documento</label>
+                            <input type="number" value="" name="numeroDocumento"/>
+                        </td>
+                        <td>
+                            <label>Cantidad de presupuestos</label>
+                            <input type="number" value="" name="cantidadPresupuestos"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="proveedores">Proveedor</label>
+                            <select name="proveedores" id="proveedores">
+                                {{#each proveedores}}
+                                    <option value="{{id}}">{{razonSocial}}</option>
+                                {{/each}}
+                            </select>
+                        </td>
+                        <td>
+                            {{monedas}}
+                            <label for="monedas">Moneda</label>
+                            <select name="monedas" id="monedas">
+                                {{#each monedas}}
+                                    <option value="{{identificador}}">{{descripcion}}</option>
+                                {{/each}}
+                            </select>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </form>
         </div>
-    </div>
-
-    <!-- Panel derecho abajo (Rectangle) -->
-    <div id="u17" class="ax_default box_2" data-label="Panel derecho abajo">
-        <div id="u17_div" class=""></div>
-        <div id="u17_text" class="text " style="display:none; visibility: hidden">
+        <div id="u40_text" class="text ">
             <p></p>
         </div>
     </div>

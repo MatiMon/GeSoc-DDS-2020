@@ -32,4 +32,5 @@ public class Moneda extends Persistente {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
+
 }
