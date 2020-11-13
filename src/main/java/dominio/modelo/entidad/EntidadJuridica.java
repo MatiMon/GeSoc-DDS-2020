@@ -70,6 +70,10 @@ public class EntidadJuridica extends Entidad {
         this.categoria = categoria;
     }
 
+    public EntidadJuridica() {
+
+    }
+
     //Getters
     public List<EntidadBase> getListaEntidadesBase() {
         return listaEntidadesBase;
@@ -144,8 +148,17 @@ public class EntidadJuridica extends Entidad {
         reporte.imprimirReporteUltimoMes(etiquetaEgreso, this);
     }
 
+    @Override
+    public boolean perteneceAOrganizacion(Organizacion organizacion) {
+        return this.organizacion == organizacion;
+    }
+
     public void setOrganizacion(Organizacion organizacion) {
         this.organizacion = organizacion;
+    }
+
+    public Organizacion getOrganizacion() {
+        return this.organizacion;
     }
 
 }

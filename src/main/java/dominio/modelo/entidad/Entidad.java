@@ -1,5 +1,6 @@
 package dominio.modelo.entidad;
 
+import com.sun.tools.corba.se.idl.constExpr.Or;
 import dominio.modelo.operacionEgreso.Etiquetado.EtiquetaEgreso;
 
 import javax.persistence.*;
@@ -24,4 +25,6 @@ public abstract class Entidad {
     public abstract void validarGeneracionOperacion();
 
     public abstract void generarReporte(EtiquetaEgreso etiquetaEgreso);
+
+    public abstract boolean perteneceAOrganizacion(Organizacion organizacion);
 }

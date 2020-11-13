@@ -31,7 +31,7 @@
     <div id="u9" class="ax_default heading_1" data-label="Nombre organizacion">
         <div id="u9_div" class=""></div>
         <div id="u9_text" class="text ">
-            <p><span>Organizacion default</span></p>
+            <p><span>{{organizacion}}</span></p>
         </div>
     </div>
 
@@ -39,7 +39,7 @@
     <div id="u10" class="ax_default heading_2" data-label="Nombre usuario">
         <div id="u10_div" class=""></div>
         <div id="u10_text" class="text ">
-            <p><span>Usuario default</span></p>
+            <p><span>{{nombreUsuario}}</span></p>
         </div>
     </div>
 
@@ -107,9 +107,24 @@
 
     <!-- Lista mensajes (List Box) -->
     <div id="u18" class="ax_default list_box" data-label="Lista mensajes">
-        <div id="u18_div" class=""></div>
-        <select id="u18_input" size="2" class="u18_input">
-        </select>
+        <div id="u18_div" class="">
+            <table>
+                <thead>
+                <th>Fecha</th>
+                <th>Descripcion</th>
+                <th>Leido</th>
+                </thead>
+                <tbody>
+                {{#each mensajes}}
+                    <tr>
+                        <td>{{fechaYHora}}</td>
+                        <td>{{descripcion}}</td>
+                        <td>{{leido}}</td>
+                    </tr>
+                {{/each}}
+                </tbody>
+            </table>
+        </div>
     </div>
 
     <!-- Boton Ver operaciones (Rectangle) -->
@@ -132,21 +147,42 @@
 
     <!-- Ultimas operaciones (Rectangle) -->
     <div id="u21" class="ax_default box_2" data-label="Ultimas operaciones">
-        <div id="u21_div" class=""></div>
-        <div id="u21_text" class="text " style="display:none; visibility: hidden">
-            <p></p>
+        <div id="u21_div" class="">
+            <table>
+                <thead>
+                <th>Fecha</th>
+                <th>Nº documento</th>
+                <th>Tipo documento</th>
+                <th>Proveedor</th>
+                <th>Entidad</th>
+                <th>Valor total</th>
+                </thead>
+                <tbody>
+                {{#each operaciones}}
+                    <tr>
+                        <td>{{fechaOperacion}}</td>
+                        <td>{{numeroDocumentoComercial}}</td>
+                        <td>{{tipoDocumentoComercial}}</td>
+                        <td>{{proveedor.razonSocial}}</td>
+                        <td>{{entidad.nombreFicticio}}</td>
+                        <td>{{valorTotal}}</td>
+                    </tr>
+                {{/each}}
+                </tbody>
+            </table>
         </div>
     </div>
+</div>
 
-    <!-- Boton Inicio (Rectangle) -->
-    <form action="/principal" method="get">
-        <button id="u22" class="ax_default button" data-label="Boton Inicio">
-            <div id="u22_div" class=""></div>
-            <div id="u22_text" class="text ">
-                <p><span>Inicio</span></p>
-            </div>
-        </button>
-    </form>
+<!-- Boton Inicio (Rectangle) -->
+<form action="/principal" method="get">
+    <button id="u22" class="ax_default button" data-label="Boton Inicio">
+        <div id="u22_div" class=""></div>
+        <div id="u22_text" class="text ">
+            <p><span>Inicio</span></p>
+        </div>
+    </button>
+</form>
 </div>
 </body>
 </html>

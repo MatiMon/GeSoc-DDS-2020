@@ -27,6 +27,15 @@ public class DAOMemoria<T> implements DAO<T> {
     }
 
     @Override
+    public T buscar(long id) {
+        return (T) this.entidades
+                .stream()
+                .filter(e -> e.getId() == id)
+                .findFirst()
+                .get();
+    }
+
+    @Override
     public T buscar(BusquedaCondicional condicional) {
         return (T) this.entidades
                 .stream()
