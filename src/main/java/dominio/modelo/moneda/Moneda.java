@@ -18,6 +18,10 @@ public class Moneda extends Persistente {
         this.descripcion = descripcion;
     }
 
+    public Moneda() {
+
+    }
+
     public String getDescripcion() {
         return descripcion;
     }

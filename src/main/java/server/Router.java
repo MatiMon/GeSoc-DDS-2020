@@ -37,6 +37,7 @@ public class Router {
         EntidadController entidadController = new EntidadController();
 
         Spark.get("/", loginController::inicioSesion, Router.engine);
+        Spark.get("/login-error", loginController::inicioSesionError, Router.engine);
         Spark.get("/principal", mainController::paginaPrincipal, Router.engine);
         Spark.get("/egresos", operacionController::mostrarOperaciones, Router.engine);
         Spark.get("/entidades", entidadController::mostrarTodas, Router.engine);

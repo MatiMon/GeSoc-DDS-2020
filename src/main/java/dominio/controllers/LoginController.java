@@ -1,13 +1,12 @@
 package dominio.controllers;
 
-import dominio.modelo.usuario.*;
+import dominio.modelo.usuario.Usuario;
 import dominio.repositories.RepositorioDeUsuarios;
 import dominio.repositories.factories.FactoryRepositorioUsuarios;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,6 +17,12 @@ public class LoginController {
         return new ModelAndView(parametros, "inicio.hbs");
     }
 
+    public ModelAndView inicioSesionError(Request request, Response response) {
+        Map<String, Object> parametros = new HashMap<>();
+        parametros.put("mensajeError", true);
+        return new ModelAndView(parametros, "inicio.hbs");
+    }
+
     public Response login(Request request, Response response) {
         try {
             RepositorioDeUsuarios repoUsuarios = FactoryRepositorioUsuarios.get();
@@ -25,7 +30,7 @@ public class LoginController {
             String nombreDeUsuario = request.queryParams("nombreDeUsuario");
             String contrasenia = request.queryParams("contrasenia");
 
-            String path = "/";
+            String path = "/login-error";
 
             if (repoUsuarios.existe(nombreDeUsuario)) {
                 Usuario usuario = repoUsuarios.buscarUsuario(nombreDeUsuario);
@@ -38,7 +43,7 @@ public class LoginController {
             response.redirect(path);
         } catch (Exception e) {
             //Funcionalidad disponible solo con persistencia en Base de Datos
-            response.redirect("/");
+            response.redirect("/login-error");
         } finally {
             return response;
         }

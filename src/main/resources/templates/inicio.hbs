@@ -38,18 +38,21 @@
     <!-- Usuario text field (Text Field) -->
     <form action="/login" method="post">
         <div id="u3" class="ax_default text_field" data-label="Usuario text field">
+            <label for="u3_input" style="margin-top: -15px;">Nombre de usuario</label>
             <div id="u3_div" class=""></div>
             <input id="u3_input" type="text" value="" class="u3_input" name="nombreDeUsuario"/>
         </div>
 
         <!-- Contraseña text field (Text Field) -->
-        <div id="u4" class="ax_default text_field" data-label="Contraseña text field">
+        <div id="u4" style="margin-top: 15px" class="ax_default text_field" data-label="Contraseña text field">
+            <label for="u4_input" style="margin-top: -15px;">Contraseña</label>
             <div id="u4_div" class=""></div>
             <input id="u4_input" type="password" value="" class="u4_input" name="contrasenia"/>
         </div>
 
         <!-- Boton iniciar sesion (Rectangle) -->
-        <button id="u5" class="ax_default button" data-label="Boton iniciar sesion" type="submit">
+        <button id="u5" class="ax_default button" style="margin-top: 20px" data-label="Boton iniciar sesion"
+                type="submit">
             <div id="u5_div" class=""></div>
             <div id="u5_text" class="text ">
                 <p><span>Iniciar sesión</span></p>
@@ -65,13 +68,14 @@
     </div>
 
     <!-- Mensaje de error (Rectangle) -->
-    <div id="u7" class="ax_default label ax_default_hidden" data-label="Mensaje de error"
-         style="display:none; visibility: hidden">
-        <div id="u7_div" class=""></div>
-        <div id="u7_text" class="text ">
-            <p><span>Usuario o contraseña inválidos. Por favor inténtelo nuevamente.</span></p>
+    {{#if mensajeError}}
+        <div id="u7" class="ax_default label"  style="margin-top: 15px" data-label="Mensaje de error">
+            <div id="u7_div" class=""></div>
+            <div id="u7_text" class="text ">
+                <p><span>Usuario o contraseña inválidos. Por favor inténtelo nuevamente.</span></p>
+            </div>
         </div>
-    </div>
+    {{/if}}
 </div>
 </body>
 </html>
