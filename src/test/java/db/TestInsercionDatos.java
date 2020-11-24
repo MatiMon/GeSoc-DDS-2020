@@ -2,10 +2,12 @@ package db;
 
 import dominio.TestSetUpGeneral;
 import dominio.modelo.entidad.*;
+import dominio.modelo.entidad.categoria.CategoriaEntidad;
 import dominio.modelo.mediosDePago.Efectivo;
 import dominio.modelo.mediosDePago.MediosDePago;
 import dominio.modelo.mediosDePago.Tarjeta;
 import dominio.modelo.mediosDePago.TipoTarjeta;
+import dominio.modelo.moneda.Moneda;
 import dominio.modelo.operacionEgreso.OperacionDeEgreso;
 import dominio.modelo.operacionEgreso.OperacionEgresoBuilder;
 import dominio.modelo.operacionEgreso.Producto;
@@ -16,22 +18,31 @@ import dominio.modelo.ubicacion.Ciudad;
 import dominio.modelo.ubicacion.Direccion;
 import dominio.modelo.ubicacion.Pais;
 import dominio.modelo.ubicacion.Provincia;
+import dominio.modelo.usuario.BandejaDeMensajes;
 import dominio.modelo.usuario.Mensaje;
 import dominio.modelo.usuario.TipoUsuario;
 import dominio.modelo.usuario.Usuario;
 import org.junit.Test;
 
+import javax.persistence.EntityManager;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.util.Date;
 
 public class TestInsercionDatos extends TestSetUpGeneral {
 
-    public void createData() throws InvalidKeySpecException, NoSuchAlgorithmException {
+    @Test
+    public void testInsercionDatos() throws InvalidKeySpecException, NoSuchAlgorithmException {
 
         //Organizaciones
         Organizacion eaaf = new Organizacion("Equipo Argentino de Antropología Forense - EAAF");
         Organizacion cdia = new Organizacion("Colectivo de Derechos de Infancia y Adolescencia - CDIA");
+
+        //Categorias
+
+        CategoriaEntidad categoria1 = new CategoriaEntidad("CAT1");
+        CategoriaEntidad categoria2 = new CategoriaEntidad("CAT2");
+        CategoriaEntidad categoria3 = new CategoriaEntidad("CAT3");
 
         //Entidades eaaf
         Pais argentina = new Pais("Argentina", "ARG");
@@ -39,21 +50,21 @@ public class TestInsercionDatos extends TestSetUpGeneral {
         Ciudad buenosAires = new Ciudad("Buenos Aires", "CABA", provBuenosAires);
         Direccion direccionBsAs = new Direccion("Av. Medrano", "951", null, null, buenosAires);
         EntidadJuridica oficinaBsAs = new EntidadJuridica("Oficina Central Buenos Aires", "EAAF BA", direccionBsAs,
-                TipoDeCodigoID.CUIL, 301526921, new Empresa(ClasificacionAfip.MEDIANA1), null);
+                TipoDeCodigoID.CUIL, 301526921, new Empresa(ClasificacionAfip.MEDIANA1), categoria1);
 
         Pais usa = new Pais("Estados Unidos", "USA");
         Provincia ny = new Provincia("Nueva York", "NY", usa);
         Ciudad brooklyn = new Ciudad("Brooklyn", "BKLN", ny);
         Direccion direccionUsa = new Direccion("Liberty Ave", "720", null, null, brooklyn);
         EntidadJuridica oficinaUsa = new EntidadJuridica("Oficina Central Nueva York", "EAAF NY", direccionUsa,
-                TipoDeCodigoID.CUIL, 301526357, new Empresa(ClasificacionAfip.MEDIANA1), null);
+                TipoDeCodigoID.CUIL, 301526357, new Empresa(ClasificacionAfip.MEDIANA1), categoria2);
 
         Pais mexico = new Pais("Mexico", "MX");
         Provincia provDeMexico = new Provincia("Ciudad de Mexico", "MX", mexico);
         Ciudad ciudadDeMexico = new Ciudad("Ciudad de Mexico", "MX", provDeMexico);
         Direccion direccionMexico = new Direccion("Roberto Gayol 55", "55", null, null, ciudadDeMexico);
         EntidadJuridica oficinaMexico = new EntidadJuridica("Oficina Central México", "EAAF MX", direccionMexico,
-                TipoDeCodigoID.CUIL, 301522544, new Empresa(ClasificacionAfip.MEDIANA2), null);
+                TipoDeCodigoID.CUIL, 301522544, new Empresa(ClasificacionAfip.MEDIANA2), categoria3);
 
         oficinaBsAs.setOrganizacion(eaaf);
         oficinaUsa.setOrganizacion(eaaf);
@@ -62,7 +73,7 @@ public class TestInsercionDatos extends TestSetUpGeneral {
 
         Direccion direccionSurcos = new Direccion("Jéronimo Salguero", "2800", null, null, buenosAires);
         EntidadJuridica surcos = new EntidadJuridica("Surcos", "Surcos CS", direccionSurcos,
-                TipoDeCodigoID.CUIL, 359874666, new OSC(), null);
+                TipoDeCodigoID.CUIL, 359874666, new OSC(), categoria1);
 
         EntidadBase andhes = new EntidadBase("Andhes", "Branch de Surcos", surcos);
 
@@ -72,7 +83,6 @@ public class TestInsercionDatos extends TestSetUpGeneral {
 
         Producto pintura1 = new Producto("1", "Pintura Z10 latex 20L", 9625.00);
         Producto pintura2 = new Producto("2", "Pintura Loxon impermeabilizante 10L", 6584.49);
-        Producto pintura3 = new Producto("3", "Pintura Brikol pisos negro 4L", 3768.29);
         Producto pava = new Producto("4", "Pava electrica Smartlife 1,5L 1850W", 4500.00);
         Producto cafetera = new Producto("5", "Cafetera Smartlife 1095 acero inox", 6300.00);
         Producto celular = new Producto("6", "Telefono celular Motorola 4G", 15060.00);
@@ -92,7 +102,12 @@ public class TestInsercionDatos extends TestSetUpGeneral {
         admin.setOrganizacion(eaaf);
         alejandro.setOrganizacion(eaaf);
         rocio.setOrganizacion(eaaf);
+        eaaf.agregarUsuario(admin);
+        eaaf.agregarUsuario(alejandro);
+        eaaf.agregarUsuario(rocio);
+
         julieta.setOrganizacion(cdia);
+        cdia.agregarUsuario(julieta);
 
         //medios de pago
 
@@ -109,6 +124,11 @@ public class TestInsercionDatos extends TestSetUpGeneral {
         Proveedor corralon = new Proveedor("Corralón Laprida SRL", direccionProveedores, TipoDeCodigoID.CUIT, 205781365);
         Proveedor telasZN = new Proveedor("Telas ZN", direccionProveedores, TipoDeCodigoID.CUIL, 457846568);
 
+        //monedas
+        Moneda peso = new Moneda("ARS","$", "Pesos Argentinos");
+        Moneda dolar = new Moneda("USD","USD", "Dolares Estadounidenses");
+        Moneda euro = new Moneda("EU","€", "Euros");
+
         //egresos
 
         OperacionDeEgreso operacionDeEgreso1 = new OperacionEgresoBuilder()
@@ -120,6 +140,7 @@ public class TestInsercionDatos extends TestSetUpGeneral {
                 .setMetodoPago(efectivo)
                 .setProveedor(pintureria)
                 .setUsuarioAlta(admin)
+                .setMoneda(peso)
                 .grabarOperacion();
 
         OperacionDeEgreso operacionDeEgreso2 = new OperacionEgresoBuilder()
@@ -131,6 +152,7 @@ public class TestInsercionDatos extends TestSetUpGeneral {
                 .setMetodoPago(tarjetaDebito)
                 .setProveedor(mitoas)
                 .setUsuarioAlta(admin)
+                .setMoneda(peso)
                 .grabarOperacion();
 
         OperacionDeEgreso operacionDeEgreso3 = new OperacionEgresoBuilder()
@@ -141,6 +163,7 @@ public class TestInsercionDatos extends TestSetUpGeneral {
                 .setMetodoPago(efectivo)
                 .setProveedor(ingeneriaComercial)
                 .setUsuarioAlta(admin)
+                .setMoneda(peso)
                 .grabarOperacion();
 
         OperacionDeEgreso operacionDeEgreso4 = new OperacionEgresoBuilder()
@@ -154,6 +177,7 @@ public class TestInsercionDatos extends TestSetUpGeneral {
                 .setMetodoPago(efectivo)
                 .setProveedor(corralon)
                 .setUsuarioAlta(admin)
+                .setMoneda(peso)
                 .grabarOperacion();
 
         OperacionDeEgreso operacionDeEgreso5 = new OperacionEgresoBuilder()
@@ -164,6 +188,7 @@ public class TestInsercionDatos extends TestSetUpGeneral {
                 .setMetodoPago(efectivo)
                 .setProveedor(corralon)
                 .setUsuarioAlta(admin)
+                .setMoneda(peso)
                 .grabarOperacion();
 
         OperacionDeEgreso operacionDeEgreso6 = new OperacionEgresoBuilder()
@@ -174,15 +199,106 @@ public class TestInsercionDatos extends TestSetUpGeneral {
                 .setMetodoPago(tarjetaCredito)
                 .setProveedor(telasZN)
                 .setUsuarioAlta(admin)
+                .setMoneda(peso)
                 .grabarOperacion();
 
 
 
 
+        //persistimos
+
+        EntityManagerHelper.beginTransaction();
+        EntityManager entityManager = EntityManagerHelper.getEntityManager();
+
+        entityManager.persist(peso);
+        entityManager.persist(dolar);
+        entityManager.persist(euro);
+
+        entityManager.persist(admin);
+        entityManager.persist(alejandro);
+        entityManager.persist(rocio);
+        entityManager.persist(julieta);
+
+        entityManager.persist(eaaf);
+        entityManager.persist(cdia);
+
+        entityManager.persist(oficinaBsAs);
+        entityManager.persist(oficinaMexico);
+        entityManager.persist(oficinaUsa);
+        entityManager.persist(surcos);
+
+        entityManager.persist(andhes);
+
+        entityManager.persist(categoria1);
+        entityManager.persist(categoria2);
+        entityManager.persist(categoria3);
+
+        entityManager.persist(direccionBsAs);
+        entityManager.persist(direccionMexico);
+        entityManager.persist(direccionUsa);
+        entityManager.persist(direccionSurcos);
+        entityManager.persist(direccionProveedores);
+
+        entityManager.persist(operacionDeEgreso1);
+        entityManager.persist(operacionDeEgreso2);
+        entityManager.persist(operacionDeEgreso3);
+        entityManager.persist(operacionDeEgreso4);
+        entityManager.persist(operacionDeEgreso5);
+        entityManager.persist(operacionDeEgreso6);
+
+
+
+        entityManager.persist(efectivo);
+        entityManager.persist(tarjetaCredito);
+        entityManager.persist(tarjetaDebito);
+
+        entityManager.persist(pintureria);
+        entityManager.persist(mitoas);
+        entityManager.persist(ingeneriaComercial);
+        entityManager.persist(corralon);
+        entityManager.persist(telasZN);
+
+        EntityManagerHelper.commit();
+
+
+        //mensajes
+
+        Mensaje mensajeAdmin1 = new Mensaje().crearMensajeValidacion(operacionDeEgreso1, true);
+        Mensaje mensajeAdmin2 = new Mensaje().crearMensajeValidacion(operacionDeEgreso2, false);
+        Mensaje mensajeAdmin3 = new Mensaje().crearMensajeValidacion(operacionDeEgreso3, true);
+        Mensaje mensajeAdmin4 = new Mensaje().crearMensajeValidacion(operacionDeEgreso4, true);
+        Mensaje mensajeAdmin5 = new Mensaje().crearMensajeValidacion(operacionDeEgreso5, true);
+        Mensaje mensajeJulieta = new Mensaje().crearMensajeValidacion(operacionDeEgreso6, false);
+
+        admin.getBandeja().agregarMensaje(mensajeAdmin1);
+        mensajeAdmin1.setUsuario(admin);
+        admin.getBandeja().agregarMensaje(mensajeAdmin2);
+        mensajeAdmin2.setUsuario(admin);
+        admin.getBandeja().agregarMensaje(mensajeAdmin3);
+        mensajeAdmin3.setUsuario(admin);
+        admin.getBandeja().agregarMensaje(mensajeAdmin4);
+        mensajeAdmin4.setUsuario(admin);
+        admin.getBandeja().agregarMensaje(mensajeAdmin5);
+        mensajeAdmin5.setUsuario(admin);
+
+        julieta.getBandeja().agregarMensaje(mensajeJulieta);
+        mensajeJulieta.setUsuario(julieta);
+
+        EntityManagerHelper.beginTransaction();
+
+        entityManager.persist(mensajeAdmin1);
+        entityManager.persist(mensajeAdmin2);
+        entityManager.persist(mensajeAdmin3);
+        entityManager.persist(mensajeAdmin4);
+        entityManager.persist(mensajeAdmin5);
+        entityManager.persist(mensajeJulieta);
+
+        EntityManagerHelper.commit();
 
     }
 
-    @Test
+
+   /* @Test
     public void testInsercionDatos() throws InvalidKeySpecException, NoSuchAlgorithmException {
         Usuario usuario = new Usuario("admin", "admin1234", TipoUsuario.Admin, validadorPasswords1);
         usuario.setOrganizacion(organizacion);
@@ -219,5 +335,5 @@ public class TestInsercionDatos extends TestSetUpGeneral {
         EntityManagerHelper.getEntityManager().persist(mediosDePago);
         EntityManagerHelper.getEntityManager().persist(proveedor);
         EntityManagerHelper.commit();
-    }
+    }*/
 }
