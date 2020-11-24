@@ -20,11 +20,11 @@ public class Tarjeta extends MediosDePago {
     @Column(name = "fecha_vencimiento")
     private Date fechaVencimiento;
 
-    public Tarjeta(TipoTarjeta unTipo, String numTarj, String nombre, Date vencimineto) {
+    public Tarjeta(TipoTarjeta unTipo, String numTarj, String nombre, Date vencimiento) {
         tipo = unTipo;
         numTarjeta = this.verificarNumerosIngrasados(numTarj, 16, "Numero Dominio.Direccion.Direccion.MediosDePago.Tarjeta");
         nombreCompleto = nombre;
-        fechaVencimiento = vencimineto;
+        fechaVencimiento = vencimiento;
     }
 
     public String verificarNumerosIngrasados(String numeros, int largo, String nombreCampo) {
