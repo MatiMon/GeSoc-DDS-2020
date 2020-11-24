@@ -97,14 +97,15 @@ public class TestInsercionDatos extends TestSetUpGeneral {
         //medios de pago
 
         MediosDePago efectivo = new Efectivo();
-        MediosDePago tarjeta = new Tarjeta(TipoTarjeta.tarjetaCredito, "4509664512340131", "VISA", new Date());
+        MediosDePago tarjetaCredito = new Tarjeta(TipoTarjeta.tarjetaCredito, "4509664512340131", "VISA", new Date());
+        MediosDePago tarjetaDebito = new Tarjeta(TipoTarjeta.tarjetaDebito, "4507560013421543", "MASTERCARD", new Date());
 
         //proveedores TODO: asociar a organizaciones para mostrar solo proveedores de la org
 
         Direccion direccionProveedores = new Direccion("Av. Libertador", "4519", null, null, buenosAires);
         Proveedor pintureria = new Proveedor("Pinturerias Serretino", direccionProveedores, TipoDeCodigoID.CUIT, 405781354);
         Proveedor mitoas = new Proveedor("Mitoas SA", direccionProveedores, TipoDeCodigoID.CUIT, 405781313);
-        Proveedor ingieneriaComercial = new Proveedor("Ingeniería Comercial SRL", direccionProveedores, TipoDeCodigoID.CUIT, 305781341);
+        Proveedor ingeneriaComercial = new Proveedor("Ingeniería Comercial SRL", direccionProveedores, TipoDeCodigoID.CUIT, 305781341);
         Proveedor corralon = new Proveedor("Corralón Laprida SRL", direccionProveedores, TipoDeCodigoID.CUIT, 205781365);
         Proveedor telasZN = new Proveedor("Telas ZN", direccionProveedores, TipoDeCodigoID.CUIL, 457846568);
 
@@ -120,6 +121,63 @@ public class TestInsercionDatos extends TestSetUpGeneral {
                 .setProveedor(pintureria)
                 .setUsuarioAlta(admin)
                 .grabarOperacion();
+
+        OperacionDeEgreso operacionDeEgreso2 = new OperacionEgresoBuilder()
+                .setTipoDocumentoComercial(TipoDocumentoComercial.Factura)
+                .setNumeroDocumentoComercial(1245789653)
+                .agregarItem(pava, 3)
+                .agregarItem(cafetera, 2)
+                .setEntidad(oficinaBsAs)
+                .setMetodoPago(tarjetaDebito)
+                .setProveedor(mitoas)
+                .setUsuarioAlta(admin)
+                .grabarOperacion();
+
+        OperacionDeEgreso operacionDeEgreso3 = new OperacionEgresoBuilder()
+                .setTipoDocumentoComercial(TipoDocumentoComercial.Factura)
+                .setNumeroDocumentoComercial(1245789654)
+                .agregarItem(celular, 2)
+                .setEntidad(oficinaBsAs)
+                .setMetodoPago(efectivo)
+                .setProveedor(ingeneriaComercial)
+                .setUsuarioAlta(admin)
+                .grabarOperacion();
+
+        OperacionDeEgreso operacionDeEgreso4 = new OperacionEgresoBuilder()
+                .setTipoDocumentoComercial(TipoDocumentoComercial.Factura)
+                .setNumeroDocumentoComercial(1245789655)
+                .agregarItem(cemento, 10)
+                .agregarItem(arena, 5)
+                .agregarItem(hierro, 4)
+                .agregarItem(ladrillo, 800)
+                .setEntidad(oficinaBsAs)
+                .setMetodoPago(efectivo)
+                .setProveedor(corralon)
+                .setUsuarioAlta(admin)
+                .grabarOperacion();
+
+        OperacionDeEgreso operacionDeEgreso5 = new OperacionEgresoBuilder()
+                .setTipoDocumentoComercial(TipoDocumentoComercial.Factura)
+                .setNumeroDocumentoComercial(1245789656)
+                .agregarItem(ladrillo, 800)
+                .setEntidad(oficinaBsAs)
+                .setMetodoPago(efectivo)
+                .setProveedor(corralon)
+                .setUsuarioAlta(admin)
+                .grabarOperacion();
+
+        OperacionDeEgreso operacionDeEgreso6 = new OperacionEgresoBuilder()
+                .setTipoDocumentoComercial(TipoDocumentoComercial.Factura)
+                .setNumeroDocumentoComercial(1245789657)
+                .agregarItem(cortinas, 5)
+                .setEntidad(surcos)
+                .setMetodoPago(tarjetaCredito)
+                .setProveedor(telasZN)
+                .setUsuarioAlta(admin)
+                .grabarOperacion();
+
+
+
 
 
     }
