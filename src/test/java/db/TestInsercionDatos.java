@@ -125,9 +125,9 @@ public class TestInsercionDatos extends TestSetUpGeneral {
         Proveedor telasZN = new Proveedor("Telas ZN", direccionProveedores, TipoDeCodigoID.CUIL, 457846568);
 
         //monedas
-        Moneda peso = new Moneda("ARS","$", "Pesos Argentinos");
-        Moneda dolar = new Moneda("USD","USD", "Dolares Estadounidenses");
-        Moneda euro = new Moneda("EU","€", "Euros");
+        Moneda peso = new Moneda("ARS", "$", "Pesos Argentinos");
+        Moneda dolar = new Moneda("USD", "USD", "Dolares Estadounidenses");
+        Moneda euro = new Moneda("EU", "€", "Euros");
 
         //egresos
 
@@ -203,8 +203,6 @@ public class TestInsercionDatos extends TestSetUpGeneral {
                 .grabarOperacion();
 
 
-
-
         //persistimos
 
         EntityManagerHelper.beginTransaction();
@@ -245,7 +243,6 @@ public class TestInsercionDatos extends TestSetUpGeneral {
         entityManager.persist(operacionDeEgreso4);
         entityManager.persist(operacionDeEgreso5);
         entityManager.persist(operacionDeEgreso6);
-
 
 
         entityManager.persist(efectivo);
@@ -296,44 +293,4 @@ public class TestInsercionDatos extends TestSetUpGeneral {
         EntityManagerHelper.commit();
 
     }
-
-
-   /* @Test
-    public void testInsercionDatos() throws InvalidKeySpecException, NoSuchAlgorithmException {
-        Usuario usuario = new Usuario("admin", "admin1234", TipoUsuario.Admin, validadorPasswords1);
-        usuario.setOrganizacion(organizacion);
-        MediosDePago mediosDePago = new Efectivo();
-
-        OperacionDeEgreso operacionDeEgreso = new OperacionEgresoBuilder().setTipoDocumentoComercial(TipoDocumentoComercial.Factura)
-                .setNumeroDocumentoComercial(12345)
-                .agregarItem(producto1, 2)
-                .setEntidad(entidadBase)
-                .setMetodoPago(mediosDePago)
-                .setProveedor(proveedor)
-                .setUsuarioAlta(usuario)
-                .grabarOperacion();
-
-        Mensaje mensaje = new Mensaje().crearMensajeValidacion(operacionDeEgreso, true);
-        mensaje.setUsuario(usuario);
-        usuario.getBandeja().agregarMensaje(mensaje);
-        organizacion.agregarUsuario(usuario);
-        entidadJuridica.setOrganizacion(organizacion);
-        entidadJuridica.setMontoMaximodeEgresos(6000.00);
-
-        entidadJuridica.setIGJid("ID1234");
-        entidadBase.setEntidadJuridica(entidadJuridica);
-        EntityManagerHelper.beginTransaction();
-        EntityManagerHelper.getEntityManager().persist(usuario);
-        EntityManagerHelper.getEntityManager().persist(organizacion);
-        EntityManagerHelper.getEntityManager().persist(entidadJuridica);
-        EntityManagerHelper.getEntityManager().persist(entidadBase);
-        EntityManagerHelper.getEntityManager().persist(catONG);
-        EntityManagerHelper.getEntityManager().persist(direccion2);
-        EntityManagerHelper.getEntityManager().persist(direccion);
-        EntityManagerHelper.getEntityManager().persist(operacionDeEgreso);
-        EntityManagerHelper.getEntityManager().persist(mensaje);
-        EntityManagerHelper.getEntityManager().persist(mediosDePago);
-        EntityManagerHelper.getEntityManager().persist(proveedor);
-        EntityManagerHelper.commit();
-    }*/
 }
