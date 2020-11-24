@@ -49,11 +49,11 @@ public class Mensaje extends Persistente {
         this.fechaYHora = LocalDateTime.now();
         this.leido = false;
         if (validacion) {
-            this.descripcion = "La operación " + operacion.getId().toString() +
-                    "de " + operacion.getEntidad().getNombreFicticio() + " fue validada.";
+            this.descripcion = "La operación número " + operacion.getId().toString() +
+                    " de " + operacion.getEntidad().getNombreFicticio() + " fue validada.";
         } else {
-            this.descripcion = "La operación " + operacion.getId().toString() +
-                    "de " + operacion.getEntidad().getNombreFicticio() + " NO fue validada.";
+            this.descripcion = "La operación número " + operacion.getId().toString() +
+                    " de " + operacion.getEntidad().getNombreFicticio() + " NO fue validada.";
         }
 
         return this;
