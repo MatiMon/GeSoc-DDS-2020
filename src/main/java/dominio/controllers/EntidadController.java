@@ -15,22 +15,13 @@ import java.util.List;
 import java.util.Map;
 
 public class EntidadController extends Controller {
-    private Repositorio<EntidadBase> repoEntidadesBase;
-    private Repositorio<EntidadJuridica> repoEntidadesJuridicas;
-
-
-    public EntidadController() {
-        super();
-        this.repoEntidadesBase = FactoryRepositorio.get(EntidadBase.class);
-        this.repoEntidadesJuridicas = FactoryRepositorio.get(EntidadJuridica.class);
-    }
 
     public ModelAndView mostrarTodas(Request request, Response response) {
         List<EntidadBase> entidadesBase;
         List<EntidadJuridica> entidadesJuridicas;
 
-        entidadesBase = this.repoEntidadesBase.buscarTodos();
-        entidadesJuridicas = this.repoEntidadesJuridicas.buscarTodos();
+        entidadesBase = this.getEntidadesBase(this.getOrganizacion(request));
+        entidadesJuridicas = this.getEntidadesJuridicas(this.getOrganizacion(request));
 
         Map<String, Object> parametros = this.getSessionParams(request);
 

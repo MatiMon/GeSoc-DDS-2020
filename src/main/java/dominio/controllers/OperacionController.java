@@ -1,5 +1,6 @@
 package dominio.controllers;
 
+import dominio.modelo.entidad.EntidadBase;
 import dominio.modelo.entidad.Organizacion;
 import dominio.modelo.moneda.Moneda;
 import dominio.modelo.operacionEgreso.OperacionDeEgreso;
@@ -29,10 +30,10 @@ public class OperacionController extends Controller {
     public ModelAndView nuevaOperacion(Request request, Response response) {
         Map<String, Object> parametros = this.getSessionParams(request);
         List<Proveedor> proveedores = FactoryRepositorio.get(Proveedor.class).buscarTodos();
-        List<Moneda> monedas = Arrays.asList(new Moneda("ID1", "$", "PESOS"),
-                new Moneda("ID2", "Euro", "EUROS"),
-                new Moneda("ID3", "USD", "DOLARES"));
+        List<Moneda> monedas = FactoryRepositorio.get(Moneda.class).buscarTodos();
+        List<EntidadBase> entidadBases = FactoryRepositorio.get(EntidadBase.class).buscarTodos();
         parametros.put("proveedores", proveedores);
+        //TODO mostrar proveedores de la org.
         parametros.put("monedas", monedas);
         return new ModelAndView(parametros, "nueva-operacion.hbs");
     }
