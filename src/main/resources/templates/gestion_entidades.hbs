@@ -6,6 +6,8 @@
             form.submit();
         });
     });
+
+
 </script>
 <html>
 <head>
@@ -31,7 +33,7 @@
     <div id="u36" class="ax_default heading_1" data-label="Nombre organizacion">
         <div id="u36_div" class=""></div>
         <div id="u36_text" class="text ">
-            <p><span>{{organizacion}}</span></p>
+            <p><span style="margin-left: -200px;">{{organizacion}}</span></p>
         </div>
     </div>
 
@@ -75,8 +77,8 @@
             <table cellspacing="0" cellpadding="1" border="1" width="100%">
                 <thead>
                 <tr style="color:white;background-color:black">
-                <th>Nombre de la Entidad</th>
-                <th>Tipo de Entidad</th>
+                    <th>Nombre de la Entidad</th>
+                    <th>Tipo de Entidad</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -147,10 +149,18 @@
     </form>
 
     <!-- Droplist filtro categoria (Droplist) -->
+
+
     <div id="u47" class="ax_default droplist" data-label="Droplist filtro categoria">
         <div id="u47_div" class=""></div>
-        <select id="u47_input" class="u47_input">
-        </select>
+        <form action="/entidades" method="get">
+            <select id="u47_input" class="u47_input" onchange="this.form.submit()" name="filtro">
+                <option value="Todas" {{#if TodasSelected}}selected{{/if}}>Todas</option>
+                <option value="Bases" {{#if BasesSelected}}selected{{/if}}>Bases</option>
+                <option value="Juridicas" {{#if JuridicasSelected}}selected{{/if}}>Juridicas
+                </option>
+            </select>
+        </form>
     </div>
 </div>
 </body>

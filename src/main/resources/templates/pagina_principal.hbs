@@ -31,7 +31,7 @@
     <div id="u9" class="ax_default heading_1" data-label="Nombre organizacion">
         <div id="u9_div" class=""></div>
         <div id="u9_text" class="text ">
-            <p><span>{{organizacion}}</span></p>
+            <p><span style="margin-left: -200px;">{{organizacion}}</span></p>
         </div>
     </div>
 
@@ -111,9 +111,9 @@
             <table cellspacing="0" cellpadding="1" border="1" width="100%">
                 <thead>
                 <tr style="color:white;background-color:black">
-                <th>Fecha</th>
-                <th>Descripcion</th>
-                <th>Leido</th>
+                    <th>Fecha</th>
+                    <th>Descripcion</th>
+                    <th>Leido</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -121,7 +121,7 @@
                     <tr>
                         <td>{{fechaYHora}}</td>
                         <td>{{descripcion}}</td>
-                        <td>{{leido}}</td>
+                        <td>{{#if leido}} SI {{else}} NO{{/if}} </td>
                     </tr>
                 {{/each}}
                 </tbody>
@@ -167,12 +167,12 @@
         <table cellspacing="0" cellpadding="1" border="1" width="100%">
             <thead>
             <tr style="color:white;background-color:black">
-            <th>Fecha</th>
-            <th>Nº documento</th>
-            <th>Tipo documento</th>
-            <th>Proveedor</th>
-            <th>Entidad</th>
-            <th>Valor total</th>
+                <th>Fecha</th>
+                <th>Nº documento</th>
+                <th>Tipo documento</th>
+                <th>Proveedor</th>
+                <th>Entidad</th>
+                <th>Valor total</th>
             </tr>
             </thead>
             <tbody>

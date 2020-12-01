@@ -9,6 +9,7 @@ import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,16 +25,35 @@ public class EntidadController extends Controller {
         this.repoEntidadesJuridicas = FactoryRepositorio.get(EntidadJuridica.class);
     }
 
-    public ModelAndView mostrarTodas(Request request, Response response){
+    public ModelAndView mostrarTodas(Request request, Response response) {
         List<EntidadBase> entidadesBase;
         List<EntidadJuridica> entidadesJuridicas;
+
         entidadesBase = this.repoEntidadesBase.buscarTodos();
         entidadesJuridicas = this.repoEntidadesJuridicas.buscarTodos();
 
-        Map<String,Object> parametros = this.getSessionParams(request);
-        parametros.put("entidadesBase",entidadesBase);
-        parametros.put("entidadesJuridicas",entidadesJuridicas);
+        Map<String, Object> parametros = this.getSessionParams(request);
 
-        return new ModelAndView(parametros,"gestion_entidades.hbs");
+        String selectedFiltro = this.getSelectedFiltro(request);
+        if (selectedFiltro.equals("Todas")) {
+            parametros.put("entidadesBase", entidadesBase);
+            parametros.put("entidadesJuridicas", entidadesJuridicas);
+        }
+        if (selectedFiltro.equals("Bases")) {
+            parametros.put("entidadesBase", entidadesBase);
+        }
+        if (selectedFiltro.equals("Juridicas")) {
+            parametros.put("entidadesJuridicas", entidadesJuridicas);
+        }
+        parametros.put(this.getSelectedFiltro(request) + "Selected", true);
+
+        return new ModelAndView(parametros, "gestion_entidades.hbs");
+    }
+
+    private String getSelectedFiltro(Request request) {
+        if (request.queryParams("filtro") == null) {
+            return "Todas";
+        }
+        return request.queryParams("filtro");
     }
 }

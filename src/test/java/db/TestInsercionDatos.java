@@ -35,11 +35,10 @@ public class TestInsercionDatos extends TestSetUpGeneral {
     public void testInsercionDatos() throws InvalidKeySpecException, NoSuchAlgorithmException {
 
         //Organizaciones
-        Organizacion eaaf = new Organizacion("Equipo Argentino de Antropología Forense - EAAF");
-        Organizacion cdia = new Organizacion("Colectivo de Derechos de Infancia y Adolescencia - CDIA");
+        Organizacion eaaf = new Organizacion("Equipo Argentino de Antropología Forense");
+        Organizacion cdia = new Organizacion("Colectivo de Derechos de Infancia y Adolescencia");
 
         //Categorias
-
         CategoriaEntidad categoria1 = new CategoriaEntidad("CAT1");
         CategoriaEntidad categoria2 = new CategoriaEntidad("CAT2");
         CategoriaEntidad categoria3 = new CategoriaEntidad("CAT3");
@@ -69,8 +68,8 @@ public class TestInsercionDatos extends TestSetUpGeneral {
         oficinaBsAs.setOrganizacion(eaaf);
         oficinaUsa.setOrganizacion(eaaf);
         oficinaMexico.setOrganizacion(eaaf);
-        //entidades cdia
 
+        //entidades cdia
         Direccion direccionSurcos = new Direccion("Jéronimo Salguero", "2800", null, null, buenosAires);
         EntidadJuridica surcos = new EntidadJuridica("Surcos", "Surcos CS", direccionSurcos,
                 TipoDeCodigoID.CUIL, 359874666, new OSC(), categoria1);
@@ -80,7 +79,6 @@ public class TestInsercionDatos extends TestSetUpGeneral {
         surcos.setOrganizacion(cdia);
 
         //productos
-
         Producto pintura1 = new Producto("1", "Pintura Z10 latex 20L", 9625.00);
         Producto pintura2 = new Producto("2", "Pintura Loxon impermeabilizante 10L", 6584.49);
         Producto pava = new Producto("4", "Pava electrica Smartlife 1,5L 1850W", 4500.00);
@@ -93,7 +91,6 @@ public class TestInsercionDatos extends TestSetUpGeneral {
         Producto cortinas = new Producto("11", "Cortinas blackout vinilico 2 paños", 4200.00);
 
         //usuarios
-
         Usuario admin = new Usuario("admin", "admin1234", TipoUsuario.Admin, validadorPasswords1);
         Usuario alejandro = new Usuario("aroco", "*_aroco20!-?", TipoUsuario.Estandar, validadorPasswords1);
         Usuario rocio = new Usuario("rrojas", "*-_rrojas!?", TipoUsuario.Estandar, validadorPasswords1);
@@ -110,13 +107,11 @@ public class TestInsercionDatos extends TestSetUpGeneral {
         cdia.agregarUsuario(julieta);
 
         //medios de pago
-
         MediosDePago efectivo = new Efectivo();
         MediosDePago tarjetaCredito = new Tarjeta(TipoTarjeta.tarjetaCredito, "4509664512340131", "VISA", new Date());
         MediosDePago tarjetaDebito = new Tarjeta(TipoTarjeta.tarjetaDebito, "4507560013421543", "MASTERCARD", new Date());
 
         //proveedores TODO: asociar a organizaciones para mostrar solo proveedores de la org
-
         Direccion direccionProveedores = new Direccion("Av. Libertador", "4519", null, null, buenosAires);
         Proveedor pintureria = new Proveedor("Pinturerias Serretino", direccionProveedores, TipoDeCodigoID.CUIT, 405781354);
         Proveedor mitoas = new Proveedor("Mitoas SA", direccionProveedores, TipoDeCodigoID.CUIT, 405781313);
@@ -130,7 +125,6 @@ public class TestInsercionDatos extends TestSetUpGeneral {
         Moneda euro = new Moneda("EU", "€", "Euros");
 
         //egresos
-
         OperacionDeEgreso operacionDeEgreso1 = new OperacionEgresoBuilder()
                 .setTipoDocumentoComercial(TipoDocumentoComercial.Factura)
                 .setNumeroDocumentoComercial(1245789652)
@@ -204,7 +198,6 @@ public class TestInsercionDatos extends TestSetUpGeneral {
 
 
         //persistimos
-
         EntityManagerHelper.beginTransaction();
         EntityManager entityManager = EntityManagerHelper.getEntityManager();
 
@@ -259,7 +252,6 @@ public class TestInsercionDatos extends TestSetUpGeneral {
 
 
         //mensajes
-
         Mensaje mensajeAdmin1 = new Mensaje().crearMensajeValidacion(operacionDeEgreso1, true);
         Mensaje mensajeAdmin2 = new Mensaje().crearMensajeValidacion(operacionDeEgreso2, false);
         Mensaje mensajeAdmin3 = new Mensaje().crearMensajeValidacion(operacionDeEgreso3, true);

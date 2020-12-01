@@ -5,6 +5,8 @@ import db.Persistente;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 
 @Entity
 @Table(name = "mensaje")
@@ -61,6 +63,10 @@ public class Mensaje extends Persistente {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public String getFormattedDate(){
+        return this.fechaYHora.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM));
     }
 
 
