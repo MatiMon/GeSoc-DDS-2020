@@ -36,4 +36,7 @@ public class CategoriaEntidad extends Persistente {
         comportamientos.stream().forEach(comportamiento -> comportamiento.ejecutarSiEstaActivo(entidad));
     }
 
+    public String getNombre() {
+        return nombre;
+    }
 }
