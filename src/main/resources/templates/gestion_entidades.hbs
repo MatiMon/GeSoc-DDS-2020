@@ -148,26 +148,13 @@
         </button>
     </form>
 
-    <!-- Droplist anterior
-    <div id="u47" class="ax_default droplist" data-label="Droplist filtro tipo entidad">
-        <div id="u47_div" class=""></div>
-        <form action="/entidades" method="get">
-            <select id="u47_input" class="u47_input" onchange="this.form.submit()" name="filtro">
-                <option value="Todas" {{#if TodasSelected}}selected{{/if}}>Todas</option>
-                <option value="Bases" {{#if BasesSelected}}selected{{/if}}>Bases</option>
-                <option value="Juridicas" {{#if JuridicasSelected}}selected{{/if}}>Juridicas
-                </option>
-            </select>
-        </form>
-    </div>-->
-
     <div>
     <form action="/entidades" method="get">
     <!-- Droplist filtro tipo entidad (Droplist) -->
     <div id="u48" class="ax_default droplist" data-label="Droplist filtro tipo entidad">
         <div id="u48_div" class=""></div>
         <select id="u48_input" class="u48_input" name="filtro">
-            <option value="Todas" {{#if TodasSelected}}selected{{/if}}>Todas</option>
+            <option value="Todas" {{#if TodasSelected}}selected{{/if}}>Tipo de Entidad</option>
             <option value="Bases" {{#if BasesSelected}}selected{{/if}}>Bases</option>
             <option value="Juridicas" {{#if JuridicasSelected}}selected{{/if}}>Juridicas
             </option>
@@ -178,8 +165,10 @@
     <div id="u49" class="ax_default droplist" data-label="Droplist filtro categoria">
         <div id="u49_div" class=""></div>
         <select id="u49_input" class="u49_input" name="filtro">
-            <option value="Categorias" {{categorias}}>Categorias</option>
-            </option>
+            <option value="Categoria">Categoria</option>
+            {{#each categorias}}
+                <option value="{{id}}" >{{nombre}}</option>
+            {{/each}}
         </select>
     </div>
 
