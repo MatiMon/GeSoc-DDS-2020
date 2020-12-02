@@ -3,6 +3,8 @@ package dominio.controllers;
 import dominio.modelo.entidad.Entidad;
 import dominio.modelo.entidad.EntidadBase;
 import dominio.modelo.entidad.EntidadJuridica;
+import dominio.modelo.entidad.categoria.CategoriaEntidad;
+import dominio.modelo.usuario.Usuario;
 import dominio.repositories.Repositorio;
 import dominio.repositories.factories.FactoryRepositorio;
 import spark.ModelAndView;
@@ -19,6 +21,10 @@ public class EntidadController extends Controller {
     public ModelAndView mostrarTodas(Request request, Response response) {
         List<EntidadBase> entidadesBase;
         List<EntidadJuridica> entidadesJuridicas;
+
+        Repositorio<CategoriaEntidad> repoCategorias = FactoryRepositorio.get(CategoriaEntidad.class);
+
+        List<CategoriaEntidad> categorias = repoCategorias.buscarTodos();
 
         entidadesBase = this.getEntidadesBase(this.getOrganizacion(request));
         entidadesJuridicas = this.getEntidadesJuridicas(this.getOrganizacion(request));
@@ -37,6 +43,7 @@ public class EntidadController extends Controller {
             parametros.put("entidadesJuridicas", entidadesJuridicas);
         }
         parametros.put(this.getSelectedFiltro(request) + "Selected", true);
+        parametros.put("categorias", categorias);
 
         return new ModelAndView(parametros, "gestion_entidades.hbs");
     }
