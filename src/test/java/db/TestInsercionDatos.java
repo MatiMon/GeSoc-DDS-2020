@@ -39,9 +39,9 @@ public class TestInsercionDatos extends TestSetUpGeneral {
         Organizacion cdia = new Organizacion("Colectivo de Derechos de Infancia y Adolescencia");
 
         //Categorias
-        CategoriaEntidad categoria1 = new CategoriaEntidad("CAT1");
-        CategoriaEntidad categoria2 = new CategoriaEntidad("CAT2");
-        CategoriaEntidad categoria3 = new CategoriaEntidad("CAT3");
+        CategoriaEntidad categoria1 = new CategoriaEntidad("ONG");
+        CategoriaEntidad categoria2 = new CategoriaEntidad("Judiciales");
+        CategoriaEntidad categoria3 = new CategoriaEntidad("Industria Agropecuaria");
 
         //Entidades eaaf
         Pais argentina = new Pais("Argentina", "ARG");
