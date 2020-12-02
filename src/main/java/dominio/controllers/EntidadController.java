@@ -47,6 +47,15 @@ public class EntidadController extends Controller {
 
         return new ModelAndView(parametros, "gestion_entidades.hbs");
     }
+    public ModelAndView asociarCategoria(Request request, Response response) {
+        Repositorio<CategoriaEntidad> repoCategorias = FactoryRepositorio.get(CategoriaEntidad.class);
+        List<CategoriaEntidad> categorias = repoCategorias.buscarTodos();
+
+        Map<String, Object> parametros = this.getSessionParams(request);
+
+        parametros.put("categorias", categorias);
+        return new ModelAndView(parametros, "asociar_categoria.hbs");
+    }
 
     private String getSelectedFiltro(Request request) {
         if (request.queryParams("filtro") == null) {

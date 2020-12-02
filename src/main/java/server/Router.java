@@ -41,6 +41,7 @@ public class Router {
         Spark.get("/principal", mainController::paginaPrincipal, Router.engine);
         Spark.get("/egresos", operacionController::mostrarOperaciones, Router.engine);
         Spark.get("/entidades", entidadController::mostrarTodas, Router.engine);
+        Spark.get("/entidades/asociar-categoria", entidadController::asociarCategoria, Router.engine);
         Spark.get("/nueva-operacion", operacionController::nuevaOperacion, Router.engine);
         Spark.get("/nueva-operacion/entidad", operacionController::nuevaOperacionData, Router.engine);
         Spark.get("/nueva-operacion/items", operacionController::nuevaOperacionItems, Router.engine);
