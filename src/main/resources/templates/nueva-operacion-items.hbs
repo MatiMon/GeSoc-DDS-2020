@@ -103,50 +103,15 @@
 
     <div id="u40" class="ax_default box_2" data-label="Panel derecho arriba">
         <div id="u40_div" class="">
-            <div style="{align-content: flex-start;}">
-                <label for="tipoEntidad">Tipo de Entidad</label>
-                <form action="/nueva-operacion" method="get">
-                    <select name="tipoEntidad" id="tipoEntidad" onchange="this.form.submit()">
-                        <option value="Base"{{#if tipoBase}}selected{{/if}}>Base</option>
-                        <option value="Base"{{#if tipoJuriica}}selected{{/if}}>Juridica</option>
-                    </select>
-                </form>
-            </div>
-            <form id="formNueva" action="/egresos" method="post">
+            <form id="formNueva" action="/nueva-operacion/finalizar" method="get">
                 <table>
                     <tbody>
                     <tr>
-                        <td>
-                            <label>Nº documento</label>
-                            <input type="number" value="" name="numeroDocumento"/>
-                        </td>
-                        <td>
-                            <label>Cantidad de presupuestos</label>
-                            <input type="number" value="" name="cantidadPresupuestos"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for="proveedores">Proveedor</label>
-                            <select name="proveedores" id="proveedores">
-                                {{#each proveedores}}
-                                    <option value="{{id}}">{{razonSocial}}</option>
-                                {{/each}}
-                            </select>
-                        </td>
-                        <td>
-                            <label for="monedas">Moneda</label>
-                            <select name="monedas" id="monedas">
-                                {{#each monedas}}
-                                    <option value="{{identificador}}">{{descripcion}}</option>
-                                {{/each}}
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
+                        <td>lalala</td>
                     </tr>
                     </tbody>
                 </table>
+                <button>Siguiente</button>
             </form>
         </div>
         <div id="u40_text" class="text ">

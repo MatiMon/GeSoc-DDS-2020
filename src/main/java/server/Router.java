@@ -40,10 +40,12 @@ public class Router {
         Spark.get("/login-error", loginController::inicioSesionError, Router.engine);
         Spark.get("/principal", mainController::paginaPrincipal, Router.engine);
         Spark.get("/egresos", operacionController::mostrarOperaciones, Router.engine);
+        Spark.post("/egresos", operacionController::crearOperacion, Router.engine);
         Spark.get("/entidades", entidadController::mostrarTodas, Router.engine);
         Spark.get("/nueva-operacion", operacionController::nuevaOperacion, Router.engine);
-        Spark.get("/nueva-operacion/entidad", operacionController::nuevaOperacionData, Router.engine);
+        Spark.get("/nueva-operacion/data", operacionController::nuevaOperacionData, Router.engine);
         Spark.get("/nueva-operacion/items", operacionController::nuevaOperacionItems, Router.engine);
+        Spark.get("/nueva-operacion/finalizar", operacionController::nuevaOperacionFinalizar, Router.engine);
 
         Spark.post("/login", loginController::login);
 
