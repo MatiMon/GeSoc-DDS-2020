@@ -105,14 +105,16 @@
         <div id="u40_div" class="">
             <div style="{align-content: flex-start;}">
             </div>
-            <form id="formNueva" action="/nueva-operacion/entidad" method="get">
-                <label for="tipoEntidad">Elige un tipo de Entidad</label>
-                <select name="tipoEntidad" id="tipoEntidad">
-                    <option value="Base"{{#if tipoBase}}selected{{/if}}>Base</option>
-                    <option value="Base"{{#if tipoJuriica}}selected{{/if}}>Juridica</option>
-                </select>
-                <button>Siguiente</button>
-            </form>
+            <div style="margin-top: 65px; margin-left: 10px;">
+                <form id="formNueva" action="/nueva-operacion/data" method="get">
+                    <label for="tipoEntidad">Elige un tipo de Entidad</label>
+                    <select name="tipoEntidad" id="tipoEntidad">
+                        <option value="base">Base</option>
+                        <option value="juridica">Juridica</option>
+                    </select>
+                    <button>Siguiente</button>
+                </form>
+            </div>
         </div>
         <div id="u40_text" class="text ">
             <p></p>

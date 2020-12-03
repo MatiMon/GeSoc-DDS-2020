@@ -11,6 +11,7 @@ import dominio.modelo.usuario.Usuario;
 import db.Persistente;
 
 import javax.persistence.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -73,6 +74,9 @@ public class OperacionDeEgreso extends Persistente {
 
     @Transient
     private RepositorioDeEtiquetas repositorioDeEtiquetas;
+
+    @Transient
+    private String fechaString;
 
     public OperacionDeEgreso(TipoDocumentoComercial tipoDocumentoComercial,
                              int numeroDocumentoComercial,
@@ -193,5 +197,10 @@ public class OperacionDeEgreso extends Persistente {
 
     public OperacionDeEgreso() {
 
+    }
+
+    public String getFechaString() {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        return format.format(fechaOperacion);
     }
 }

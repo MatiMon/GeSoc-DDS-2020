@@ -57,7 +57,9 @@ public class Tarjeta extends MediosDePago {
     }
 
     public Tarjeta() {
-
     }
 
+    public TipoTarjeta getTipo() {
+        return tipo;
+    }
 }

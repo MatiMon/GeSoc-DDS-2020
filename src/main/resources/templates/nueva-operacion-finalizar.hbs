@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <script>
     window.addEventListener("DOMContentLoaded", function () {
         let form = document.getElementById("formLogout");
@@ -7,6 +7,17 @@
         });
     });
 </script>
+<style>
+    nueva-entidad {
+        border-width: 0px;
+        position: absolute;
+        left: 273px;
+        top: 99px;
+        width: 732px;
+        height: 574px;
+        display: flex;
+    }
+</style>
 <html>
 <head>
     <title>Pagina principal</title>
@@ -15,6 +26,7 @@
     <link href="/css/axure_rp_page.css" type="text/css" rel="stylesheet"/>
     <link href="/css/styles.css" type="text/css" rel="stylesheet"/>
     <link href="/css/stylesPaginaPrincipal.css" type="text/css" rel="stylesheet"/>
+    <link href="/css/stylesGestionEntidades.css" type="text/css" rel="stylesheet"/>
 </head>
 <body>
 <div id="base" class="">
@@ -89,66 +101,34 @@
         </div>
     </form>
 
-    <!-- Panel derecho arriba (Rectangle) -->
-    <div id="u16" class="ax_default box_2" data-label="Panel derecho arriba">
-        <div id="u16_div" class=""></div>
-        <div id="u16_text" class="text " style="display:none; visibility: hidden">
-            <p></p>
-        </div>
-    </div>
-
-    <!-- Panel derecho abajo (Rectangle) -->
-    <div id="u17" class="ax_default box_2" data-label="Panel derecho abajo">
-        <div id="u17_div" class=""></div>
-        <div id="u17_text" class="text " style="display:none; visibility: hidden">
-            <p></p>
-        </div>
-    </div>
-
-    <!-- Lista mensajes (List Box) -->
-    <div id="u18" class="ax_default list_box" data-label="Lista mensajes">
-        <div id="u18_div" class="">
-            <table cellspacing="0" cellpadding="1" border="1" width="100%">
-                <thead>
-                <tr style="color:white;background-color:black">
-                    <th>Fecha</th>
-                    <th>Descripcion</th>
-                    <th>Leido</th>
-                </tr>
-                </thead>
-                <tbody>
-                {{#each mensajes}}
+    <div id="u40" class="ax_default box_2" data-label="Panel derecho arriba">
+        <div id="u40_div" class="">
+            <div style="margin-top: 65px; margin-left: 10px;">
+                <table>
                     <tr>
-                        <td>{{fechaYHora}}</td>
-                        <td>{{descripcion}}</td>
-                        <td>{{#if leido}} SI {{else}} NO{{/if}} </td>
+                        <td>
+                            <form id="formNueva" action="/nueva-operacion/items" method="get">
+                                <label>¿Desea agregar otro ítem?</label>
+                                <button>Si</button>
+                            </form>
+                        </td>
                     </tr>
-                {{/each}}
-                </tbody>
-            </table>
+                    <tr>
+                        <td>
+                            <form id="terminar" action="/egresos" method="post">
+                                <label>¿Desea terminar?</label>
+                                <button>Guardar Operacion</button>
+                            </form>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div id="u40_text" class="text ">
+            <p></p>
         </div>
     </div>
-
-    <!-- Boton Ver operaciones (Rectangle) -->
-    <form action="/egresos" method="get">
-        <button id="u19" class="ax_default button" data-label="Boton Ver operaciones">
-            <div id="u19_div" class=""></div>
-            <div id="u19_text" class="text ">
-                <p><span>Ver operaciones</span></p>
-            </div>
-        </button>
-    </form>
-
-    <!-- Boton Nueva operacion (Rectangle) -->
-    <form action="/nueva-operacion" method="get">
-        <button id="u20" class="ax_default button" data-label="Boton Nueva operacion">
-            <div id="u20_div" class=""></div>
-            <div id="u20_text" class="text ">
-                <p><span>Nueva operación</span></p>
-            </div>
-        </button>
-    </form>
-
+    <!-- Ultimas operaciones (Rectangle) -->
 </div>
 
 <!-- Boton Inicio (Rectangle) -->
@@ -160,36 +140,6 @@
         </div>
     </button>
 </form>
-
-<!-- Ultimas operaciones (Rectangle) -->
-<div id="u21" class="ax_default box_2" data-label="Ultimas operaciones">
-    <div id="u21_div" class="">
-        <table cellspacing="0" cellpadding="1" border="1" width="100%">
-            <thead>
-            <tr style="color:white;background-color:black">
-                <th>Fecha</th>
-                <th>Nº documento</th>
-                <th>Tipo documento</th>
-                <th>Proveedor</th>
-                <th>Entidad</th>
-                <th>Valor total</th>
-            </tr>
-            </thead>
-            <tbody>
-            {{#each operaciones}}
-                <tr>
-                    <td>{{fechaString}}</td>
-                    <td>{{numeroDocumentoComercial}}</td>
-                    <td>{{tipoDocumentoComercial}}</td>
-                    <td>{{proveedor.razonSocial}}</td>
-                    <td>{{entidad.nombreFicticio}}</td>
-                    <td>{{valorTotal}}</td>
-                </tr>
-            {{/each}}
-            </tbody>
-        </table>
-    </div>
-</div>
 </div>
 </body>
 </html>
