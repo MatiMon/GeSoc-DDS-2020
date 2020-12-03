@@ -23,6 +23,10 @@ public class Ciudad extends Persistente {
         this.provincia = provincia;
     }
 
+    public Ciudad() {
+
+    }
+
     //Getters
     public String getNombre() {
         return nombre;

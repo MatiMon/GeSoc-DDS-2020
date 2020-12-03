@@ -28,6 +28,10 @@ public class Provincia extends Persistente {
         this.pais = pais;
     }
 
+    public Provincia() {
+
+    }
+
     //Getters
     public String getNombre() {
         return nombre;

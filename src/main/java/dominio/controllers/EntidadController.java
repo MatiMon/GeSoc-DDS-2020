@@ -1,12 +1,16 @@
 package dominio.controllers;
 
+import db.EntityManagerHelper;
 import dominio.modelo.entidad.*;
 import dominio.modelo.entidad.categoria.CategoriaEntidad;
 
 import dominio.modelo.moneda.Moneda;
 import dominio.modelo.proveedor.Proveedor;
+import dominio.modelo.proveedor.TipoDeCodigoID;
+import dominio.modelo.ubicacion.Ciudad;
 import dominio.modelo.ubicacion.Direccion;
 import dominio.modelo.ubicacion.Pais;
+import dominio.modelo.ubicacion.Provincia;
 import dominio.modelo.usuario.Usuario;
 
 
@@ -16,6 +20,7 @@ import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
 
+import javax.persistence.EntityManager;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -116,8 +121,18 @@ public class EntidadController extends Controller {
         if (entidadBase == null) {
             EntidadJuridica entidadJuridica = this.repoEntidadesJuridicas.buscar(id);
             entidadJuridica.setCategoria(categoriaEntidad);
+            EntityManagerHelper.beginTransaction();
+            EntityManager entityManager = EntityManagerHelper.getEntityManager();
+            entityManager.persist(entidadJuridica);
+
+            EntityManagerHelper.commit();
+
         } else {
             entidadBase.setCategoria(categoriaEntidad);
+            EntityManagerHelper.beginTransaction();
+            EntityManager entityManager = EntityManagerHelper.getEntityManager();
+            entityManager.persist(entidadBase);
+            EntityManagerHelper.commit();
         }
         return mostrarTodas(request, response);
 
@@ -152,26 +167,107 @@ public class EntidadController extends Controller {
 
     public ModelAndView nuevaEntidadJuridica(Request request, Response response) {
         Map<String, Object> parametros = this.getSessionParams(request);
-
         List<Pais> paises = FactoryRepositorio.get(Pais.class).buscarTodos();
-
         parametros.put("paises", paises);
-
 
         return new ModelAndView(parametros, "nueva-entidad-juridica.hbs");
 
     }
 
     public ModelAndView nuevaEntidadJuridicaProvincia(Request request, Response response) {
+        Map<String, Object> parametros = this.getSessionParams(request);
+        paisId = Long.parseLong(request.queryParams("paisId"));
+        Pais pais = FactoryRepositorio.get(Pais.class).buscar(paisId);
+        List<Provincia> provincias = pais.getProvincias();
 
-        return new ModelAndView(null, "nueva-entidad-juridica.hbs");
-
+        parametros.put("paisSeleccionado", pais.getNombre());
+        parametros.put("provincias", provincias);
+        return new ModelAndView(parametros, "nueva-entidad-juridica-provincias.hbs");
     }
 
     public ModelAndView nuevaEntidadJuridicaData(Request request, Response response) {
+        Map<String, Object> parametros = this.getSessionParams(request);
+        provinciaId = Long.parseLong(request.queryParams("provinciaId"));
+        Pais pais = FactoryRepositorio.get(Pais.class).buscar(paisId);
+        Provincia provincia = FactoryRepositorio.get(Provincia.class).buscar(provinciaId);
+        List<CategoriaEntidad> categorias = FactoryRepositorio.get(CategoriaEntidad.class).buscarTodos();
+        List<Ciudad> ciudades = provincia.getCiudades();
 
-        return new ModelAndView(null, "nueva-entidad-juridica.hbs");
+        parametros.put("ciudades", ciudades);
+        parametros.put("categorias", categorias);
+        parametros.put("paisSeleccionado", pais.getNombre());
+        parametros.put("provinciaSeleccionada", provincia.getNombre());
 
+        return new ModelAndView(parametros, "nueva-entidad-juridica-data.hbs");
+
+    }
+
+    public ModelAndView crearEntidadJuridica(Request request, Response response) {
+        // try {
+        String nombreFicticio = request.queryParams("nombreFicticio");
+        String razonSocial = request.queryParams("razonSocial");
+        String tipoCodigoId = request.queryParams("tipoCodigoId");
+        int numeroDocumento = Integer.parseInt(request.queryParams("numDoc"));
+        String tipoEntidadJuridica = request.queryParams("tipoEntidadJuridica");
+        long idCategoria = Long.parseLong(request.queryParams("categorias"));
+        long ciudadId = Long.parseLong(request.queryParams("ciudadId"));
+        String calle = request.queryParams("calle");
+        String numeroCalle = request.queryParams("numeroCalle");
+
+        Ciudad ciudad = FactoryRepositorio.get(Ciudad.class).buscar(ciudadId);
+        Direccion direccion = new Direccion(calle, numeroCalle, null, null, ciudad);
+
+        CategoriaEntidad categoriaEntidad = FactoryRepositorio.get(CategoriaEntidad.class).buscar(idCategoria);
+        EntidadJuridica entidadJuridica = new EntidadJuridica(nombreFicticio, razonSocial, direccion,
+                crearCodigoId(tipoCodigoId), numeroDocumento, crearTipoEntidad(tipoEntidadJuridica), categoriaEntidad);
+
+        Organizacion organizacion = this.getOrganizacion(request);
+        entidadJuridica.setOrganizacion(organizacion);
+        organizacion.agregarEntidadJuridica(entidadJuridica);
+
+        EntityManagerHelper.beginTransaction();
+        EntityManager entityManager = EntityManagerHelper.getEntityManager();
+        entityManager.persist(direccion);
+        entityManager.persist(entidadJuridica);
+        entityManager.persist(organizacion);
+
+        EntityManagerHelper.commit();
+
+        return mostrarTodas(request, response);
+//        } catch (Exception e) {
+//            return nuevaEntidadJuridica(request, response);
+//        }
+
+    }
+
+    private TipoDeCodigoID crearCodigoId(String tipoCodigoId) {
+        switch (tipoCodigoId) {
+            case "DNI":
+                return TipoDeCodigoID.DNI;
+            case "CUIL":
+                return TipoDeCodigoID.CUIL;
+            case "CUIT":
+                return TipoDeCodigoID.CUIT;
+            default:
+                return null;
+        }
+    }
+
+    private TipoEntidadJuridica crearTipoEntidad(String tipo) {
+        switch (tipo) {
+            case "Micro":
+                return new Empresa(ClasificacionAfip.MICRO);
+            case "Pequenia":
+                return new Empresa(ClasificacionAfip.PEQUENIA);
+            case "Mediana 1":
+                return new Empresa(ClasificacionAfip.MEDIANA1);
+            case "Mediana 2":
+                return new Empresa(ClasificacionAfip.MEDIANA2);
+            case "OSC":
+                return new OSC();
+            default:
+                return null;
+        }
     }
 
 }
