@@ -153,13 +153,23 @@ public class EntidadController extends Controller {
 
     public ModelAndView nuevaEntidadBase(Request request, Response response) {
         Map<String, Object> parametros = this.getSessionParams(request);
+        List<EntidadJuridica> entJuridicas = this.repoEntidadesJuridicas.buscarTodos();
+        parametros.put("entidades_juridicas",entJuridicas);
         return new ModelAndView(parametros, "nueva-entidad-base.hbs");
     }
 
     public ModelAndView crearEntidadBase(Request request, Response response) {
         Map<String, Object> parametros = this.getSessionParams(request);
+        long idEntJurid = Long.parseLong((request.queryParams("EntJuridica")));
+        EntidadJuridica entJurid = FactoryRepositorio.get(EntidadJuridica.class).buscar(idEntJurid);
+        String nombre = request.queryParams("nombreFicticio");
+        String descripcion = request.queryParams("descripcion");
+        EntidadBase entBase = new EntidadBase(nombre,descripcion,entJurid);
+        EntityManagerHelper.beginTransaction();
+        EntityManager entityManager = EntityManagerHelper.getEntityManager();
+        entityManager.persist(entBase);
 
-
+        EntityManagerHelper.commit();
         return mostrarTodas(request, response);
 
     }
