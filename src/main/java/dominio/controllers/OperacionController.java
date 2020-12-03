@@ -1,33 +1,26 @@
 package dominio.controllers;
 
-import com.apple.laf.AquaRootPaneUI;
 import db.EntityManagerHelper;
 import dominio.modelo.entidad.EntidadBase;
 import dominio.modelo.entidad.EntidadJuridica;
-import dominio.modelo.entidad.Organizacion;
 import dominio.modelo.mediosDePago.Efectivo;
-import dominio.modelo.mediosDePago.MediosDePago;
 import dominio.modelo.mediosDePago.Tarjeta;
 import dominio.modelo.mediosDePago.TipoTarjeta;
 import dominio.modelo.moneda.Moneda;
-import dominio.modelo.operacionEgreso.*;
+import dominio.modelo.operacionEgreso.OperacionDeEgreso;
+import dominio.modelo.operacionEgreso.OperacionEgresoBuilder;
+import dominio.modelo.operacionEgreso.Producto;
+import dominio.modelo.operacionEgreso.TipoDocumentoComercial;
 import dominio.modelo.proveedor.Proveedor;
-import dominio.modelo.usuario.Usuario;
 import dominio.repositories.Repositorio;
 import dominio.repositories.factories.FactoryRepositorio;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
 
-import javax.jws.WebParam;
 import javax.persistence.EntityManager;
-import javax.swing.text.TabExpander;
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
-import java.util.*;
-import java.util.concurrent.ExecutionException;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class OperacionController extends Controller {

@@ -2,11 +2,11 @@ package dominio.repositories.factories;
 
 import config.Config;
 import dominio.repositories.Repositorio;
-import dominio.repositories.daos.*;
+import dominio.repositories.daos.DAO;
+import dominio.repositories.daos.DAOHibernate;
+import dominio.repositories.daos.DAOMemoria;
 import dominio.repositories.testMemoData.Data;
 
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
 import java.util.HashMap;
 
 public class FactoryRepositorio {

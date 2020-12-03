@@ -1,9 +1,9 @@
 package spark.utils;
 
-import java.io.IOException;
-
 import com.github.jknack.handlebars.Helper;
 import com.github.jknack.handlebars.Options;
+
+import java.io.IOException;
 
 public enum BooleanHelper implements Helper<Boolean>{
 

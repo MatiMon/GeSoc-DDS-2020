@@ -1,9 +1,9 @@
 package dominio.modelo.presupuesto;
 
+import db.Persistente;
 import dominio.modelo.operacionEgreso.Item;
 import dominio.modelo.operacionEgreso.OperacionDeEgreso;
 import dominio.modelo.operacionEgreso.TipoDocumentoComercial;
-import db.Persistente;
 
 import javax.persistence.*;
 import java.util.List;

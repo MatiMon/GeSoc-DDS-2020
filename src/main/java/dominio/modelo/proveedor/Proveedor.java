@@ -1,7 +1,7 @@
 package dominio.modelo.proveedor;
 
-import dominio.modelo.ubicacion.Direccion;
 import db.Persistente;
+import dominio.modelo.ubicacion.Direccion;
 
 import javax.persistence.*;
 

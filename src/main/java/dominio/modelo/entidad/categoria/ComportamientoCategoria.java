@@ -1,7 +1,7 @@
 package dominio.modelo.entidad.categoria;
 
-import dominio.modelo.entidad.Entidad;
 import db.Persistente;
+import dominio.modelo.entidad.Entidad;
 
 import javax.persistence.*;
 

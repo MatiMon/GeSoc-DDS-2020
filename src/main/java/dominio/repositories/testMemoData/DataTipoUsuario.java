@@ -1,8 +1,8 @@
 package dominio.repositories.testMemoData;
 
 import db.Persistente;
-import dominio.modelo.usuario.Usuario;
 import dominio.modelo.usuario.TipoUsuario;
+import dominio.modelo.usuario.Usuario;
 
 import java.util.ArrayList;
 import java.util.Collections;

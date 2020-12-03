@@ -1,11 +1,11 @@
 package dominio.modelo.entidad;
 
+import db.converters.ConverterTipoEntidadJuridica;
 import dominio.modelo.entidad.categoria.CategoriaEntidad;
 import dominio.modelo.entidad.categoria.TiposComportamiento;
 import dominio.modelo.operacionEgreso.Etiquetado.EtiquetaEgreso;
 import dominio.modelo.proveedor.TipoDeCodigoID;
 import dominio.modelo.ubicacion.Direccion;
-import db.converters.ConverterTipoEntidadJuridica;
 
 import javax.persistence.*;
 import java.util.ArrayList;

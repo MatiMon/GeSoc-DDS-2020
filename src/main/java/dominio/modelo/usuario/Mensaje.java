@@ -1,7 +1,7 @@
 package dominio.modelo.usuario;
 
-import dominio.modelo.operacionEgreso.OperacionDeEgreso;
 import db.Persistente;
+import dominio.modelo.operacionEgreso.OperacionDeEgreso;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;

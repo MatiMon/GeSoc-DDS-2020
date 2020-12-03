@@ -18,7 +18,6 @@ import dominio.modelo.ubicacion.Ciudad;
 import dominio.modelo.ubicacion.Direccion;
 import dominio.modelo.ubicacion.Pais;
 import dominio.modelo.ubicacion.Provincia;
-import dominio.modelo.usuario.BandejaDeMensajes;
 import dominio.modelo.usuario.Mensaje;
 import dominio.modelo.usuario.TipoUsuario;
 import dominio.modelo.usuario.Usuario;

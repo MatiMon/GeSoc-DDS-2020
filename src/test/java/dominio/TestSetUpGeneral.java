@@ -1,7 +1,7 @@
 package dominio;
 
-import dominio.modelo.entidad.categoria.CategoriaEntidad;
 import dominio.modelo.entidad.*;
+import dominio.modelo.entidad.categoria.CategoriaEntidad;
 import dominio.modelo.mediosDePago.Efectivo;
 import dominio.modelo.mediosDePago.MediosDePago;
 import dominio.modelo.mediosDePago.Tarjeta;

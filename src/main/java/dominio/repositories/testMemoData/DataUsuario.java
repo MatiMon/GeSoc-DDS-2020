@@ -1,14 +1,12 @@
 package dominio.repositories.testMemoData;
 
 import db.Persistente;
-import dominio.modelo.usuario.*;
+import dominio.modelo.usuario.TipoUsuario;
+import dominio.modelo.usuario.Usuario;
 import dominio.repositories.Repositorio;
 import dominio.repositories.factories.FactoryRepositorio;
 
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 

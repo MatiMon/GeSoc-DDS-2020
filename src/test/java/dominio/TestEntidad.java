@@ -1,10 +1,10 @@
 package dominio;
 
-import dominio.modelo.entidad.categoria.CategoriaEntidad;
 import dominio.modelo.entidad.ClasificacionAfip;
 import dominio.modelo.entidad.Empresa;
 import dominio.modelo.entidad.EntidadBase;
 import dominio.modelo.entidad.EntidadJuridica;
+import dominio.modelo.entidad.categoria.CategoriaEntidad;
 import dominio.modelo.proveedor.TipoDeCodigoID;
 import dominio.modelo.ubicacion.Ciudad;
 import dominio.modelo.ubicacion.Direccion;

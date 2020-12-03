@@ -1,18 +1,14 @@
 package dominio.controllers;
 
-import dominio.modelo.entidad.Entidad;
 import dominio.modelo.entidad.EntidadBase;
 import dominio.modelo.entidad.EntidadJuridica;
 import dominio.modelo.entidad.categoria.CategoriaEntidad;
-import dominio.modelo.usuario.Usuario;
 import dominio.repositories.Repositorio;
 import dominio.repositories.factories.FactoryRepositorio;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
