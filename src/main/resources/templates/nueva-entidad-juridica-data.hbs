@@ -101,45 +101,69 @@
         </div>
     </form>
 
+    <!-- Formulario nueva operacion -->
     <div id="u40" class="ax_default box_2" data-label="Panel derecho arriba">
         <div id="u40_div" class="">
-            <div style="{align-content: flex-start;}">
+            <div style="margin-top: 65px; margin-left: 10px;">
+                <form id="formNueva" action="/entidadJuridica/" method="post">
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td>
+                                <label>Nombre ficticio</label>
+                                <input type="text" value="" name="nombreFicticio"/>
+                            </td>
+                            <td>
+                                <label>Razon social</label>
+                                <input type="text" value="" name="razonSocial"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="tipoCodigoId">Tipo de documento</label>
+                                <select name="tipoCodigoId" id="tipoCodigoId">
+                                    <option value="DNI"> DNI</option>
+                                    <option value="CUIL"> CUIL</option>
+                                    <option value="CUIT"> CUIT</option>
+                                </select>
+                            </td>
+                            <td>
+                                <label>Numero de documento</label>
+                                <input type="int" value="" name="numDoc"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="tipoEntidadJuridica">Tipo de Entidad juridica</label>
+                                <select name="tipoEntidadJuridica" id="tipoEntidadJuridica">
+                                    <option value="Micro"> Micro</option>
+                                    <option value="Pequeña"> Pequeña</option>
+                                    <option value="Mediana 1"> Mediana 1</option>
+                                    <option value="Mediana 2"> Mediana 2</option>
+                                </select>
+                            </td>
+                            <td>
+                                <label for="categorias">Categoria</label>
+                                <select name="categorias" id="categorias">
+                                    {{#each categorias}}
+                                        <option value="{{id}}">{{nombre}}</option>
+                                    {{/each}}
+                                </select>
+                            </td>
+                        <tr>
+                            <td>
+                                <button>Agregar Entidad Juridica</button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </form>
             </div>
-            <form id="formNueva" action="/entidadBase" method="post">
-                <table>
-                    <tbody>
-                    <tr>
-                        <td>
-                            <label>Nombre</label>
-                            <input type="text" value="" name="nombreFicticio"/>
-                        </td>
-                        <td>
-                            <label>Descripcion</label>
-                            <input type="text" value="" name="descripcion"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for="EntJuridica">Entidad Juridica Asociada</label>
-                            <select name="EntJuridica" id="EntJuridica">
-                                {{#each entidadesJuridicas}}
-                                    <option value="{{id}}">{{nombre_ficticio}}</option>
-                                {{/each}}
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                    </tr>
-                    </tbody>
-                </table>
-            </form>
         </div>
         <div id="u40_text" class="text ">
             <p></p>
         </div>
     </div>
-    <!-- Ultimas operaciones (Rectangle) -->
-</div>
 
 <!-- Boton Inicio (Rectangle) -->
 <form action="/principal" method="get">
