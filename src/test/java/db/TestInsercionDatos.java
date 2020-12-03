@@ -65,6 +65,8 @@ public class TestInsercionDatos extends TestSetUpGeneral {
         EntidadJuridica oficinaMexico = new EntidadJuridica("Oficina Central México", "EAAF MX", direccionMexico,
                 TipoDeCodigoID.CUIL, 301522544, new Empresa(ClasificacionAfip.MEDIANA2), categoria3);
 
+        EntidadBase sucursalVillaLynch = new EntidadBase("Sucursal Villa Lynch", "El barrio Lynch", oficinaBsAs);
+
         oficinaBsAs.setOrganizacion(eaaf);
         oficinaUsa.setOrganizacion(eaaf);
         oficinaMexico.setOrganizacion(eaaf);
@@ -216,6 +218,7 @@ public class TestInsercionDatos extends TestSetUpGeneral {
         entityManager.persist(oficinaBsAs);
         entityManager.persist(oficinaMexico);
         entityManager.persist(oficinaUsa);
+        entityManager.persist(sucursalVillaLynch);
         entityManager.persist(surcos);
 
         entityManager.persist(andhes);

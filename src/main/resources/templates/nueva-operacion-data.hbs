@@ -108,12 +108,15 @@
                     <tbody>
                     <tr>
                         <td>
-                            <label>Nº documento</label>
-                            <input type="number" value="" name="numeroDocumento"/>
+                            <label for="tipoDocumento">Tipo de Documento Comercial</label>
+                            <select name="tipoDocumento" id="tipoDocumento">
+                                <option value="factura">Factura</option>
+                                <option value="ticket">Ticket</option>
+                            </select>
                         </td>
                         <td>
-                            <label>Cantidad de presupuestos</label>
-                            <input type="number" value="" name="cantidadPresupuestos"/>
+                            <label>Nº documento</label>
+                            <input type="number" value="" name="numeroDocumento"/>
                         </td>
                     </tr>
                     <tr>
@@ -142,6 +145,20 @@
                                     <option value="{{id}}">{{nombreFicticio}}</option>
                                 {{/each}}
                             </select>
+                        </td>
+                        <td>
+                            <label for="tipoMedioPago">Medio de Pago</label>
+                            <select name="tipoMedioPago" id="tipoMedioPago">
+                                <option value="efectivo">Efectivo</option>
+                                <option value="tarjetaCredito">Tarjeta de Credito</option>
+                                <option value="tarjetaDebito">Tarjeta de Debito</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>Cantidad de presupuestos</label>
+                            <input type="number" value="" name="cantidadPresupuestos"/>
                         </td>
                     </tr>
                     </tbody>
