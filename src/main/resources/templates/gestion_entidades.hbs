@@ -79,6 +79,8 @@
                 <tr style="color:white;background-color:black">
                     <th>Nombre de la Entidad</th>
                     <th>Tipo de Entidad</th>
+                    <th>Descripcion</th>
+                    <th>Asociar Categoria</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -86,15 +88,11 @@
                     <tr>
                         <td>{{nombreFicticio}}</td>
                         <td>Entidad Base</td>
+                        <td>{{descripcion}}</td>
                         <td>
                             <!-- Boton Asociar -->
                             <form action="/entidades/asociar-categoria" method="get">
-                                <button id="u51" class="ax_default link_button" >
-                                    <div id="u51_div" class=""></div>
-                                    <div id="u51_text" class="text ">
-                                        <p><span>Asociar </span></p><p><span>categoria</span></p>
-                                    </div>
-                                </button>
+                                <button onclick="this.form.submit();" style="z-index: -1">X</button>
                             </form>
                         </td>
                     </tr>
@@ -103,25 +101,18 @@
                     <tr>
                         <td>{{nombreFicticio}}</td>
                         <td>Entidad Juridica</td>
+                        <td>{{razonSocial}}</td>
                         <td>
                             <!-- Boton Asociar -->
                             <form action="/entidades/asociar-categoria" method="get">
-                                <button id="u51" class="ax_default link_button" >
-                                    <div id="u51_div" class=""></div>
-                                    <div id="u51_text" class="text ">
-                                        <p><span>Asociar </span></p><p><span>categoria</span></p>
-                                    </div>
-                                </button>
+                                <button onclick="this.form.submit();" style="z-index: -1">X</button>
                             </form>
                         </td>
                 {{/each}}
                 </tr>
                 </tbody>
             </table>
-
         </div>
-        <select id="u41_input" size="2" class="u41_input">
-        </select>
     </div>
 
     <!-- Boton Nueva entidad (Rectangle) -->
@@ -171,40 +162,40 @@
     </form>
 
     <div>
-    <form action="/entidades" method="get">
-    <!-- Droplist filtro tipo entidad (Droplist) -->
-    <div id="u48" class="ax_default droplist" data-label="Droplist filtro tipo entidad">
-        <div id="u48_div" class=""></div>
-        <select id="u48_input" class="u48_input" name="filtro">
-            <option value="Todas" {{#if TodasSelected}}selected{{/if}}>Tipo de Entidad</option>
-            <option value="Bases" {{#if BasesSelected}}selected{{/if}}>Bases</option>
-            <option value="Juridicas" {{#if JuridicasSelected}}selected{{/if}}>Juridicas
-            </option>
-        </select>
+        <form action="/entidades" method="get">
+            <!-- Droplist filtro tipo entidad (Droplist) -->
+            <div id="u48" class="ax_default droplist" data-label="Droplist filtro tipo entidad">
+                <div id="u48_div" class=""></div>
+                <label style="margin-top: -15px;">Filtrando por: {{filtroEntidadAnterior}}</label>
+                <select id="u48_input" class="u48_input" name="filtro">
+                    <option value="Todas">Todas</option>
+                    <option value="Bases">Bases</option>
+                    <option value="Juridicas">Juridicas</option>
+                </select>
+            </div>
+
+            <!-- Droplist filtro categoria (Droplist) -->
+            <div id="u49" class="ax_default droplist" data-label="Droplist filtro categoria"
+                 style="margin-left: -20px; width: 300px;">
+                <div id="u49_div" class=""></div>
+                <label style="margin-top: -15px;">Filtrando por: {{filtroCategoriaAnterior}}</label>
+                <select id="u49_input" class="u49_input" name="filtroCategorias">
+                    <option value="Categoria">Todas</option>
+                    {{#each categorias}}
+                        <option value="{{id}}">{{nombre}}</option>
+                    {{/each}}
+                </select>
+            </div>
+
+            <!-- Boton Filtrar (Rectangle) -->
+            <button id="u50" class="ax_default button" onclick="this.form.submit()" data-label="Boton Filtrar">
+                <div id="u50_div" class=""></div>
+                <div id="u50_text" class="text ">
+                    <p><span>Filtrar</span></p>
+                </div>
+            </button>
+        </form>
     </div>
-
-    <!-- Droplist filtro categoria (Droplist) -->
-    <div id="u49" class="ax_default droplist" data-label="Droplist filtro categoria">
-        <div id="u49_div" class=""></div>
-        <select id="u49_input" class="u49_input" name="filtro">
-            <option value="Categoria">Categoria</option>
-            {{#each categorias}}
-                <option value="{{id}}" >{{nombre}}</option>
-            {{/each}}
-        </select>
-    </div>
-
-    <!-- Boton Filtrar (Rectangle) -->
-        <button id="u50" class="ax_default button" onclick="this.form.submit()" data-label="Boton Filtrar" >
-        <div id="u50_div" class=""></div>
-        <div id="u50_text" class="text ">
-            <p><span>Filtrar</span></p>
-        </div>
-        </button>
-
-    </form>
-    </div>
-
 </div>
 </body>
 </html>

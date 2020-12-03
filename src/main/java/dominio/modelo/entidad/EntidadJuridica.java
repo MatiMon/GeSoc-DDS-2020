@@ -161,4 +161,7 @@ public class EntidadJuridica extends Entidad {
         return this.organizacion;
     }
 
+    public CategoriaEntidad getCategoria() {
+        return categoria;
+    }
 }

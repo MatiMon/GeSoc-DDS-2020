@@ -86,5 +86,7 @@ public class EntidadBase extends Entidad {
         this.entidadJuridica = entidadJuridica;
     }
 
-
+    public CategoriaEntidad getCategoria() {
+        return categoria;
+    }
 }
