@@ -22,6 +22,8 @@ import java.util.stream.Collectors;
 public class EntidadController extends Controller {
 
     protected Repositorio<Direccion> repoDirecciones;
+    private long paisId;
+    private long provinciaId;
 
     public EntidadController() {
         this.repoDirecciones = FactoryRepositorio.get(Direccion.class);
