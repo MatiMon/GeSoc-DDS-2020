@@ -57,6 +57,9 @@ public class EntidadJuridica extends Entidad {
     @Transient
     private Reporte reporte;
 
+    @Transient
+    private String categoriaString;
+
     //Constructor:
     public EntidadJuridica(String nombreFicticio, String razonSocial, Direccion direccion,
                            TipoDeCodigoID tipoDeCodigoID, int codigoID, TipoEntidadJuridica tipo,
@@ -163,5 +166,16 @@ public class EntidadJuridica extends Entidad {
 
     public CategoriaEntidad getCategoria() {
         return categoria;
+    }
+
+    public void setCategoria(CategoriaEntidad categoria) {
+        this.categoria = categoria;
+    }
+
+    public String getCategoriaString(){
+        if (categoria == null){
+            return "Sin Categoría";
+        }
+        return categoria.getNombre();
     }
 }

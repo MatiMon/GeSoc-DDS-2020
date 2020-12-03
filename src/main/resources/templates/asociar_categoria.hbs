@@ -110,35 +110,35 @@
         </button>
     </form>
 
-        <!-- Droplist categorias (Droplist) -->
+    <!-- Droplist categorias (Droplist) -->
+    <form action="/entidades/asociar-categoria/{{idEntidad}}" method="post" id="formCategoria">
         <div id="u52" class="ax_default droplist" data-label="Droplist categorias">
             <div id="u52_div" class=""></div>
-            <select id="u52_input" class="u52_input">
-                <option value="Categoria">Categoria</option>
+            <select id="u52_input" class="u52_input" name="categoria">
                 {{#each categorias}}
-                    <option value="{{id}}" >{{nombre}}</option>
+                    <option value="{{id}}">{{nombre}}</option>
                 {{/each}}
             </select>
         </div>
 
         <!-- Boton Asociar (Shape) -->
-        <form action="/entidades" method="get" >
-            <div id="u53" class="ax_default button"  style="cursor: pointer;">
-                <img id="u53_img" class="img " src="/img/boton_asociar_u53.svg"/>
-                <div id="u53_div" class=""></div>
-                <div id="u53_text" class="text ">
-                    <p><span>Asociar</span></p>
-                </div>
-            </div>
-        </form>
-
-        <!-- Texto seleccionar categoria) -->
-        <div id="u54" class="ax_default paragraph">
-            <div id="u54_div" class=""></div>
-            <div id="u54_text" class="text ">
-                <p><span>Seleccione una categoria:</span></p>
+        <div id="u53" class="ax_default button" style="cursor: pointer;"
+             onclick="document.getElementById('formCategoria').submit()">
+            <img id="u53_img" class="img " src="/img/boton_asociar_u53.svg"/>
+            <div id="u53_div" class=""></div>
+            <div id="u53_text" class="text ">
+                <p><span>Asociar</span></p>
             </div>
         </div>
+    </form>
+
+    <!-- Texto seleccionar categoria) -->
+    <div id="u54" class="ax_default paragraph">
+        <div id="u54_div" class=""></div>
+        <div id="u54_text" class="text ">
+            <p><span>Seleccione una categoria para {{nombreEntidad}}:</span></p>
+        </div>
+    </div>
 
 
 </div>

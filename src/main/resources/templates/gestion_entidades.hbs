@@ -80,6 +80,7 @@
                     <th>Nombre de la Entidad</th>
                     <th>Tipo de Entidad</th>
                     <th>Descripcion</th>
+                    <th>Categoria Actual</th>
                     <th>Asociar Categoria</th>
                 </tr>
                 </thead>
@@ -89,10 +90,11 @@
                         <td>{{nombreFicticio}}</td>
                         <td>Entidad Base</td>
                         <td>{{descripcion}}</td>
+                        <td>{{categoriaString}}</td>
                         <td>
                             <!-- Boton Asociar -->
-                            <form action="/entidades/asociar-categoria" method="get">
-                                <button onclick="this.form.submit();" style="z-index: -1">X</button>
+                            <form action="/entidades/asociar-categoria/{{id}}" method="get">
+                                <button onclick="this.form.submit();" style="z-index: -1">Ir</button>
                             </form>
                         </td>
                     </tr>
@@ -102,10 +104,11 @@
                         <td>{{nombreFicticio}}</td>
                         <td>Entidad Juridica</td>
                         <td>{{razonSocial}}</td>
+                        <td>{{categoriaString}}</td>
                         <td>
                             <!-- Boton Asociar -->
-                            <form action="/entidades/asociar-categoria" method="get">
-                                <button onclick="this.form.submit();" style="z-index: -1">X</button>
+                            <form action="/entidades/asociar-categoria/{{id}}" method="get">
+                                <button onclick="this.form.submit();" style="z-index: -1">Ir</button>
                             </form>
                         </td>
                 {{/each}}

@@ -4,6 +4,7 @@ import db.Persistente;
 import dominio.modelo.operacionEgreso.OperacionDeEgreso;
 
 import javax.persistence.*;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
@@ -18,6 +19,9 @@ public class Mensaje extends Persistente {
     private String descripcion;
 
     private boolean leido;
+
+    @Transient
+    private String fechaString;
 
     @ManyToOne
     @JoinColumn(name = "usuario_id", referencedColumnName = "id")
@@ -65,8 +69,8 @@ public class Mensaje extends Persistente {
         this.usuario = usuario;
     }
 
-    public String getFormattedDate(){
-        return this.fechaYHora.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM));
+    public String getFechaString(){
+        return fechaYHora.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
     }
 
 

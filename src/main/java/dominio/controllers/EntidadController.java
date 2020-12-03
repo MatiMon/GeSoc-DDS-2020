@@ -1,5 +1,6 @@
 package dominio.controllers;
 
+import dominio.modelo.entidad.Entidad;
 import dominio.modelo.entidad.EntidadBase;
 import dominio.modelo.entidad.EntidadJuridica;
 import dominio.modelo.entidad.categoria.CategoriaEntidad;
@@ -68,15 +69,44 @@ public class EntidadController extends Controller {
         return new ModelAndView(parametros, "gestion_entidades.hbs");
     }
 
-    public ModelAndView asociarCategoria(Request request, Response response) {
+    public ModelAndView elegirCategoria(Request request, Response response) {
         Repositorio<CategoriaEntidad> repoCategorias = FactoryRepositorio.get(CategoriaEntidad.class);
         List<CategoriaEntidad> categorias = repoCategorias.buscarTodos();
 
+        long id = Long.parseLong(request.params(":id"));
+
+        EntidadBase entidadBase = this.repoEntidadesBase.buscar(id);
         Map<String, Object> parametros = this.getSessionParams(request);
 
+        if (entidadBase == null) {
+            EntidadJuridica entidadJuridica = this.repoEntidadesJuridicas.buscar(id);
+            parametros.put("nombreEntidad", entidadJuridica.getNombreFicticio());
+        } else {
+            parametros.put("nombreEntidad", entidadBase.getNombreFicticio());
+        }
+
+        parametros.put("idEntidad", id);
         parametros.put("categorias", categorias);
         return new ModelAndView(parametros, "asociar_categoria.hbs");
     }
+
+    public ModelAndView asociarCategoria(Request request, Response response) {
+        Map<String, Object> parametros = this.getSessionParams(request);
+        long id = Long.parseLong(request.params(":id"));
+        long idCategoria = Long.parseLong((request.queryParams("categoria")));
+
+        EntidadBase entidadBase = this.repoEntidadesBase.buscar(id);
+        CategoriaEntidad categoriaEntidad = FactoryRepositorio.get(CategoriaEntidad.class).buscar(idCategoria);
+
+        if (entidadBase == null) {
+            EntidadJuridica entidadJuridica = this.repoEntidadesJuridicas.buscar(id);
+            entidadJuridica.setCategoria(categoriaEntidad);
+        } else {
+            entidadBase.setCategoria(categoriaEntidad);
+        }
+        return mostrarTodas(request, response);
+    }
+
 
     private String getSelectedFiltro(Request request) {
         if (request.queryParams("filtro") == null) {
