@@ -103,68 +103,74 @@
 
     <div id="u40" class="ax_default box_2" data-label="Panel derecho arriba">
         <div id="u40_div" class="">
-            <form id="formNueva" action="/nueva-operacion/items" method="get">
-                <table>
-                    <tbody>
-                    <tr>
-                        <td>
-                            <label for="tipoDocumento">Tipo de Documento Comercial</label>
-                            <select name="tipoDocumento" id="tipoDocumento">
-                                <option value="factura">Factura</option>
-                                <option value="ticket">Ticket</option>
-                            </select>
-                        </td>
-                        <td>
-                            <label>Nº documento</label>
-                            <input type="number" value="" name="numeroDocumento"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for="proveedorId">Proveedor</label>
-                            <select name="proveedorId" id="proveedorId">
-                                {{#each proveedores}}
-                                    <option value="{{id}}">{{razonSocial}}</option>
-                                {{/each}}
-                            </select>
-                        </td>
-                        <td>
-                            <label for="monedaId">Moneda</label>
-                            <select name="monedaId" id="monedaId">
-                                {{#each monedas}}
-                                    <option value="{{id}}">{{descripcion}}</option>
-                                {{/each}}
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for="entidadId">Entidades{{tipoEntidad}}</label>
-                            <select name="entidadId" id="entidadId">
-                                {{#each entidades}}
-                                    <option value="{{id}}">{{nombreFicticio}}</option>
-                                {{/each}}
-                            </select>
-                        </td>
-                        <td>
-                            <label for="tipoMedioPago">Medio de Pago</label>
-                            <select name="tipoMedioPago" id="tipoMedioPago">
-                                <option value="efectivo">Efectivo</option>
-                                <option value="tarjetaCredito">Tarjeta de Credito</option>
-                                <option value="tarjetaDebito">Tarjeta de Debito</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label>Cantidad de presupuestos</label>
-                            <input type="number" value="" name="cantidadPresupuestos"/>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-                <button>Agregar Items</button>
-            </form>
+            <div style="margin-top: 65px; margin-left: 10px;">
+                <form id="formNueva" action="/nueva-operacion/items" method="get">
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td>
+                                <label for="tipoDocumento">Tipo de Documento Comercial</label>
+                                <select name="tipoDocumento" id="tipoDocumento">
+                                    <option value="factura">Factura</option>
+                                    <option value="ticket">Ticket</option>
+                                </select>
+                            </td>
+                            <td>
+                                <label>Nº documento</label>
+                                <input type="number" value="" name="numeroDocumento"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="proveedorId">Proveedor</label>
+                                <select name="proveedorId" id="proveedorId">
+                                    {{#each proveedores}}
+                                        <option value="{{id}}">{{razonSocial}}</option>
+                                    {{/each}}
+                                </select>
+                            </td>
+                            <td>
+                                <label for="monedaId">Moneda</label>
+                                <select name="monedaId" id="monedaId">
+                                    {{#each monedas}}
+                                        <option value="{{id}}">{{descripcion}}</option>
+                                    {{/each}}
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="entidadId">Entidades{{tipoEntidad}}</label>
+                                <select name="entidadId" id="entidadId">
+                                    {{#each entidades}}
+                                        <option value="{{id}}">{{nombreFicticio}}</option>
+                                    {{/each}}
+                                </select>
+                            </td>
+                            <td>
+                                <label for="tipoMedioPago">Medio de Pago</label>
+                                <select name="tipoMedioPago" id="tipoMedioPago">
+                                    <option value="efectivo">Efectivo</option>
+                                    <option value="tarjetaCredito">Tarjeta de Credito</option>
+                                    <option value="tarjetaDebito">Tarjeta de Debito</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Cantidad de presupuestos</label>
+                                <input type="number" value="" name="cantidadPresupuestos"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button>Agregar Items</button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
         </div>
         <div id="u40_text" class="text ">
             <p></p>

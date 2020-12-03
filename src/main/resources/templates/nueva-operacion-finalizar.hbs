@@ -103,21 +103,26 @@
 
     <div id="u40" class="ax_default box_2" data-label="Panel derecho arriba">
         <div id="u40_div" class="">
-            <table>
-                <tr>
-                    <td>
-                        <form id="formNueva" action="/nueva-operacion/items" method="get">
-                            <label>Desea agregar otro ítem?</label>
-                            <button>Si</button>
-                        </form>
-                    </td>
-                    <td>
-                        <form id="terminar" action="/egresos" method="post">
-                            <button>Guardar Operacion</button>
-                        </form>
-                    </td>
-                </tr>
-            </table>
+            <div style="margin-top: 65px; margin-left: 10px;">
+                <table>
+                    <tr>
+                        <td>
+                            <form id="formNueva" action="/nueva-operacion/items" method="get">
+                                <label>¿Desea agregar otro ítem?</label>
+                                <button>Si</button>
+                            </form>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <form id="terminar" action="/egresos" method="post">
+                                <label>¿Desea terminar?</label>
+                                <button>Guardar Operacion</button>
+                            </form>
+                        </td>
+                    </tr>
+                </table>
+            </div>
         </div>
         <div id="u40_text" class="text ">
             <p></p>
