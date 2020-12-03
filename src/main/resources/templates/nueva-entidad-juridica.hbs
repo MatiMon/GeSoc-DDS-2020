@@ -105,31 +105,23 @@
         <div id="u40_div" class="">
             <div style="{align-content: flex-start;}">
             </div>
-            <form id="formNueva" action="/entidadBase" method="post">
+            <form id="formNueva" action="/entidadBase/provincia" method="post">
                 <table>
                     <tbody>
                     <tr>
                         <td>
-                            <label>Nombre</label>
-                            <input type="text" value="" name="nombreFicticio"/>
+                            <label>Seleccione el país:</label>
+                            <select name="paisId"></select>
+                            {{#each paises}}
+                                <option id="{{id}}">{{nombre}}</option>
+                            {{/each}}
                         </td>
                         <td>
-                            <label>Descripcion</label>
-                            <input type="text" value="" name="descripcion"/>
+                            <button>Siguiente</button>
                         </td>
+
                     </tr>
-                    <tr>
-                        <td>
-                            <label for="EntJuridica">Entidad Juridica Asociada</label>
-                            <select name="EntJuridica" id="EntJuridica">
-                                {{#each entidadesJuridicas}}
-                                    <option value="{{id}}">{{nombre_ficticio}}</option>
-                                {{/each}}
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                    </tr>
+
                     </tbody>
                 </table>
             </form>

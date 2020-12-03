@@ -6,6 +6,7 @@ import dominio.modelo.entidad.categoria.CategoriaEntidad;
 import dominio.modelo.moneda.Moneda;
 import dominio.modelo.proveedor.Proveedor;
 import dominio.modelo.ubicacion.Direccion;
+import dominio.modelo.ubicacion.Pais;
 import dominio.modelo.usuario.Usuario;
 
 
@@ -150,6 +151,24 @@ public class EntidadController extends Controller {
 
 
     public ModelAndView nuevaEntidadJuridica(Request request, Response response) {
+        Map<String, Object> parametros = this.getSessionParams(request);
+
+        List<Pais> paises = FactoryRepositorio.get(Pais.class).buscarTodos();
+
+        parametros.put("paises", paises);
+
+
+        return new ModelAndView(parametros, "nueva-entidad-juridica.hbs");
+
+    }
+
+    public ModelAndView nuevaEntidadJuridicaProvincia(Request request, Response response) {
+
+        return new ModelAndView(null, "nueva-entidad-juridica.hbs");
+
+    }
+
+    public ModelAndView nuevaEntidadJuridicaData(Request request, Response response) {
 
         return new ModelAndView(null, "nueva-entidad-juridica.hbs");
 
