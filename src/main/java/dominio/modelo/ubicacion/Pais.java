@@ -24,6 +24,10 @@ public class Pais extends Persistente {
         this.idPais = id;
     }
 
+    public Pais() {
+
+    }
+
     //Getters
     public String getNombre() {
         return nombre;
