@@ -1,15 +1,16 @@
 package dominio.modelo.ubicacion;
 
+import db.Persistente;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "ciudad")
-public class Ciudad {
+public class Ciudad extends Persistente {
 
     private String nombre;
 
-    @Id
-    @Column(name = "id")
+    @Column(name = "idCiudad")
     private String idCiudad; // Ejemplo de ID: TUxVQ0FHVWNmYTJk
 
     @ManyToOne

@@ -1,17 +1,18 @@
 package dominio.modelo.ubicacion;
 
+import db.Persistente;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "provincia")
-public class Provincia {
+public class Provincia extends Persistente {
 
     private String nombre;
 
-    @Id
-    @Column(name = "id")
+    @Column(name = "idProvincia")
     private String idProvincia; // Ejemplo de ID: AR-BS_AS
 
     @ManyToOne
@@ -40,4 +41,11 @@ public class Provincia {
         return pais;
     }
 
+    public void setCiudades(List<Ciudad> ciudades) {
+        this.ciudades = ciudades;
+    }
+
+    public List<Ciudad> getCiudades() {
+        return ciudades;
+    }
 }

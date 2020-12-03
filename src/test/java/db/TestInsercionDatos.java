@@ -7,6 +7,7 @@ import dominio.modelo.mediosDePago.Efectivo;
 import dominio.modelo.mediosDePago.MediosDePago;
 import dominio.modelo.mediosDePago.Tarjeta;
 import dominio.modelo.mediosDePago.TipoTarjeta;
+import dominio.modelo.mercadoLibre.UbicacionesMercadoLibre;
 import dominio.modelo.moneda.Moneda;
 import dominio.modelo.operacionEgreso.OperacionDeEgreso;
 import dominio.modelo.operacionEgreso.OperacionEgresoBuilder;
@@ -14,24 +15,33 @@ import dominio.modelo.operacionEgreso.Producto;
 import dominio.modelo.operacionEgreso.TipoDocumentoComercial;
 import dominio.modelo.proveedor.Proveedor;
 import dominio.modelo.proveedor.TipoDeCodigoID;
-import dominio.modelo.ubicacion.Ciudad;
-import dominio.modelo.ubicacion.Direccion;
-import dominio.modelo.ubicacion.Pais;
-import dominio.modelo.ubicacion.Provincia;
+import dominio.modelo.ubicacion.*;
 import dominio.modelo.usuario.Mensaje;
 import dominio.modelo.usuario.TipoUsuario;
 import dominio.modelo.usuario.Usuario;
 import org.junit.Test;
 
 import javax.persistence.EntityManager;
+import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.util.Date;
+import java.util.List;
 
 public class TestInsercionDatos extends TestSetUpGeneral {
 
     @Test
     public void testInsercionDatos() throws InvalidKeySpecException, NoSuchAlgorithmException {
+        UbicacionesMercadoLibre ubicacionesML = UbicacionesMercadoLibre.instancia();
+        List<Pais> listaPaisesML = ubicacionesML.getPaises();
+        for (Pais pais : listaPaisesML) {
+            pais.setProvincias(ubicacionesML.getProvincias(pais));
+            List<Provincia> listaProvincias = pais.getProvincias();
+            for (Provincia provincia : listaProvincias) {
+                provincia.setCiudades(ubicacionesML.getCiudades(provincia));
+            }
+        }
+
 
         //Organizaciones
         Organizacion eaaf = new Organizacion("Equipo Argentino de Antropología Forense");
@@ -250,8 +260,18 @@ public class TestInsercionDatos extends TestSetUpGeneral {
         entityManager.persist(corralon);
         entityManager.persist(telasZN);
 
-        EntityManagerHelper.commit();
+        for (Pais pais : listaPaisesML) {
+            entityManager.persist(pais);
+            List<Provincia> listaProvincias = pais.getProvincias();
+            for (Provincia provincia : listaProvincias) {
+                entityManager.persist(provincia);
+                List<Ciudad> ciudades = provincia.getCiudades();
+                ciudades.forEach(ciudad -> entityManager.persist(ciudad));
+            }
+        }
 
+
+        EntityManagerHelper.commit();
 
         //mensajes
         Mensaje mensajeAdmin1 = new Mensaje().crearMensajeValidacion(operacionDeEgreso1, true);

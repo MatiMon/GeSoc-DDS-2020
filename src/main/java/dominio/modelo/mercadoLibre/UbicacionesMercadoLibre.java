@@ -19,16 +19,21 @@ public class UbicacionesMercadoLibre implements ServicioUbicaciones {
 // Usamos Singleton para tener solo una instancia de RepositorioDeUbicaciones
 	
 // CLASES MOLDE:
-	class PaisService{
+public class PaisService{
 		public String id; // Ejemplo de ID: AR
 		public String name;
 		public String currency_id;
 		public boolean esElPaisBuscado(String idPais){
 			return idPais == this.id;
 		}
+
+		public Pais instanciarPais(){
+			return new Pais(name, id);
+		}
+
 	}
 	
-	class ProvinciaService {
+	public class ProvinciaService {
 		public String id; // Ejemplo de ID: AR-BS_AS
 		public String name;
     }
@@ -37,7 +42,7 @@ public class UbicacionesMercadoLibre implements ServicioUbicaciones {
 		public List<ProvinciaService> states;
     }
 	
-	class CiudadService {
+	public class CiudadService {
 		public String name;
 		public String id;
     }
