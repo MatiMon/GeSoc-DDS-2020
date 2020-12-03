@@ -8,7 +8,7 @@
     });
 </script>
 <style>
-    nueva-operacion {
+    nueva-entidad {
         border-width: 0px;
         position: absolute;
         left: 273px;
@@ -105,12 +105,33 @@
         <div id="u40_div" class="">
             <div style="{align-content: flex-start;}">
             </div>
-            <label for="tipoEntidad">Elige un tipo de Entidad</label>
-            <form action="nueva-entidad/base" method="get">
-                <button>Base</button>
-            </form>
-            <form action="nueva-entidad/juridica" method="get">
-                <button>Juridica</button>
+            <form id="formNueva" action="/entidadBase" method="post">
+                <table>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <label>Nombre</label>
+                            <input type="text" value="" name="nombreFicticio"/>
+                        </td>
+                        <td>
+                            <label>Descripcion</label>
+                            <input type="text" value="" name="descripcion"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="EntJuridica">Entidad Juridica Asociada</label>
+                            <select name="EntJuridica" id="EntJuridica">
+                                {{#each entidadesJuridicas}}
+                                    <option value="{{id}}">{{nombre_ficticio}}</option>
+                                {{/each}}
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                    </tr>
+                    </tbody>
+                </table>
             </form>
         </div>
         <div id="u40_text" class="text ">

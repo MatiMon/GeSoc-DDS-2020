@@ -104,15 +104,7 @@
     <div id="u40" class="ax_default box_2" data-label="Panel derecho arriba">
         <div id="u40_div" class="">
             <div style="{align-content: flex-start;}">
-                <label for="tipoEntidad">Tipo de Entidad</label>
-                <form action="/nueva-entidad" method="get">
-                    <select name="tipoEntidad" id="tipoEntidad" onchange="this.form.submit()">
-                        <option value="Base"{{#if tipoBase}}selected{{/if}}>Base</option>
-                        <option value="Base"{{#if tipoJuridica}}selected{{/if}}>Juridica</option>
-                    </select>
-                </form>
             </div>
-            {{#if tipoBase}}
             <form id="formNueva" action="/entidadBase" method="post">
                 <table>
                     <tbody>
@@ -141,9 +133,6 @@
                     </tbody>
                 </table>
             </form>
-            {{/if}}
-            {{#if tipoJuridica}}
-                {{/if}}
         </div>
         <div id="u40_text" class="text ">
             <p></p>

@@ -43,7 +43,9 @@ public class Router {
         Spark.get("/entidades", entidadController::mostrarTodas, Router.engine);
 
         Spark.get("/nueva-entidad",entidadController::nuevaEntidad,Router.engine);
-        Spark.get("/nueva-entidad/entidad",entidadController::nuevaEntidadData,Router.engine);
+        Spark.get("/nueva-entidad/base",entidadController::nuevaEntidadBase,Router.engine);
+        Spark.post("/nueva-entidad/base",entidadController::crearEntidadBase,Router.engine);
+        Spark.get("/nueva-entidad/juridica",entidadController::nuevaEntidadJuridica,Router.engine);
 
         Spark.get("/entidades/asociar-categoria/:id", entidadController::elegirCategoria, Router.engine);
         Spark.post("/entidades/asociar-categoria/:id", entidadController::asociarCategoria, Router.engine);
@@ -54,7 +56,6 @@ public class Router {
         Spark.get("/nueva-operacion/finalizar", operacionController::nuevaOperacionFinalizar, Router.engine);
 
         Spark.post("/login", loginController::login);
-        //Spark.post("/entidadBase",entidadController::mostrarTodas); // ignorar, fue de prueba
 
     }
 }
