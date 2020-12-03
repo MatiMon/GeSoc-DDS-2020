@@ -21,6 +21,7 @@ public abstract class Controller {
     protected Repositorio<EntidadJuridica> repoEntidadesJuridicas;
 
 
+
     public Controller() {
         this.repoUsuarios = FactoryRepositorio.get(Usuario.class);
         this.repoEgresos = FactoryRepositorio.get(OperacionDeEgreso.class);
