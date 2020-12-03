@@ -105,7 +105,7 @@
         <div id="u40_div" class="">
             <div style="{align-content: flex-start;}">
             </div>
-            <form id="formNueva" action="/entidadBase" method="post">
+            <form id="formNueva" action="/nueva-entidad/base" method="post">
                 <table>
                     <tbody>
                     <tr>
@@ -122,10 +122,13 @@
                         <td>
                             <label for="EntJuridica">Entidad Juridica Asociada</label>
                             <select name="EntJuridica" id="EntJuridica">
-                                {{#each entidadesJuridicas}}
-                                    <option value="{{id}}">{{nombre_ficticio}}</option>
+                                {{#each entidades_juridicas}}
+                                    <option value="{{id}}">{{nombreFicticio}}</option>
                                 {{/each}}
                             </select>
+                        </td>
+                        <td>
+                            <button>Crear</button>
                         </td>
                     </tr>
                     <tr>
