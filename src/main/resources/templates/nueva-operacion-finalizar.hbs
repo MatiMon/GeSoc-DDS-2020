@@ -103,17 +103,25 @@
 
     <div id="u40" class="ax_default box_2" data-label="Panel derecho arriba">
         <div id="u40_div" class="">
-            <div style="{align-content: flex-start;}">
-            </div>
             <div style="margin-top: 65px; margin-left: 10px;">
-                <form id="formNueva" action="/nueva-operacion/data" method="get">
-                    <label for="tipoEntidad">Elige un tipo de Entidad</label>
-                    <select name="tipoEntidad" id="tipoEntidad">
-                        <option value="base">Base</option>
-                        <option value="juridica">Juridica</option>
-                    </select>
-                    <button>Siguiente</button>
-                </form>
+                <table>
+                    <tr>
+                        <td>
+                            <form id="formNueva" action="/nueva-operacion/items" method="get">
+                                <label>¿Desea agregar otro ítem?</label>
+                                <button>Si</button>
+                            </form>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <form id="terminar" action="/egresos" method="post">
+                                <label>¿Desea terminar?</label>
+                                <button>Guardar Operacion</button>
+                            </form>
+                        </td>
+                    </tr>
+                </table>
             </div>
         </div>
         <div id="u40_text" class="text ">

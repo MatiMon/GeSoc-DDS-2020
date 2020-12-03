@@ -18,7 +18,6 @@ import dominio.modelo.ubicacion.Ciudad;
 import dominio.modelo.ubicacion.Direccion;
 import dominio.modelo.ubicacion.Pais;
 import dominio.modelo.ubicacion.Provincia;
-import dominio.modelo.usuario.BandejaDeMensajes;
 import dominio.modelo.usuario.Mensaje;
 import dominio.modelo.usuario.TipoUsuario;
 import dominio.modelo.usuario.Usuario;
@@ -64,6 +63,8 @@ public class TestInsercionDatos extends TestSetUpGeneral {
         Direccion direccionMexico = new Direccion("Roberto Gayol 55", "55", null, null, ciudadDeMexico);
         EntidadJuridica oficinaMexico = new EntidadJuridica("Oficina Central México", "EAAF MX", direccionMexico,
                 TipoDeCodigoID.CUIL, 301522544, new Empresa(ClasificacionAfip.MEDIANA2), categoria3);
+
+        EntidadBase sucursalVillaLynch = new EntidadBase("Sucursal Villa Lynch", "El barrio Lynch", oficinaBsAs);
 
         oficinaBsAs.setOrganizacion(eaaf);
         oficinaUsa.setOrganizacion(eaaf);
@@ -216,6 +217,7 @@ public class TestInsercionDatos extends TestSetUpGeneral {
         entityManager.persist(oficinaBsAs);
         entityManager.persist(oficinaMexico);
         entityManager.persist(oficinaUsa);
+        entityManager.persist(sucursalVillaLynch);
         entityManager.persist(surcos);
 
         entityManager.persist(andhes);

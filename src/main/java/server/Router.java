@@ -2,14 +2,13 @@ package server;
 
 import dominio.controllers.EntidadController;
 import dominio.controllers.LoginController;
-import dominio.controllers.OperacionController;
 import dominio.controllers.MainController;
+import dominio.controllers.OperacionController;
 import spark.Spark;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 import spark.utils.BooleanHelper;
 import spark.utils.HandlebarsTemplateEngineBuilder;
 
-import javax.persistence.EntityManager;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 
@@ -40,12 +39,19 @@ public class Router {
         Spark.get("/login-error", loginController::inicioSesionError, Router.engine);
         Spark.get("/principal", mainController::paginaPrincipal, Router.engine);
         Spark.get("/egresos", operacionController::mostrarOperaciones, Router.engine);
+        Spark.post("/egresos", operacionController::crearOperacion, Router.engine);
         Spark.get("/entidades", entidadController::mostrarTodas, Router.engine);
+
         Spark.get("/nueva-entidad",entidadController::nuevaEntidad,Router.engine);
         Spark.get("/nueva-entidad/entidad",entidadController::nuevaEntidadData,Router.engine);
+
+        Spark.get("/entidades/asociar-categoria/:id", entidadController::elegirCategoria, Router.engine);
+        Spark.post("/entidades/asociar-categoria/:id", entidadController::asociarCategoria, Router.engine);
+
         Spark.get("/nueva-operacion", operacionController::nuevaOperacion, Router.engine);
-        Spark.get("/nueva-operacion/entidad", operacionController::nuevaOperacionData, Router.engine);
+        Spark.get("/nueva-operacion/data", operacionController::nuevaOperacionData, Router.engine);
         Spark.get("/nueva-operacion/items", operacionController::nuevaOperacionItems, Router.engine);
+        Spark.get("/nueva-operacion/finalizar", operacionController::nuevaOperacionFinalizar, Router.engine);
 
         Spark.post("/login", loginController::login);
         //Spark.post("/entidadBase",entidadController::mostrarTodas); // ignorar, fue de prueba

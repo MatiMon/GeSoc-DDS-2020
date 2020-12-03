@@ -4,8 +4,6 @@ import db.Persistente;
 import dominio.modelo.usuario.TipoUsuario;
 import dominio.modelo.usuario.Usuario;
 
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
 import java.util.ArrayList;
 import java.util.List;
 

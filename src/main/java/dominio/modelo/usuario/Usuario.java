@@ -1,8 +1,8 @@
 package dominio.modelo.usuario;
 
+import db.Persistente;
 import dominio.modelo.entidad.Organizacion;
 import dominio.modelo.operacionEgreso.OperacionDeEgreso;
-import db.Persistente;
 
 import javax.persistence.*;
 import java.security.NoSuchAlgorithmException;

@@ -1,8 +1,8 @@
 package dominio.modelo.operacionEgreso.Etiquetado;
 
+import db.Persistente;
 import dominio.modelo.moneda.Moneda;
 import dominio.modelo.operacionEgreso.OperacionDeEgreso;
-import db.Persistente;
 
 import javax.persistence.*;
 import java.util.ArrayList;

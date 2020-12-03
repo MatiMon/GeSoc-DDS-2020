@@ -23,6 +23,9 @@ public class EntidadBase extends Entidad {
     @Transient
     private Reporte reporte;
 
+    @Transient
+    private String categoriaString;
+
 
     // Constructor
     public EntidadBase(String nombreFicticio, String descripcion, EntidadJuridica entidadJuridica) {
@@ -86,5 +89,18 @@ public class EntidadBase extends Entidad {
         this.entidadJuridica = entidadJuridica;
     }
 
+    public CategoriaEntidad getCategoria() {
+        return categoria;
+    }
 
+    public String getCategoriaString(){
+        if (categoria == null){
+            return "Sin Categoría";
+        }
+        return categoria.getNombre();
+    }
+
+    public void setCategoria(CategoriaEntidad categoria) {
+        this.categoria = categoria;
+    }
 }

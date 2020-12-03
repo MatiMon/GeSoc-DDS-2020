@@ -1,12 +1,12 @@
 package dominio.repositories.factories;
 
+import config.Config;
 import dominio.modelo.usuario.Usuario;
 import dominio.repositories.RepositorioDeUsuarios;
 import dominio.repositories.daos.DAO;
 import dominio.repositories.daos.DAOHibernate;
 import dominio.repositories.daos.DAOMemoria;
 import dominio.repositories.testMemoData.Data;
-import config.Config;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;

@@ -1,5 +1,6 @@
 package dominio.modelo.operacionEgreso;
 
+import db.Persistente;
 import dominio.modelo.entidad.Entidad;
 import dominio.modelo.mediosDePago.MediosDePago;
 import dominio.modelo.moneda.Moneda;
@@ -8,14 +9,12 @@ import dominio.modelo.operacionEgreso.Etiquetado.RepositorioDeEtiquetas;
 import dominio.modelo.presupuesto.Presupuesto;
 import dominio.modelo.proveedor.Proveedor;
 import dominio.modelo.usuario.Usuario;
-import db.Persistente;
 
 import javax.persistence.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
-//import org.apache.commons.lang3.tuple.Pair;
 
 @Entity
 @Table(name = "operacion_de_egreso")
@@ -73,6 +72,9 @@ public class OperacionDeEgreso extends Persistente {
 
     @Transient
     private RepositorioDeEtiquetas repositorioDeEtiquetas;
+
+    @Transient
+    private String fechaString;
 
     public OperacionDeEgreso(TipoDocumentoComercial tipoDocumentoComercial,
                              int numeroDocumentoComercial,
@@ -193,5 +195,10 @@ public class OperacionDeEgreso extends Persistente {
 
     public OperacionDeEgreso() {
 
+    }
+
+    public String getFechaString() {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        return format.format(fechaOperacion);
     }
 }

@@ -1,7 +1,7 @@
 package dominio.modelo.entidad;
 
-import dominio.modelo.usuario.Usuario;
 import db.Persistente;
+import dominio.modelo.usuario.Usuario;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;

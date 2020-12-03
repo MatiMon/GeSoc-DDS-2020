@@ -1,7 +1,7 @@
 package dominio.modelo.operacionEgreso;
 
-import dominio.modelo.presupuesto.Presupuesto;
 import db.Persistente;
+import dominio.modelo.presupuesto.Presupuesto;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;

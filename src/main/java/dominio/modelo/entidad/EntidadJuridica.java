@@ -1,11 +1,11 @@
 package dominio.modelo.entidad;
 
+import db.converters.ConverterTipoEntidadJuridica;
 import dominio.modelo.entidad.categoria.CategoriaEntidad;
 import dominio.modelo.entidad.categoria.TiposComportamiento;
 import dominio.modelo.operacionEgreso.Etiquetado.EtiquetaEgreso;
 import dominio.modelo.proveedor.TipoDeCodigoID;
 import dominio.modelo.ubicacion.Direccion;
-import db.converters.ConverterTipoEntidadJuridica;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -56,6 +56,9 @@ public class EntidadJuridica extends Entidad {
 
     @Transient
     private Reporte reporte;
+
+    @Transient
+    private String categoriaString;
 
     //Constructor:
     public EntidadJuridica(String nombreFicticio, String razonSocial, Direccion direccion,
@@ -161,4 +164,18 @@ public class EntidadJuridica extends Entidad {
         return this.organizacion;
     }
 
+    public CategoriaEntidad getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(CategoriaEntidad categoria) {
+        this.categoria = categoria;
+    }
+
+    public String getCategoriaString(){
+        if (categoria == null){
+            return "Sin Categoría";
+        }
+        return categoria.getNombre();
+    }
 }
