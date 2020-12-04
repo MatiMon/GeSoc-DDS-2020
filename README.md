@@ -29,3 +29,6 @@ el schema y crearlo de nuevo para volver a algo consistente.
 
 ![Alt text](https://github.com/dds-utn/2020-vi-no-group-22/blob/master/assets/Diagrama_arquitectura.jpg)
 
+### Link a la app:
+
+https://tp-dds-g22.herokuapp.com/
