@@ -90,7 +90,6 @@
             <artifactId>handlebars-humanize</artifactId>
             <version>4.2.0</version>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -104,6 +103,47 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
+
+            <!-- HEROKU -->
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <descriptorRefs>
+                        <!-- This tells Maven to include all dependencies -->
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                    <archive>
+                        <manifest>
+                            <mainClass>/2020-vi-no-group-22/src/main/java/server/Server.java</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>com.heroku.sdk</groupId>
+                <artifactId>heroku-maven-plugin</artifactId>
+                <configuration>
+                    <jdkVersion>1.8</jdkVersion>
+                    <!-- Use your own application name -->
+                    <appName>gesoc-grupo22</appName>
+                    <processTypes>
+                        <!-- Tell Heroku how to launch your application -->
+                        <!-- You might have to remove the ./ in front   -->
+                        <web>java -jar target/gesoc-grupo22.jar</web>
+                    </processTypes>
+                </configuration>
+            </plugin>
+
         </plugins>
+        <finalName>${artifactId}</finalName>
     </build>
 </project>
