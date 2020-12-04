@@ -27,7 +27,7 @@ el schema y crearlo de nuevo para volver a algo consistente.
 
 ### Diagrama de arquitectura:
 
-![Alt text](https://github.com/dds-utn/2020-vi-no-group-22/blob/master/assets/Diagrama_arquitectura.jpg)
+![Alt text](https://github.com/dds-utn/2020-vi-no-group-22/blob/master/Diagrama%20de%20Arquitectura%20Final.png)
 
 ### Link a la app:
 
