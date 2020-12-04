@@ -6,7 +6,7 @@
 
     <groupId>DDS2020</groupId>
     <artifactId>TP_DISENIO</artifactId>
-    <version>0.1-Concepto</version>
+    <version>1.0</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -122,7 +122,7 @@
                     </descriptorRefs>
                     <archive>
                         <manifest>
-                            <mainClass>/2020-vi-no-group-22/src/main/java/server/Server.java</mainClass>
+                            <mainClass>server/Server</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
@@ -134,11 +134,11 @@
                 <configuration>
                     <jdkVersion>1.8</jdkVersion>
                     <!-- Use your own application name -->
-                    <appName>gesoc-grupo22</appName>
+                    <appName>tp-dds-g22</appName>
                     <processTypes>
                         <!-- Tell Heroku how to launch your application -->
                         <!-- You might have to remove the ./ in front   -->
-                        <web>java -jar target/gesoc-grupo22.jar</web>
+                        <web>java -jar ./target/TP_DISENIO-jar-with-dependencies.jar</web>
                     </processTypes>
                 </configuration>
             </plugin>
