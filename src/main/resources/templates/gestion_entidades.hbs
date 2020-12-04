@@ -1,0 +1,206 @@
+﻿<!DOCTYPE html>
+<script>
+    window.addEventListener("DOMContentLoaded", function () {
+        let form = document.getElementById("formLogout");
+        document.getElementById("u39").addEventListener("click", function () {
+            form.submit();
+        });
+    });
+
+
+</script>
+<html>
+<head>
+    <title>Gestion entidades</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <link href="/css/axure_rp_page.css" type="text/css" rel="stylesheet"/>
+    <link href="/css/styles.css" type="text/css" rel="stylesheet"/>
+    <link href="/css/stylesGestionEntidades.css" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+<div id="base" class="">
+
+    <!-- Header (Rectangle) -->
+    <div id="u35" class="ax_default box_2" data-label="Header">
+        <div id="u35_div" class=""></div>
+        <div id="u35_text" class="text " style="display:none; visibility: hidden">
+            <p></p>
+        </div>
+    </div>
+
+    <!-- Nombre organizacion (Rectangle) -->
+    <div id="u36" class="ax_default heading_1" data-label="Nombre organizacion">
+        <div id="u36_div" class=""></div>
+        <div id="u36_text" class="text ">
+            <p><span style="margin-left: -200px;">{{organizacion}}</span></p>
+        </div>
+    </div>
+
+    <!-- Nombre usuario (Rectangle) -->
+    <div id="u37" class="ax_default heading_2" data-label="Nombre usuario">
+        <div id="u37_div" class=""></div>
+        <div id="u37_text" class="text ">
+            <p><span>{{nombreUsuario}}</span></p>
+        </div>
+    </div>
+
+    <!-- Logo (Image) -->
+    <div id="u38" class="ax_default image" data-label="Logo">
+        <img id="u38_img" class="img " src="/img/logo_u11.png"/>
+        <div id="u38_text" class="text " style="display:none; visibility: hidden">
+            <p></p>
+        </div>
+    </div>
+
+    <!-- Boton log out (Rectangle) -->
+    <form action="/" method="get" id="formLogout">
+        <div id="u39" class="ax_default button" data-label="Boton log out" style="cursor: pointer;">
+            <div id="u39_div" class=""></div>
+            <div id="u39_text" class="text ">
+                <p><span>Log out</span></p>
+            </div>
+        </div>
+    </form>
+
+    <!-- Panel derecho arriba (Rectangle) -->
+    <div id="u40" class="ax_default box_2" data-label="Panel derecho arriba">
+        <div id="u40_div" class=""></div>
+        <div id="u40_text" class="text ">
+            <p></p>
+        </div>
+    </div>
+
+    <!-- Lista mensajes (List Box) -->
+    <div id="u41" class="ax_default list_box" data-label="Lista mensajes">
+        <div id="u41_div" class="">
+            <table cellspacing="0" cellpadding="1" border="1" width="100%">
+                <thead>
+                <tr style="color:white;background-color:black">
+                    <th>Nombre de la Entidad</th>
+                    <th>Tipo de Entidad</th>
+                    <th>Descripcion</th>
+                    <th>Categoria Actual</th>
+                    <th>Asociar Categoria</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#each entidadesBase}}
+                    <tr>
+                        <td>{{nombreFicticio}}</td>
+                        <td>Entidad Base</td>
+                        <td>{{descripcion}}</td>
+                        <td>{{categoriaString}}</td>
+                        <td>
+                            <!-- Boton Asociar -->
+                            <form action="/entidades/asociar-categoria/{{id}}" method="get">
+                                <button onclick="this.form.submit();" style="z-index: -1">Ir</button>
+                            </form>
+                        </td>
+                    </tr>
+                {{/each}}
+                {{#each entidadesJuridicas}}
+                    <tr>
+                        <td>{{nombreFicticio}}</td>
+                        <td>Entidad Juridica</td>
+                        <td>{{razonSocial}}</td>
+                        <td>{{categoriaString}}</td>
+                        <td>
+                            <!-- Boton Asociar -->
+                            <form action="/entidades/asociar-categoria/{{id}}" method="get">
+                                <button onclick="this.form.submit();" style="z-index: -1">Ir</button>
+                            </form>
+                        </td>
+                {{/each}}
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Boton Nueva entidad (Rectangle) -->
+    <form action="/nueva-entidad" method="get">
+        <button id="u42" class="ax_default button" data-label="Boton Nueva entidad">
+            <div id="u42_div" class=""></div>
+            <div id="u42_text" class="text ">
+            <p><span>Nueva entidad</span></p>
+            </div>
+        </button>
+    </form>
+
+    <!-- Panel izquierdo (Rectangle) -->
+    <div id="u43" class="ax_default box_2" data-label="Panel izquierdo">
+        <div id="u43_div" class=""></div>
+        <div id="u43_text" class="text " style="display:none; visibility: hidden">
+            <p></p>
+        </div>
+    </div>
+
+    <!-- Boton Gestionar Entidades (Rectangle) -->
+    <form action="/entidades" method="get">
+        <button id="u44" class="ax_default button" data-label="Boton Gestionar Entidades">
+            <div id="u44_div" class=""></div>
+            <div id="u44_text" class="text ">
+                <p><span>Gestionar Entidades</span></p>
+            </div>
+        </button>
+    </form>
+
+    <!-- Boton Gestionar Egresos (Rectangle) -->
+    <form action="/egresos" method="get">
+        <button id="u45" class="ax_default button" data-label="Boton Gestionar Egresos">
+            <div id="u45_div" class=""></div>
+            <div id="u45_text" class="text ">
+                <p><span>Gestionar Egresos</span></p>
+            </div>
+        </button>
+    </form>
+
+    <!-- Boton Inicio (Rectangle) -->
+    <form action="/principal" method="get">
+        <button href="/principal" id="u46" class="ax_default button" data-label="Boton Inicio">
+            <div id="u46_div" class=""></div>
+            <div id="u46_text" class="text ">
+                <p><span>Inicio</span></p>
+            </div>
+        </button>
+    </form>
+
+    <div>
+        <form action="/entidades" method="get">
+            <!-- Droplist filtro tipo entidad (Droplist) -->
+            <div id="u48" class="ax_default droplist" data-label="Droplist filtro tipo entidad">
+                <div id="u48_div" class=""></div>
+                <label style="margin-top: -15px;">Filtrando por: {{filtroEntidadAnterior}}</label>
+                <select id="u48_input" class="u48_input" name="filtro">
+                    <option value="Todas">Todas</option>
+                    <option value="Bases">Bases</option>
+                    <option value="Juridicas">Juridicas</option>
+                </select>
+            </div>
+
+            <!-- Droplist filtro categoria (Droplist) -->
+            <div id="u49" class="ax_default droplist" data-label="Droplist filtro categoria"
+                 style="margin-left: -20px; width: 300px;">
+                <div id="u49_div" class=""></div>
+                <label style="margin-top: -15px;">Filtrando por: {{filtroCategoriaAnterior}}</label>
+                <select id="u49_input" class="u49_input" name="filtroCategorias">
+                    <option value="Categoria">Todas</option>
+                    {{#each categorias}}
+                        <option value="{{id}}">{{nombre}}</option>
+                    {{/each}}
+                </select>
+            </div>
+
+            <!-- Boton Filtrar (Rectangle) -->
+            <button id="u50" class="ax_default button" onclick="this.form.submit()" data-label="Boton Filtrar">
+                <div id="u50_div" class=""></div>
+                <div id="u50_text" class="text ">
+                    <p><span>Filtrar</span></p>
+                </div>
+            </button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

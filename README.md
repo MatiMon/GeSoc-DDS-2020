@@ -20,6 +20,12 @@ Dropear schema con:
 
     DROP DATABASE `2020-vi-no-group-22`;
     
+
+Correr el test 'TestInsercionDatos' para crear un set de datos de prueba en la DB.
+Se insertan datos con cada ejecución del test, si duplicas datos corriendo el test varias veces, lo mejor seria dropear
+el schema y crearlo de nuevo para volver a algo consistente.
+
 ### Diagrama de arquitectura:
 
 ![Alt text](https://github.com/dds-utn/2020-vi-no-group-22/blob/master/assets/Diagrama_arquitectura.jpg)
+

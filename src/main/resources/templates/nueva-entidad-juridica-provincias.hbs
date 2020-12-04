@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<script>
+    window.addEventListener("DOMContentLoaded", function () {
+        let form = document.getElementById("formLogout");
+        document.getElementById("u15").addEventListener("click", function () {
+            form.submit();
+        });
+    });
+</script>
+<style>
+    nueva-entidad {
+        border-width: 0px;
+        position: absolute;
+        left: 273px;
+        top: 99px;
+        width: 732px;
+        height: 574px;
+        display: flex;
+    }
+</style>
+<html>
+<head>
+    <title>Pagina principal</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <link href="/css/axure_rp_page.css" type="text/css" rel="stylesheet"/>
+    <link href="/css/styles.css" type="text/css" rel="stylesheet"/>
+    <link href="/css/stylesPaginaPrincipal.css" type="text/css" rel="stylesheet"/>
+    <link href="/css/stylesGestionEntidades.css" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+<div id="base" class="">
+
+    <!-- Header (Rectangle) -->
+    <div id="u8" class="ax_default box_2" data-label="Header">
+        <div id="u8_div" class=""></div>
+        <div id="u8_text" class="text " style="display:none; visibility: hidden">
+            <p></p>
+        </div>
+    </div>
+
+    <!-- Nombre organizacion (Rectangle) -->
+    <div id="u9" class="ax_default heading_1" data-label="Nombre organizacion">
+        <div id="u9_div" class=""></div>
+        <div id="u9_text" class="text ">
+            <p><span style="margin-left: -200px;">{{organizacion}}</span></p>
+        </div>
+    </div>
+
+    <!-- Nombre usuario (Rectangle) -->
+    <div id="u10" class="ax_default heading_2" data-label="Nombre usuario">
+        <div id="u10_div" class=""></div>
+        <div id="u10_text" class="text ">
+            <p><span>{{nombreUsuario}}</span></p>
+        </div>
+    </div>
+
+    <!-- Logo (Image) -->
+    <div id="u11" class="ax_default image" data-label="Logo">
+        <img id="u11_img" class="img " src="/img/logo_u11.png"/>
+        <div id="u11_text" class="text " style="display:none; visibility: hidden">
+            <p></p>
+        </div>
+    </div>
+
+    <!-- Panel izquierdo (Rectangle) -->
+    <div id="u12" class="ax_default box_2" data-label="Panel izquierdo">
+        <div id="u12_div" class=""></div>
+        <div id="u12_text" class="text " style="display:none; visibility: hidden">
+            <p></p>
+        </div>
+    </div>
+
+    <!-- Boton Gestionar Entidades (Rectangle) -->
+    <form action="/entidades" method="get">
+        <button id="u13" class="ax_default button" data-label="Boton Gestionar Entidades">
+            <div id="u13_div" class=""></div>
+            <div id="u13_text" class="text ">
+                <p><span>Gestionar Entidades</span></p>
+            </div>
+        </button>
+    </form>
+
+    <!-- Boton Gestionar Egresos (Rectangle) -->
+    <form action="/egresos" method="get">
+        <button id="u14" class="ax_default button" data-label="Boton Gestionar Egresos">
+            <div id="u14_div" class=""></div>
+            <div id="u14_text" class="text ">
+                <p><span>Gestionar Egresos</span></p>
+            </div>
+        </button>
+    </form>
+
+    <!-- Boton log out (Rectangle) -->
+    <form id="formLogout" action="/" method="get">
+        <div id="u15" class="ax_default button" data-label="Boton log out" style="cursor: pointer;">
+            <div id="u15_div" class=""></div>
+            <div id="u15_text" class="text ">
+                <p><span>Log out</span></p>
+            </div>
+        </div>
+    </form>
+
+    <div id="u40" class="ax_default box_2" data-label="Panel derecho arriba">
+        <div id="u40_div" class="">
+            <div style="margin-top: 65px; margin-left: 10px;">
+                <form id="formNueva" action="/nueva-entidad/juridica/data" method="get">
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td>
+                                <label>Pais seleccionado: {{paisSeleccionado}}</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Seleccione la provincia:</label>
+                                <select name="provinciaId">
+                                    {{#each provincias}}
+                                        <option value="{{id}}">{{nombre}}</option>
+                                    {{/each}}
+                                </select>
+                            </td>
+                            <td>
+                                <button>Siguiente</button>
+                            </td>
+
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+            <div id="u40_text" class="text ">
+                <p></p>
+            </div>
+        </div>
+    </div>
+    <!-- Ultimas operaciones (Rectangle) -->
+</div>
+
+<!-- Boton Inicio (Rectangle) -->
+<form action="/principal" method="get">
+    <button id="u22" class="ax_default button" data-label="Boton Inicio">
+        <div id="u22_div" class=""></div>
+        <div id="u22_text" class="text ">
+            <p><span>Inicio</span></p>
+        </div>
+    </button>
+</form>
+</div>
+</body>
+</html>

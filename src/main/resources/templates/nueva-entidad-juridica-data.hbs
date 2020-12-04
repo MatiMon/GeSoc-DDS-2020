@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<script>
+    window.addEventListener("DOMContentLoaded", function () {
+        let form = document.getElementById("formLogout");
+        document.getElementById("u15").addEventListener("click", function () {
+            form.submit();
+        });
+    });
+</script>
+<style>
+    nueva-entidad {
+        border-width: 0px;
+        position: absolute;
+        left: 273px;
+        top: 99px;
+        width: 732px;
+        height: 574px;
+        display: flex;
+    }
+</style>
+<html>
+<head>
+    <title>Pagina principal</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <link href="/css/axure_rp_page.css" type="text/css" rel="stylesheet"/>
+    <link href="/css/styles.css" type="text/css" rel="stylesheet"/>
+    <link href="/css/stylesPaginaPrincipal.css" type="text/css" rel="stylesheet"/>
+    <link href="/css/stylesGestionEntidades.css" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+<div id="base" class="">
+
+    <!-- Header (Rectangle) -->
+    <div id="u8" class="ax_default box_2" data-label="Header">
+        <div id="u8_div" class=""></div>
+        <div id="u8_text" class="text " style="display:none; visibility: hidden">
+            <p></p>
+        </div>
+    </div>
+
+    <!-- Nombre organizacion (Rectangle) -->
+    <div id="u9" class="ax_default heading_1" data-label="Nombre organizacion">
+        <div id="u9_div" class=""></div>
+        <div id="u9_text" class="text ">
+            <p><span style="margin-left: -200px;">{{organizacion}}</span></p>
+        </div>
+    </div>
+
+    <!-- Nombre usuario (Rectangle) -->
+    <div id="u10" class="ax_default heading_2" data-label="Nombre usuario">
+        <div id="u10_div" class=""></div>
+        <div id="u10_text" class="text ">
+            <p><span>{{nombreUsuario}}</span></p>
+        </div>
+    </div>
+
+    <!-- Logo (Image) -->
+    <div id="u11" class="ax_default image" data-label="Logo">
+        <img id="u11_img" class="img " src="/img/logo_u11.png"/>
+        <div id="u11_text" class="text " style="display:none; visibility: hidden">
+            <p></p>
+        </div>
+    </div>
+
+    <!-- Panel izquierdo (Rectangle) -->
+    <div id="u12" class="ax_default box_2" data-label="Panel izquierdo">
+        <div id="u12_div" class=""></div>
+        <div id="u12_text" class="text " style="display:none; visibility: hidden">
+            <p></p>
+        </div>
+    </div>
+
+    <!-- Boton Gestionar Entidades (Rectangle) -->
+    <form action="/entidades" method="get">
+        <button id="u13" class="ax_default button" data-label="Boton Gestionar Entidades">
+            <div id="u13_div" class=""></div>
+            <div id="u13_text" class="text ">
+                <p><span>Gestionar Entidades</span></p>
+            </div>
+        </button>
+    </form>
+
+    <!-- Boton Gestionar Egresos (Rectangle) -->
+    <form action="/egresos" method="get">
+        <button id="u14" class="ax_default button" data-label="Boton Gestionar Egresos">
+            <div id="u14_div" class=""></div>
+            <div id="u14_text" class="text ">
+                <p><span>Gestionar Egresos</span></p>
+            </div>
+        </button>
+    </form>
+
+    <!-- Boton log out (Rectangle) -->
+    <form id="formLogout" action="/" method="get">
+        <div id="u15" class="ax_default button" data-label="Boton log out" style="cursor: pointer;">
+            <div id="u15_div" class=""></div>
+            <div id="u15_text" class="text ">
+                <p><span>Log out</span></p>
+            </div>
+        </div>
+    </form>
+
+    <!-- Formulario nueva operacion -->
+    <div id="u40" class="ax_default box_2" data-label="Panel derecho arriba">
+        <div id="u40_div" class="">
+            <div style="margin-top: 65px; margin-left: 10px;">
+                <form id="formNueva" action="/nueva-entidad/juridica" method="post">
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td>
+                                <label>Nombre ficticio</label>
+                                <input type="text" value="" name="nombreFicticio"/>
+                            </td>
+                            <td>
+                                <label>Razon social</label>
+                                <input type="text" value="" name="razonSocial"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="tipoCodigoId">Tipo de documento</label>
+                                <select name="tipoCodigoId" id="tipoCodigoId">
+                                    <option value="DNI"> DNI</option>
+                                    <option value="CUIL"> CUIL</option>
+                                    <option value="CUIT"> CUIT</option>
+                                </select>
+                            </td>
+                            <td>
+                                <label>Numero de documento</label>
+                                <input type="number" value="" name="numDoc"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="tipoEntidadJuridica">Tipo de Entidad juridica</label>
+                                <select name="tipoEntidadJuridica" id="tipoEntidadJuridica">
+                                    <option value="Micro"> Micro</option>
+                                    <option value="Pequenia"> Pequeña</option>
+                                    <option value="Mediana 1"> Mediana 1</option>
+                                    <option value="Mediana 2"> Mediana 2</option>
+                                    <option value="OSC"> OSC</option>
+                                </select>
+                            </td>
+                            <td>
+                                <label for="categorias">Categoria</label>
+                                <select name="categorias" id="categorias">
+                                    {{#each categorias}}
+                                        <option value="{{id}}">{{nombre}}</option>
+                                    {{/each}}
+                                </select>
+                            </td>
+                        <tr>
+                            <td>
+                                <label>Pais seleccionado: {{paisSeleccionado}}</label>
+                            </td>
+                            <td>
+                                <label>Provincia seleccionada: {{provinciaSeleccionada}}</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Selecciona Ciudad:</label>
+                                <select name="ciudadId">
+                                    {{#each ciudades}}
+                                        <option value="{{id}}">{{nombre}}</option>
+                                    {{/each}}
+                                </select>
+                            </td>
+                            <td>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Calle</label>
+                                <input type="text" name="calle">
+                            </td>
+                            <td>
+                                <label>Numero</label>
+                                <input type="text" name="numeroCalle">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button>Agregar Entidad Juridica</button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </form>
+                
+                <!-- Tabla de referencias -->
+                <table border="1">
+                    <caption>Categoria de Empresa segun valor maximo de ventas totales anuales en pesos</caption>
+                    <tr><th><b>Categoria</b></th>
+                        <th><b>Construccion</b></th>
+                        <th><b>Servicios</b></th>
+                        <th><b>Comercio</b></th>
+                        <th><b>Industria y Mineria</b></th>
+                        <th><b>Agropecuario</b></th>
+                    </tr>
+                    <tr>
+                        <th><b>Micro</b></th>
+                        <td>19.450.000</td>
+                        <td>9.900.000</td>
+                        <td>36.320.000</td>
+                        <td>33.920.000</td>
+                        <td>17.260.000</td>
+                    </tr>
+                    <tr>
+                        <th><b>Pequenia</b></th>
+                        <td>115.370.000</td>
+                        <td>59.710.000</td>
+                        <td>247.200.000</td>
+                        <td>243.290.000</td>
+                        <td>71.960.000</td>
+                    </tr>
+                    <tr>
+                        <th><b>Mediana 1</b></th>
+                        <td>643.710.000</td>
+                        <td>494.200.000</td>
+                        <td>1.821.760.000</td>
+                        <td>1.651.750.000</td>
+                        <td>426.720.000</td>
+                    </tr>
+                    <tr>
+                        <th><b>Mediana 2</b></th>
+                        <td>965.460.000</td>
+                        <td>705.790.000</td>
+                        <td>2.602.540.000</td>
+                        <td>2.540.380.000</td>
+                        <td>676.810.000</td>
+                    </tr>
+                </table>
+                <caption>Referencia: https://pymes.afip.gob.ar/estiloAFIP/pymes/ayuda/default.asp</caption>
+            </div>
+        </div>
+        <div id="u40_text" class="text ">
+            <p></p>
+        </div>
+    </div>
+
+    <!-- Boton Inicio (Rectangle) -->
+    <form action="/principal" method="get">
+        <button id="u22" class="ax_default button" data-label="Boton Inicio">
+            <div id="u22_div" class=""></div>
+            <div id="u22_text" class="text ">
+                <p><span>Inicio</span></p>
+            </div>
+        </button>
+    </form>
+</div>
+</body>
+</html>

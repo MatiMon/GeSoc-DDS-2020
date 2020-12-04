@@ -7,6 +7,10 @@
 ## Directorio de uploads
 imagenes_subidas
 
+## Prod keys
+
+persistence-prod.xml
+
 ### Eclipse ###
 .metadata
 bin/
