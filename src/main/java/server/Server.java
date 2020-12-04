@@ -9,7 +9,7 @@ import java.security.spec.InvalidKeySpecException;
 
 public class Server {
     public static void main(String[] args) throws InvalidKeySpecException, NoSuchAlgorithmException {
-        CreacionDatosIniciales.insertarDatos();
+        //CreacionDatosIniciales.insertarDatos();
         Spark.port(getHerokuAssignedPort());
         Router.init();
         DebugScreen.enableDebugScreen();
