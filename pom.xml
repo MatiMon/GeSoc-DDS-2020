@@ -6,7 +6,6 @@
 
     <groupId>DDS2020</groupId>
     <artifactId>gesoc-grupo22</artifactId>
-    <version>0.1-Concepto</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
